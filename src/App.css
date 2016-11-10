@@ -1,0 +1,57 @@
+body {
+    background-color: #edfbfd;
+}
+
+.App {
+    text-align: center;
+}
+
+.logo-wrapper {
+    float: left;
+    font-size: 36px;
+    font-weight: 900;
+
+}
+
+.logo-number {
+    color: black;
+    float: left;
+}
+
+.logo-name {
+    margin-left: 5px;
+    color: red;
+}
+
+.App-logo {
+    animation: App-logo-spin infinite 20s linear;
+    height: 80px;
+    float:right;
+}
+
+.App-header {
+    background-color: #edfbfd;
+    height: 100px;
+    padding: 20px;
+}
+
+button {
+    margin: 30px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited, a:link {
+    color: black;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

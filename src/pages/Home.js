@@ -46,8 +46,8 @@ function mapStateToProps(state) {
     const historyPeople = state.get('historyList')
 
     return {
-        historyPeople: historyPeople.get('historyPeople'),
-        taskPeople: taskPeople.get('taskPeople'),
+        historyPeople: historyPeople.get('historyList'),
+        taskPeople: taskPeople.get('taskList'),
         isLoaded: taskPeople.get('isLoaded'),
         isError: taskPeople.get('isError'),
     };

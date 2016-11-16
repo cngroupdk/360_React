@@ -40,7 +40,7 @@ function mapStateToProps(state) {
   const people = state.get('peopleList');
 
   return {
-    people: people.get('users'),
+    people: people.get('peopleList'),
     isLoaded: people.get('isLoaded'),
     isError: people.get('isError'),
   };

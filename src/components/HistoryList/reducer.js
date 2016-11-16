@@ -20,7 +20,7 @@ const historyList = handleActions({
         newState
             .setIn(['isLoaded'], true)
             .setIn(['isError'], false)
-            .setIn(['historyPeople'], action.payload ? action.payload.slice(10, 20) : {});
+            .setIn(['historyList'], action.payload ? action.payload.slice(10, 20) : {});
       });
     },
     throw(state) {

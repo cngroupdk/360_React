@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Row, Column } from 'hedron';
+
 
 import { PeopleListPerson } from './PeopleListPerson';
 
@@ -17,21 +19,32 @@ export default class PeopleList extends Component {
   }
 
 
-  render() {
-    const {
-      people,
-    } = this.props;
+    render() {
+        const {
+            people,
+        } = this.props;
 
-    return (
-        <div>
-          <input type="text" id="searchInput" onChange={this._searchOnePerson}/>
+        return (
+            <div>
 
-          {people.map((person, index) => {
-            return (
-                <PeopleListPerson person={person} key={index}/>
-            )
-          })}
-        </div>
-    );
-  }
+                <input type="text" id="searchInput" onChange={this._searchOnePerson}/>
+
+                <Row>
+                    <Column fluid sm={1}>&nbsp;</Column>
+                    <Column fluid sm={2}>Name</Column>
+                    <Column fluid sm={2}>Department</Column>
+                    <Column fluid sm={2}>Job category</Column>
+                    <Column fluid sm={2}>Assessment month</Column>
+                    <Column fluid sm={2}>Last submitted</Column>
+                    <Column fluid sm={1}>&nbsp;</Column>
+                </Row>
+
+                {people.map((person, index) => {
+                    return (
+                        <PeopleListPerson person={person} key={index}/>
+                    )
+                })}
+            </div>
+        );
+    }
 }

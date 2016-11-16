@@ -20,7 +20,7 @@ const taskList = handleActions({
         newState
             .setIn(['isLoaded'], true)
             .setIn(['isError'], false)
-            .setIn(['taskPeople'], action.payload ? action.payload.slice(0, 10) : {})
+            .setIn(['taskList'], action.payload ? action.payload.slice(0, 10) : {})
       });
     },
     throw(state) {

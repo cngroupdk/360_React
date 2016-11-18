@@ -10,15 +10,15 @@ export const receivePeople = createAction(RECEIVE_PEOPLE);
 export const searchPeople = createAction(SEARCH_PEOPLE);
 
 export const fetchPeople = () => {
-  return (dispatch) => {
-    dispatch(requestPeople());
-    return api.get('/persons').then(
-        (response) => dispatch(receivePeople(
-            response.data || response,
-        )),
-        (error) => dispatch(receivePeople(
-            error,
-        ))
-    );
-  };
+    return (dispatch) => {
+        dispatch(requestPeople());
+        return api.get('/persons').then(
+            (response) => dispatch(receivePeople(
+                response.data || response,
+            )),
+            (error) => dispatch(receivePeople(
+                error,
+            ))
+        );
+    };
 };

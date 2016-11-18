@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { IndexLink, Link } from 'react-router'
 import Header from './components/Header/Header';
 import './App.css';
 
 export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <Header />
+    render() {
+        return (
+            <div id='globalContainer'>
+                <Header />
 
-        <button><Link to="/">Tasks and History</Link></button>
-        <button><Link to="/people">People</Link></button>
-        <button><Link to="/self">Self assessment</Link></button>
+                    <IndexLink to="/" className='tab' activeClassName='active'>Tasks and History</IndexLink>
+                    <Link to="/people" className='tab' activeClassName='active' >People</Link>
+                    <Link to="/self" className='tab' activeClassName='active' >Self assessment</Link>
 
-        {this.props.children}
-      </div>
-    );
-  }
+
+                {this.props.children}
+            </div>
+        );
+    }
 }
 

@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
-import { Row, Column } from 'hedron';
-
 
 import { PeopleListPerson } from './PeopleListPerson';
 
+import { ContentContainer} from '../common/assets/styles/ContentContainer';
+import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';
+import { ContentHeader} from '../common/assets/styles/ContentHeader';
+import { Input } from '../common/assets/styles/search';
+
+
 export default class PeopleList extends Component {
-  constructor(props) {
-    super(props);
-    this._searchOnePerson = this._searchOnePerson.bind(this);
-  }
+    constructor(props) {
+        super(props);
+        this._searchOnePerson = this._searchOnePerson.bind(this);
+    }
 
-  _searchOnePerson() {
-    const {
-    searchPeople,
-  } = this.props;
+    _searchOnePerson() {
+        const {
+            searchPeople,
+        } = this.props;
 
-    searchPeople(document.getElementById('searchInput').value);
-  }
+        searchPeople(document.getElementById('searchInput').value);
+    }
 
 
     render() {
@@ -25,26 +29,28 @@ export default class PeopleList extends Component {
         } = this.props;
 
         return (
-            <div>
+            <ContentContainer>
 
-                <input type="text" id="searchInput" onChange={this._searchOnePerson}/>
+                <ContentHeader>People</ContentHeader>
 
-                <Row>
-                    <Column fluid sm={1}>&nbsp;</Column>
-                    <Column fluid sm={2}>Name</Column>
-                    <Column fluid sm={2}>Department</Column>
-                    <Column fluid sm={2}>Job category</Column>
-                    <Column fluid sm={2}>Assessment month</Column>
-                    <Column fluid sm={2}>Last submitted</Column>
-                    <Column fluid sm={1}>&nbsp;</Column>
-                </Row>
+                <Input type="text" id="searchInput" onChange={this._searchOnePerson}/>
+
+                <HeaderRow>
+                    <HeaderColumn fluid sm={2}>Person</HeaderColumn>
+                    <HeaderColumn fluid sm={1}>&nbsp;</HeaderColumn>
+                    <HeaderColumn fluid sm={2}>Department</HeaderColumn>
+                    <HeaderColumn fluid sm={2}>Job category</HeaderColumn>
+                    <HeaderColumn fluid sm={2}>Assessment month</HeaderColumn>
+                    <HeaderColumn fluid sm={2}>Last submitted</HeaderColumn>
+                    <HeaderColumn fluid sm={1}>&nbsp;</HeaderColumn>
+                </HeaderRow>
 
                 {people.map((person, index) => {
                     return (
                         <PeopleListPerson person={person} key={index}/>
                     )
                 })}
-            </div>
+            </ContentContainer>
         );
     }
 }

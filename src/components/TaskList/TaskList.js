@@ -1,32 +1,37 @@
 import React, { Component }  from 'react';
-import { Row, Column } from 'hedron';
 
 import { TaskListPerson } from './TaskListPerson';
 
+import { ContentContainer} from '../common/assets/styles/ContentContainer';
+import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';
+import { ContentHeader} from '../common/assets/styles/ContentHeader';
+
 export default class TaskList extends Component {
-  render() {
-    const {
-        taskPeople,
-    } = this.props;
+    render() {
+        const {
+            taskPeople,
+        } = this.props;
 
-    return (
-        <div>
+        return (
+            <ContentContainer>
 
-          <Row>
-            <Column fluid sm={1}>&nbsp;</Column>
-            <Column fluid sm={2.5}>Name</Column>
-            <Column fluid sm={2.5}>Department</Column>
-            <Column fluid sm={2.5}>Job category</Column>
-            <Column fluid sm={2.5}>Assessment month</Column>
-            <Column fluid sm={1}>&nbsp;</Column>
-          </Row>
+                <ContentHeader>Tasks</ContentHeader>
 
-          {taskPeople.map((person, index) => {
-            return (
-                <TaskListPerson person={person} key={index}/>
-            )
-          })}
-        </div>
-    );
-  }
+                <HeaderRow>
+                    <HeaderColumn fluid sm={2}>Person</HeaderColumn>
+                    <HeaderColumn fluid sm={1.5}>&nbsp;</HeaderColumn>
+                    <HeaderColumn fluid sm={2.5}>Department</HeaderColumn>
+                    <HeaderColumn fluid sm={2.5}>Job category</HeaderColumn>
+                    <HeaderColumn fluid sm={2.5}>Assessment month</HeaderColumn>
+                    <HeaderColumn fluid sm={1}>&nbsp;</HeaderColumn>
+                </HeaderRow>
+
+                {taskPeople.map((person, index) => {
+                    return (
+                        <TaskListPerson person={person} key={index}/>
+                    )
+                })}
+            </ContentContainer>
+        );
+    }
 }

@@ -32,9 +32,7 @@ class HomePage extends Component {
 
         return (
             <Loader loaded={isLoaded}>
-                <h1>Tasks</h1>
                 <TaskList taskPeople={taskPeople}/>
-                <h1>History</h1>
                 <HistoryList historyPeople={historyPeople}/>
             </Loader>
         )

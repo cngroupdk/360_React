@@ -36,11 +36,10 @@ export default class PeopleList extends Component {
                 <Input type="text" id="searchInput" onChange={this._searchOnePerson}/>
 
                 <HeaderRow>
-                    <HeaderColumn fluid sm={2}>Person</HeaderColumn>
-                    <HeaderColumn fluid sm={1}>&nbsp;</HeaderColumn>
-                    <HeaderColumn fluid sm={2}>Department</HeaderColumn>
+                    <HeaderColumn fluid sm={3.5}>Person</HeaderColumn>
+                    <HeaderColumn fluid sm={1.5}>Department</HeaderColumn>
                     <HeaderColumn fluid sm={2}>Job category</HeaderColumn>
-                    <HeaderColumn fluid sm={2}>Assessment month</HeaderColumn>
+                    <HeaderColumn fluid sm={2}>PR month</HeaderColumn>
                     <HeaderColumn fluid sm={2}>Last submitted</HeaderColumn>
                     <HeaderColumn fluid sm={1}>&nbsp;</HeaderColumn>
                 </HeaderRow>

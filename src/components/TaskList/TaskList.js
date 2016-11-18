@@ -18,11 +18,10 @@ export default class TaskList extends Component {
                 <ContentHeader>Tasks</ContentHeader>
 
                 <HeaderRow>
-                    <HeaderColumn fluid sm={2}>Person</HeaderColumn>
-                    <HeaderColumn fluid sm={1.5}>&nbsp;</HeaderColumn>
-                    <HeaderColumn fluid sm={2.5}>Department</HeaderColumn>
+                    <HeaderColumn fluid sm={4}>Person</HeaderColumn>
+                    <HeaderColumn fluid sm={2}>Department</HeaderColumn>
                     <HeaderColumn fluid sm={2.5}>Job category</HeaderColumn>
-                    <HeaderColumn fluid sm={2.5}>Assessment month</HeaderColumn>
+                    <HeaderColumn fluid sm={2.5}>PR month</HeaderColumn>
                     <HeaderColumn fluid sm={1}>&nbsp;</HeaderColumn>
                 </HeaderRow>
 

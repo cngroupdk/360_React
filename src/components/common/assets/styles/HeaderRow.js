@@ -11,6 +11,6 @@ export const HeaderRow = styled(Row)`
 export const HeaderColumn = styled(Column)`
   font-size: 16px;
   color: black;
-  text-align:center;
+  text-align:left;
   font-weight: 900;
 `;

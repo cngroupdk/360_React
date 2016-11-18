@@ -10,5 +10,5 @@ export const PersonRow = styled(Row)`
 export const PersonColumn = styled(Column)`
   font-size: 16px;
   color: #4f4f4f;
-  text-align:center;
+  text-align:left;
 `;

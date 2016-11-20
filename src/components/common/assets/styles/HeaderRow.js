@@ -6,6 +6,7 @@ export const HeaderRow = styled(Row)`
   background-color: #e6f8fc;
   border: 1px solid #e6f8fc;
   padding: 15px;
+  border: 1px solid #bae2e8;
 `;
 
 export const HeaderColumn = styled(Column)`

@@ -3,7 +3,9 @@ body {
 }
 
 #globalContainer{
-    width:60%;
+  max-width: 1180px;
+width: 85%;
+min-width: 800px;
     margin:auto;
 }
 

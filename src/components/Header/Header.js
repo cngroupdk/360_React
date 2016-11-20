@@ -5,7 +5,7 @@ const StyledHeader = styled.div`
 
     height: 50px;
     padding: 20px;
-    
+
   .logo-wrapper {
     float: left;
     font-size: 36px;
@@ -16,11 +16,13 @@ const StyledHeader = styled.div`
 .logo-number {
     color: #073453;
     float: left;
+    font-weight: 900;
 }
 
 .logo-name {
     margin-left: 5px;
     color: #ed1848;
+    font-weight: 900;
 }
 `;
 

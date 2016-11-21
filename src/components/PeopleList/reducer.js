@@ -18,10 +18,11 @@ const peopleList = handleActions({
 
     [SEARCH_PEOPLE]: (state, action) => {
         const users = state.get('peopleListDefault');
+        console.log(action.payload)
         const searchPhrase = action.payload.toLowerCase();
         const filteredPeople = [];
         users.map((person) => {
-            const nameToLowerCase = person.name.toLowerCase();
+            const nameToLowerCase = person.Name.toLowerCase();
             if (nameToLowerCase.includes(searchPhrase)) {
                 filteredPeople.push(person);
             }
@@ -36,20 +37,12 @@ const peopleList = handleActions({
 
     [RECEIVE_PEOPLE]: {
         next(state, action) {
-            function compare(a, b) {
-                if (a.name < b.name)
-                    return -1;
-                if (a.name > b.name)
-                    return 1;
-                return 0;
-            }
-
             return state.withMutations(newState => {
                 newState
                     .setIn(['isLoaded'], true)
                     .setIn(['isError'], false)
-                    .setIn(['peopleList'], action.payload ? action.payload.sort(compare) : {})
-                    .setIn(['peopleListDefault'], action.payload ? action.payload.sort(compare) : {});
+                    .setIn(['peopleList'], action.payload)
+                    .setIn(['peopleListDefault'], action.payload);
             });
         },
         throw(state) {

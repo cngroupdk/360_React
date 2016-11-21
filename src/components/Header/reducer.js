@@ -2,25 +2,25 @@ import { handleActions } from 'redux-actions';
 import Immutable from 'immutable';
 
 import {
-    REQUEST_PEOPLE,
-    RECEIVE_PEOPLE,
+    REQUEST_SELF,
+    RECEIVE_SELF,
 } from './actions';
 
-const historyList = handleActions({
-  [REQUEST_PEOPLE]: (state) => {
+const self = handleActions({
+  [REQUEST_SELF]: (state) => {
     return state.withMutations(newState =>
         newState
             .setIn(['isLoaded'], false)
             .setIn(['isError'], false)
     );
   },
-  [RECEIVE_PEOPLE]: {
+  [RECEIVE_SELF]: {
     next(state, action) {
       return state.withMutations(newState => {
         newState
             .setIn(['isLoaded'], true)
             .setIn(['isError'], false)
-            .setIn(['historyList'], action.payload);
+            .setIn(['self'], action.payload);
       });
     },
     throw(state) {
@@ -36,4 +36,4 @@ const historyList = handleActions({
   isError: false,
 }));
 
-export default historyList;
+export default self;

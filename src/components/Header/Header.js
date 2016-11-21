@@ -1,5 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import Loader from 'react-loader';
+
+import { fetchSelf } from './actions';
+import SelfCard from './SelfCard';
 
 const StyledHeader = styled.div`
 
@@ -27,8 +32,31 @@ const StyledHeader = styled.div`
 
 
 class Header extends Component {
+
+    static propTypes = {
+        isLoaded: PropTypes.bool,
+        isError: PropTypes.bool,
+        fetchSelf: PropTypes.func.isRequired,
+        self: PropTypes.object,
+    };
+
+    componentDidMount() {
+        this.fetchAllData();
+    }
+
+    fetchAllData() {
+        this.props.fetchSelf();
+    }
+
     render() {
+
+        const {
+            self,
+            isLoaded
+        } = this.props;
+
         return (
+            <Loader loaded={isLoaded}>
             <StyledHeader className="App">
                 <div className="App-header">
                     <span className="logo-wrapper">
@@ -36,8 +64,24 @@ class Header extends Component {
                         <span className="logo-name">Feedback</span>
                     </span>
                 </div>
+                <SelfCard self={self} isLoaded={isLoaded}/>
             </StyledHeader>
+                </Loader>
         );
     }
 }
-export default Header;
+
+function mapStateToProps(state) {
+    const self = state.get('self');
+
+    return {
+        self: self.get('self'),
+        isLoaded: self.get('isLoaded'),
+        isError: self.get('isError'),
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    {fetchSelf},
+)(Header);

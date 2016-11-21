@@ -7,6 +7,7 @@ export default class App extends Component {
     render() {
         return (
             <div id='globalContainer'>
+
                 <Header />
 
                     <IndexLink to="/" className='tab' activeClassName='active'>Tasks and History</IndexLink>

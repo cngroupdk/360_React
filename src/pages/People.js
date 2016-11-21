@@ -10,7 +10,7 @@ class HomePage extends Component {
     isLoaded: PropTypes.bool,
     isError: PropTypes.bool,
     fetchPeople: PropTypes.func.isRequired,
-    users: PropTypes.array,
+    people: PropTypes.array,
   };
 
   componentDidMount() {

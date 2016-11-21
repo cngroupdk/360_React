@@ -13,5 +13,4 @@ render((
             {createRoutes()}
         </Router>
     </Provider>
-), document.getElementById('container'))
-
+), document.getElementById('container'));

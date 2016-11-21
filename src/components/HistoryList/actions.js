@@ -10,7 +10,7 @@ export const receivePeople = createAction(RECEIVE_PEOPLE);
 export const fetchPeople = () => {
     return (dispatch) => {
         dispatch(requestPeople());
-        return api.get('/persons').then(
+        return api.get('/assessments/history').then(
             (response) => dispatch(receivePeople(
                 response.data || response,
             )),

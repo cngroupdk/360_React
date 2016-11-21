@@ -12,7 +12,7 @@ export const searchPeople = createAction(SEARCH_PEOPLE);
 export const fetchPeople = () => {
     return (dispatch) => {
         dispatch(requestPeople());
-        return api.get('/persons').then(
+        return api.get('/people/all').then(
             (response) => dispatch(receivePeople(
                 response.data || response,
             )),

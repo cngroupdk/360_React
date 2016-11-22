@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 
-const StyledCard = styled.div`
-    float: right;
-`;
+import { StyledSelfCard } from '../common/assets/styles/Header/StyledSelfCard';
+
 
 export default class SelfCard extends Component {
     render() {
@@ -13,7 +11,10 @@ export default class SelfCard extends Component {
         } = this.props;
 
         return (
-                <StyledCard>{self.Name}</StyledCard>
+                <StyledSelfCard>
+                    <div className="self-photo">&nbsp;</div>
+                    <div className="self-name">{self.Name}</div>
+                </StyledSelfCard>
         );
     }
 }

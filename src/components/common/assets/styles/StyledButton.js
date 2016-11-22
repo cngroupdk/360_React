@@ -12,4 +12,9 @@ export const StyledButton = styled.button`
     outline: none;
     font-size: 16px;
     display: block;
+    a {
+        text-decoration: none;
+        color:white;
+    }
+        
 `;

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router'
 import monthRender from '../common/monthRender'
 import buttonType from '../common/buttonType'
 
@@ -12,6 +13,6 @@ export const PeopleListPerson = ({person}) => (
             <PersonColumn fluid sm={1.5}>{person.Department}</PersonColumn>
             <PersonColumn fluid sm={2}>{person.Position}</PersonColumn>
             <PersonColumn fluid sm={2}>{monthRender(person.AssessmentMonth)}</PersonColumn>
-            <PersonColumn fluid sm={3}><StyledButton>{buttonType(person.ExistingDraft)}</StyledButton></PersonColumn>
+            <PersonColumn fluid sm={3}><StyledButton> <Link to="/levelentry">{buttonType(person.ExistingDraft)}</Link></StyledButton></PersonColumn>
         </PersonRow>
 );

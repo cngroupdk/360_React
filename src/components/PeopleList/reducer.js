@@ -18,12 +18,12 @@ const peopleList = handleActions({
 
     [SEARCH_PEOPLE]: (state, action) => {
         const users = state.get('peopleListDefault');
-        console.log(action.payload)
-        const searchPhrase = action.payload.toLowerCase();
+        const searchPhrase = action.payload.toLowerCase().trim();
         const filteredPeople = [];
         users.map((person) => {
-            const nameToLowerCase = person.Name.toLowerCase();
-            if (nameToLowerCase.includes(searchPhrase)) {
+            if (person.Name.toLowerCase().includes(searchPhrase) ||
+                person.SearchableName.toLowerCase().includes(searchPhrase))
+            {
                 filteredPeople.push(person);
             }
             return null;

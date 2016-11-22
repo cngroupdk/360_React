@@ -6,6 +6,9 @@ export const PersonRow = styled(Row)`
   border: 1px solid #bae2e8;
   padding: 15px;
   border-top: none;
+  &:hover + StyledButton {
+        background-color: #e6f8fc;
+  }
 `;
 
 export const PersonColumn = styled(Column)`

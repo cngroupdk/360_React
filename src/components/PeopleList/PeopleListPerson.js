@@ -1,6 +1,6 @@
 import React from 'react';
 import monthRender from '../common/monthRender'
-
+import buttonType from '../common/buttonType'
 
 import { PersonRow, PersonColumn } from '../common/assets/styles/PersonRow';
 
@@ -13,6 +13,6 @@ export const PeopleListPerson = ({person}) => (
             <PersonColumn fluid sm={2}>{person.Position}</PersonColumn>
             <PersonColumn fluid sm={2}>{monthRender(person.AssessmentMonth)}</PersonColumn>
             <PersonColumn fluid sm={2}>&nbsp;</PersonColumn>
-            <PersonColumn fluid sm={1}><button>New assessment</button></PersonColumn>
+            <PersonColumn fluid sm={1}><button>{buttonType(person.ExistingDraft)}</button></PersonColumn>
         </PersonRow>
 );

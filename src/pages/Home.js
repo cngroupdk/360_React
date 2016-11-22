@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
+import Tabs from '../components/common/tabs'
 import TaskList from '../components/TaskList/TaskList';
 import HistoryList from '../components/HistoryList/HistoryList';
 import { fetchPeople } from '../components/HistoryList/actions';
@@ -31,10 +32,13 @@ class HomePage extends Component {
         } = this.props;
 
         return (
-            <Loader loaded={isLoaded}>
-                <TaskList taskPeople={taskPeople}/>
-                <HistoryList historyPeople={historyPeople}/>
-            </Loader>
+            <div>
+                <Tabs/>
+                <Loader loaded={isLoaded}>
+                    <TaskList taskPeople={taskPeople}/>
+                    <HistoryList historyPeople={historyPeople}/>
+                </Loader>
+            </div>
         )
     }
 }

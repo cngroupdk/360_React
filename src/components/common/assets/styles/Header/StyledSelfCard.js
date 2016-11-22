@@ -20,6 +20,7 @@ export const StyledSelfCard = styled.div`
     
     .self-name {
         float: none;
+        font-weight: 700;
         display: inline-block;
         vertical-align: middle;
     }

@@ -1,20 +1,20 @@
 import { createAction } from 'redux-actions';
 import { api } from '../../api';
 
-export const REQUEST_PEOPLE = 'REQUEST_PEOPLE';
-export const RECEIVE_PEOPLE = 'RECEIVE_PEOPLE';
+export const REQUEST_TASKS = 'REQUEST_TASKS';
+export const RECEIVE_TASKS = 'RECEIVE_TASKS';
 
-export const requestPeople = createAction(REQUEST_PEOPLE);
-export const receivePeople = createAction(RECEIVE_PEOPLE);
+export const requestTasks = createAction(REQUEST_TASKS);
+export const receiveTasks = createAction(RECEIVE_TASKS);
 
-export const fetchPeople = () => {
+export const fetchTasks = () => {
     return (dispatch) => {
-        dispatch(requestPeople());
+        dispatch(requestTasks());
         return api.get('/people/colleagues').then(
-            (response) => dispatch(receivePeople(
+            (response) => dispatch(receiveTasks(
                 response.data || response,
             )),
-            (error) => dispatch(receivePeople(
+            (error) => dispatch(receiveTasks(
                 error,
             ))
         );

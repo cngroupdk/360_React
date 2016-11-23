@@ -5,6 +5,7 @@ import App from './App'
 import HomePage from './pages/Home';
 import People from './pages/People'
 import Self from './pages/Self'
+import LevelEntry from './pages/LevelEntry'
 
 
 export default function createRoutes() {
@@ -13,6 +14,7 @@ export default function createRoutes() {
             <IndexRoute component={HomePage}/>
             <Route path="/people" component={People}/>
             <Route path="/self" component={Self}/>
+            <Route path="/levelEntry" component={LevelEntry}/>
         </Route>
     );
 }

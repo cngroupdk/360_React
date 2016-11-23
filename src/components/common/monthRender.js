@@ -1,4 +1,4 @@
-export default function monthRender(month) {
+const monthRender = (month) =>{
     switch (month) {
         case 1:
             return 'January';
@@ -28,3 +28,5 @@ export default function monthRender(month) {
             return 'None listed';
     }
 };
+
+export default monthRender;

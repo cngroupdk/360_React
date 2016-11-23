@@ -5,6 +5,8 @@ import {
     REQUEST_PEOPLE,
     RECEIVE_PEOPLE,
     SEARCH_PEOPLE,
+    RECEIVE_ASSESSMENT,
+    REQUEST_ASSESSMENT,
 } from './actions';
 
 const peopleList = handleActions({
@@ -53,6 +55,29 @@ const peopleList = handleActions({
             );
         },
     },
+    [REQUEST_ASSESSMENT]: (state) => {
+        return state.withMutations(newState =>
+            newState
+                .setIn(['isError'], false)
+        );
+    },
+
+    [RECEIVE_ASSESSMENT]:{
+        next(state, action) {
+            return state.withMutations(newState => {
+                newState
+                    .setIn(['isError'], false)
+                    .setIn(['Assessment'])
+            });
+        },
+        throw(state) {
+            return state.withMutations(newState =>
+                newState
+                    .setIn(['isError'], true)
+            );
+        },
+    }
+
 }, Immutable.fromJS({
     isLoaded: false,
     isError: false,

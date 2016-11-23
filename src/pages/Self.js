@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { fetchSelfList } from '../components/SelfList/actions';
 import SelfList from '../components/SelfList/SelfList';
+import Tabs from '../components/common/tabs'
 
 class SelfPage extends Component {
   static propTypes = {
@@ -28,9 +29,12 @@ class SelfPage extends Component {
     } = this.props;
 
     return (
-        <Loader loaded={isLoaded}>
-          <SelfList selfList={selfList}/>
-        </Loader>
+        <div>
+          <Tabs/>
+          <Loader loaded={isLoaded}>
+            <SelfList selfList={selfList}/>
+          </Loader>
+        </div>
     )
   }
 }

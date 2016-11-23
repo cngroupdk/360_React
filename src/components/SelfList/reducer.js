@@ -16,7 +16,6 @@ const selfList = handleActions({
   },
   [RECEIVE_SELFLIST]: {
     next(state, action) {
-      console.log('self', action.payload)
       return state.withMutations(newState => {
         newState
             .setIn(['isLoaded'], true)

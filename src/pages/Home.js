@@ -5,24 +5,27 @@ import { connect } from 'react-redux';
 import Tabs from '../components/common/tabs'
 import TaskList from '../components/TaskList/TaskList';
 import HistoryList from '../components/HistoryList/HistoryList';
-import { fetchPeople } from '../components/HistoryList/actions';
+import { fetchHistory } from '../components/HistoryList/actions';
+import { fetchTasks } from '../components/TaskList/actions'
 
 class HomePage extends Component {
     static propTypes = {
         isLoaded: PropTypes.bool,
         isError: PropTypes.bool,
-        fetchPeople: PropTypes.func.isRequired,
+        fetchHistory: PropTypes.func.isRequired,
+        fetchTasks: PropTypes.func.isRequired,
         taskPeople: PropTypes.array,
         historyPeople: PropTypes.array,
-    }
+    };
 
     componentDidMount() {
         this.fetchAllData();
-    }
+    };
 
     fetchAllData() {
-        this.props.fetchPeople();
-    }
+        this.props.fetchHistory();
+        this.props.fetchTasks();
+    };
 
     render() {
         const {
@@ -40,7 +43,7 @@ class HomePage extends Component {
                 </Loader>
             </div>
         )
-    }
+    };
 }
 
 function mapStateToProps(state) {
@@ -57,5 +60,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {fetchPeople},
+    {fetchHistory, fetchTasks},
 )(HomePage);

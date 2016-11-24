@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Input = styled.input `
+export const StyledInput = styled.input `
   float:right;
   border: 1px solid #bae2e8;
   height: 30px;

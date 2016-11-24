@@ -5,17 +5,35 @@ import { TaskListPerson } from './TaskListPerson';
 import { ContentContainer} from '../common/assets/styles/ContentContainer';
 import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';
 import { ContentHeader} from '../common/assets/styles/ContentHeader';
+import { StyledInput } from '../common/assets/styles/StyledSearch';
 
 export default class TaskList extends Component {
+
+    constructor(props) {
+        super(props);
+        this._searchOnePerson = this._searchOnePerson.bind(this);
+    }
+
+    _searchOnePerson(e) {
+        const {
+            searchTasks,
+        } = this.props;
+
+        searchTasks(e.target.value);
+    }
+
     render() {
         const {
             taskPeople,
         } = this.props;
 
+
         return (
             <ContentContainer>
 
                 <ContentHeader>Tasks</ContentHeader>
+
+                <StyledInput type="text" id="searchInputTask" onChange={this._searchOnePerson}/>
 
                 <HeaderRow>
                     <HeaderColumn fluid sm={4}>Person</HeaderColumn>

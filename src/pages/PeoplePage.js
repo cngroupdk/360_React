@@ -6,7 +6,7 @@ import Tabs from '../components/common/tabs'
 import PeopleList from '../components/PeopleList/PeopleList';
 import { fetchPeople, searchPeople } from '../components/PeopleList/actions';
 
-class HomePage extends Component {
+class PeoplePage extends Component {
   static propTypes = {
     isLoaded: PropTypes.bool,
     isError: PropTypes.bool,
@@ -53,4 +53,4 @@ function mapStateToProps(state) {
 export default connect(
     mapStateToProps,
     {fetchPeople, searchPeople},
-)(HomePage);
+)(PeoplePage);

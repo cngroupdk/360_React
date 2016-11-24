@@ -2,19 +2,19 @@ import { handleActions } from 'redux-actions';
 import Immutable from 'immutable';
 
 import {
-    REQUEST_PEOPLE,
-    RECEIVE_PEOPLE,
+    REQUEST_TASKS,
+    RECEIVE_TASKS,
 } from './actions';
 
 const taskList = handleActions({
-  [REQUEST_PEOPLE]: (state) => {
+  [REQUEST_TASKS]: (state) => {
     return state.withMutations(newState =>
         newState
             .setIn(['isLoaded'], false)
             .setIn(['isError'], false)
     );
   },
-  [RECEIVE_PEOPLE]: {
+  [RECEIVE_TASKS]: {
     next(state, action) {
       return state.withMutations(newState => {
         newState

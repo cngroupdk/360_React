@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router'
 
 import { PersonRow, PersonColumn } from '../common/assets/styles/PersonRow';
 import { StyledButton } from '../common/assets/styles/StyledButton';

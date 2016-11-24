@@ -1,7 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router'
 
-import { PersonRow, PersonColumn } from '../common/assets/styles/PersonRow';
 import { StyledButton } from '../common/assets/styles/StyledButton';
 
 export const SelfListRow = ({person}) => (
@@ -14,3 +13,4 @@ export const SelfListRow = ({person}) => (
             <PersonColumn fluid sm={1.5}><StyledButton> <Link to="/levelentry">Edit draft</Link></StyledButton></PersonColumn>
         </PersonRow>
 );
+

@@ -1,20 +1,20 @@
 import { createAction } from 'redux-actions';
 import { api } from '../../api';
 
-export const REQUEST_PEOPLE = 'REQUEST_PEOPLE';
-export const RECEIVE_PEOPLE = 'RECEIVE_PEOPLE';
+export const REQUEST_HISTORY = 'REQUEST_HISTORY';
+export const RECEIVE_HISTORY = 'RECEIVE_HISTORY';
 
-export const requestPeople = createAction(REQUEST_PEOPLE);
-export const receivePeople = createAction(RECEIVE_PEOPLE);
+export const requestHistory = createAction(REQUEST_HISTORY);
+export const receiveHistory = createAction(RECEIVE_HISTORY);
 
-export const fetchPeople = () => {
+export const fetchHistory = () => {
     return (dispatch) => {
-        dispatch(requestPeople());
+        dispatch(requestHistory());
         return api.get('/assessments/history').then(
-            (response) => dispatch(receivePeople(
+            (response) => dispatch(receiveHistory(
                 response.data || response,
             )),
-            (error) => dispatch(receivePeople(
+            (error) => dispatch(receiveHistory(
                 error,
             ))
         );

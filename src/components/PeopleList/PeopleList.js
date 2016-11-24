@@ -14,12 +14,12 @@ export default class PeopleList extends Component {
         this._searchOnePerson = this._searchOnePerson.bind(this);
     }
 
-    _searchOnePerson() {
+    _searchOnePerson(e) {
         const {
             searchPeople,
         } = this.props;
 
-        searchPeople(document.getElementById('searchInput').value);
+        searchPeople(e.target.value);
     }
 
 

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
+import getPhotoUrl from '../common/getPhotoUrl';
+
 import { StyledSelfCard } from '../common/assets/styles/Header/StyledSelfCard';
+import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
 
 
 export default class SelfCard extends Component {
@@ -12,7 +15,7 @@ export default class SelfCard extends Component {
 
         return (
                 <StyledSelfCard>
-                    <div className="self-photo">&nbsp;</div>
+                    <StyledProfilePhoto imgUrl={getPhotoUrl(self.Login)}/>
                     <div className="self-name">{self.Name}</div>
                 </StyledSelfCard>
         );

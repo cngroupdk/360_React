@@ -5,8 +5,8 @@ import {
     REQUEST_PEOPLE,
     RECEIVE_PEOPLE,
     SEARCH_PEOPLE,
-    RECEIVE_ASSESSMENT,
-    REQUEST_ASSESSMENT,
+    REQUEST_COLLEAGUE,
+    RECEIVE_COLLEAGUE,
 } from './actions';
 
 const peopleList = handleActions({
@@ -50,19 +50,19 @@ const peopleList = handleActions({
             );
         },
     },
-    [REQUEST_ASSESSMENT]: (state) => {
+    [REQUEST_COLLEAGUE]: (state) => {
         return state.withMutations(newState =>
             newState
                 .setIn(['isError'], false)
         );
     },
 
-    [RECEIVE_ASSESSMENT]:{
+    [RECEIVE_COLLEAGUE]:{
         next(state, action) {
             return state.withMutations(newState => {
                 newState
                     .setIn(['isError'], false)
-                    .setIn(['Assessment'])
+                    .setIn(['isCollegue'])
             });
         },
         throw(state) {

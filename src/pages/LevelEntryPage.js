@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-export default class LevelEntry extends Component {
+export default class LevelEntryPage extends Component {
     render() {
         return (
             <div>

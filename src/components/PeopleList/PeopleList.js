@@ -5,7 +5,7 @@ import { PeopleListPerson } from './PeopleListPerson';
 import { ContentContainer} from '../common/assets/styles/ContentContainer';
 import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';
 import { ContentHeader} from '../common/assets/styles/ContentHeader';
-import { Input } from '../common/assets/styles/search';
+import { StyledInput } from '../common/assets/styles/StyledSearch';
 
 
 export default class PeopleList extends Component {
@@ -14,12 +14,12 @@ export default class PeopleList extends Component {
         this._searchOnePerson = this._searchOnePerson.bind(this);
     }
 
-    _searchOnePerson() {
+    _searchOnePerson(e) {
         const {
             searchPeople,
         } = this.props;
 
-        searchPeople(document.getElementById('searchInput').value);
+        searchPeople(e.target.value);
     }
 
 
@@ -33,7 +33,7 @@ export default class PeopleList extends Component {
 
                 <ContentHeader>People</ContentHeader>
 
-                <Input type="text" id="searchInput" onChange={this._searchOnePerson}/>
+                <StyledInput type="text" id="searchInput" onChange={this._searchOnePerson}/>
 
                 <HeaderRow>
                     <HeaderColumn fluid sm={3.5}>Person</HeaderColumn>

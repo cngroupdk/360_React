@@ -2,6 +2,7 @@
   "name": "360feedback",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://test360.domain.local",
   "devDependencies": {
     "react-scripts": "0.7.0"
   },

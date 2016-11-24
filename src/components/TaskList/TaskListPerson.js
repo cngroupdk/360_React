@@ -1,15 +1,28 @@
 import React from 'react';
-import monthRender from '../common/monthRender'
+import monthRender from '../common/monthRender';
+import getPhotoUrl from '../common/getPhotoUrl';
 
-import { PersonRow, PersonColumn } from '../common/assets/styles/PersonRow';
+import {PersonRow, PersonColumn} from '../common/assets/styles/PersonRow';
+import {StyledProfilePhoto} from '../common/assets/styles/StyledProfilePhoto';
 
 export const TaskListPerson = ({person}) => (
-        <PersonRow>
-            <PersonColumn fluid sm={1}>&nbsp;</PersonColumn>
-            <PersonColumn fluid sm={3}>{person.Name}</PersonColumn>
-            <PersonColumn fluid sm={2}>{person.Department}</PersonColumn>
-            <PersonColumn fluid sm={2.5}>{person.Position}</PersonColumn>
-            <PersonColumn fluid sm={2.5}>{monthRender(person.AssessmentMonth)}</PersonColumn>
-            <PersonColumn fluid sm={1}>&nbsp;</PersonColumn>
-        </PersonRow>
+  <div>
+    <PersonRow>
+      <PersonColumn fluid sm={1}>
+        <div className='absolute'>
+          <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
+        </div>
+      </PersonColumn>
+      <PersonColumn fluid sm={3}><div className='absolute'>{person.Name}</div>
+      </PersonColumn>
+      <PersonColumn fluid sm={2}><div className='absolute'>{person.Department}</div>
+      </PersonColumn>
+      <PersonColumn fluid sm={2.5}><div className='absolute'>{person.Position}</div>
+      </PersonColumn>
+      <PersonColumn fluid sm={2.5}><div className='absolute'>{monthRender(person.AssessmentMonth)}</div>
+      </PersonColumn>
+      <PersonColumn fluid sm={1}><div className='absolute'>&nbsp;</div>
+      </PersonColumn>
+    </PersonRow>
+  </div>
 );

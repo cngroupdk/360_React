@@ -28,3 +28,9 @@ body {
     color: #073453;
 }
 
+
+.absolute {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}

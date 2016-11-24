@@ -7,23 +7,24 @@ import getPhotoUrl from '../common/getPhotoUrl';
 import { PersonRow, PersonColumn } from '../common/assets/styles/PersonRow';
 import { StyledButton } from '../common/assets/styles/StyledButton';
 import {StyledProfilePhoto} from '../common/assets/styles/StyledProfilePhoto';
+import {Content} from '../common/assets/styles/Content';
 
 export const TaskListPerson = ({person}) => (
     <PersonRow>
       <PersonColumn fluid sm={1}>
-        <div className='absolute'>
+        <Content>
           <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
-        </div>
+        </Content>
       </PersonColumn>
-      <PersonColumn fluid sm={3}><div className='absolute'>{person.Name}</div>
+      <PersonColumn fluid sm={3}><Content>{person.Name}</Content>
       </PersonColumn>
-      <PersonColumn fluid sm={1.5}><div className='absolute'>{person.Department}</div>
+      <PersonColumn fluid sm={1.5}><Content>{person.Department}</Content>
       </PersonColumn>
-      <PersonColumn fluid sm={2}><div className='absolute'>{person.Position}</div>
+      <PersonColumn fluid sm={2}><Content>{person.Position}</Content>
       </PersonColumn>
-      <PersonColumn fluid sm={1.5}><div className='absolute'>{monthRender(person.AssessmentMonth)}</div>
+      <PersonColumn fluid sm={1.5}><Content>{monthRender(person.AssessmentMonth)}</Content>
       </PersonColumn>
-      <PersonColumn fluid sm={3}><div className='absolute'><StyledButton> <Link to="/level-entry">{buttonType(person.ExistingDraft)}</Link></StyledButton></div>
+      <PersonColumn fluid sm={3}><StyledButton> <Link to="/level-entry">{buttonType(person.ExistingDraft)}</Link></StyledButton>
       </PersonColumn>
     </PersonRow>
 );

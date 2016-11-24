@@ -10,9 +10,13 @@ export const StyledButton = styled.button`
     border: none;
     outline: none;
     font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     a {
         text-decoration: none;
         color:white;
     }
-        
+
 `;

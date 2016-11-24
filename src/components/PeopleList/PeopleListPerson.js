@@ -7,30 +7,29 @@ import buttonType from '../common/buttonType'
 import {PersonRow, PersonColumn} from '../common/assets/styles/PersonRow';
 import {StyledButton} from '../common/assets/styles/StyledButton';
 import {StyledProfilePhoto} from '../common/assets/styles/StyledProfilePhoto';
+import {Content} from '../common/assets/styles/Content';
 
 export const PeopleListPerson = ({person}) => (
   <PersonRow>
     <PersonColumn fluid sm={1}>
-      <div className='absolute'><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></div>
+      <Content><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></Content>
     </PersonColumn>
     <PersonColumn fluid sm={2.5}>
-      <div className='absolute'>{person.Name}</div>
+      <Content>{person.Name}</Content>
     </PersonColumn>
     <PersonColumn fluid sm={1.5}>
-      <div className='absolute'>{person.Department}</div>
+      <Content>{person.Department}</Content>
     </PersonColumn>
     <PersonColumn fluid sm={2}>
-      <div className='absolute'>{person.Position}</div>
+      <Content>{person.Position}</Content>
     </PersonColumn>
     <PersonColumn fluid sm={2}>
-      <div className='absolute'>{monthRender(person.AssessmentMonth)}</div>
+      <Content>{monthRender(person.AssessmentMonth)}</Content>
     </PersonColumn>
     <PersonColumn fluid sm={3}>
-      <div className='absolute'>
         <StyledButton>
           <Link to="/reason-entry">{buttonType(person.ExistingDraft)}</Link>
         </StyledButton>
-      </div>
     </PersonColumn>
   </PersonRow>
 );

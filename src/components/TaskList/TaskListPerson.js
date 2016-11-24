@@ -2,18 +2,28 @@ import React from 'react';
 import { Link } from 'react-router'
 import monthRender from '../common/monthRender'
 import buttonType from '../common/buttonType'
-
+import getPhotoUrl from '../common/getPhotoUrl';
 
 import { PersonRow, PersonColumn } from '../common/assets/styles/PersonRow';
 import { StyledButton } from '../common/assets/styles/StyledButton';
+import {StyledProfilePhoto} from '../common/assets/styles/StyledProfilePhoto';
 
 export const TaskListPerson = ({person}) => (
-        <PersonRow>
-            <PersonColumn fluid sm={1}>&nbsp;</PersonColumn>
-            <PersonColumn fluid sm={3}>{person.Name}</PersonColumn>
-            <PersonColumn fluid sm={1.5}>{person.Department}</PersonColumn>
-            <PersonColumn fluid sm={2}>{person.Position}</PersonColumn>
-            <PersonColumn fluid sm={1.5}>{monthRender(person.AssessmentMonth)}</PersonColumn>
-            <PersonColumn fluid sm={3}><StyledButton> <Link to="/level-entry">{buttonType(person.ExistingDraft)}</Link></StyledButton></PersonColumn>
-        </PersonRow>
+    <PersonRow>
+      <PersonColumn fluid sm={1}>
+        <div className='absolute'>
+          <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
+        </div>
+      </PersonColumn>
+      <PersonColumn fluid sm={3}><div className='absolute'>{person.Name}</div>
+      </PersonColumn>
+      <PersonColumn fluid sm={1.5}><div className='absolute'>{person.Department}</div>
+      </PersonColumn>
+      <PersonColumn fluid sm={2}><div className='absolute'>{person.Position}</div>
+      </PersonColumn>
+      <PersonColumn fluid sm={1.5}><div className='absolute'>{monthRender(person.AssessmentMonth)}</div>
+      </PersonColumn>
+      <PersonColumn fluid sm={3}><div className='absolute'><StyledButton> <Link to="/level-entry">{buttonType(person.ExistingDraft)}</Link></StyledButton></div>
+      </PersonColumn>
+    </PersonRow>
 );

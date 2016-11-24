@@ -19,10 +19,10 @@ export default class TaskList extends Component {
 
                 <HeaderRow>
                     <HeaderColumn fluid sm={4}>Person</HeaderColumn>
-                    <HeaderColumn fluid sm={2}>Department</HeaderColumn>
-                    <HeaderColumn fluid sm={2.5}>Job category</HeaderColumn>
-                    <HeaderColumn fluid sm={2.5}>PR month</HeaderColumn>
-                    <HeaderColumn fluid sm={1}>&nbsp;</HeaderColumn>
+                    <HeaderColumn fluid sm={1.5}>Department</HeaderColumn>
+                    <HeaderColumn fluid sm={2}>Job category</HeaderColumn>
+                    <HeaderColumn fluid sm={1.5}>PR month</HeaderColumn>
+                    <HeaderColumn fluid sm={3}>&nbsp;</HeaderColumn>
                 </HeaderRow>
 
                 {taskPeople.map((person, index) => {

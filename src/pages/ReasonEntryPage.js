@@ -3,13 +3,13 @@ import { Link } from 'react-router'
 
 import { StyledButton } from '../components/common/assets/styles/StyledButton';
 
-export default class LevelEntryPage extends Component {
+export default class ReasonEntryPage extends Component {
     render() {
         return (
             <div>
-                LevelEntryPage
+                ReasonEntryPage
 
-                <StyledButton> <Link to="/questions-entry">Proceed to questions</Link></StyledButton>
+                <StyledButton> <Link to="/level-entry">Enter level</Link></StyledButton>
             </div>
         )
     }

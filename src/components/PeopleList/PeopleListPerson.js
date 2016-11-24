@@ -13,6 +13,6 @@ export const PeopleListPerson = ({person}) => (
             <PersonColumn fluid sm={1.5}>{person.Department}</PersonColumn>
             <PersonColumn fluid sm={2}>{person.Position}</PersonColumn>
             <PersonColumn fluid sm={2}>{monthRender(person.AssessmentMonth)}</PersonColumn>
-            <PersonColumn fluid sm={3}><StyledButton> <Link to="/levelentry">{buttonType(person.ExistingDraft)}</Link></StyledButton></PersonColumn>
+            <PersonColumn fluid sm={3}><StyledButton> <Link to="/reason-entry">{buttonType(person.ExistingDraft)}</Link></StyledButton></PersonColumn>
         </PersonRow>
 );

@@ -11,7 +11,7 @@ export const SelfListRow = ({person}) => (
             <PersonColumn fluid sm={2}>{person.Department}</PersonColumn>
             <PersonColumn fluid sm={2}>{person.JobCategory}</PersonColumn>
             <PersonColumn fluid sm={2.5}>None listed</PersonColumn>
-            <PersonColumn fluid sm={1.5}><StyledButton> <Link to="/levelentry">Edit draft</Link></StyledButton></PersonColumn>
+            <PersonColumn fluid sm={1.5}><StyledButton> <Link to="/level-entry">Edit draft</Link></StyledButton></PersonColumn>
         </PersonRow>
 );
 

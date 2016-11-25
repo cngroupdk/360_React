@@ -14,7 +14,7 @@ const levelEntry = handleActions({
         );
     },
 
-    [RECEIVE_QUESTIONS]:{
+    [RECEIVE_QUESTIONS]: {
         next(state, action) {
             return state.withMutations(newState => {
                 newState

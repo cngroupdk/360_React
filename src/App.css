@@ -2,16 +2,16 @@ body {
     background-color: #edfbfd;
 }
 
-#globalContainer{
+#globalContainer {
     max-width: 1180px;
     width: 85%;
     min-width: 800px;
-    margin:auto;
+    margin: auto;
 }
 
-.tab{
-    width:33.2%;
-    display:inline-block;
+.tab {
+    width: 33.2%;
+    display: inline-block;
     text-align: center;
     padding-top: 20px;
     height: 50px;
@@ -19,11 +19,11 @@ body {
     font-size: 24px;
     color: white;
     background-color: #073453;
-    border-left:1px #edfbfd solid;
+    border-left: 1px #edfbfd solid;
     text-decoration: none;
 }
 
-.tab.active{
+.tab.active {
     background-color: white;
     color: #073453;
 }

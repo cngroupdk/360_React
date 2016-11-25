@@ -38,7 +38,7 @@ const taskList = handleActions({
   [SEARCH_TASKS]: (state, action) => {
     const users = state.get('taskListDefault');
     const searchPhrase = action.payload.toLowerCase().trim();
-    const filteredTask =  users.filter((person) => {
+    const filteredTask = users.filter((person) => {
       return (person.Name.toLowerCase().includes(searchPhrase) ||
       person.SearchableName.toLowerCase().includes(searchPhrase))
     });

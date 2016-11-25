@@ -24,21 +24,21 @@ export default class SelfList extends Component {
   render() {
 
     return (
-      <ContentContainer>
+        <ContentContainer>
 
-        <ContentHeader>Self Assessment</ContentHeader>
+          <ContentHeader>Self Assessment</ContentHeader>
 
-        <HeaderRow>
-          <HeaderColumn fluid sm={4}>Person</HeaderColumn>
-          <HeaderColumn fluid sm={2}>Department</HeaderColumn>
-          <HeaderColumn fluid sm={2}>Job category</HeaderColumn>
-          <HeaderColumn fluid sm={2}>Last submitted</HeaderColumn>
-          <HeaderColumn fluid sm={2}>&nbsp;</HeaderColumn>
-        </HeaderRow>
+          <HeaderRow>
+            <HeaderColumn fluid sm={4}>Person</HeaderColumn>
+            <HeaderColumn fluid sm={2}>Department</HeaderColumn>
+            <HeaderColumn fluid sm={2}>Job category</HeaderColumn>
+            <HeaderColumn fluid sm={2}>Last submitted</HeaderColumn>
+            <HeaderColumn fluid sm={2}>&nbsp;</HeaderColumn>
+          </HeaderRow>
 
-        {this.checkAssessmentsList()}
+          {this.checkAssessmentsList()}
 
-      </ContentContainer>
+        </ContentContainer>
     );
   }
 }

@@ -2,13 +2,14 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import Tabs from '../components/common/tabs'
+import Tabs from '../components/common/tabs';
 import TaskList from '../components/TaskList/TaskList';
 import HistoryList from '../components/HistoryList/HistoryList';
 import { fetchHistory } from '../components/HistoryList/actions';
-import { fetchTasks, searchTasks } from '../components/TaskList/actions'
+import { fetchTasks, searchTasks } from '../components/TaskList/actions';
 
 class HomePage extends Component {
+
     static propTypes = {
         isLoaded: PropTypes.bool,
         isError: PropTypes.bool,
@@ -39,7 +40,7 @@ class HomePage extends Component {
             <div>
                 <Tabs/>
                 <Loader loaded={isLoaded}>
-                    <TaskList taskPeople={taskPeople} searchTasks={searchTasks} />
+                    <TaskList taskPeople={taskPeople} searchTasks={searchTasks}/>
                     <HistoryList historyPeople={historyPeople}/>
                 </Loader>
             </div>
@@ -49,7 +50,7 @@ class HomePage extends Component {
 
 function mapStateToProps(state) {
     const taskPeople = state.get('taskList');
-    const historyPeople = state.get('historyList')
+    const historyPeople = state.get('historyList');
 
     return {
         historyPeople: historyPeople.get('historyList'),

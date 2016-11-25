@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';

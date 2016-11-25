@@ -21,9 +21,9 @@ const peopleList = handleActions({
     [SEARCH_PEOPLE]: (state, action) => {
         const users = state.get('peopleListDefault');
         const searchPhrase = action.payload.toLowerCase().trim();
-        const filteredPeople =  users.filter((person) => {
+        const filteredPeople = users.filter((person) => {
             return (person.Name.toLowerCase().includes(searchPhrase) ||
-                person.SearchableName.toLowerCase().includes(searchPhrase))
+            person.SearchableName.toLowerCase().includes(searchPhrase))
         });
 
         return state.withMutations(newState => {
@@ -57,7 +57,7 @@ const peopleList = handleActions({
         );
     },
 
-    [RECEIVE_COLLEAGUE]:{
+    [RECEIVE_COLLEAGUE]: {
         next(state, action) {
             return state.withMutations(newState => {
                 newState

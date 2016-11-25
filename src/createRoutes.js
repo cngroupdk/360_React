@@ -9,8 +9,6 @@ import LevelEntryPage from './pages/LevelEntryPage'
 import ReasonEntryPage from './pages/ReasonEntryPage'
 import QuestionsEntryPage from './pages/QuestionsEntryPage'
 
-
-
 export default function createRoutes() {
     return (
         <Route path="/" component={App}>

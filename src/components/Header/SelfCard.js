@@ -15,7 +15,7 @@ export default class SelfCard extends Component {
 
         return (
                 <StyledSelfCard>
-                    <StyledProfilePhoto imgUrl={setTimeout(()=> {getPhotoUrl(self.Login)},1)}/>
+                    <StyledProfilePhoto imgUrl={getPhotoUrl(self.Login)}/>
                     <div className="self-name">{self.Name}</div>
                 </StyledSelfCard>
         );

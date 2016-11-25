@@ -1,4 +1,5 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
 
 import monthRender from '../common/monthRender'
 import getPhotoUrl from '../common/getPhotoUrl'
@@ -14,7 +15,7 @@ import {Content} from '../common/assets/styles/Content';
 export const PeopleListPerson = ({person, checkIfColleague, isColleague}) => (
   <PersonRow>
     <PersonColumn fluid sm={1}>
-      <Content><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></Content>
+      <Content><LazyLoad height={50}><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></LazyLoad></Content>
     </PersonColumn>
     <PersonColumn fluid sm={2.5}>
       <Content>{person.Name}</Content>

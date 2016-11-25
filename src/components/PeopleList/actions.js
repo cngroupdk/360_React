@@ -26,3 +26,18 @@ export const fetchPeople = () => {
         );
     };
 };
+
+
+export const checkIfColleague = (userLogin) => {
+    return (dispatch) => {
+        dispatch(requestCollegue());
+        return api.get('people/iscolleague/' + userLogin).then(
+            (response) => dispatch(receiveCollegue(
+                response.data || response,
+            )),
+            (error) => dispatch(receiveCollegue(
+                error,
+            ))
+        );
+    };
+};

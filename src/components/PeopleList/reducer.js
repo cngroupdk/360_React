@@ -62,7 +62,7 @@ const peopleList = handleActions({
             return state.withMutations(newState => {
                 newState
                     .setIn(['isError'], false)
-                    .setIn(['isCollegue'])
+                    .setIn(['isColleague'], action.payload.data);
             });
         },
         throw(state) {
@@ -76,6 +76,7 @@ const peopleList = handleActions({
 }, Immutable.fromJS({
     isLoaded: false,
     isError: false,
+    isColleague: false,
 }));
 
 export default peopleList;

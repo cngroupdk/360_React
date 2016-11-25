@@ -1,15 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router'
+
 import monthRender from '../common/monthRender'
 import getPhotoUrl from '../common/getPhotoUrl'
-import buttonType from '../common/buttonType'
+
+import RedirectIfColleague from './RedirectIfColleague'
+
 
 import {PersonRow, PersonColumn} from '../common/assets/styles/PersonRow';
 import {StyledButton} from '../common/assets/styles/StyledButton';
 import {StyledProfilePhoto} from '../common/assets/styles/StyledProfilePhoto';
 import {Content} from '../common/assets/styles/Content';
 
-export const PeopleListPerson = ({person}) => (
+export const PeopleListPerson = ({person, checkIfColleague, isColleague}) => (
   <PersonRow>
     <PersonColumn fluid sm={1}>
       <Content><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></Content>
@@ -27,8 +29,8 @@ export const PeopleListPerson = ({person}) => (
       <Content>{monthRender(person.AssessmentMonth)}</Content>
     </PersonColumn>
     <PersonColumn fluid sm={3}>
-        <StyledButton>
-          <Link to="/reason-entry">{buttonType(person.ExistingDraft)}</Link>
+        <StyledButton onClick={() => checkIfColleague(person.Login)}>
+          <RedirectIfColleague isColleague={isColleague} person={person} />
         </StyledButton>
     </PersonColumn>
   </PersonRow>

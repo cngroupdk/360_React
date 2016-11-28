@@ -10,10 +10,12 @@ export const StyledButton = styled.button`
     border: none;
     outline: none;
     font-size: 16px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    
+    position: ${ props => props.verticalAlign || props.xyAlign ? 'absolute' : 'static' };
+    
+    ${ props => props.verticalAlign ? 'top: 50%; transform: translateY(-50%);' : '' };
+    ${ props => props.xyAlign ? 'left: 50%; top: 50%; transform: translate(-50%, -50%);' : '' };
+    
     a {
         text-decoration: none;
         color:white;

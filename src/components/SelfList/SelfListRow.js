@@ -14,4 +14,3 @@ export const SelfListRow = ({person}) => (
             <PersonColumn fluid sm={1.5}><StyledButton> <Link to="/levelentry">Edit draft</Link></StyledButton></PersonColumn>
         </PersonRow>
 );
-

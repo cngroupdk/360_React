@@ -3,9 +3,11 @@ import { api } from '../../api';
 
 export const REQUEST_TASKS = 'REQUEST_TASKS';
 export const RECEIVE_TASKS = 'RECEIVE_TASKS';
+export const SEARCH_TASKS = 'SEARCH_TASKS';
 
 export const requestTasks = createAction(REQUEST_TASKS);
 export const receiveTasks = createAction(RECEIVE_TASKS);
+export const searchTasks = createAction(SEARCH_TASKS);
 
 export const fetchTasks = () => {
     return (dispatch) => {

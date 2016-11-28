@@ -1,4 +1,4 @@
-const monthRender = (month) =>{
+const monthRender = (month) => {
     switch (month) {
         case 1:
             return 'January';

@@ -26,6 +26,8 @@ export default class PeopleList extends Component {
     render() {
         const {
             people,
+            checkIfColleague,
+            isColleague,
         } = this.props;
 
         return (
@@ -45,7 +47,11 @@ export default class PeopleList extends Component {
 
                 {people.map((person, index) => {
                     return (
-                        <PeopleListPerson person={person} key={index}/>
+                        <PeopleListPerson person={person}
+                                          checkIfColleague={checkIfColleague}
+                                          key={index}
+                                          isColleague={isColleague}
+                        />
                     )
                 })}
             </ContentContainer>

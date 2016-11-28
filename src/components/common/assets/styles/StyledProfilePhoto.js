@@ -7,7 +7,6 @@ export const StyledProfilePhoto = styled.div`
     background-image: url(" ${props => props.imgUrl} ")
     background-size: 100%;
     border-radius: 50%;
-    
     float: none;
     display: inline-block;
     vertical-align: middle;

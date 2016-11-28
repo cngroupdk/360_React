@@ -4,14 +4,14 @@ import { api } from '../../api';
 export const REQUEST_PEOPLE = 'REQUEST_PEOPLE';
 export const RECEIVE_PEOPLE = 'RECEIVE_PEOPLE';
 export const SEARCH_PEOPLE = 'SEARCH_PEOPLE';
-export const REQUEST_ASSESSMENT = 'REQUEST_ASSESSMENT';
-export const RECEIVE_ASSESSMENT = 'RECEIVE_ASSESSMENT';
+export const REQUEST_COLLEAGUE = 'REQUEST_COLLEAGUE';
+export const RECEIVE_COLLEAGUE = 'RECEIVE_COLLEAGUE';
 
 export const requestPeople = createAction(REQUEST_PEOPLE);
 export const receivePeople = createAction(RECEIVE_PEOPLE);
 export const searchPeople = createAction(SEARCH_PEOPLE);
-export const requestAssessment = createAction(REQUEST_ASSESSMENT);
-export const receiveAssessment = createAction(RECEIVE_ASSESSMENT);
+export const requestCollegue = createAction(REQUEST_COLLEAGUE);
+export const receiveCollegue = createAction(RECEIVE_COLLEAGUE);
 
 export const fetchPeople = () => {
     return (dispatch) => {
@@ -21,6 +21,21 @@ export const fetchPeople = () => {
                 response.data || response,
             )),
             (error) => dispatch(receivePeople(
+                error,
+            ))
+        );
+    };
+};
+
+
+export const checkIfColleague = (userLogin) => {
+    return (dispatch) => {
+        dispatch(requestCollegue());
+        return api.get('people/iscolleague/' + userLogin).then(
+            (response) => dispatch(receiveCollegue(
+                response.data || response,
+            )),
+            (error) => dispatch(receiveCollegue(
                 error,
             ))
         );

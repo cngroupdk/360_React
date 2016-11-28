@@ -5,8 +5,8 @@ import {
     REQUEST_PEOPLE,
     RECEIVE_PEOPLE,
     SEARCH_PEOPLE,
-    RECEIVE_ASSESSMENT,
-    REQUEST_ASSESSMENT,
+    REQUEST_COLLEAGUE,
+    RECEIVE_COLLEAGUE,
 } from './actions';
 
 const peopleList = handleActions({
@@ -21,9 +21,9 @@ const peopleList = handleActions({
     [SEARCH_PEOPLE]: (state, action) => {
         const users = state.get('peopleListDefault');
         const searchPhrase = action.payload.toLowerCase().trim();
-        const filteredPeople =  users.filter((person) => {
+        const filteredPeople = users.filter((person) => {
             return (person.Name.toLowerCase().includes(searchPhrase) ||
-                person.SearchableName.toLowerCase().includes(searchPhrase))
+            person.SearchableName.toLowerCase().includes(searchPhrase))
         });
 
         return state.withMutations(newState => {
@@ -50,19 +50,19 @@ const peopleList = handleActions({
             );
         },
     },
-    [REQUEST_ASSESSMENT]: (state) => {
+    [REQUEST_COLLEAGUE]: (state) => {
         return state.withMutations(newState =>
             newState
                 .setIn(['isError'], false)
         );
     },
 
-    [RECEIVE_ASSESSMENT]:{
+    [RECEIVE_COLLEAGUE]: {
         next(state, action) {
             return state.withMutations(newState => {
                 newState
                     .setIn(['isError'], false)
-                    .setIn(['Assessment'])
+                    .setIn(['isColleague'], action.payload.data);
             });
         },
         throw(state) {
@@ -76,6 +76,7 @@ const peopleList = handleActions({
 }, Immutable.fromJS({
     isLoaded: false,
     isError: false,
+    isColleague: false,
 }));
 
 export default peopleList;

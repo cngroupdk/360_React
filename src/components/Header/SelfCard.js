@@ -14,10 +14,10 @@ export default class SelfCard extends Component {
         } = this.props;
 
         return (
-                <StyledSelfCard>
-                    <StyledProfilePhoto imgUrl={getPhotoUrl(self.Login)}/>
-                    <div className="self-name">{self.Name}</div>
-                </StyledSelfCard>
+            <StyledSelfCard>
+                <StyledProfilePhoto imgUrl={getPhotoUrl(self.Login)}/>
+                <div className="self-name">{self.Name}</div>
+            </StyledSelfCard>
         );
     }
 }

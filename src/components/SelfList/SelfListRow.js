@@ -1,19 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import { PersonRow, PersonColumn } from '../common/assets/styles/PersonRow';
+import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledButton } from '../common/assets/styles/StyledButton';
-import {Content} from '../common/assets/styles/Content';
+import {CenteredContent} from '../common/assets/styles/Content';
 
 export const SelfListRow = ({person}) => (
-    <PersonRow>
-        <PersonColumn fluid sm={1}><Content>&nbsp;</Content></PersonColumn>
-        <PersonColumn fluid sm={3}><Content>{person.PersonName}</Content></PersonColumn>
-        <PersonColumn fluid sm={2}><Content>{person.Department}</Content></PersonColumn>
-        <PersonColumn fluid sm={2}><Content>{person.JobCategory}</Content></PersonColumn>
-        <PersonColumn fluid sm={2}><Content>None listed</Content></PersonColumn>
-        <PersonColumn fluid sm={2}>
-            <StyledButton> <Link to="/level-entry">Edit draft</Link></StyledButton>
-        </PersonColumn>
-    </PersonRow>
+    <TableRow>
+        <TableCell fluid sm={3}><CenteredContent>{person.PersonName}</CenteredContent></TableCell>
+        <TableCell fluid sm={3}><CenteredContent>{person.Department}</CenteredContent></TableCell>
+        <TableCell fluid sm={3}><CenteredContent>{person.JobCategory}</CenteredContent></TableCell>
+        <TableCell fluid sm={3}>
+            <StyledButton verticalAlign> <Link to="/level-entry">Edit draft</Link></StyledButton>
+        </TableCell>
+    </TableRow>
 );

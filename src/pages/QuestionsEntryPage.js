@@ -7,7 +7,6 @@ export default class QuestionsEntryPage extends Component {
     render() {
         return (
             <div>
-                LevelEntryPage
 
                 <StyledButton> <Link to="/">Submit questions</Link></StyledButton>
             </div>

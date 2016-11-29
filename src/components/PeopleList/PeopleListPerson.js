@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component }  from 'react';
 import LazyLoad from 'react-lazyload';
 
 import monthRender from '../common/monthRender';
@@ -11,27 +11,56 @@ import {StyledButton} from '../common/assets/styles/StyledButton';
 import {StyledProfilePhoto} from '../common/assets/styles/StyledProfilePhoto';
 import {CenteredContent} from '../common/assets/styles/Content';
 
-export const PeopleListPerson = ({person, checkIfColleague, isColleague}) => (
-    <TableRow>
-        <TableCell fluid sm={1}>
-            <CenteredContent><LazyLoad height={50}><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></LazyLoad></CenteredContent>
-        </TableCell>
-        <TableCell fluid sm={2.5}>
-            <CenteredContent>{person.Name}</CenteredContent>
-        </TableCell>
-        <TableCell fluid sm={1.5}>
-            <CenteredContent>{person.Department}</CenteredContent>
-        </TableCell>
-        <TableCell fluid sm={2}>
-            <CenteredContent>{person.Position}</CenteredContent>
-        </TableCell>
-        <TableCell fluid sm={2}>
-            <CenteredContent>{monthRender(person.AssessmentMonth)}</CenteredContent>
-        </TableCell>
-        <TableCell fluid sm={3}>
-            <StyledButton xyAlign onClick={() => checkIfColleague(person.Login)}>
-                <RedirectIfColleague isColleague={isColleague} person={person}/>
-            </StyledButton>
-        </TableCell>
-    </TableRow>
-);
+export default class PeopleListPerson extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {isButtonVisible: 'hidden'};
+        this.onMouseEnterHandler = this.onMouseEnterHandler.bind(this);
+        this.onMouseLeaveHandler = this.onMouseLeaveHandler.bind(this);
+    }
+
+    onMouseEnterHandler(event) {
+        this.setState(() => ({
+            isButtonVisible: 'visible'
+        }));
+    }
+
+    onMouseLeaveHandler(event) {
+        this.setState(() => ({
+            isButtonVisible: 'hidden'
+        }));
+    }
+
+    render() {
+        const {
+            person,
+            checkIfColleague,
+            isColleague
+        } = this.props;
+
+        return (
+            <TableRow onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+                <TableCell fluid sm={1}>
+                    <CenteredContent><LazyLoad height={50}><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></LazyLoad></CenteredContent>
+                </TableCell>
+                <TableCell fluid sm={2.5}>
+                    <CenteredContent>{person.Name}</CenteredContent>
+                </TableCell>
+                <TableCell fluid sm={1.5}>
+                    <CenteredContent>{person.Department}</CenteredContent>
+                </TableCell>
+                <TableCell fluid sm={2}>
+                    <CenteredContent>{person.Position}</CenteredContent>
+                </TableCell>
+                <TableCell fluid sm={2}>
+                    <CenteredContent>{monthRender(person.AssessmentMonth)}</CenteredContent>
+                </TableCell>
+                <TableCell fluid sm={3}>
+                    <StyledButton className={this.state.isButtonVisible} xyAlign='xyAlign' onClick={() => checkIfColleague(person.Login)}>
+                        <RedirectIfColleague isColleague={isColleague} person={person}/>
+                    </StyledButton>
+                </TableCell>
+            </TableRow>
+        );
+    }
+}

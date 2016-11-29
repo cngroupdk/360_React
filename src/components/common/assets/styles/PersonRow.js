@@ -7,8 +7,10 @@ export const TableRow = styled(Row)`
     padding: 0 10px;
     min-height: 60px;
     border-top: none;
-    &:hover + StyledButton {
-        background-color: #e6f8fc;
+    &:hover { background-color: #edfbfd; }
+    
+    .hidden {
+        visibility: hidden;
     }
 `;
 

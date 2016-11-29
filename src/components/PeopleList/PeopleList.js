@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { PeopleListPerson } from './PeopleListPerson';
+import PeopleListPerson from './PeopleListPerson';
 
 import { ContentContainer} from '../common/assets/styles/ContentContainer';
 import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';

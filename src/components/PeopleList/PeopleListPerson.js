@@ -19,13 +19,13 @@ export default class PeopleListPerson extends Component {
         this.onMouseLeaveHandler = this.onMouseLeaveHandler.bind(this);
     }
 
-    onMouseEnterHandler(event) {
+    onMouseEnterHandler() {
         this.setState(() => ({
             isButtonVisible: 'visible'
         }));
     }
 
-    onMouseLeaveHandler(event) {
+    onMouseLeaveHandler() {
         this.setState(() => ({
             isButtonVisible: 'hidden'
         }));
@@ -43,7 +43,7 @@ export default class PeopleListPerson extends Component {
                 <TableCell fluid sm={1}>
                     <CenteredContent><LazyLoad height={50}><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></LazyLoad></CenteredContent>
                 </TableCell>
-                <TableCell fluid sm={2.5}>
+                <TableCell fluid sm={2}>
                     <CenteredContent>{person.Name}</CenteredContent>
                 </TableCell>
                 <TableCell fluid sm={1.5}>
@@ -52,11 +52,14 @@ export default class PeopleListPerson extends Component {
                 <TableCell fluid sm={2}>
                     <CenteredContent>{person.Position}</CenteredContent>
                 </TableCell>
-                <TableCell fluid sm={2}>
+                <TableCell fluid sm={1.5}>
                     <CenteredContent>{monthRender(person.AssessmentMonth)}</CenteredContent>
                 </TableCell>
-                <TableCell fluid sm={3}>
-                    <StyledButton className={this.state.isButtonVisible} xyAlign='xyAlign' onClick={() => checkIfColleague(person.Login)}>
+                <TableCell fluid sm={2}>
+                    <CenteredContent>None listed</CenteredContent>
+                </TableCell>
+                <TableCell fluid sm={2}>
+                    <StyledButton className={this.state.isButtonVisible} xyAlign onClick={() => checkIfColleague(person.Login)}>
                         <RedirectIfColleague isColleague={isColleague} person={person}/>
                     </StyledButton>
                 </TableCell>

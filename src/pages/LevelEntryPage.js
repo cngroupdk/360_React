@@ -34,9 +34,8 @@ class LevelEntryPage extends Component {
     render() {
         return (
             <ContentContainer>
-                <ContentHeader> Enter proficiency level </ContentHeader>
+                <ContentHeader> Please, choose the professional proficiency level </ContentHeader>
 
-                <p>Please, choose the professional proficiency level:</p>
                 <div>
                     <input type="radio" name="prof-level" value="JUNIOR" onChange={this.handleProfLevelChange}/> Junior
                     <input type="radio" name="prof-level" value="MIDDLE" onChange={this.handleProfLevelChange}/> Middle

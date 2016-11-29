@@ -7,5 +7,4 @@ export const StyledInput = styled.input `
     color: #4f4f4f;
     width: 270px;
     padding-left: 10px;
-
 `;

@@ -10,7 +10,11 @@ export const receiveQuestions = createAction(RECEIVE_QUESTIONS);
 export const fetchQuestions = () => {
     return (dispatch) => {
         dispatch(requestQuestions());
-        return api.post('/').then(
+        return api.get('/assessments/save', {
+            data: {
+                PersonId: 976,
+                Level: ''
+            }}).then(
             (response) => dispatch(receiveQuestions(
                 response.data || response,
             )),

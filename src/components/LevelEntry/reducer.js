@@ -16,10 +16,11 @@ const levelEntry = handleActions({
 
     [RECEIVE_QUESTIONS]: {
         next(state, action) {
+            console.log(action.payload)
             return state.withMutations(newState => {
                 newState
                     .setIn(['isError'], false)
-                    .setIn(['isCollegue'])
+                    .setIn(['questions'], 1)
             });
         },
         throw(state) {

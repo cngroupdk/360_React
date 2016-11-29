@@ -9,6 +9,11 @@ import { StyledButton } from '../components/common/assets/styles/StyledButton';
 import { fetchQuestions } from '../components/LevelEntry/actions';
 
 class LevelEntryPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {level: ''};
+        this.handleProfLevelChange = this.handleProfLevelChange.bind(this);
+    }
 
     componentDidMount() {
         this.fetchAllData();
@@ -18,16 +23,31 @@ class LevelEntryPage extends Component {
         this.props.fetchQuestions();
     }
 
+    handleProfLevelChange(e) {
+        this.setState({
+            level: e.target.value
+        });
+
+        console.log(this.state.level);
+    }
+
     render() {
         return (
             <ContentContainer>
                 <ContentHeader> Enter proficiency level </ContentHeader>
 
-                <button>Junior</button>
-                <button>Middle</button>
-                <button>Senior</button>
+                <p>Please, choose the professional proficiency level:</p>
+                <div>
+                    <input type="radio" name="prof-level" value="JUNIOR" onChange={this.handleProfLevelChange}/> Junior
+                    <input type="radio" name="prof-level" value="MIDDLE" onChange={this.handleProfLevelChange}/> Middle
+                    <input type="radio" name="prof-level" value="SENIOR" onChange={this.handleProfLevelChange}/> Senior
+                </div>
 
-                <StyledButton> <Link to="/questions-entry">Proceed to questions</Link></StyledButton>
+                <div className={this.state.level ? "Level-entry-page-div" : "disabled-btn Level-entry-page-div"}>
+                    <StyledButton xyAlign>
+                        <Link to="/questions-entry">Proceed to questions</Link>
+                    </StyledButton>
+                </div>
 
             </ContentContainer>
         )

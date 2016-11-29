@@ -42,3 +42,11 @@ body {
     font-weight: 700;
 }
 
+.disabled-btn button {
+    background-color: #a1a1a1;
+}
+
+.Level-entry-page-div {
+    height: 80px;
+    position: relative;
+}

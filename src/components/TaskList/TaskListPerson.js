@@ -9,7 +9,7 @@ import getPhotoUrl from '../common/getPhotoUrl';
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledButton } from '../common/assets/styles/StyledButton';
 import {StyledProfilePhoto} from '../common/assets/styles/StyledProfilePhoto';
-import {CenteredContent} from '../common/assets/styles/Content';
+import {CenteredContent} from '../common/assets/styles/CenteredContent';
 
 export const TaskListPerson = ({person}) => (
     <TableRow>

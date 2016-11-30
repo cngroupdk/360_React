@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledButton } from '../common/assets/styles/StyledButton';
-import {CenteredContent} from '../common/assets/styles/Content';
+import {CenteredContent} from '../common/assets/styles/CenteredContent';
 
 export const SelfListRow = ({person}) => (
     <TableRow>

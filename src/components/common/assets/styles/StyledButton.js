@@ -13,9 +13,14 @@ export const StyledButton = styled.button`
     position: ${ props => props.verticalAlign || props.xyAlign ? 'absolute' : 'static' };
     
     ${ props => props.verticalAlign ? 'top: 50%; transform: translateY(-50%);' : '' };
-    ${ props => props.xyAlign ? 'left: 50%; top: 50%; transform: translate(-50%, -50%);' : '' };
+    ${ props => props.xyAlign ? 'top: 50%; ' +
+                                'transform: ' +
+                                'translateY(-50%); ' +
+                                'margin:auto; ' +
+                                'position:relative; ' +
+                                'display:block;' : '' };
     
-    background-color: ${props => props.disabled? '#ed1848' : '#a1a1a1'};
+    background-color: ${props => props.disabled ? '#a1a1a1' : '#ed1848'};
     
     a {
         text-decoration: none;

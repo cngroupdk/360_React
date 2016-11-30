@@ -1,3 +1,6 @@
-/**
- * Created by botnarenko on 30.11.16.
- */
+import styled from 'styled-components';
+
+export const RadioWrapper = styled.div`
+    clear: both;
+    margin-bottom: 50px;
+`;

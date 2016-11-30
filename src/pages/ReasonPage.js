@@ -6,7 +6,7 @@ import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
 import { StyledButton } from '../components/common/assets/styles/StyledButton';
 import { StyledTextArea } from '../components/common/assets/styles/StyledTextArea';
 
-export default class ReasonEntryPage extends Component {
+export default class ReasonPage extends Component {
 
     constructor(props) {
         super(props);

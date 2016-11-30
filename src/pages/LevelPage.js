@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
 import { StyledButton } from '../components/common/assets/styles/StyledButton';
 import { RadioWrapper } from '../components/common/assets/styles/RadioWrapper';
 
-import { fetchQuestions } from '../components/LevelEntry/actions';
-
-class LevelEntryPage extends Component {
+export default class LevelPage extends Component {
 
     constructor(props) {
         super(props);
@@ -17,13 +14,6 @@ class LevelEntryPage extends Component {
         this.handleProfLevelChange = this.handleProfLevelChange.bind(this);
     }
 
-    componentDidMount() {
-        this.fetchAllData();
-    }
-
-    fetchAllData() {
-        this.props.fetchQuestions();
-    }
 
     handleProfLevelChange(e) {
         this.setState({
@@ -50,18 +40,3 @@ class LevelEntryPage extends Component {
         )
     }
 }
-
-function mapStateToProps(state) {
-    const questions = state.get('peopleList');
-
-    return {
-        questions: questions.get('peopleList'),
-        isLoaded: questions.get('isLoaded'),
-        isError: questions.get('isError'),
-    };
-}
-
-export default connect(
-    mapStateToProps,
-    {fetchQuestions},
-)(LevelEntryPage);

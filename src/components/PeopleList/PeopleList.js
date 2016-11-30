@@ -38,11 +38,12 @@ export default class PeopleList extends Component {
                 <StyledInput type="text" id="searchInput" onChange={this._searchOnePerson}/>
 
                 <HeaderRow>
-                    <HeaderColumn fluid sm={3.5}>Person</HeaderColumn>
+                    <HeaderColumn fluid sm={3}>Person</HeaderColumn>
                     <HeaderColumn fluid sm={1.5}>Department</HeaderColumn>
                     <HeaderColumn fluid sm={2}>Job category</HeaderColumn>
-                    <HeaderColumn fluid sm={2}>PR month</HeaderColumn>
-                    <HeaderColumn fluid sm={3}>&nbsp;</HeaderColumn>
+                    <HeaderColumn fluid sm={1.5}>PR month</HeaderColumn>
+                    <HeaderColumn fluid sm={2}>Last submitted</HeaderColumn>
+                    <HeaderColumn fluid sm={2}>&nbsp;</HeaderColumn>
                 </HeaderRow>
 
                 {people.map((person, index) => {

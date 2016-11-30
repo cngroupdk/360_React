@@ -34,7 +34,7 @@ class LevelEntryPage extends Component {
     render() {
         return (
             <ContentContainer>
-                <ContentHeader> Enter proficiency level </ContentHeader>
+                <ContentHeader> Please, choose the professional proficiency level </ContentHeader>
 
                 <p>Please, choose the professional proficiency level:</p>
                 <div>

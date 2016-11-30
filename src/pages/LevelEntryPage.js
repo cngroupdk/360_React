@@ -27,14 +27,13 @@ class LevelEntryPage extends Component {
         this.setState({
             level: e.target.value
         });
-
-        console.log(this.state.level);
     }
 
     render() {
         return (
             <ContentContainer>
                 <ContentHeader> Please, choose the professional proficiency level </ContentHeader>
+                <div className="clear">&nbsp;</div>
 
                 <div>
                     <input type="radio" name="prof-level" value="JUNIOR" onChange={this.handleProfLevelChange}/> Junior
@@ -42,9 +41,9 @@ class LevelEntryPage extends Component {
                     <input type="radio" name="prof-level" value="SENIOR" onChange={this.handleProfLevelChange}/> Senior
                 </div>
 
-                <div className={this.state.level ? "Level-entry-page-div" : "disabled-btn Level-entry-page-div"}>
-                    <StyledButton xyAlign>
-                        <Link to="/questions-entry">Proceed to questions</Link>
+                <div className="Level-entry-page-div">
+                    <StyledButton xyAlign disabled={this.state.level === '' ? false : true}>
+                        <Link className={this.state.level === '' ? 'disabled-link' : ''} to="/questions-entry">Proceed to questions</Link>
                     </StyledButton>
                 </div>
 

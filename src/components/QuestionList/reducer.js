@@ -21,7 +21,7 @@ const questionsList = handleActions({
                 newState
                     .setIn(['isError'], false)
                     .setIn(['isLoaded'], true)
-                    .setIn(['questionsList'], action.payload.slice(1,6))
+                    .setIn(['questionsList'], action.payload.slice(1,5))
             });
         },
         throw(state) {

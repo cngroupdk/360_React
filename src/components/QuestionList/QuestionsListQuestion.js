@@ -1,9 +1,9 @@
 import React, { Component }  from 'react';
 
-import {TableRow, TableCell} from '../common/assets/styles/PersonRow';
-import {CenteredContent} from '../common/assets/styles/CenteredContent';
+import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
+import { CenteredContent } from '../common/assets/styles/CenteredContent';
 
-export default class QuestionsListPerson extends Component {
+export default class QuestionsListQuestion extends Component {
 
     render() {
         const {

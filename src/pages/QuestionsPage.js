@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import QuestionList from '../components/QuestionList/QuestionList';
+import QuestionList from '../components/QuestionList/QuestionsList';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';

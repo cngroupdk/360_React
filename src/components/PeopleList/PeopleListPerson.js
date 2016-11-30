@@ -12,6 +12,7 @@ import {StyledProfilePhoto} from '../common/assets/styles/StyledProfilePhoto';
 import {CenteredContent} from '../common/assets/styles/CenteredContent';
 
 export default class PeopleListPerson extends Component {
+
     constructor(props) {
         super(props);
         this.state = {isButtonVisible: 'hidden'};

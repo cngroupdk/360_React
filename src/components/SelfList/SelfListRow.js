@@ -11,7 +11,7 @@ export const SelfListRow = ({person}) => (
         <TableCell fluid sm={3}><CenteredContent>{person.Department}</CenteredContent></TableCell>
         <TableCell fluid sm={3}><CenteredContent>{person.JobCategory}</CenteredContent></TableCell>
         <TableCell fluid sm={3}>
-            <StyledButton verticalAlign> <Link to="/level-entry">Edit draft</Link></StyledButton>
+            <StyledButton verticalAlign> <Link to={{pathname: '/level-entry', query: { name: 'yourself'}}}>Edit draft</Link></StyledButton>
         </TableCell>
     </TableRow>
 );

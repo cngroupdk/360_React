@@ -10,9 +10,10 @@ import { RadioWrapper } from '../components/common/assets/styles/RadioWrapper';
 import { fetchQuestions } from '../components/LevelEntry/actions';
 
 class LevelEntryPage extends Component {
+
     constructor(props) {
         super(props);
-        this.state = {level: ''};
+        this.state = {level: '', personName: props.location.query.name };
         this.handleProfLevelChange = this.handleProfLevelChange.bind(this);
     }
 
@@ -33,7 +34,7 @@ class LevelEntryPage extends Component {
     render() {
         return (
             <ContentContainer>
-                <ContentHeader> Please, choose the professional proficiency level </ContentHeader>
+                <ContentHeader> Please, choose the proficiency level for {this.state.personName}</ContentHeader>
 
                 <RadioWrapper>
                     <input type="radio" name="prof-level" value="JUNIOR" onChange={this.handleProfLevelChange}/> Junior

@@ -25,7 +25,7 @@ export const TaskListPerson = ({person}) => (
         <TableCell fluid sm={1.5}><CenteredContent>{monthRender(person.AssessmentMonth)}</CenteredContent>
         </TableCell>
         <TableCell fluid sm={3}>
-            <StyledButton xyAlign> <Link to="/level-entry">{buttonType(person.ExistingDraft)}</Link></StyledButton>
+            <StyledButton xyAlign> <Link to={{pathname: '/level-entry', query: { name: person.Name}}}>{buttonType(person.ExistingDraft)}</Link></StyledButton>
         </TableCell>
     </TableRow>
 );

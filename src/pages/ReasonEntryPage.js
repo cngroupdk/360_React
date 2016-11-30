@@ -10,7 +10,7 @@ export default class ReasonEntryPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {reason: ''};
+        this.state = {reason: '', personName: props.location.query.name};
         this.handleReasonEnter = this.handleReasonEnter.bind(this);
     }
 
@@ -23,7 +23,7 @@ export default class ReasonEntryPage extends Component {
     render() {
         return (
             <ContentContainer>
-                <ContentHeader>Warning! Person is not your co-worker.</ContentHeader>
+                <ContentHeader>Warning! {this.state.personName} is not your co-worker.</ContentHeader>
 
                 <StyledTextArea autoFocus
                                 rows="4"

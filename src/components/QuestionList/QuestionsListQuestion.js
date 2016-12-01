@@ -21,7 +21,6 @@ export default class QuestionsListQuestion extends Component {
                 <TableCell  fluid sm={3}>
                     <CenteredContent>comment</CenteredContent>
                 </TableCell>
-
             </TableRow>
         );
     }

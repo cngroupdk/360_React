@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
@@ -7,7 +6,7 @@ import QuestionList from '../components/QuestionList/QuestionsList';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
-import { StyledButton } from '../components/common/assets/styles/StyledButton';
+import { StyledLink } from '../components/common/assets/styles/StyledLink';
 
 import { fetchQuestions } from '../components/QuestionList/actions';
 
@@ -46,9 +45,7 @@ class QuestionsPage extends Component {
 
                     <QuestionList questions={questions}/>
 
-                    <StyledButton xyAlign>
-                        <Link className={this.state.level === '' ? 'disabled-link' : ''} to="/">Submit questions</Link>
-                    </StyledButton>
+                    <StyledLink disabled={this.state.level === '' ? true : false} to="/">Submit questions</StyledLink>
 
                 </ContentContainer>
             </Loader>

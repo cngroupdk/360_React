@@ -6,29 +6,28 @@ import getPhotoUrl from '../common/getPhotoUrl';
 import RedirectIfColleague from './RedirectIfColleague';
 
 
-import {TableRow, TableCell} from '../common/assets/styles/PersonRow';
-import {StyledButton} from '../common/assets/styles/StyledButton';
-import {StyledProfilePhoto} from '../common/assets/styles/StyledProfilePhoto';
-import {CenteredContent} from '../common/assets/styles/CenteredContent';
+import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
+import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
+import { CenteredContent } from '../common/assets/styles/CenteredContent';
 
 export default class PeopleListPerson extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {isButtonVisible: 'hidden'};
+        this.state = {isButtonHidden: true};
         this.onMouseEnterHandler = this.onMouseEnterHandler.bind(this);
         this.onMouseLeaveHandler = this.onMouseLeaveHandler.bind(this);
     }
 
     onMouseEnterHandler() {
         this.setState(() => ({
-            isButtonVisible: 'visible'
+            isButtonHidden: false
         }));
     }
 
     onMouseLeaveHandler() {
         this.setState(() => ({
-            isButtonVisible: 'hidden'
+            isButtonHidden: true
         }));
     }
 
@@ -60,11 +59,11 @@ export default class PeopleListPerson extends Component {
                     <CenteredContent>None listed</CenteredContent>
                 </TableCell>
                 <TableCell fluid sm={2}>
-                    <StyledButton className={this.state.isButtonVisible}
-                                  xyAlign
-                                  onClick={() => checkIfColleague(person.Login)}>
-                        <RedirectIfColleague isColleague={isColleague} person={person}/>
-                    </StyledButton>
+                    <RedirectIfColleague
+                        handleClick={() => checkIfColleague(person.Login)}
+                        isHidden={this.state.isButtonHidden}
+                        isColleague={isColleague}
+                        person={person}/>
                 </TableCell>
             </TableRow>
         );

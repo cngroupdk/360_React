@@ -4,7 +4,7 @@ import PeopleListPerson from './PeopleListPerson';
 
 import { ContentContainer} from '../common/assets/styles/ContentContainer';
 import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';
-import { ContentHeader} from '../common/assets/styles/ContentHeader';
+import { ContentHeader } from '../common/assets/styles/ContentHeader';
 import { StyledInput } from '../common/assets/styles/StyledSearch';
 
 

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
 import { SelfListRow } from './SelfListRow';
 import { SelfListEmpty } from './SelfListEmpty';
 
 import { ContentContainer } from '../common/assets/styles/ContentContainer';
 import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';
-import { StyledButton } from '../common/assets/styles/StyledButton';
+import { StyledLink } from '../common/assets/styles/StyledLink';
 import { ContentHeader } from '../common/assets/styles/ContentHeader';
 import { NewSelfAssessmentBtnContainer } from '../common/assets/styles/SelfList/NewSelfAssessmentBtnContainer';
 
@@ -41,7 +40,7 @@ export default class SelfList extends Component {
               {this.checkAssessmentsList()}
 
               <NewSelfAssessmentBtnContainer>
-                  <StyledButton><Link to="/level-entry">New self assessment</Link></StyledButton>
+                  <StyledLink to="/level-entry">New self assessment</StyledLink>
               </NewSelfAssessmentBtnContainer>
           </ContentContainer>
       );

@@ -6,20 +6,22 @@ import {
     RECEIVE_QUESTIONS,
 } from './actions';
 
-const levelEntry = handleActions({
+const questionsList = handleActions({
     [REQUEST_QUESTIONS]: (state) => {
         return state.withMutations(newState =>
             newState
                 .setIn(['isError'], false)
+                .setIn(['isLoaded'], false)
         );
     },
 
-    [RECEIVE_QUESTIONS]:{
+    [RECEIVE_QUESTIONS]: {
         next(state, action) {
             return state.withMutations(newState => {
                 newState
                     .setIn(['isError'], false)
-                    .setIn(['isCollegue'])
+                    .setIn(['isLoaded'], true)
+                    .setIn(['questionsList'], action.payload.slice(1,5))
             });
         },
         throw(state) {
@@ -35,4 +37,4 @@ const levelEntry = handleActions({
     isError: false,
 }));
 
-export default submitAssessment;
+export default questionsList;

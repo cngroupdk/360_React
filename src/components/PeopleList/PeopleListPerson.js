@@ -9,9 +9,10 @@ import RedirectIfColleague from './RedirectIfColleague';
 import {TableRow, TableCell} from '../common/assets/styles/PersonRow';
 import {StyledButton} from '../common/assets/styles/StyledButton';
 import {StyledProfilePhoto} from '../common/assets/styles/StyledProfilePhoto';
-import {CenteredContent} from '../common/assets/styles/Content';
+import {CenteredContent} from '../common/assets/styles/CenteredContent';
 
 export default class PeopleListPerson extends Component {
+
     constructor(props) {
         super(props);
         this.state = {isButtonVisible: 'hidden'};
@@ -59,7 +60,9 @@ export default class PeopleListPerson extends Component {
                     <CenteredContent>None listed</CenteredContent>
                 </TableCell>
                 <TableCell fluid sm={2}>
-                    <StyledButton className={this.state.isButtonVisible} xyAlign onClick={() => checkIfColleague(person.Login)}>
+                    <StyledButton className={this.state.isButtonVisible}
+                                  xyAlign
+                                  onClick={() => checkIfColleague(person.Login)}>
                         <RedirectIfColleague isColleague={isColleague} person={person}/>
                     </StyledButton>
                 </TableCell>

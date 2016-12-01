@@ -5,9 +5,9 @@ import App from './App'
 import HomePage from './pages/HomePage';
 import PeoplePage from './pages/PeoplePage'
 import SelfPage from './pages/SelfPage'
-import LevelEntryPage from './pages/LevelEntryPage'
-import ReasonEntryPage from './pages/ReasonEntryPage'
-import QuestionsEntryPage from './pages/QuestionsEntryPage'
+import LevelEntryPage from './pages/LevelPage'
+import ReasonEntryPage from './pages/ReasonPage'
+import QuestionsEntryPage from './pages/QuestionsPage'
 
 export default function createRoutes() {
     return (

@@ -3,7 +3,7 @@ import React from 'react';
 import monthRender from '../common/monthRender';
 
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
-import { CenteredContent } from '../common/assets/styles/Content';
+import { CenteredContent } from '../common/assets/styles/CenteredContent';
 
 
 export const HistoryListPerson = ({person}) => (

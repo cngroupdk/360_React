@@ -1,27 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { connect } from 'react-redux';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
 import { StyledButton } from '../components/common/assets/styles/StyledButton';
+import { RadioWrapper } from '../components/common/assets/styles/RadioWrapper';
 
-import { fetchQuestions } from '../components/LevelEntry/actions';
+export default class LevelPage extends Component {
 
-class LevelEntryPage extends Component {
     constructor(props) {
         super(props);
-        this.state = {level: ''};
+        this.state = {level: '', personName: props.location.query.name };
         this.handleProfLevelChange = this.handleProfLevelChange.bind(this);
     }
 
-    componentDidMount() {
-        this.fetchAllData();
-    }
-
-    fetchAllData() {
-        this.props.fetchQuestions();
-    }
 
     handleProfLevelChange(e) {
         this.setState({
@@ -32,37 +24,19 @@ class LevelEntryPage extends Component {
     render() {
         return (
             <ContentContainer>
-                <ContentHeader> Please, choose the professional proficiency level </ContentHeader>
-                <div className="clear">&nbsp;</div>
+                <ContentHeader> Please, choose the proficiency level for {this.state.personName}</ContentHeader>
 
-                <div>
+                <RadioWrapper>
                     <input type="radio" name="prof-level" value="JUNIOR" onChange={this.handleProfLevelChange}/> Junior
                     <input type="radio" name="prof-level" value="MIDDLE" onChange={this.handleProfLevelChange}/> Middle
                     <input type="radio" name="prof-level" value="SENIOR" onChange={this.handleProfLevelChange}/> Senior
-                </div>
+                </RadioWrapper>
 
-                <div className="Level-entry-page-div">
-                    <StyledButton xyAlign disabled={this.state.level === '' ? false : true}>
+                    <StyledButton xyAlign disabled={this.state.level === '' ? true : false}>
                         <Link className={this.state.level === '' ? 'disabled-link' : ''} to="/questions-entry">Proceed to questions</Link>
                     </StyledButton>
-                </div>
 
             </ContentContainer>
         )
     }
 }
-
-function mapStateToProps(state) {
-    const questions = state.get('peopleList');
-
-    return {
-        questions: questions.get('peopleList'),
-        isLoaded: questions.get('isLoaded'),
-        isError: questions.get('isError'),
-    };
-}
-
-export default connect(
-    mapStateToProps,
-    {fetchQuestions},
-)(LevelEntryPage);

@@ -62,7 +62,7 @@ const peopleList = handleActions({
             return state.withMutations(newState => {
                 newState
                     .setIn(['isError'], false)
-                    .setIn(['isColleague'], action.payload.data);
+                    .setIn(['isColleague'], action.payload);
             });
         },
         throw(state) {

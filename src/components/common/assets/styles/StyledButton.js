@@ -16,13 +16,11 @@ export const StyledButton = styled.button`
     ${ props => props.xyAlign ? 'top: 50%; ' +
                                 'transform: ' +
                                 'translateY(-50%); ' +
-                                'margin:auto; ' +
-                                'position:relative; ' +
-                                'display:block;' : '' };
+                                'margin: auto; ' +
+                                'position: relative; ' +
+                                'display: block;' : '' };
     
-    background-color: ${props => props.disabled ? '#a1a1a1' : '#ed1848'};
-    
-    background-color: ${props => props.disabled? '#ed1848' : '#a1a1a1'};
+    background-color: ${props => props.disabled? '#a1a1a1' : '#ed1848'};
     
     a {
         text-decoration: none;

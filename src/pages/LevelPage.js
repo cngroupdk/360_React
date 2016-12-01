@@ -10,7 +10,10 @@ export default class LevelPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {level: '', personName: props.location.query.name };
+        this.state = {
+            level: '',
+            personName: props.location.query.name
+        };
         this.handleProfLevelChange = this.handleProfLevelChange.bind(this);
     }
 
@@ -32,9 +35,9 @@ export default class LevelPage extends Component {
                     <input type="radio" name="prof-level" value="SENIOR" onChange={this.handleProfLevelChange}/> Senior
                 </RadioWrapper>
 
-                    <StyledButton xyAlign disabled={this.state.level === '' ? true : false}>
-                        <Link className={this.state.level === '' ? 'disabled-link' : ''} to="/questions-entry">Proceed to questions</Link>
-                    </StyledButton>
+                <StyledButton xyAlign disabled={this.state.level === '' ? true : false}>
+                    <Link className={this.state.level === '' ? 'disabled-link' : ''} to="/questions-entry">Proceed to questions</Link>
+                </StyledButton>
 
             </ContentContainer>
         )

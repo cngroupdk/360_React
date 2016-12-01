@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { RadioGroup, Radio } from 'react-radio-group';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
@@ -18,9 +19,9 @@ export default class LevelPage extends Component {
     }
 
 
-    handleProfLevelChange(e) {
+    handleProfLevelChange(value) {
         this.setState({
-            level: e.target.value
+            level: value
         });
     }
 
@@ -30,9 +31,11 @@ export default class LevelPage extends Component {
                 <ContentHeader> Please, choose the proficiency level for {this.state.personName}</ContentHeader>
 
                 <RadioWrapper>
-                    <input type="radio" name="prof-level" value="JUNIOR" onChange={this.handleProfLevelChange}/> Junior
-                    <input type="radio" name="prof-level" value="MIDDLE" onChange={this.handleProfLevelChange}/> Middle
-                    <input type="radio" name="prof-level" value="SENIOR" onChange={this.handleProfLevelChange}/> Senior
+                    <RadioGroup name="prof-level" onChange={this.handleProfLevelChange}>
+                        <label><Radio value="JUNIOR" /> Junior</label>
+                        <label><Radio value="MIDDLE" /> Middle</label>
+                        <label><Radio value="SENIOR" /> Senior</label>
+                    </RadioGroup>
                 </RadioWrapper>
 
                 <StyledButton xyAlign disabled={this.state.level === '' ? true : false}>

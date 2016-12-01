@@ -41,8 +41,3 @@ body {
 .footer-copyright-brand {
     font-weight: 700;
 }
-
-
-.disabled-link {
-    pointer-events: none;
-}

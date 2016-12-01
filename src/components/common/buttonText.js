@@ -1,4 +1,4 @@
-const buttonType = (ExistingDraft) => {
+const buttonText = (ExistingDraft) => {
     if (ExistingDraft) {
         return 'Edit draft'
     }
@@ -7,4 +7,4 @@ const buttonType = (ExistingDraft) => {
     }
 };
 
-export default buttonType;
+export default buttonText;

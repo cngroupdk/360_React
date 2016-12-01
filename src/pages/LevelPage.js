@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import { RadioGroup, Radio } from 'react-radio-group';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
-import { StyledButton } from '../components/common/assets/styles/StyledButton';
+import { StyledLink } from '../components/common/assets/styles/StyledLink';
 import { RadioWrapper } from '../components/common/assets/styles/RadioWrapper';
 
 export default class LevelPage extends Component {
@@ -38,9 +37,7 @@ export default class LevelPage extends Component {
                     </RadioGroup>
                 </RadioWrapper>
 
-                <StyledButton xyAlign disabled={this.state.level === '' ? true : false}>
-                    <Link className={this.state.level === '' ? 'disabled-link' : ''} to="/questions-entry">Proceed to questions</Link>
-                </StyledButton>
+                <StyledLink disabled={this.state.level === '' ? true : false} to="/questions-entry">Proceed to questions</StyledLink>
 
             </ContentContainer>
         )

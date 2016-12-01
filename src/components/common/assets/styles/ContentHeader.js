@@ -6,5 +6,5 @@ export const ContentHeader = styled.div`
     font-weight: 900;
     margin-bottom: 30px;
     display: block;
-    float:left;
+    float: left;
 `;

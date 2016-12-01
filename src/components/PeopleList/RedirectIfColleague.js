@@ -11,6 +11,7 @@ export default class RedirectIfColleague extends Component {
 
     getNextLinkPath() {
         let pathName = this.props.isColleague ? '/level-entry' : '/reason-entry';
+
         return {
             pathname: pathName,
             query: { name: this.props.person.Name}
@@ -19,14 +20,12 @@ export default class RedirectIfColleague extends Component {
 
     render() {
         const {
-            handleClick,
             isHidden,
-            isColleague,
             person,
         } = this.props;
 
         return (
-            <StyledLink data-xyAlign hidden={isHidden} onClick={handleClick} to={this.getNextLinkPath}>
+            <StyledLink data-xyAlign hidden={isHidden} to={this.getNextLinkPath}>
                 {buttonText(person.ExistingDraft)}
             </StyledLink>
         );

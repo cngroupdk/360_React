@@ -28,13 +28,16 @@ export const fetchPeople = () => {
 };
 
 
-export const checkIfColleague = (userLogin) => {
+export const checkIfColleague = (userLogin, gotoNextLinkPath) => {
     return (dispatch) => {
         dispatch(requestColleague());
         return api.get('people/iscolleague/' + userLogin).then(
-            (response) => dispatch(receiveColleague(
+            (response) => {
+                gotoNextLinkPath(response.data);
+                dispatch(receiveColleague(
                 response.data || response,
-            )),
+            ))
+            },
             (error) => dispatch(receiveColleague(
                 error,
             ))

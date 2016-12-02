@@ -31,7 +31,6 @@ class PeoplePage extends Component {
             people,
             searchPeople,
             checkIfColleague,
-            isColleague,
         } = this.props;
 
         return (
@@ -41,7 +40,6 @@ class PeoplePage extends Component {
                     <PeopleList people={people}
                                 searchPeople={searchPeople}
                                 checkIfColleague={checkIfColleague}
-                                isColleague={isColleague}
                     />
                 </Loader>
             </div>
@@ -56,7 +54,6 @@ function mapStateToProps(state) {
         people: people.get('peopleList'),
         isLoaded: people.get('isLoaded'),
         isError: people.get('isError'),
-        isColleague: people.get('isColleague'),
     };
 }
 

@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 
-import Slider  from '../common/slider.js';
+import Slider from './slider.js';
 import CommentBox  from '../common/commentBox.js'
 
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';

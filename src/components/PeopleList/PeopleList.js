@@ -22,12 +22,10 @@ export default class PeopleList extends Component {
         searchPeople(e.target.value);
     }
 
-
     render() {
         const {
             people,
             checkIfColleague,
-            isColleague,
         } = this.props;
 
         return (
@@ -51,7 +49,6 @@ export default class PeopleList extends Component {
                         <PeopleListPerson person={person}
                                           checkIfColleague={checkIfColleague}
                                           key={index}
-                                          isColleague={isColleague}
                         />
                     )
                 })}

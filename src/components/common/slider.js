@@ -1,29 +1,29 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
-import StyledSlider from './assets/styles/StyledSlider.js'
+import { StyledSlider } from './assets/styles/StyledSlider.js'
 
 export default class Slider extends Component {
 
-  constructor() {
-    super();
-    this.state = {
-      value: 50
-    };
-    this.updateSlider = this.updateSlider.bind(this);
-  }
+    constructor() {
+        super();
+        this.state = {
+            value: 50
+        };
+        this.updateSlider = this.updateSlider.bind(this);
+    }
 
-  updateSlider(e) {
-    this.setState({
-        value: e.target.value
-    })
-  }
+    updateSlider(e) {
+        this.setState({
+            value: e.target.value
+        })
+    }
 
-  render() {
-    return (
-        <StyledSlider>
-            <input type='range' name='value' min='0' max='100' onChange={this.updateSlider}/>
-            <div>{this.state.value}</div>
-        </StyledSlider>
-    );
-  }
+    render() {
+        return (
+            <StyledSlider>
+                <input type='range' name='value' min='0' max='100' onChange={this.updateSlider}/>
+                <div>{this.state.value}</div>
+            </StyledSlider>
+        );
+    }
 }

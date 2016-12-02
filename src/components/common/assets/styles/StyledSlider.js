@@ -12,7 +12,7 @@ import styled from 'styled-components';
         width: 100%;
     }
     input[type=range]::-webkit-slider-runnable-track {
-        width: 300px;
+        width: 100%;
         height: 5px;
         background: #ddd;
         border: none;
@@ -35,7 +35,7 @@ import styled from 'styled-components';
     }
 
     input[type=range]::-moz-range-track {
-        width: 300px;
+        width: 100%;
         height: 5px;
         background: #ddd;
         border: none;
@@ -55,7 +55,7 @@ import styled from 'styled-components';
     }
 
     input[type=range]::-ms-track {
-        width: 300px;
+        width: 100%;
         height: 5px;
         background: transparent;
         border-color: transparent;

@@ -4,7 +4,7 @@ import { RadioGroup, Radio } from 'react-radio-group';
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
-import { RadioWrapper } from '../components/common/assets/styles/RadioWrapper';
+import { RadioWrapper } from '../components/common/assets/styles/ReasonPage/RadioWrapper';
 
 export default class LevelPage extends Component {
 

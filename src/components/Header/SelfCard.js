@@ -8,7 +8,6 @@ import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
 
 export default class SelfCard extends Component {
     render() {
-
         const {
             self,
         } = this.props;

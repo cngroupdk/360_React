@@ -22,7 +22,7 @@ export default class CommentBox extends Component {
     return (
         <StyledCommentBox>
             <textarea   placeholder='Place for a comment'
-                        cols='20'
+                        cols='30'
                         rows='2'
                         onChange={this.updateComment}>
             </textarea>

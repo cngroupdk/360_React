@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import styled from 'styled-components';
 
 import StyledSlider from './assets/styles/StyledSlider.js'
-import ContentContainer from './assets/styles/CenteredContent.js'
 
 export default class Slider extends Component {
 

@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
 import styled from 'styled-components';
 
-// Create an <Input> component that'll render an <input> tag with some styles
-const Slider = styled.div`
+ const Slider = styled.div`
     div {
         text-align: center;
     }

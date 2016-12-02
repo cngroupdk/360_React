@@ -8,7 +8,6 @@ import SelfCard from './SelfCard';
 import { StyledHeader } from '../common/assets/styles/Header/StyledHeader';
 
 class Header extends Component {
-
     static propTypes = {
         isLoaded: PropTypes.bool,
         isError: PropTypes.bool,

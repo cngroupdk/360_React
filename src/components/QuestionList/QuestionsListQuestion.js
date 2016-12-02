@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import Slider from '../common/slider.js';
+import Slider from './slider.js';
 
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { CenteredContent } from '../common/assets/styles/CenteredContent';

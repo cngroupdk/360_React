@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import StyledSlider from './assets/styles/StyledSlider.js'
+import StyledSlider from '../common/assets/styles/StyledSlider.js'
 
 export default class Slider extends Component {
 

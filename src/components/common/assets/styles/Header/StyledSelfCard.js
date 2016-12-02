@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const StyledSelfCard = styled.div`
-
     font-size: 23px;
     float: right;
     color: #ed1848;
@@ -14,5 +13,4 @@ export const StyledSelfCard = styled.div`
         vertical-align: middle;
         margin-left: 15px;
     }
-    
 `;

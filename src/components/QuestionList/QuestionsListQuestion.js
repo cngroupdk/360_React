@@ -1,4 +1,5 @@
 import React, { Component }  from 'react';
+import Slider from '../common/slider.js';
 
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { CenteredContent } from '../common/assets/styles/CenteredContent';
@@ -16,7 +17,9 @@ export default class QuestionsListQuestion extends Component {
                     <CenteredContent>{question.title}</CenteredContent>
                 </TableCell>
                 <TableCell fluid sm={3}>
-                    <CenteredContent>bar</CenteredContent>
+                    <CenteredContent>
+                        <Slider/>
+                    </CenteredContent>
                 </TableCell>
                 <TableCell  fluid sm={3}>
                     <CenteredContent>comment</CenteredContent>
@@ -25,4 +28,3 @@ export default class QuestionsListQuestion extends Component {
         );
     }
 }
-

@@ -20,9 +20,17 @@ export default class PeopleListPerson extends Component {
     }
 
     onMouseEnterHandler() {
+        const {
+            person,
+            checkIfColleague,
+        } = this.props;
+
         this.setState(() => ({
             isButtonHidden: false
         }));
+
+        checkIfColleague(person.Login)
+
     }
 
     onMouseLeaveHandler() {
@@ -34,7 +42,6 @@ export default class PeopleListPerson extends Component {
     render() {
         const {
             person,
-            checkIfColleague,
             isColleague
         } = this.props;
 
@@ -60,7 +67,6 @@ export default class PeopleListPerson extends Component {
                 </TableCell>
                 <TableCell fluid sm={2}>
                     <RedirectIfColleague
-                        handleClick={() => checkIfColleague(person.Login)}
                         isHidden={this.state.isButtonHidden}
                         isColleague={isColleague}
                         person={person}/>

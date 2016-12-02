@@ -34,10 +34,10 @@ class Header extends Component {
             <Loader loaded={isLoaded}>
                 <StyledHeader className="app">
                     <div className="app-header">
-                    <span className="logo-wrapper">
+                    <a href="/" className="logo-wrapper">
                         <span className="logo-number">360&#176;</span>
                         <span className="logo-name">Feedback</span>
-                    </span>
+                    </a>
                     </div>
                     <SelfCard self={self} isLoaded={isLoaded}/>
                 </StyledHeader>

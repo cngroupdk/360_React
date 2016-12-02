@@ -14,7 +14,7 @@ export default class Slider extends Component {
 
   updateSlider(e) {
     this.setState({
-        [e.target.name]: e.target.value
+        value: e.target.value
     })
   }
 

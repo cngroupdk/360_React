@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Tabs from '../components/common/Tabs'
 import PeopleList from '../components/PeopleList/PeopleList';
-import { fetchPeople, searchPeople, checkIfColleague } from '../components/PeopleList/actions';
+import { fetchPeople, searchPeople } from '../components/PeopleList/actions';
 
 class PeoplePage extends Component {
 
@@ -12,16 +12,14 @@ class PeoplePage extends Component {
         isLoaded: PropTypes.bool,
         isError: PropTypes.bool,
         fetchPeople: PropTypes.func.isRequired,
-        checkIfColleague: PropTypes.func.isRequired,
         people: PropTypes.array,
-        isColleague: PropTypes.bool,
     };
 
     componentDidMount() {
-        this.fetchAllData();
+        this._fetchAllData();
     }
 
-    fetchAllData() {
+    _fetchAllData() {
         this.props.fetchPeople();
     }
 
@@ -30,7 +28,6 @@ class PeoplePage extends Component {
             isLoaded,
             people,
             searchPeople,
-            checkIfColleague,
         } = this.props;
 
         return (
@@ -39,7 +36,6 @@ class PeoplePage extends Component {
                 <Loader loaded={isLoaded}>
                     <PeopleList people={people}
                                 searchPeople={searchPeople}
-                                checkIfColleague={checkIfColleague}
                     />
                 </Loader>
             </div>
@@ -59,5 +55,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {fetchPeople, searchPeople, checkIfColleague},
+    {fetchPeople, searchPeople},
 )(PeoplePage);

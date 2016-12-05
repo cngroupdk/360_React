@@ -5,8 +5,6 @@ import {
     REQUEST_PEOPLE,
     RECEIVE_PEOPLE,
     SEARCH_PEOPLE,
-    REQUEST_COLLEAGUE,
-    RECEIVE_COLLEAGUE,
 } from './actions';
 
 const peopleList = handleActions({
@@ -39,7 +37,7 @@ const peopleList = handleActions({
                     .setIn(['isLoaded'], true)
                     .setIn(['isError'], false)
                     .setIn(['peopleList'], action.payload)
-                    .setIn(['peopleListDefault'], action.payload);
+                    .setIn(['peopleListDefault'], action.payload)
             });
         },
         throw(state) {
@@ -50,29 +48,6 @@ const peopleList = handleActions({
             );
         },
     },
-    [REQUEST_COLLEAGUE]: (state) => {
-        return state.withMutations(newState =>
-            newState
-                .setIn(['isError'], false)
-        );
-    },
-
-    [RECEIVE_COLLEAGUE]: {
-        next(state, action) {
-            return state.withMutations(newState => {
-                newState
-                    .setIn(['isError'], false)
-                    .setIn(['isColleague'], action.payload);
-            });
-        },
-        throw(state) {
-            return state.withMutations(newState =>
-                newState
-                    .setIn(['isError'], true)
-            );
-        },
-    }
-
 }, Immutable.fromJS({
     isLoaded: false,
     isError: false,

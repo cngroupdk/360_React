@@ -25,7 +25,6 @@ export default class PeopleList extends Component {
     render() {
         const {
             people,
-            checkIfColleague,
         } = this.props;
 
         return (
@@ -47,7 +46,6 @@ export default class PeopleList extends Component {
                 {people.map((person, index) => {
                     return (
                         <PeopleListPerson person={person}
-                                          checkIfColleague={checkIfColleague}
                                           key={index}
                         />
                     )

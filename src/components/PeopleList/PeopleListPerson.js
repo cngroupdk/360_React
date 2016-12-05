@@ -35,7 +35,6 @@ export default class PeopleListPerson extends Component {
     render() {
         const {
             person,
-            checkIfColleague,
         } = this.props;
 
         return (
@@ -64,7 +63,6 @@ export default class PeopleListPerson extends Component {
                 </TableCell>
                 <TableCell fluid sm={2}>
                     <RedirectIfColleague
-                        checkIfColleague={checkIfColleague}
                         isHidden={this.state.isButtonHidden}
                         person={person}/>
                 </TableCell>

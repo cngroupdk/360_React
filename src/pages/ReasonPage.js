@@ -1,22 +1,26 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { reasonSave } from '../components/ReasonBox/actions';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
 import { StyledTextArea } from '../components/common/assets/styles/StyledTextArea';
 
-export default class ReasonPage extends Component {
+class ReasonPage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {reason: '', personName: props.location.query.name};
-        this.handleReasonEnter = this.handleReasonEnter.bind(this);
+        this._handleReasonEnter = this._handleReasonEnter.bind(this);
     }
 
-    handleReasonEnter(e) {
+    _handleReasonEnter(e) {
         this.setState({
             reason: e.target.value
         });
+        this.props.reasonSave(e.target.value)
     }
 
     render() {
@@ -28,12 +32,26 @@ export default class ReasonPage extends Component {
                                 rows="4"
                                 cols="50"
                                 placeholder="Enter your reason here (min. 10 characters)..."
-                                onChange={this.handleReasonEnter}></StyledTextArea>
+                                onChange={this._handleReasonEnter}></StyledTextArea>
 
-                    <StyledLink disabled={this.state.reason.length < 10 ? true : false}
+                    <StyledLink disabled={this.state.reason.length < 10}
                                 to="/level-entry">
                         Proceed further</StyledLink>
             </ContentContainer>
         )
     }
 }
+
+
+function mapStateToProps(state) {
+    const people = state.get('reasonBox');
+
+    return {
+        isError: people.get('isError'),
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    {reasonSave},
+)(ReasonPage);

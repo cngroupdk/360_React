@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import Tabs from '../components/common/tabs'
+import Tabs from '../components/common/Tabs'
 import PeopleList from '../components/PeopleList/PeopleList';
 import { fetchPeople, searchPeople, checkIfColleague } from '../components/PeopleList/actions';
 

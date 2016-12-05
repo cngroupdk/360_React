@@ -7,7 +7,7 @@ import { ContentContainer } from '../common/assets/styles/ContentContainer';
 import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';
 import { StyledLink } from '../common/assets/styles/StyledLink';
 import { ContentHeader } from '../common/assets/styles/ContentHeader';
-import { NewSelfAssessmentBtnContainer } from '../common/assets/styles/SelfList/NewSelfAssessmentBtnContainer';
+import { NewSelfAssessmentBtnContainer } from '../common/assets/styles/SelfPage/NewSelfAssessmentBtnContainer';
 
 export default class SelfList extends Component {
 

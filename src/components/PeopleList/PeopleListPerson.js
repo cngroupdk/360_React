@@ -9,6 +9,7 @@ import RedirectIfColleague from './RedirectIfColleague';
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
 import { CenteredContent } from '../common/assets/styles/CenteredContent';
+import { StyledProfileInitial } from '../common/assets/styles/StyledProfileInitial'
 
 export default class PeopleListPerson extends Component {
 
@@ -40,7 +41,11 @@ export default class PeopleListPerson extends Component {
         return (
             <TableRow onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
                 <TableCell fluid sm={1}>
-                    <CenteredContent><LazyLoad height={50}><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></LazyLoad></CenteredContent>
+                    <CenteredContent>
+                        <StyledProfileInitial>
+                            <LazyLoad height={50} ><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></LazyLoad>
+                        </StyledProfileInitial>
+                    </CenteredContent>
                 </TableCell>
                 <TableCell fluid sm={2}>
                     <CenteredContent>{person.Name}</CenteredContent>

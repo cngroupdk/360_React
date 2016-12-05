@@ -8,15 +8,18 @@ import getPhotoUrl from '../common/getPhotoUrl';
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledLink } from '../common/assets/styles/StyledLink';
 import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
+import { StyledProfileInitial } from '../common/assets/styles/StyledProfileInitial';
 import { CenteredContent } from '../common/assets/styles/CenteredContent';
 
 export const TaskListPerson = ({person}) => (
     <TableRow>
         <TableCell fluid sm={1}>
             <CenteredContent>
-                <LazyLoad height={50}>
-                    <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
-                </LazyLoad>
+                <StyledProfileInitial>
+                    <LazyLoad height={50}>
+                        <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
+                    </LazyLoad>
+                </StyledProfileInitial>
             </CenteredContent>
         </TableCell>
         <TableCell fluid sm={3}><CenteredContent>{person.Name}</CenteredContent>

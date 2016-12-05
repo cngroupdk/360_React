@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import { fetchSelfList } from '../components/SelfList/actions';
 import SelfList from '../components/SelfList/SelfList';
-import Tabs from '../components/common/tabs';
+import Tabs from '../components/common/Tabs';
 
 class SelfPage extends Component {
     static propTypes = {

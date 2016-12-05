@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader';
+import { Link } from 'react-router';
 
 import { fetchSelf } from './actions';
 import SelfCard from './SelfCard';
@@ -34,10 +35,10 @@ class Header extends Component {
             <Loader loaded={isLoaded}>
                 <StyledHeader className="app">
                     <div className="app-header">
-                    <span className="logo-wrapper">
+                    <Link to='/' className="logo-wrapper">
                         <span className="logo-number">360&#176;</span>
                         <span className="logo-name">Feedback</span>
-                    </span>
+                    </Link>
                     </div>
                     <SelfCard self={self} isLoaded={isLoaded}/>
                 </StyledHeader>

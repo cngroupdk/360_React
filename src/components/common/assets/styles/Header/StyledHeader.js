@@ -11,6 +11,7 @@ export const StyledHeader = styled.div` {
         text-align: center;
         margin-top: 10px;
         vertical-align: middle;
+        text-decoration: none;
     }
     
     .logo-number {

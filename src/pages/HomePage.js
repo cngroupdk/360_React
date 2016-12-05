@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import Tabs from '../components/common/tabs';
+import Tabs from '../components/common/Tabs';
 import TaskList from '../components/TaskList/TaskList';
 import HistoryList from '../components/HistoryList/HistoryList';
 import { fetchHistory } from '../components/HistoryList/actions';

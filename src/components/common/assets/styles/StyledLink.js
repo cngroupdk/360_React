@@ -12,6 +12,8 @@ export const StyledLink = styled(Link)`
     font-weight: 700;
     white-space: nowrap;
     font-size: 16px;
+    min-width: 130px;
+    display: inline-block;
     
     ${ props => props[`data-vertical-align`] ?
         'position: absolute; ' +
@@ -23,6 +25,8 @@ export const StyledLink = styled(Link)`
         'top: 50%; ' +
         'left: 50%; ' +
         'transform: translate(-50%, -50%)' : '' };
+        
+    ${ props => props[`data-margin-rigth-30`] ? 'margin-right: 30px' : '' };
     
     background-color: ${props => props.disabled ? '#a1a1a1' : '#ed1848'};
     

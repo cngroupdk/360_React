@@ -6,7 +6,8 @@ import taskList from './components/TaskList/reducer';
 import self from './components/Header/reducer';
 import selfList from './components/SelfList/reducer';
 import questionsList from './components/QuestionList/reducer';
-import reasonBox from './components/ReasonBox/reducer';
+import reasonEntry from './components/ReasonEntry/reducer';
+import levelEntry from './components/LevelEntry/reducer';
 
 const rootReducer = combineReducers({
   peopleList,
@@ -14,8 +15,9 @@ const rootReducer = combineReducers({
   taskList,
   self,
   selfList,
+  reasonEntry,
+  levelEntry,
   questionsList,
-  reasonBox,
 });
 
 export default rootReducer;

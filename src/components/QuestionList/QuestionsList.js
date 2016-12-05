@@ -12,6 +12,8 @@ export default class QuestionsList extends Component {
             questions
         } = this.props;
 
+        console.log(questions)
+
         return (
             <ContentContainer>
 

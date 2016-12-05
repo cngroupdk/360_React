@@ -11,3 +11,11 @@ export const api = Axios.create({
   withCredentials: true,
 });
 
+export const apiPost = Axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    'Content-Type': 'text/plain',
+  },
+  withCredentials: true,
+});
+

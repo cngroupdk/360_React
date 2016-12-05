@@ -14,11 +14,11 @@ export default class LevelPage extends Component {
             level: '',
             personName: props.location.query.name
         };
-        this.handleProfLevelChange = this.handleProfLevelChange.bind(this);
+        this._handleProfLevelChange = this._handleProfLevelChange.bind(this);
     }
 
 
-    handleProfLevelChange(value) {
+    _handleProfLevelChange(value) {
         this.setState({
             level: value
         });
@@ -30,14 +30,14 @@ export default class LevelPage extends Component {
                 <ContentHeader> Please, choose the proficiency level for {this.state.personName}</ContentHeader>
 
                 <RadioWrapper>
-                    <RadioGroup name="prof-level" onChange={this.handleProfLevelChange}>
+                    <RadioGroup name="prof-level" onChange={this._handleProfLevelChange}>
                         <label><Radio value="JUNIOR" /> Junior</label>
                         <label><Radio value="MIDDLE" /> Middle</label>
                         <label><Radio value="SENIOR" /> Senior</label>
                     </RadioGroup>
                 </RadioWrapper>
 
-                <StyledLink disabled={this.state.level === '' ? true : false} to="/questions-entry">Proceed to questions</StyledLink>
+                <StyledLink disabled={this.state.level === ''} to="/questions-entry">Proceed to questions</StyledLink>
 
             </ContentContainer>
         )

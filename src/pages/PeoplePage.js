@@ -16,10 +16,10 @@ class PeoplePage extends Component {
     };
 
     componentDidMount() {
-        this.fetchAllData();
+        this._fetchAllData();
     }
 
-    fetchAllData() {
+    _fetchAllData() {
         this.props.fetchPeople();
     }
 

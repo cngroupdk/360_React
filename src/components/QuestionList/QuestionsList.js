@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 
-import QuestionsListQuestion from './QuestionsListQuestion';
+import { QuestionsSectionName } from '../common/assets/styles/QuestionsPage/QuestionsSectionName';
+import Question from './Question';
 
 export default class QuestionsList extends Component {
 
     render() {
         const {
-            questions
+            questionGroup
         } = this.props;
-
-        console.log(questions)
 
         return (
             <div>
-                {questions.map((question, index) => {
-                    return (
-                        <QuestionsListQuestion question={question} key={index}/>
-                    )
-                })}
+                <QuestionsSectionName>{questionGroup.Caption}</QuestionsSectionName>
+
+                {questionGroup.Questions.map((question, index) => {
+                    return (<Question key={index} question={question} />)
+                 })}
             </div>
         );
     }

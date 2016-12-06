@@ -6,7 +6,7 @@ import CommentBox  from '../common/CommentBox.js'
 import { QuestionContainer } from '../common/assets/styles/QuestionsPage/QuestionContainer';
 import { StyledAddCommentBtn } from '../common/assets/styles/QuestionsPage/StyledAddCommentBtn';
 
-export default class QuestionsListQuestion extends Component {
+export default class Question extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,7 +28,7 @@ export default class QuestionsListQuestion extends Component {
 
         return (
             <QuestionContainer>
-                <h4>{question.title}</h4>
+                <h4>{question.Caption}</h4>
                 <div className="components-container">
                     <div className="checkbox-container">
                         <input type="checkbox" name="question1" value="false" /><br/>

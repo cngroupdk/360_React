@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import QuestionList from '../components/QuestionList/QuestionsList';
+import QuestionGroups from '../components/QuestionList/QuestionGroups';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
-import { QuestionsSectionName } from '../components/common/assets/styles/QuestionsPage/QuestionsSectionName';
 
 import { fetchQuestions } from '../components/QuestionList/actions';
 
@@ -15,9 +14,6 @@ class QuestionsPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            level: '1',
-        };
         this.handleAnswer = this.handleAnswer.bind(this);
     }
 
@@ -37,17 +33,17 @@ class QuestionsPage extends Component {
 
     render() {
         const {
-            questions,
-            isLoaded
+            allQuestions,
+            isLoaded,
         } = this.props;
 
         return (
             <Loader loaded={isLoaded}>
                 <ContentContainer>
-                    <ContentHeader> Please, answer questions </ContentHeader>
-                    <QuestionsSectionName>Communication</QuestionsSectionName>
 
-                    <QuestionList questions={questions}/>
+                    <ContentHeader> Please, answer questions </ContentHeader>
+
+                    <QuestionGroups allQuestions={allQuestions}/>
 
                     <StyledLink data-margin-rigth-30 to="/">Save draft</StyledLink>
                     <StyledLink to="/">Submit</StyledLink>
@@ -59,12 +55,12 @@ class QuestionsPage extends Component {
 }
 
 function mapStateToProps(state) {
-    const questions = state.get('questionsList');
+    const allQuestions = state.get('questionsList');
 
     return {
-        questions: questions.get('questionsList'),
-        isLoaded: questions.get('isLoaded'),
-        isError: questions.get('isError'),
+        allQuestions: allQuestions.get('questionsList'),
+        isLoaded: allQuestions.get('isLoaded'),
+        isError: allQuestions.get('isError'),
     };
 }
 

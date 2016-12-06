@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { reasonSave } from '../components/ReasonBox/actions';
+import { reasonSave } from '../components/ReasonEntry/actions';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
@@ -12,7 +12,7 @@ class ReasonPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {reason: '', personName: props.location.query.name};
+        this.state = {reason: ''};
         this._handleReasonEnter = this._handleReasonEnter.bind(this);
     }
 
@@ -20,13 +20,14 @@ class ReasonPage extends Component {
         this.setState({
             reason: e.target.value
         });
+
         this.props.reasonSave(e.target.value)
     }
 
     render() {
         return (
             <ContentContainer>
-                <ContentHeader>Warning! {this.state.personName} is not your co-worker.</ContentHeader>
+                <ContentHeader>Warning! {this.props.location.query.name} is not your co-worker.</ContentHeader>
 
                 <StyledTextArea autoFocus
                                 rows="4"
@@ -44,10 +45,8 @@ class ReasonPage extends Component {
 
 
 function mapStateToProps(state) {
-    const people = state.get('reasonBox');
-
     return {
-        isError: people.get('isError'),
+        state: state
     };
 }
 

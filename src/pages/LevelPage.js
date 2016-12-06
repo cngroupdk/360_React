@@ -1,45 +1,54 @@
 import React, { Component } from 'react';
-import { RadioGroup, Radio } from 'react-radio-group';
+import Loader from 'react-loader';
+import { connect } from 'react-redux';
+
+import LevelEntry from '../components/LevelEntry/LevelEntry';
+import { fetchLevels, levelSave } from '../components/LevelEntry/actions';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
-import { StyledLink } from '../components/common/assets/styles/StyledLink';
-import { RadioWrapper } from '../components/common/assets/styles/ReasonPage/RadioWrapper';
 
-export default class LevelPage extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            level: '',
-            personName: props.location.query.name
-        };
-        this._handleProfLevelChange = this._handleProfLevelChange.bind(this);
+class LevelPage extends Component {
+
+    componentDidMount() {
+        this._fetchAllData();
     }
 
-
-    _handleProfLevelChange(value) {
-        this.setState({
-            level: value
-        });
+    _fetchAllData() {
+        this.props.fetchLevels();
     }
 
     render() {
+        const {
+            levels,
+            isLoaded
+        } = this.props;
+
         return (
             <ContentContainer>
-                <ContentHeader> Please, choose the proficiency level for {this.state.personName}</ContentHeader>
-
-                <RadioWrapper>
-                    <RadioGroup name="prof-level" onChange={this._handleProfLevelChange}>
-                        <label><Radio value="JUNIOR" /> Junior</label>
-                        <label><Radio value="MIDDLE" /> Middle</label>
-                        <label><Radio value="SENIOR" /> Senior</label>
-                    </RadioGroup>
-                </RadioWrapper>
-
-                <StyledLink disabled={this.state.level === ''} to="/questions-entry">Proceed to questions</StyledLink>
+                <ContentHeader> Please, choose the proficiency level
+                    for {this.props.location.query.name}</ContentHeader>
+                <Loader loaded={isLoaded}>
+                    <LevelEntry levelSave={levelSave} levels={levels}/>
+                </Loader>
 
             </ContentContainer>
         )
     }
 }
+
+function mapStateToProps(state) {
+    const levels = state.get('levelEntry');
+
+    return {
+        levels: levels.get('levels'),
+        isLoaded: levels.get('isLoaded'),
+        isError: levels.get('isError'),
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    {fetchLevels, levelSave},
+)(LevelPage);

@@ -3,7 +3,7 @@ import Immutable from 'immutable';
 
 import { REASON_SAVE } from './actions';
 
-const reasonBox = handleActions({
+const reasonEntry = handleActions({
     [REASON_SAVE]: (state, action) => {
         return state.withMutations(newState =>
             newState
@@ -11,7 +11,7 @@ const reasonBox = handleActions({
         );
     },
 }, Immutable.fromJS({
-    reason: '',
+    reason: 'None listed',
 }));
 
-export default reasonBox;
+export default reasonEntry;

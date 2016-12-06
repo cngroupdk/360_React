@@ -30,7 +30,8 @@ class HomePage extends Component {
 
     render() {
         const {
-            isLoaded,
+            isLoadedTasks,
+            isLoadedHistory,
             taskPeople,
             historyPeople,
             searchTasks,
@@ -39,7 +40,7 @@ class HomePage extends Component {
         return (
             <div>
                 <Tabs/>
-                <Loader loaded={isLoaded}>
+                <Loader loaded={isLoadedTasks && isLoadedHistory}>
                     <TaskList taskPeople={taskPeople} searchTasks={searchTasks}/>
                     <HistoryList historyPeople={historyPeople}/>
                 </Loader>
@@ -55,7 +56,8 @@ function mapStateToProps(state) {
     return {
         historyPeople: historyPeople.get('historyList'),
         taskPeople: taskPeople.get('taskList'),
-        isLoaded: taskPeople.get('isLoaded'),
+        isLoadedTasks: taskPeople.get('isLoaded'),
+        isLoadedHistory: historyPeople.get('isLoaded'),
         isError: taskPeople.get('isError'),
     };
 }

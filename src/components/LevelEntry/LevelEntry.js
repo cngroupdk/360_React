@@ -16,6 +16,7 @@ export default class LevelEntry extends Component {
 
     _handleProfLevelChange(e) {
         this.props.levelSave(e);
+
         this.setState({ level: 'Entered' });
     }
 
@@ -40,7 +41,13 @@ export default class LevelEntry extends Component {
                     </RadioGroup>
                 </RadioWrapper>
 
-                <StyledLink disabled={this.state.level === ''} to="/questions-entry">Proceed to questions</StyledLink>
+                <StyledLink disabled={this.state.level === ''}
+                    to={{
+                        pathname: "/questions-entry",
+                        query: {name: this.props.location.query.name,
+                            id: this.props.location.query.id}
+                    }}>
+                    Proceed to questions </StyledLink>
             </div>
         )
     }

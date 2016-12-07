@@ -22,7 +22,7 @@ class QuestionsPage extends Component {
     }
 
     fetchAllData() {
-        this.props.fetchQuestions();
+        this.props.fetchQuestions(this.props.location.query.id);
     }
 
     handleAnswer(e) {

@@ -8,7 +8,7 @@ import { ContentContainer} from '../components/common/assets/styles/ContentConta
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
 
-import { fetchQuestions } from '../components/QuestionList/actions';
+import { fetchQuestions, updateAnswerDontSay } from '../components/QuestionList/actions';
 
 class QuestionsPage extends Component {
 
@@ -23,6 +23,7 @@ class QuestionsPage extends Component {
     render() {
         const {
             allQuestions,
+            updateAnswerDontSay,
             isLoaded,
         } = this.props;
 
@@ -32,7 +33,7 @@ class QuestionsPage extends Component {
 
                     <ContentHeader> Please, answer questions </ContentHeader>
 
-                    <QuestionGroups allQuestions={allQuestions}/>
+                    <QuestionGroups allQuestions={allQuestions} updateAnswerDontSay={updateAnswerDontSay}/>
 
                     <StyledLink data-margin-rigth-30 to="/">Save draft</StyledLink>
                     <StyledLink to="/">Submit</StyledLink>
@@ -55,5 +56,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {fetchQuestions},
+    {fetchQuestions, updateAnswerDontSay},
 )(QuestionsPage);

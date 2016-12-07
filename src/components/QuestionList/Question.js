@@ -13,6 +13,8 @@ export default class Question extends Component {
             showComment: false
         };
         this._handleAddComment = this._handleAddComment.bind(this);
+        this._handleOnChangeDontSay = this._handleOnChangeDontSay.bind(this);
+        this._handleOnChangeComment = this._handleOnChangeComment.bind(this);
     }
 
     _handleAddComment() {
@@ -21,9 +23,27 @@ export default class Question extends Component {
         }));
     }
 
+    _handleOnChangeDontSay(event) {
+        this.props.updateAnswerDontSay(
+            {
+                'id' : this.props.question.Answer.Id ,
+                'dontSay' : event.target.checked
+            }
+        );
+    }
+
+    _handleOnChangeComment(event) {
+        this.props.updateAnswerDontSay(
+            {
+                'id' : this.props.question.Answer.Id ,
+                'comment' : event.target.value
+            }
+        );
+    }
+
     render() {
         const {
-            question
+            question,
         } = this.props;
 
         return (
@@ -31,7 +51,9 @@ export default class Question extends Component {
                 <h4>{question.Caption}</h4>
                 <div className="components-container">
                     <div className="checkbox-container">
-                        <input type="checkbox" name="question1" value="false" /><br/>
+                        <input type="checkbox" name={question.Answer.Id} value="false"
+                               onChange={this._handleOnChangeDontSay}
+                               defaultChecked={question.Answer.DontSay}/><br/>
                         Cannot or dont want to answer
                     </div>
                     <div className="slider-container"><Slider/></div>
@@ -43,7 +65,7 @@ export default class Question extends Component {
                 </div>
                 <div className="clear">&nbsp;</div>
                 <div className={this.state.showComment ? '' : 'hidden'}>
-                    <CommentBox/>
+                    <CommentBox onChange={this._handleOnChangeComment}/>
                 </div>
             </QuestionContainer>
         );

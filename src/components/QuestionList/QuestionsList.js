@@ -7,7 +7,8 @@ export default class QuestionsList extends Component {
 
     render() {
         const {
-            questionGroup
+            questionGroup,
+            updateAnswerDontSay
         } = this.props;
 
         return (
@@ -15,7 +16,9 @@ export default class QuestionsList extends Component {
                 <QuestionsSectionName>{questionGroup.Caption}</QuestionsSectionName>
 
                 {questionGroup.Questions.map((question, index) => {
-                    return (<Question key={index} question={question} />)
+                    return (<Question key={index}
+                                      question={question}
+                                      updateAnswerDontSay={updateAnswerDontSay}/>)
                  })}
             </div>
         );

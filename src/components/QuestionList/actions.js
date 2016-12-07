@@ -1,6 +1,9 @@
 import { createAction } from 'redux-actions';
 import { apiPost } from '../../api';
 
+import { getSelectedLevel } from '../LevelEntry/reducer';
+import { getEnteredReason } from '../ReasonEntry/reducer';
+
 export const REQUEST_QUESTIONS = 'REQUEST_QUESTIONS';
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 
@@ -14,11 +17,12 @@ export const updateAnswerDontSay = createAction(UPDATE_ANSWER_DONT_SAY);
 export const updateAnswerComment = createAction(UPDATE_ANSWER_COMMENT);
 
 export const fetchQuestions = () => {
-    return (dispatch) => {
-
+    return (dispatch, getState) => {
+        const level = getSelectedLevel(getState().get('levelEntry'));
+        const reason = getEnteredReason(getState().get('reasonEntry'));
         dispatch(requestQuestions());
         return apiPost.post('assessments/save',
-            {"Reason": "", "PersonId" : 978, "LevelId": "0f96cee9-6869-4bb4-82a3-471355d2580c"}).then(
+            {"Reason": reason, "PersonId" : 978, "LevelId": level}).then(
             (response) => dispatch(receiveQuestions(
                 response.data || response,
             )),

@@ -22,7 +22,8 @@ class LevelPage extends Component {
     render() {
         const {
             levels,
-            isLoaded
+            isLoaded,
+            levelSave,
         } = this.props;
 
         return (

@@ -16,6 +16,7 @@ export default class LevelEntry extends Component {
 
     _handleProfLevelChange(e) {
         this.props.levelSave(e);
+
         this.setState({ level: 'Entered' });
     }
 

@@ -46,4 +46,7 @@ const levelEntry = handleActions({
     isError: false,
 }));
 
+export const getSelectedLevel = state =>
+    state.get('level');
+
 export default levelEntry;

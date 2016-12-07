@@ -24,6 +24,7 @@ class LevelPage extends Component {
             levels,
             isLoaded,
             levelSave,
+            location
         } = this.props;
 
         return (
@@ -31,7 +32,7 @@ class LevelPage extends Component {
                 <ContentHeader> Please, choose the proficiency level
                     for {this.props.location.query.name}</ContentHeader>
                 <Loader loaded={isLoaded}>
-                    <LevelEntry levelSave={levelSave} levels={levels}/>
+                    <LevelEntry levelSave={levelSave} levels={levels} location={location}/>
                 </Loader>
 
             </ContentContainer>

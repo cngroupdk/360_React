@@ -13,6 +13,7 @@ export const UPDATE_ANSWER_COMMENT = 'UPDATE_ANSWER_COMMENT';
 export const requestQuestions = createAction(REQUEST_QUESTIONS);
 export const receiveQuestions = createAction(RECEIVE_QUESTIONS);
 
+export const fetchQuestions = (id) => {
 export const updateAnswerDontSay = createAction(UPDATE_ANSWER_DONT_SAY);
 export const updateAnswerComment = createAction(UPDATE_ANSWER_COMMENT);
 
@@ -22,7 +23,7 @@ export const fetchQuestions = () => {
         const reason = getEnteredReason(getState().get('reasonEntry'));
         dispatch(requestQuestions());
         return apiPost.post('assessments/save',
-            {"Reason": reason, "PersonId" : 978, "LevelId": level}).then(
+            {"Reason": reason, "PersonId" : id, "LevelId": level}).then(
             (response) => dispatch(receiveQuestions(
                 response.data || response,
             )),

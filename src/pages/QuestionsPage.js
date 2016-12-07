@@ -12,23 +12,12 @@ import { fetchQuestions } from '../components/QuestionList/actions';
 
 class QuestionsPage extends Component {
 
-    constructor(props) {
-        super(props);
-        this.handleAnswer = this.handleAnswer.bind(this);
-    }
-
     componentDidMount() {
         this.fetchAllData();
     }
 
     fetchAllData() {
         this.props.fetchQuestions();
-    }
-
-    handleAnswer(e) {
-        this.setState({
-            level: e.target.value
-        });
     }
 
     render() {

@@ -10,13 +10,13 @@ export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
 export const requestQuestions = createAction(REQUEST_QUESTIONS);
 export const receiveQuestions = createAction(RECEIVE_QUESTIONS);
 
-export const fetchQuestions = () => {
+export const fetchQuestions = (id) => {
     return (dispatch, getState) => {
         const level = getSelectedLevel(getState().get('levelEntry'));
         const reason = getEnteredReason(getState().get('reasonEntry'));
         dispatch(requestQuestions());
         return apiPost.post('assessments/save',
-            {"Reason": reason, "PersonId" : 978, "LevelId": level}).then(
+            {"Reason": reason, "PersonId" : id, "LevelId": level}).then(
             (response) => dispatch(receiveQuestions(
                 response.data || response,
             )),

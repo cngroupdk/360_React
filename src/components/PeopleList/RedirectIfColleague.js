@@ -18,7 +18,8 @@ export default class RedirectIfColleague extends Component {
         let nextPath = this.props.person.Colleague ? '/level-entry' : '/reason-entry';
         let nextPathWithData = {
             pathname: nextPath,
-            query: { name: this.props.person.Name}
+            query: {name: this.props.person.Name,
+                    id:this.props.person.Id}
         };
         this.context.router.push(nextPathWithData);
 

@@ -36,7 +36,11 @@ class ReasonPage extends Component {
                                 onChange={this._handleReasonEnter}></StyledTextArea>
 
                     <StyledLink disabled={this.state.reason.length < 10}
-                                to="/level-entry">
+                                to={{
+                                    pathname: "/level-entry",
+                                    query: {name: this.props.location.query.name,
+                                            id: this.props.location.query.id}
+                                }}>
                         Proceed further</StyledLink>
             </ContentContainer>
         )

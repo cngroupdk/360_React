@@ -26,34 +26,39 @@ export default class Question extends Component {
     _handleOnChangeDontSay(event) {
         this.props.updateAnswerDontSay(
             {
-                'id' : this.props.question.Answer.Id ,
+                'questionId' : this.props.question.get('Id'),
+                'questionGroupId': this.props.questionGroupId,
                 'dontSay' : event.target.checked
             }
         );
     }
 
     _handleOnChangeComment(event) {
-        this.props.updateAnswerDontSay(
-            {
-                'id' : this.props.question.Answer.Id ,
-                'comment' : event.target.value
-            }
-        );
+        const {
+            question,
+            updateAnswerDontSay,
+        } = this.props;
+        const answer = question.get('Answer');
+        const id = answer.get('Id');
+
+        updateAnswerDontSay({
+            id,
+            comment: event.target.value
+        });
     }
 
     render() {
-        const {
-            question,
-        } = this.props;
+        const { question } = this.props;
+        const answer = question.get('Answer');
 
         return (
             <QuestionContainer>
                 <h4>{question.Caption}</h4>
                 <div className="components-container">
                     <div className="checkbox-container">
-                        <input type="checkbox" name={question.Answer.Id} value="false"
+                        <input type="checkbox" name={answer.get('Id')} value="false"
                                onChange={this._handleOnChangeDontSay}
-                               defaultChecked={question.Answer.DontSay}/><br/>
+                               defaultChecked={answer.get('DontSay')}/><br/>
                         Cannot or dont want to answer
                     </div>
                     <div className="slider-container"><Slider/></div>

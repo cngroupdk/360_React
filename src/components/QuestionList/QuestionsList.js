@@ -15,9 +15,11 @@ export default class QuestionsList extends Component {
             <div>
                 <QuestionsSectionName>{questionGroup.Caption}</QuestionsSectionName>
 
-                {questionGroup.Questions.map((question, index) => {
+
+                {questionGroup.get('Questions').map((question, index) => {
                     return (<Question key={index}
                                       question={question}
+                                      questionGroupId={questionGroup.get('Id')}
                                       updateAnswerDontSay={updateAnswerDontSay}/>)
                  })}
             </div>

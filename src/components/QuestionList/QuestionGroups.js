@@ -7,18 +7,18 @@ export default class QuestionGroups extends Component {
     render() {
         const {
             allQuestions,
-            updateAnswerDontSay
+            updateAnswerDontSay,
         } = this.props;
 
         return (
             <div className="clear">
-                {allQuestions.Skills.map((questionGroup, index) => {
-                    return (
-                        <QuestionsList key={index}
-                                       questionGroup={questionGroup}
-                                       updateAnswerDontSay={updateAnswerDontSay}/>
-                    )
-                })}
+                {allQuestions.get('Skills').map((questionGroup) => (
+                    <QuestionsList
+                        key={questionGroup.get('Id')}
+                        questionGroup={questionGroup}
+                        updateAnswerDontSay={updateAnswerDontSay}
+                    />
+                ))}
             </div>
         );
     }

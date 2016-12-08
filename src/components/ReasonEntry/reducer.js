@@ -14,4 +14,7 @@ const reasonEntry = handleActions({
     reason: 'None listed',
 }));
 
+export const getEnteredReason = state =>
+    state.get('reason');
+
 export default reasonEntry;

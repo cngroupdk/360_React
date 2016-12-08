@@ -31,7 +31,7 @@ export const TaskListPerson = ({person}) => (
         <TableCell fluid sm={1.5}><CenteredContent>{monthRender(person.AssessmentMonth)}</CenteredContent>
         </TableCell>
         <TableCell fluid sm={3}>
-            <StyledLink data-xyAlign to={{pathname: '/level-entry', query: { name: person.Name }}}>
+            <StyledLink data-xyAlign to={{pathname: '/level-entry', query: { name: person.Name, id:person.Id}}}>
                 {buttonText(person.ExistingDraft)}
             </StyledLink>
         </TableCell>

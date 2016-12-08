@@ -7,15 +7,20 @@ export default class QuestionsList extends Component {
 
     render() {
         const {
-            questionGroup
+            questionGroup,
+            updateAnswerDontSay
         } = this.props;
 
         return (
             <div>
                 <QuestionsSectionName>{questionGroup.Caption}</QuestionsSectionName>
 
-                {questionGroup.Questions.map((question, index) => {
-                    return (<Question key={index} question={question} />)
+
+                {questionGroup.get('Questions').map((question, index) => {
+                    return (<Question key={index}
+                                      question={question}
+                                      questionGroupId={questionGroup.get('Id')}
+                                      updateAnswerDontSay={updateAnswerDontSay}/>)
                  })}
             </div>
         );

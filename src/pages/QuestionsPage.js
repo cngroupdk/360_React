@@ -8,14 +8,9 @@ import { ContentContainer} from '../components/common/assets/styles/ContentConta
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
 
-import { fetchQuestions } from '../components/QuestionList/actions';
+import { fetchQuestions, saveAssessment, updateAnswerDontSay, updateAnswerComment } from '../components/QuestionList/actions';
 
 class QuestionsPage extends Component {
-
-    constructor(props) {
-        super(props);
-        this.handleAnswer = this.handleAnswer.bind(this);
-    }
 
     componentDidMount() {
         this.fetchAllData();
@@ -25,15 +20,12 @@ class QuestionsPage extends Component {
         this.props.fetchQuestions(this.props.location.query.id);
     }
 
-    handleAnswer(e) {
-        this.setState({
-            level: e.target.value
-        });
-    }
-
     render() {
         const {
             allQuestions,
+            saveAssessment,
+            updateAnswerDontSay,
+            updateAnswerComment,
             isLoaded,
         } = this.props;
 
@@ -43,9 +35,11 @@ class QuestionsPage extends Component {
 
                     <ContentHeader> Please, answer questions </ContentHeader>
 
-                    <QuestionGroups allQuestions={allQuestions}/>
+                    <QuestionGroups allQuestions={allQuestions}
+                                    updateAnswerDontSay={updateAnswerDontSay}
+                                    updateAnswerComment={updateAnswerComment}/>
 
-                    <StyledLink data-margin-rigth-30 to="/">Save draft</StyledLink>
+                    <StyledLink data-margin-rigth-30 onClick={saveAssessment} to="/">Save draft</StyledLink>
                     <StyledLink to="/">Submit</StyledLink>
 
                 </ContentContainer>
@@ -66,5 +60,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {fetchQuestions},
+    {fetchQuestions, updateAnswerDontSay, saveAssessment},
 )(QuestionsPage);

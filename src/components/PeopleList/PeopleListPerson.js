@@ -46,7 +46,7 @@ export default class PeopleListPerson extends Component {
                         </StyledProfileInitial>
                     </CenteredContent>
                 </TableCell>
-                <TableCell fluid sm={2}>
+                <TableCell fluid sm={2.5}>
                     <CenteredContent>{person.Name}</CenteredContent>
                 </TableCell>
                 <TableCell fluid sm={1.5}>
@@ -58,7 +58,7 @@ export default class PeopleListPerson extends Component {
                 <TableCell fluid sm={1.5}>
                     <CenteredContent>{monthRender(person.AssessmentMonth)}</CenteredContent>
                 </TableCell>
-                <TableCell fluid sm={2}>
+                <TableCell fluid sm={1.5}>
                     <CenteredContent>None listed</CenteredContent>
                 </TableCell>
                 <TableCell fluid sm={2}>

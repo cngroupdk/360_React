@@ -19,9 +19,13 @@ export default class Slider extends Component {
     }
 
     render() {
+        const { disableRange } = this.props;
+
         return (
             <StyledSlider>
-                <input type='range' name='value' min='0' max='100' onChange={this.updateSlider}/>
+                <input type='range' name='value' min='0' max='100'
+                       onChange={this.updateSlider}
+                       disabled={!!disableRange}/>
                 <div>{this.state.value}</div>
             </StyledSlider>
         );

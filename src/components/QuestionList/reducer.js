@@ -2,15 +2,14 @@ import {handleActions} from 'redux-actions';
 import Immutable from 'immutable';
 
 import {
-    REQUEST_QUESTIONS,
-    RECEIVE_QUESTIONS,
-    UPDATE_ANSWER_DONT_SAY,
-    UPDATE_ANSWER_COMMENT,
+    ASSESSMENT_FETCH,
+    ASSESSMENT_FETCH_FINISHED,
+    ASSESSMENT_UPDATE_ANSWER,
+    ASSESSMENT_UPDATE_SUBMITTED,
 } from './actions';
 
-const questionsList = handleActions({
-    // QUESTION_LIST.QUESTIONS_FETCH
-    [REQUEST_QUESTIONS]: (state) => {
+const assessmentReducer = handleActions({
+    [ASSESSMENT_FETCH]: (state) => {
         return state.withMutations(newState =>
             newState
                 .setIn(['isError'], false)
@@ -18,15 +17,13 @@ const questionsList = handleActions({
         );
     },
 
-    // QUESTION_LIST.QUESTIONS_FETCH.FINISHED
-    [RECEIVE_QUESTIONS]: {
+    [ASSESSMENT_FETCH_FINISHED]: {
         next(state, action) {
-            console.log(action.payload);
             return state.withMutations(newState =>
                 newState
                     .setIn(['isError'], false)
                     .setIn(['isLoaded'], true)
-                    .setIn(['questionsList'], Immutable.fromJS(action.payload))
+                    .setIn(['assessment'], Immutable.fromJS(action.payload))
             );
         },
         throw(state) {
@@ -36,22 +33,23 @@ const questionsList = handleActions({
             );
         },
     },
-    // QUESTION_LIST.SET_QUESTION_VALUE
-    [UPDATE_ANSWER_DONT_SAY]: (state, action) => {
-        const questionGroupId = action.payload.questionGroupId;
+
+    [ASSESSMENT_UPDATE_ANSWER]: (state, action) => {
+        const skillId = action.payload.skillId;
         const questionId = action.payload.questionId;
-        const dontSay = action.payload.dontSay;
+        const answerProperty = action.payload.answerProperty;
+        const propertyValue = action.payload.propertyValue;
 
-        const questionsList = state.get('questionsList');
+        const assessment = state.get('assessment');
 
-        const modifiedQuestionsList =
-            questionsList.updateIn(['Skills'], skills =>
+        const modifiedAssessment =
+            assessment.updateIn(['Skills'], skills =>
                 skills.map(skill => {
-                    if (skill.get('Id') == questionGroupId) {
+                    if (skill.get('Id') === skillId) {
                         return skill.updateIn(['Questions'], questions =>
                             questions.map(question =>  {
-                                if (question.get('Id') == questionId) {
-                                    return question.setIn(['Answer', 'DontSay'], dontSay);
+                                if (question.get('Id') === questionId) {
+                                    return question.setIn(['Answer', answerProperty], propertyValue);
                                 }
                                 return question;
                             })
@@ -62,14 +60,18 @@ const questionsList = handleActions({
 
         return state.withMutations(newState => {
             newState
-                .setIn(['questionsList'], modifiedQuestionsList);
+                .setIn(['assessment'], modifiedAssessment);
         });
     },
 
-    [UPDATE_ANSWER_COMMENT]: (state, action) => {
+    [ASSESSMENT_UPDATE_SUBMITTED]: (state, action) => {
+        const assessment = state.get('assessment');
+        const submitted = action.payload;
+        const modifiedAssessment = assessment.setIn('Submitted', submitted);
+
         return state.withMutations(newState => {
             newState
-                .setIn(['test2'], true);
+                .setIn(['assessment'], modifiedAssessment);
         });
     }
 
@@ -78,7 +80,7 @@ const questionsList = handleActions({
     isError: false,
 }));
 
-export const getAllQuestions = state =>
-    state.get('questionsList');
+export const getAssessment = state =>
+    state.get('assessment');
 
-export default questionsList;
+export default assessmentReducer;

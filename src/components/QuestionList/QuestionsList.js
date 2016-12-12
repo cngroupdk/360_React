@@ -7,20 +7,19 @@ export default class QuestionsList extends Component {
 
     render() {
         const {
-            questionGroup,
-            updateAnswerDontSay
+            skill,
+            updateAnswer,
         } = this.props;
 
         return (
             <div>
-                <QuestionsSectionName>{questionGroup.Caption}</QuestionsSectionName>
+                <QuestionsSectionName>{skill.get('Caption')}</QuestionsSectionName>
 
-
-                {questionGroup.get('Questions').map((question, index) => {
+                {skill.get('Questions').map((question, index) => {
                     return (<Question key={index}
                                       question={question}
-                                      questionGroupId={questionGroup.get('Id')}
-                                      updateAnswerDontSay={updateAnswerDontSay}/>)
+                                      skillId={skill.get('Id')}
+                                      updateAnswer={updateAnswer}/>)
                  })}
             </div>
         );

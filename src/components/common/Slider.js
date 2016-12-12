@@ -4,18 +4,20 @@ import { StyledSlider } from './assets/styles/StyledSlider.js'
 
 export default class Slider extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             value: 50
         };
         this.updateSlider = this.updateSlider.bind(this);
     }
 
-    updateSlider(e) {
+    updateSlider(event) {
+        const newValue = event.target.value;
         this.setState({
-            value: e.target.value
-        })
+            value: newValue
+        });
+        this.props.onChange(newValue);
     }
 
     render() {
@@ -23,10 +25,10 @@ export default class Slider extends Component {
 
         return (
             <StyledSlider>
-                <input type='range' name='value' min='0' max='100'
+                <input type='range' name='answerValue' min='0' max='100'
                        onChange={this.updateSlider}
-                       disabled={!!disableRange}/>
-                <div>{this.state.value}</div>
+                       disabled={disableRange}/>
+                <div>{disableRange ? '' : this.state.value}</div>
             </StyledSlider>
         );
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { StyledSlider } from './assets/styles/QuestionsPage/StyledSlider.js'
+import { StyledSlider } from './assets/styles/StyledSlider.js'
 
 export default class Slider extends Component {
 

@@ -12,7 +12,7 @@ export default class CommentBox extends Component {
         return (
             <StyledCommentBox>
                 <textarea placeholder='Enter your comment here...'
-                          onChange={this.props.onChange}>
+                          onChange={onChange}>
                 </textarea>
             </StyledCommentBox>
         );

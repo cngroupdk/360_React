@@ -29,7 +29,7 @@ export default class Question extends Component {
             disableRange: !this.state.disableRange
         }));
 
-        this.props.updateAnswerDontSay(
+        this.props.updateAnswer(
             {
                 'questionId' : this.props.question.get('Id'),
                 'questionGroupId': this.props.questionGroupId,
@@ -41,12 +41,11 @@ export default class Question extends Component {
     _handleOnChangeComment(event) {
         const {
             question,
-            updateAnswerDontSay,
         } = this.props;
         const answer = question.get('Answer');
         const id = answer.get('Id');
 
-        updateAnswerDontSay({
+        this.props.updateAnswer({
             id,
             comment: event.target.value
         });
@@ -75,7 +74,7 @@ export default class Question extends Component {
                 </div>
                 <div className="clear">&nbsp;</div>
                 <div className={this.state.showComment ? '' : 'hidden'}>
-                    <CommentBox onChange={this._handleOnChangeComment}/>
+                    <CommentBox onChange={this._handleOnChangeComment} />
                 </div>
             </QuestionContainer>
         );

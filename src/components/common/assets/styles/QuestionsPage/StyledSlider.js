@@ -28,6 +28,10 @@ export const StyledSlider = styled.div`
         background: #ed1848;
         margin-top: -4px;
     }
+    
+    input[type=range]:disabled::-webkit-slider-thumb {
+        background: gray;
+    }
 
     input[type=range]:focus {
         outline: none;
@@ -51,6 +55,10 @@ export const StyledSlider = styled.div`
         width: 16px;
         border-radius: 50%;
         background: #ed1848;
+    }
+    
+    input[type=range]:disabled::-moz-range-thumb {
+        background: gray;
     }
 
     input[type=range]:-moz-focusring{
@@ -83,6 +91,10 @@ export const StyledSlider = styled.div`
         width: 16px;
         border-radius: 50%;
         background: #ed1848;
+    }
+    
+    input[type=range]:disabled::-ms-thumb {
+        background: gray;
     }
 
     input[type=range]:focus::-ms-fill-lower {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { RadioGroup } from 'react-radio-group';
+import { apiPost } from '../../api';
 
 import Level from './Level'
 
@@ -15,14 +16,19 @@ export default class LevelEntry extends Component {
     }
 
     _handleProfLevelChange(e) {
-        this.props.levelSave(e);
+        this.props.getSecondStep()
+
+        apiPost.post('/assessments/level', {
+            levelId: e,
+            id: this.props.location.query.id
+        });
 
         this.setState({ level: 'Entered' });
     }
 
     render() {
         const {
-            levels
+            levels,
         } = this.props;
 
         return (
@@ -43,9 +49,8 @@ export default class LevelEntry extends Component {
 
                 <StyledLink disabled={this.state.level === ''}
                     to={{
-                        pathname: "/questions-entry",
-                        query: {name: this.props.location.query.name,
-                            id: this.props.location.query.id}
+                        pathname: "/questions",
+                        query: { id: this.props.location.query.id }
                     }}>
                     Proceed to questions </StyledLink>
             </div>

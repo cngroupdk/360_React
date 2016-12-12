@@ -1,8 +1,6 @@
 import { createAction } from 'redux-actions';
 import { apiPost } from '../../api';
 
-import { getSelectedLevel } from '../LevelEntry/reducer';
-import { getEnteredReason } from '../ReasonEntry/reducer';
 import { getAllQuestions } from './reducer';
 
 export const ASSESSMENT_FETCH = 'ASSESSMENT_FETCH';
@@ -22,12 +20,12 @@ export const assessmentSaveFinished = createAction(ASSESSMENT_SAVE_FINISHED);
 export const assessmentUpdateAnswer = createAction(ASSESSMENT_UPDATE_ANSWER);
 
 export const fetchAssessment = (id) => {
-    return (dispatch, getState) => {
-        const level = getSelectedLevel(getState().get('levelEntry'));
-        const reason = getEnteredReason(getState().get('reasonEntry'));
+    return (dispatch) => {
         dispatch(assessmentRequest());
-        return apiPost.post('assessments/create',
-            {"Reason": reason, "PersonId" : id, "LevelId": level}).then(
+        return apiPost.get('assessments/detail', {
+            params: {
+                id
+            }}).then(
             (response) => dispatch(assessmentRequestFinished(
                 response.data || response,
             )),

@@ -22,3 +22,28 @@ export const fetchPeople = () => {
         );
     };
 };
+
+export const getFirstStep = (person) => {
+    return () => {
+        if (person.ExistingDraft !== '') {
+            return {
+                pathname: '/questions',
+                query: {id: person.ExistingDraft}
+            };
+        }
+
+        const step = api.get('/assessments/create', {
+            params: {
+                id: person.id,
+            }
+        });
+
+        return {
+                pathname: '/level',
+                query: {id: step.Id},
+            };
+        }
+}
+
+
+

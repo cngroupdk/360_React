@@ -4,7 +4,6 @@ import Immutable from 'immutable';
 import {
     REQUEST_LEVELS,
     RECEIVE_LEVELS,
-    LEVEL_SAVE,
 } from './actions';
 
 const levelEntry = handleActions({
@@ -33,20 +32,9 @@ const levelEntry = handleActions({
             );
         },
     },
-
-    [LEVEL_SAVE]: (state, action) => {
-        return state.withMutations(newState =>
-            newState
-                .setIn(['level'], action.payload)
-        );
-    },
 }, Immutable.fromJS({
-    level: 'None listed',
     isLoaded: false,
     isError: false,
 }));
-
-export const getSelectedLevel = state =>
-    state.get('level');
 
 export default levelEntry;

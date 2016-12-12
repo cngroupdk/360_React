@@ -15,9 +15,9 @@ export default function createRoutes() {
             <IndexRoute component={HomePage}/>
             <Route path="/people" component={PeoplePage}/>
             <Route path="/self" component={SelfPage}/>
-            <Route path="/level-entry" component={LevelEntryPage}/>
-            <Route path="/reason-entry" component={ReasonEntryPage}/>
-            <Route path="/questions-entry" component={QuestionsEntryPage}/>
+            <Route path="/level" component={LevelEntryPage}/>
+            <Route path="/reason" component={ReasonEntryPage}/>
+            <Route path="/questions" component={QuestionsEntryPage}/>
         </Route>
     );
 }

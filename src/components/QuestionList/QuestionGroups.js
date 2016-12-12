@@ -7,7 +7,7 @@ export default class QuestionGroups extends Component {
     render() {
         const {
             allQuestions,
-            updateAnswerDontSay,
+            updateAnswer,
         } = this.props;
 
         return (
@@ -16,7 +16,7 @@ export default class QuestionGroups extends Component {
                     <QuestionsList
                         key={questionGroup.get('Id')}
                         questionGroup={questionGroup}
-                        updateAnswerDontSay={updateAnswerDontSay}
+                        updateAnswer={updateAnswer}
                     />
                 ))}
             </div>

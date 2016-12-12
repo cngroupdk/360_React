@@ -10,7 +10,8 @@ export default class Question extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showComment: false
+            showComment: false,
+            disableRange: false
         };
         this._handleAddComment = this._handleAddComment.bind(this);
         this._handleOnChangeDontSay = this._handleOnChangeDontSay.bind(this);
@@ -24,6 +25,10 @@ export default class Question extends Component {
     }
 
     _handleOnChangeDontSay(event) {
+        this.setState(() => ({
+            disableRange: !this.state.disableRange
+        }));
+
         this.props.updateAnswerDontSay(
             {
                 'questionId' : this.props.question.get('Id'),
@@ -61,7 +66,7 @@ export default class Question extends Component {
                                defaultChecked={answer.get('DontSay')}/><br/>
                         Cannot or dont want to answer
                     </div>
-                    <div className="slider-container"><Slider/></div>
+                    <div className="slider-container"><Slider disableRange={this.state.disableRange}/></div>
                     <div className="add-button-container">
                         <StyledAddCommentBtn onClick={this._handleAddComment} type="button">
                             {this.state.showComment ? '- Remove a comment' : '+ Add a comment'}

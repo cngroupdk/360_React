@@ -67,7 +67,7 @@ const assessmentReducer = handleActions({
     [ASSESSMENT_UPDATE_SUBMITTED]: (state, action) => {
         const assessment = state.get('assessment');
         const submitted = action.payload;
-        const modifiedAssessment = assessment.setIn('Submitted', submitted);
+        const modifiedAssessment = assessment.setIn(['Submitted'], submitted);
 
         return state.withMutations(newState => {
             newState

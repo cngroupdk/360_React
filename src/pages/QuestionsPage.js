@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 
 import SkillsList from '../components/QuestionList/SkillsList';
 
-import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
-import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
+import { ContentContainer } from '../components/common/assets/styles/ContentContainer';
+import { ContentHeader } from '../components/common/assets/styles/ContentHeader';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
 
 import {    fetchAssessment,
@@ -89,5 +89,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {fetchAssessment, saveAssessment, assessmentUpdateAnswer, assessmentUpdateSubmitted},
+    { fetchAssessment, saveAssessment, assessmentUpdateAnswer, assessmentUpdateSubmitted },
 )(QuestionsPage);

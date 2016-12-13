@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const StyledSlider = styled.div`
     div {
         text-align: center;
+        font-size: 16px;
+        margin-top: 3px;
     }
 
     input[type=range] {
@@ -103,5 +105,9 @@ export const StyledSlider = styled.div`
 
     input[type=range]:focus::-ms-fill-upper {
         background: #ccc;
+    }
+    
+    .light-gray {
+        color: lightGray;
     }
 `;

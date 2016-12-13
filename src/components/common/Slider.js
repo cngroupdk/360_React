@@ -7,7 +7,7 @@ export default class Slider extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 50
+            value: this.props.defaultValue
         };
         this.updateSlider = this.updateSlider.bind(this);
     }

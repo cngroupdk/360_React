@@ -36,7 +36,7 @@ export default class PeopleListPerson extends Component {
         const {
             person,
             getFirstStep,
-            step,
+            isLoadedStep,
         } = this.props;
 
         return (
@@ -67,8 +67,8 @@ export default class PeopleListPerson extends Component {
                     <Redirect
                         isHidden={this.state.isButtonHidden}
                         person={person}
-                        step={step}
-                        getFirstStep={getFirstStep}/>
+                        getFirstStep={getFirstStep}
+                        isLoadedStep={isLoadedStep}/>
                 </TableCell>
             </TableRow>
         );

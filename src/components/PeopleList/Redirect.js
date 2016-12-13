@@ -2,7 +2,6 @@ import React, { Component, PropTypes } from 'react';
 import { StyledLink } from '../common/assets/styles/StyledLink';
 import buttonText from '../common/buttonText';
 
-
 export default class Redirect extends Component {
 
     constructor(props, context) {
@@ -20,9 +19,9 @@ export default class Redirect extends Component {
             getFirstStep,
         } = this.props;
 
-        this.context.router.push(getFirstStep(person));
-
         event.preventDefault();
+
+        getFirstStep(person, this.context.router);
     };
 
     render() {

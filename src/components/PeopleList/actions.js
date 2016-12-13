@@ -23,27 +23,28 @@ export const fetchPeople = () => {
     };
 };
 
-export const getFirstStep = (person) => {
+export const getFirstStep = (person, router) => {
     return () => {
         if (person.ExistingDraft !== '') {
-            return {
+            router.push({
                 pathname: '/questions',
                 query: {id: person.ExistingDraft}
-            };
+            });
+        } else {
+            return api.get('/assessments/create', {
+                params: {
+                    id: person.Id
+                }
+            }).then(
+                (response) => {
+                    router.push({
+                        pathname: '/' + response.data.Step.toLowerCase(),
+                        query: {id: response.data.Id}
+                    })
+                },
+                (error) => console.log(error),
+            );
         }
-
-        const step = api.get('/assessments/create', {
-            params: {
-                id: person.id,
-            }
-        });
-
-        return {
-                pathname: '/level',
-                query: {id: step.Id},
-            };
-        }
-}
-
-
+    };
+};
 

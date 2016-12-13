@@ -49,6 +49,7 @@ const peopleList = handleActions({
         });
     },
 }, Immutable.fromJS({
+    isLoadedStep: true,
     isLoaded: false,
     isError: false,
 }));

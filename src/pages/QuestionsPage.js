@@ -24,12 +24,10 @@ class QuestionsPage extends Component {
     componentDidMount() {
         this.fetchAllData();
         window.addEventListener("beforeunload", this._addPromptMessageToWindow);
-        console.log('mount');
     }
 
     componentWillUnmount() {
         window.removeEventListener('beforeunload', this._addPromptMessageToWindow);
-        console.log('unmount');
     }
 
     _addPromptMessageToWindow(event) {

@@ -1,8 +1,6 @@
 import { createAction } from 'redux-actions';
 import { apiPost } from '../../api';
 
-import { getSelectedLevel } from '../LevelEntry/reducer';
-import { getEnteredReason } from '../ReasonEntry/reducer';
 import { getAssessment } from './reducer';
 
 export const ASSESSMENT_FETCH = 'ASSESSMENT_FETCH';

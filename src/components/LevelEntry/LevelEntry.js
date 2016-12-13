@@ -16,8 +16,6 @@ export default class LevelEntry extends Component {
     }
 
     _handleProfLevelChange(e) {
-        // this.props.getSecondStep();
-
         apiPost.post('/assessments/level', {
             levelId: e,
             id: this.props.location.query.id

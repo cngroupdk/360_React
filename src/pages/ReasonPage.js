@@ -29,7 +29,7 @@ export default class ReasonPage extends Component {
     render() {
         return (
             <ContentContainer>
-                <ContentHeader>Warning! {this.props.location.query.name} is not your co-worker.</ContentHeader>
+                <ContentHeader>Warning! Person is not your co-worker.</ContentHeader>
 
                 <StyledTextArea autoFocus
                                 rows="4"

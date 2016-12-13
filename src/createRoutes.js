@@ -8,6 +8,7 @@ import SelfPage from './pages/SelfPage'
 import LevelEntryPage from './pages/LevelPage'
 import ReasonEntryPage from './pages/ReasonPage'
 import QuestionsEntryPage from './pages/QuestionsPage'
+import NotFoundPage from './pages/NotFoundPage'
 
 export default function createRoutes() {
     return (
@@ -18,6 +19,7 @@ export default function createRoutes() {
             <Route path="/level" component={LevelEntryPage}/>
             <Route path="/reason" component={ReasonEntryPage}/>
             <Route path="/questions" component={QuestionsEntryPage}/>
+            <Route path="*" component={NotFoundPage}/>
         </Route>
     );
 }

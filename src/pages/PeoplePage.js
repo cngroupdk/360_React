@@ -31,7 +31,6 @@ class PeoplePage extends Component {
             people,
             searchPeople,
             getFirstStep,
-            isLoadedStep,
         } = this.props;
 
         return (
@@ -39,7 +38,6 @@ class PeoplePage extends Component {
                 <Tabs/>
                 <Loader loaded={isLoaded}>
                     <PeopleList people={people}
-                                isLoadedStep={isLoadedStep}
                                 searchPeople={searchPeople}
                                 getFirstStep={getFirstStep}
                     />
@@ -54,10 +52,8 @@ function mapStateToProps(state) {
 
     return {
         people: people.get('peopleList'),
-        firstStep: people.get('firstStep'),
         draftId: people.get('draftId'),
         isLoaded: people.get('isLoaded'),
-        isLoadedStep: people.get('isLoadedStep'),
         isError: people.get('isError'),
     };
 }

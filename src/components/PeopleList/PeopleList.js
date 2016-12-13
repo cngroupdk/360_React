@@ -22,7 +22,6 @@ export default class PeopleList extends Component {
         const {
             people,
             getFirstStep,
-            isLoadedStep,
         } = this.props;
 
         return (
@@ -46,7 +45,6 @@ export default class PeopleList extends Component {
                         <PeopleListPerson person={person}
                                           key={index}
                                           getFirstStep={getFirstStep}
-                                          isLoadedStep={isLoadedStep}
                         />
                     )
                 })}

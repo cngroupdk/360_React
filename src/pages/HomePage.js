@@ -6,7 +6,7 @@ import Tabs from '../components/common/Tabs';
 import TaskList from '../components/TaskList/TaskList';
 import HistoryList from '../components/HistoryList/HistoryList';
 import { fetchHistory } from '../components/HistoryList/actions';
-import { fetchTasks, searchTasks } from '../components/TaskList/actions';
+import { fetchTasks, searchTasks, getFirstStep } from '../components/TaskList/actions';
 
 class HomePage extends Component {
 
@@ -35,14 +35,15 @@ class HomePage extends Component {
             taskPeople,
             historyPeople,
             searchTasks,
+            getFirstStep,
         } = this.props;
 
         return (
             <div>
                 <Tabs/>
                 <Loader loaded={isLoadedTasks && isLoadedHistory}>
-                    <TaskList taskPeople={taskPeople} searchTasks={searchTasks}/>
-                    <HistoryList historyPeople={historyPeople}/>
+                    <TaskList taskPeople={taskPeople} searchTasks={searchTasks} getFirstStep={getFirstStep}/>
+                    <HistoryList historyPeople={historyPeople} getFirstStep={getFirstStep}/>
                 </Loader>
             </div>
         )
@@ -64,5 +65,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {fetchHistory, fetchTasks, searchTasks},
+    {fetchHistory, fetchTasks, searchTasks, getFirstStep},
 )(HomePage);

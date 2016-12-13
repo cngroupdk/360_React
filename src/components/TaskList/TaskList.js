@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 
-import { TaskListPerson } from './TaskListPerson';
+import TaskListPerson from './TaskListPerson';
 
 import { ContentContainer} from '../common/assets/styles/ContentContainer';
 import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';
@@ -25,6 +25,7 @@ export default class TaskList extends Component {
     render() {
         const {
             taskPeople,
+            getFirstStep,
         } = this.props;
 
 
@@ -45,7 +46,7 @@ export default class TaskList extends Component {
 
                 {taskPeople.map((person, index) => {
                     return (
-                        <TaskListPerson person={person} key={index}/>
+                        <TaskListPerson person={person} key={index} getFirstStep={getFirstStep}/>
                     )
                 })}
             </ContentContainer>

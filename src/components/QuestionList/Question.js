@@ -15,7 +15,7 @@ export default class Question extends Component {
         const answer = question.get('Answer');
         const note = answer.get('Note') ? answer.get('Note') : '';
         this.state = {
-            showComment: false,
+            showComment: note !== '',
             disableRange: false,
             answerNote: note,
         };
@@ -30,7 +30,7 @@ export default class Question extends Component {
             showComment: !this.state.showComment,
             answerNote: '',
         }));
-        this._handleOnChangeAnswerValue('');
+        this._handleOnChangeNote('');
     }
 
     _handleOnChangeDontSay(event) {
@@ -54,6 +54,10 @@ export default class Question extends Component {
 
     _handleOnChangeNote(event) {
         const newNote = event.target.value;
+        this._updateAnswerNote(newNote);
+    }
+
+    _updateAnswerNote(newNote) {
         this.setState(() => ({
             answerNote: newNote
         }));
@@ -107,6 +111,7 @@ export default class Question extends Component {
                     </div>
                     <div className="slider-container">
                         <Slider
+                            defaultValue={answer.get('AnswerValue')}
                             onChange={this._handleOnChangeAnswerValue}
                             disableRange={this.state.disableRange}/>
                     </div>

@@ -15,16 +15,14 @@ export default class PeopleList extends Component {
     }
 
     _searchOnePerson(e) {
-        const {
-            searchPeople,
-        } = this.props;
-
-        searchPeople(e.target.value);
+        this.props.searchPeople(e.target.value);
     }
 
     render() {
         const {
             people,
+            getFirstStep,
+            isLoadedStep,
         } = this.props;
 
         return (
@@ -47,6 +45,8 @@ export default class PeopleList extends Component {
                     return (
                         <PeopleListPerson person={person}
                                           key={index}
+                                          getFirstStep={getFirstStep}
+                                          isLoadedStep={isLoadedStep}
                         />
                     )
                 })}

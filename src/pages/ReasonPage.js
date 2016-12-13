@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-import { reasonSave } from '../components/ReasonEntry/actions';
+import { apiPost } from '../api';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
 import { StyledTextArea } from '../components/common/assets/styles/StyledTextArea';
 
-class ReasonPage extends Component {
+export default class ReasonPage extends Component {
 
     constructor(props) {
         super(props);
@@ -21,7 +20,10 @@ class ReasonPage extends Component {
             reason: e.target.value
         });
 
-        this.props.reasonSave(e.target.value)
+        apiPost.post('/assessments/reason', {
+            reason: e.target.value,
+            id: this.props.location.query.id
+        });
     }
 
     render() {
@@ -37,24 +39,11 @@ class ReasonPage extends Component {
 
                     <StyledLink disabled={this.state.reason.length < 10}
                                 to={{
-                                    pathname: "/level-entry",
-                                    query: {name: this.props.location.query.name,
-                                            id: this.props.location.query.id}
+                                    pathname: "/level",
+                                    query: {id: this.props.location.query.id}
                                 }}>
                         Proceed further</StyledLink>
             </ContentContainer>
         )
     }
 }
-
-
-function mapStateToProps(state) {
-    return {
-        state: state
-    };
-}
-
-export default connect(
-    mapStateToProps,
-    {reasonSave},
-)(ReasonPage);

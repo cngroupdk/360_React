@@ -24,12 +24,12 @@ export const assessmentUpdateAnswer = createAction(ASSESSMENT_UPDATE_ANSWER);
 export const assessmentUpdateSubmitted = createAction(ASSESSMENT_UPDATE_SUBMITTED);
 
 export const fetchAssessment = (id) => {
-    return (dispatch, getState) => {
-        const level = getSelectedLevel(getState().get('levelEntry'));
-        const reason = getEnteredReason(getState().get('reasonEntry'));
+    return (dispatch) => {
         dispatch(assessmentRequest());
-        return apiPost.post('assessments/create',
-            {"Reason": reason, "PersonId" : id, "LevelId": level}).then(
+        return apiPost.get('assessments/detail', {
+            params: {
+                id
+            }}).then(
             (response) => dispatch(assessmentRequestFinished(
                 response.data || response,
             )),

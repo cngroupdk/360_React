@@ -3,7 +3,7 @@ import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
 import LevelEntry from '../components/LevelEntry/LevelEntry';
-import { fetchLevels, levelSave } from '../components/LevelEntry/actions';
+import { fetchLevels, getSecondStep } from '../components/LevelEntry/actions';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
@@ -23,8 +23,8 @@ class LevelPage extends Component {
         const {
             levels,
             isLoaded,
-            levelSave,
-            location
+            location,
+            getSecondStep,
         } = this.props;
 
         return (
@@ -32,7 +32,7 @@ class LevelPage extends Component {
                 <ContentHeader> Please, choose the proficiency level
                     for {this.props.location.query.name}</ContentHeader>
                 <Loader loaded={isLoaded}>
-                    <LevelEntry levelSave={levelSave} levels={levels} location={location}/>
+                    <LevelEntry levels={levels} location={location} getSecondStep={getSecondStep}/>
                 </Loader>
 
             </ContentContainer>
@@ -52,5 +52,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {fetchLevels, levelSave},
+    {fetchLevels, getSecondStep},
 )(LevelPage);

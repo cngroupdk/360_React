@@ -3,7 +3,7 @@ import LazyLoad from 'react-lazyload';
 
 import monthRender from '../common/monthRender';
 import getPhotoUrl from '../common/getPhotoUrl';
-import RedirectIfColleague from './RedirectIfColleague';
+import Redirect from './Redirect';
 
 
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
@@ -35,6 +35,8 @@ export default class PeopleListPerson extends Component {
     render() {
         const {
             person,
+            getFirstStep,
+            isLoadedStep,
         } = this.props;
 
         return (
@@ -62,9 +64,11 @@ export default class PeopleListPerson extends Component {
                     <CenteredContent>None listed</CenteredContent>
                 </TableCell>
                 <TableCell fluid sm={2}>
-                    <RedirectIfColleague
+                    <Redirect
                         isHidden={this.state.isButtonHidden}
-                        person={person}/>
+                        person={person}
+                        getFirstStep={getFirstStep}
+                        isLoadedStep={isLoadedStep}/>
                 </TableCell>
             </TableRow>
         );

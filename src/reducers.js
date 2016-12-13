@@ -15,7 +15,6 @@ const rootReducer = combineReducers({
   taskList,
   self,
   selfList,
-  reasonEntry,
   levelEntry,
   assessmentReducer,
 });

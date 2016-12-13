@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import { StyledSlider } from './assets/styles/QuestionsPage/StyledSlider.js'
+import { StyledSlider } from './assets/styles/StyledSlider.js'
 
 export default class Slider extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             value: 50
         };
@@ -19,10 +19,14 @@ export default class Slider extends Component {
     }
 
     render() {
+        const { disableRange } = this.props;
+
         return (
             <StyledSlider>
-                <input type='range' name='value' min='0' max='100' onChange={this.updateSlider}/>
-                <div>{this.state.value}</div>
+                <input type='range' name='value' min='0' max='100'
+                       onChange={this.updateSlider}
+                       disabled={disableRange}/>
+                <div>{disableRange ? '' : this.state.value}</div>
             </StyledSlider>
         );
     }

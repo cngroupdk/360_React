@@ -10,9 +10,12 @@ export default class Question extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            showComment: false
+            showComment: false,
+            disableRange: false
         };
         this._handleAddComment = this._handleAddComment.bind(this);
+        this._handleOnChangeDontSay = this._handleOnChangeDontSay.bind(this);
+        this._handleOnChangeComment = this._handleOnChangeComment.bind(this);
     }
 
     _handleAddComment() {
@@ -21,20 +24,48 @@ export default class Question extends Component {
         }));
     }
 
-    render() {
+    _handleOnChangeDontSay(event) {
+        this.setState(() => ({
+            disableRange: !this.state.disableRange
+        }));
+
+        this.props.updateAnswer(
+            {
+                'questionId' : this.props.question.get('Id'),
+                'questionGroupId': this.props.questionGroupId,
+                'dontSay' : event.target.checked
+            }
+        );
+    }
+
+    _handleOnChangeComment(event) {
         const {
-            question
+            question,
         } = this.props;
+        const answer = question.get('Answer');
+        const id = answer.get('Id');
+
+        this.props.updateAnswer({
+            id,
+            comment: event.target.value
+        });
+    }
+
+    render() {
+        const { question } = this.props;
+        const answer = question.get('Answer');
 
         return (
             <QuestionContainer>
                 <h4>{question.Caption}</h4>
                 <div className="components-container">
                     <div className="checkbox-container">
-                        <input type="checkbox" name="question1" value="false" /><br/>
+                        <input type="checkbox" name={answer.get('Id')} value="false"
+                               onChange={this._handleOnChangeDontSay}
+                               defaultChecked={answer.get('DontSay')}/><br/>
                         Cannot or dont want to answer
                     </div>
-                    <div className="slider-container"><Slider/></div>
+                    <div className="slider-container"><Slider disableRange={this.state.disableRange}/></div>
                     <div className="add-button-container">
                         <StyledAddCommentBtn onClick={this._handleAddComment} type="button">
                             {this.state.showComment ? '- Remove a comment' : '+ Add a comment'}
@@ -43,7 +74,7 @@ export default class Question extends Component {
                 </div>
                 <div className="clear">&nbsp;</div>
                 <div className={this.state.showComment ? '' : 'hidden'}>
-                    <CommentBox/>
+                    <CommentBox onChange={this._handleOnChangeComment} />
                 </div>
             </QuestionContainer>
         );

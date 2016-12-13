@@ -3,26 +3,53 @@ import { apiPost } from '../../api';
 
 import { getSelectedLevel } from '../LevelEntry/reducer';
 import { getEnteredReason } from '../ReasonEntry/reducer';
+import { getAllQuestions } from './reducer';
 
-export const REQUEST_QUESTIONS = 'REQUEST_QUESTIONS';
-export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS';
+export const ASSESSMENT_FETCH = 'ASSESSMENT_FETCH';
+export const ASSESSMENT_FETCH_FINISHED = 'ASSESSMENT_FETCH_FINISHED';
 
-export const requestQuestions = createAction(REQUEST_QUESTIONS);
-export const receiveQuestions = createAction(RECEIVE_QUESTIONS);
+export const ASSESSMENT_SAVE = 'ASSESSMENT_SAVE';
+export const ASSESSMENT_SAVE_FINISHED = 'ASSESSMENT_SAVE_FINISHED';
 
-export const fetchQuestions = (id) => {
+export const ASSESSMENT_UPDATE_ANSWER = 'ASSESSMENT_UPDATE_ANSWER';
+
+export const assessmentRequest = createAction(ASSESSMENT_FETCH);
+export const assessmentRequestFinished = createAction(ASSESSMENT_FETCH_FINISHED);
+
+export const assessmentSave = createAction(ASSESSMENT_SAVE);
+export const assessmentSaveFinished = createAction(ASSESSMENT_SAVE_FINISHED);
+
+export const assessmentUpdateAnswer = createAction(ASSESSMENT_UPDATE_ANSWER);
+
+export const fetchAssessment = (id) => {
     return (dispatch, getState) => {
         const level = getSelectedLevel(getState().get('levelEntry'));
         const reason = getEnteredReason(getState().get('reasonEntry'));
-        dispatch(requestQuestions());
-        return apiPost.post('assessments/save',
+        dispatch(assessmentRequest());
+        return apiPost.post('assessments/create',
             {"Reason": reason, "PersonId" : id, "LevelId": level}).then(
-            (response) => dispatch(receiveQuestions(
+            (response) => dispatch(assessmentRequestFinished(
                 response.data || response,
             )),
-            (error) => dispatch(receiveQuestions(
+            (error) => dispatch(assessmentRequestFinished(
                 error,
             ))
         );
     };
+};
+
+export const saveAssessment = () => {
+    return (dispatch, getState) => {
+        const assessment = getAllQuestions(getState().get('questionsList')).toJS();
+        dispatch(assessmentSave());
+        return apiPost.post('assessments/save',
+            assessment).then(
+            (response) => dispatch(assessmentSaveFinished(
+                response.data || response,
+            )),
+            (error) => dispatch(assessmentSaveFinished(
+                error,
+            ))
+        );
+    }
 };

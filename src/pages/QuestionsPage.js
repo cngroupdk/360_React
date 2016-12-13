@@ -23,6 +23,23 @@ class QuestionsPage extends Component {
 
     componentDidMount() {
         this.fetchAllData();
+        window.addEventListener("beforeunload", this._addPromptMessageToWindow);
+        console.log('mount');
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('beforeunload', this._addPromptMessageToWindow);
+        console.log('unmount');
+    }
+
+    _addPromptMessageToWindow(event) {
+        if(!event) event = window.event;
+        event.preventDefault();
+        const message = "Are you sure you want to leave this page? Changes that you made will be lost.";
+        if (event) {
+            event.returnValue = message;
+        }
+        return message;
     }
 
     fetchAllData() {

@@ -5,9 +5,10 @@ import {
     ASSESSMENT_FETCH,
     ASSESSMENT_FETCH_FINISHED,
     ASSESSMENT_UPDATE_ANSWER,
+    ASSESSMENT_UPDATE_SUBMITTED,
 } from './actions';
 
-const questionsList = handleActions({
+const assessmentReducer = handleActions({
     [ASSESSMENT_FETCH]: (state) => {
         return state.withMutations(newState =>
             newState
@@ -22,7 +23,7 @@ const questionsList = handleActions({
                 newState
                     .setIn(['isError'], false)
                     .setIn(['isLoaded'], true)
-                    .setIn(['questionsList'], Immutable.fromJS(action.payload))
+                    .setIn(['assessment'], Immutable.fromJS(action.payload))
             );
         },
         throw(state) {
@@ -34,20 +35,21 @@ const questionsList = handleActions({
     },
 
     [ASSESSMENT_UPDATE_ANSWER]: (state, action) => {
-        const questionGroupId = action.payload.questionGroupId;
+        const skillId = action.payload.skillId;
         const questionId = action.payload.questionId;
-        const dontSay = action.payload.dontSay;
+        const answerProperty = action.payload.answerProperty;
+        const propertyValue = action.payload.propertyValue;
 
-        const questionsList = state.get('questionsList');
+        const assessment = state.get('assessment');
 
-        const modifiedQuestionsList =
-            questionsList.updateIn(['Skills'], skills =>
+        const modifiedAssessment =
+            assessment.updateIn(['Skills'], skills =>
                 skills.map(skill => {
-                    if (skill.get('Id') === questionGroupId) {
+                    if (skill.get('Id') === skillId) {
                         return skill.updateIn(['Questions'], questions =>
                             questions.map(question =>  {
                                 if (question.get('Id') === questionId) {
-                                    return question.setIn(['Answer', 'DontSay'], dontSay);
+                                    return question.setIn(['Answer', answerProperty], propertyValue);
                                 }
                                 return question;
                             })
@@ -58,16 +60,27 @@ const questionsList = handleActions({
 
         return state.withMutations(newState => {
             newState
-                .setIn(['questionsList'], modifiedQuestionsList);
+                .setIn(['assessment'], modifiedAssessment);
         });
     },
+
+    [ASSESSMENT_UPDATE_SUBMITTED]: (state, action) => {
+        const assessment = state.get('assessment');
+        const submitted = action.payload;
+        const modifiedAssessment = assessment.setIn('Submitted', submitted);
+
+        return state.withMutations(newState => {
+            newState
+                .setIn(['assessment'], modifiedAssessment);
+        });
+    }
 
 }, Immutable.fromJS({
     isLoaded: false,
     isError: false,
 }));
 
-export const getAllQuestions = state =>
-    state.get('questionsList');
+export const getAssessment = state =>
+    state.get('assessment');
 
-export default questionsList;
+export default assessmentReducer;

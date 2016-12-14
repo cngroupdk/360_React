@@ -3,7 +3,7 @@ import LazyLoad from 'react-lazyload';
 
 import monthRender from '../common/monthRender';
 import getPhotoUrl from '../common/getPhotoUrl';
-import RedirectButton from '../common/RedirectButton';
+import RedirectButtonHistory from './RedirectButtonHistory';
 
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
@@ -11,10 +11,20 @@ import { StyledProfileInitial } from '../common/assets/styles/StyledProfileIniti
 import { CenteredContent } from '../common/assets/styles/CenteredContent';
 
 export default class HistoryListPerson extends Component {
+
+    _CheckIfDraft(person) {
+        if (person.ExistingDraft !== '') {
+            return <RedirectButtonHistory person={person}/>
+        } else{
+            return  <CenteredContent>
+                        {person.LastSubmitted.slice(0, person.LastSubmitted.indexOf('T'))}
+                    </CenteredContent>
+        }
+    }
+
     render() {
         const {
-            person,
-            getFirstStep,
+            person
         } = this.props;
 
         return (
@@ -33,9 +43,7 @@ export default class HistoryListPerson extends Component {
                 <TableCell fluid sm={2}><CenteredContent>{person.Position}</CenteredContent></TableCell>
                 <TableCell fluid sm={2}><CenteredContent>{monthRender(person.AssessmentMonth)}</CenteredContent></TableCell>
                 <TableCell fluid sm={3}>
-                    <RedirectButton
-                        person={person}
-                        getFirstStep={getFirstStep}/></TableCell>
+                    {this._CheckIfDraft(person)}</TableCell>
             </TableRow>
         );
     }

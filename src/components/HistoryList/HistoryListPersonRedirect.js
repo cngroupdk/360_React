@@ -10,7 +10,7 @@ export default class Redirect extends Component {
         } = this.props;
 
         return (
-            <StyledLink data-xyAlign onClick={this.gotoNextLinkPath} to={{
+            <StyledLink data-vertical-align onClick={this.gotoNextLinkPath} to={{
                 pathname: '/questions',
                 query: {id: person.ExistingDraft}
             }}>

@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
 import LazyLoad from 'react-lazyload';
+import dateFormat from 'dateformat';
 
 import monthRender from '../common/monthRender';
 import getPhotoUrl from '../common/getPhotoUrl';
@@ -17,7 +18,7 @@ export default class HistoryListPerson extends Component {
             return <RedirectButtonHistory person={person}/>
         } else{
             return  <CenteredContent>
-                        {person.LastSubmitted.slice(0, person.LastSubmitted.indexOf('T'))}
+                {dateFormat(person.LastSubmitted, "dd mmmm yyyy")}
                     </CenteredContent>
         }
     }

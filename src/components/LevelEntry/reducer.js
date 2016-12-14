@@ -50,7 +50,7 @@ const levelEntry = handleActions({
         },
     },
 }, Immutable.fromJS({
-    nextStep: '',
+    nextStep: 'default',
     isLoaded: false,
     isError: false,
 }));

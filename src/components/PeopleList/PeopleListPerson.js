@@ -1,20 +1,16 @@
 import React, { Component }  from 'react';
 import LazyLoad from 'react-lazyload';
+import FontAwesome from 'react-fa';
 
 import monthRender from '../common/monthRender';
 import getPhotoUrl from '../common/getPhotoUrl';
-import getIsColleagueIcon from '../common/getIsColleagueIcon';
-import getAssMonthIcon from '../common/getAssMonthIcon';
+import { isAssessmentInMonth } from '../common/isAssessmentInMonth';
 import RedirectIfColleague from './RedirectIfColleague';
-
 
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
 import { CenteredContent } from '../common/assets/styles/CenteredContent';
 import { StyledProfileInitial } from '../common/assets/styles/StyledProfileInitial';
-import { StyledIcon } from '../common/assets/styles/StyledIcon';
-
-
 
 export default class PeopleListPerson extends Component {
 
@@ -73,8 +69,12 @@ export default class PeopleListPerson extends Component {
                 </TableCell>
                 <TableCell fluid sm={0.5}>
                     <CenteredContent>
-                        <StyledIcon type={getIsColleagueIcon(person.Colleague)}/>
-                        <StyledIcon type={getAssMonthIcon(person.AssessmentMonth)}/>
+                        <FontAwesome
+                            className="colleague-icon"
+                            name={person.Colleague ? 'smile-o' : ''}/>
+                        <FontAwesome
+                            className="assessment-in-month-icon"
+                            name={isAssessmentInMonth(person.AssessmentMonth) ? 'clock-o' : ''}/>
                     </CenteredContent>
                 </TableCell>
             </TableRow>

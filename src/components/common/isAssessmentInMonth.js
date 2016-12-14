@@ -16,4 +16,9 @@ const getAssMonthIcon = (AssessmentMonth) => {
     }
 };
 
-export default getAssMonthIcon;
+export const isAssessmentInMonth = (assessmentMonth) => {
+    const diff = assessmentMonth - currentMonth;
+    return diff == 1 || diff == 0;
+};
+
+

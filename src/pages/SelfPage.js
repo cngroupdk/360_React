@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import { fetchSelfList } from '../components/SelfList/actions';
+import { fetchSelfList, createSelfAssessment } from '../components/SelfList/actions';
 import SelfList from '../components/SelfList/SelfList';
 import Tabs from '../components/common/Tabs';
 
@@ -11,6 +11,7 @@ class SelfPage extends Component {
         isLoaded: PropTypes.bool,
         isError: PropTypes.bool,
         fetchSelfList: PropTypes.func.isRequired,
+        createSelfAssessment: PropTypes.func.isRequired,
         selfList: PropTypes.array,
     };
 
@@ -26,13 +27,14 @@ class SelfPage extends Component {
         const {
             isLoaded,
             selfList,
+            createSelfAssessment,
         } = this.props;
 
         return (
             <div>
                 <Tabs/>
                 <Loader loaded={isLoaded}>
-                    <SelfList selfList={selfList}/>
+                    <SelfList selfList={selfList} createSelfAssessment={createSelfAssessment}/>
                 </Loader>
             </div>
         )
@@ -51,5 +53,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {fetchSelfList}
+    { fetchSelfList, createSelfAssessment }
 )(SelfPage);

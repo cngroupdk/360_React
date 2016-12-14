@@ -36,4 +36,7 @@ const self = handleActions({
   isError: false,
 }));
 
+export const getSelf = state =>
+    state.get('self');
+
 export default self;

@@ -1,16 +1,23 @@
 import React from 'react';
+import dateFormat from 'dateformat';
 
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledLink } from '../common/assets/styles/StyledLink';
 import { CenteredContent } from '../common/assets/styles/CenteredContent';
 
-export const SelfListRow = ({person}) => (
+export const SelfListRow = ({assessment}) => (
     <TableRow>
-        <TableCell fluid sm={3}><CenteredContent>{person.PersonName}</CenteredContent></TableCell>
-        <TableCell fluid sm={3}><CenteredContent>{person.Department}</CenteredContent></TableCell>
-        <TableCell fluid sm={3}><CenteredContent>{person.JobCategory}</CenteredContent></TableCell>
+        <TableCell fluid sm={3}><CenteredContent>{assessment.Name}</CenteredContent></TableCell>
+        <TableCell fluid sm={3}><CenteredContent>{assessment.Department}</CenteredContent></TableCell>
+        <TableCell fluid sm={3}><CenteredContent>{assessment.Position}</CenteredContent></TableCell>
         <TableCell fluid sm={3}>
-            <StyledLink data-vertical-align to={{pathname: '/level-entry', query: { name: 'yourself'}}}>Edit draft</StyledLink>
+            <CenteredContent>{dateFormat(assessment.LastSubmitted, "dd mmmm yyyy")}</CenteredContent>
+            <StyledLink
+                hidden={!assessment.ExistingDraft}
+                data-vertical-align
+                to={'/questions?id=' + assessment.ExistingDraft}>
+                    Edit draft
+            </StyledLink>
         </TableCell>
     </TableRow>
 );

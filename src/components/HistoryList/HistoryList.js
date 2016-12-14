@@ -10,7 +10,6 @@ export default class HistoryList extends Component {
     render() {
         const {
             historyPeople,
-            getFirstStep,
         } = this.props;
 
         return (
@@ -28,7 +27,7 @@ export default class HistoryList extends Component {
 
                 {historyPeople.map((person, index) => {
                     return (
-                        <HistoryListPerson person={person} key={index} getFirstStep={getFirstStep}/>
+                        <HistoryListPerson person={person} key={index}/>
                     )
                 })}
             </ContentContainer>

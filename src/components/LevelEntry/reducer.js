@@ -5,6 +5,7 @@ import {
     REQUEST_LEVELS,
     RECEIVE_LEVELS,
     RECEIVE_STEP,
+    RECEIVE_PERSON,
 } from './actions';
 
 const levelEntry = handleActions({
@@ -49,7 +50,24 @@ const levelEntry = handleActions({
             );
         },
     },
+
+    [RECEIVE_PERSON]: {
+        next(state, action) {
+            return state.withMutations(newState => {
+                newState
+                    .setIn(['isError'], false)
+                    .setIn(['person'], action.payload)
+            });
+        },
+        throw(state) {
+            return state.withMutations(newState =>
+                newState
+                    .setIn(['isError'], true)
+            );
+        },
+    },
 }, Immutable.fromJS({
+    person: 'Person',
     nextStep: 'default',
     isLoaded: false,
     isError: false,

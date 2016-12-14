@@ -3,6 +3,7 @@ import Immutable from 'immutable';
 
 import {
     RECEIVE_STEP,
+    RECEIVE_PERSON,
 } from './actions';
 
 const reasonEntry = handleActions({
@@ -21,7 +22,24 @@ const reasonEntry = handleActions({
             );
         },
     },
+
+    [RECEIVE_PERSON]: {
+        next(state, action) {
+            return state.withMutations(newState => {
+                newState
+                    .setIn(['isError'], false)
+                    .setIn(['person'], action.payload)
+            });
+        },
+        throw(state) {
+            return state.withMutations(newState =>
+                newState
+                    .setIn(['isError'], true)
+            );
+        },
+    },
 }, Immutable.fromJS({
+    person: 'Person',
     nextStep: '',
     isLoaded: false,
     isError: false,

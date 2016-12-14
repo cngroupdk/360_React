@@ -5,11 +5,10 @@ import monthRender from '../common/monthRender';
 import getPhotoUrl from '../common/getPhotoUrl';
 import RedirectButton from '../common/RedirectButton';
 
-
+import { CenteredContent } from '../common/assets/styles/CenteredContent';
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
-import { CenteredContent } from '../common/assets/styles/CenteredContent';
-import { StyledProfileInitial } from '../common/assets/styles/StyledProfileInitial'
+import { StyledProfileInitial } from '../common/assets/styles/StyledProfileInitial';
 
 export default class PeopleListPerson extends Component {
 

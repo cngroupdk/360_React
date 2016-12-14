@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
+import getPhotoUrl from '../components/common/getPhotoUrl';
+
 import SkillsList from '../components/QuestionList/SkillsList';
 
 import { ContentContainer } from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader } from '../components/common/assets/styles/ContentHeader';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
+import { StyledProfilePhoto } from '../components/common/assets/styles/StyledProfilePhoto';
+import { StyledProfileInitial } from '../components/common/assets/styles/StyledProfileInitial';
 
 import {    fetchAssessment,
             saveAssessment,
             assessmentUpdateAnswer,
-            assessmentUpdateSubmitted
+            assessmentUpdateSubmitted,
+            whoIs
         } from '../components/QuestionList/actions';
 
 class QuestionsPage extends Component {
@@ -42,6 +47,7 @@ class QuestionsPage extends Component {
 
     fetchAllData() {
         this.props.fetchAssessment(this.props.location.query.id);
+        this.props.whoIs(this.props.location.query.id);
     }
 
     _handleSaveAsDraft() {
@@ -58,13 +64,20 @@ class QuestionsPage extends Component {
             assessment,
             assessmentUpdateAnswer,
             isLoaded,
+            person,
         } = this.props;
 
         return (
             <Loader loaded={isLoaded}>
                 <ContentContainer>
 
-                    <ContentHeader> Please, answer questions </ContentHeader>
+                    <ContentHeader>
+                        Please, answer questions about {person.Name}
+                        &nbsp;
+                        <StyledProfileInitial>
+                            <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
+                        </StyledProfileInitial>
+                    </ContentHeader>
 
                     <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
 
@@ -82,6 +95,7 @@ function mapStateToProps(state) {
 
     return {
         assessment: assessmentReducer.get('assessment'),
+        person: assessmentReducer.get('person'),
         isLoaded: assessmentReducer.get('isLoaded'),
         isError: assessmentReducer.get('isError'),
     };
@@ -89,5 +103,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    { fetchAssessment, saveAssessment, assessmentUpdateAnswer, assessmentUpdateSubmitted },
+    { fetchAssessment, saveAssessment, assessmentUpdateAnswer, assessmentUpdateSubmitted, whoIs},
 )(QuestionsPage);

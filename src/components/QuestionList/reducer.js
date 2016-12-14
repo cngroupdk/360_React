@@ -6,6 +6,7 @@ import {
     ASSESSMENT_FETCH_FINISHED,
     ASSESSMENT_UPDATE_ANSWER,
     ASSESSMENT_UPDATE_SUBMITTED,
+    RECEIVE_PERSON,
 } from './actions';
 
 const assessmentReducer = handleActions({
@@ -73,9 +74,26 @@ const assessmentReducer = handleActions({
             newState
                 .setIn(['assessment'], modifiedAssessment);
         });
-    }
+    },
+
+    [RECEIVE_PERSON]: {
+        next(state, action) {
+            return state.withMutations(newState => {
+                newState
+                    .setIn(['isError'], false)
+                    .setIn(['person'], action.payload)
+            });
+        },
+        throw(state) {
+            return state.withMutations(newState =>
+                newState
+                    .setIn(['isError'], true)
+            );
+        },
+    },
 
 }, Immutable.fromJS({
+    person: 'Person',
     isLoaded: false,
     isError: false,
 }));

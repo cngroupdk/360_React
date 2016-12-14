@@ -20,7 +20,8 @@
     "redux-actions": "^0.13.0",
     "redux-immutable": "^3.0.8",
     "redux-thunk": "^2.1.0",
-    "styled-components": "^1.0.10"
+    "styled-components": "^1.0.10",
+    "dateformat": "^1.0.12"
   },
   "scripts": {
     "start": "react-scripts start",

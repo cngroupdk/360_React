@@ -9,16 +9,20 @@ import { StyledAddCommentBtn } from '../common/assets/styles/QuestionsPage/Style
 export default class Question extends Component {
     constructor(props) {
         super(props);
+
         const {
             question,
         } = this.props;
+
         const answer = question.get('Answer');
         const note = answer.get('Note') ? answer.get('Note') : '';
+        const dontSay = answer.get('DontSay');
         this.state = {
             showComment: note !== '',
-            disableRange: false,
+            disableRange: dontSay,
             answerNote: note,
         };
+
         this._handleAddRemoveComment = this._handleAddRemoveComment.bind(this);
         this._handleOnChangeDontSay = this._handleOnChangeDontSay.bind(this);
         this._handleOnChangeNote = this._handleOnChangeNote.bind(this);
@@ -30,26 +34,17 @@ export default class Question extends Component {
             showComment: !this.state.showComment,
             answerNote: '',
         }));
-        this._handleOnChangeNote('');
+        this._updateAnswerNote('');
     }
 
     _handleOnChangeDontSay(event) {
-        const {
-            question,
-            skillId,
-        } = this.props;
+        const newDontSay = event.target.checked;
+
         this.setState(() => ({
-            disableRange: !this.state.disableRange,
+            disableRange: newDontSay,
         }));
 
-        this.props.updateAnswer(
-            {
-                'skillId': skillId,
-                'questionId': question.get('Id'),
-                'answerProperty': 'DontSay',
-                'propertyValue': event.target.checked,
-            }
-        );
+        this._updateAnswer('DontSay', newDontSay);
     }
 
     _handleOnChangeNote(event) {
@@ -62,31 +57,25 @@ export default class Question extends Component {
             answerNote: newNote
         }));
 
-        const {
-            question,
-            skillId,
-        } = this.props;
-
-        this.props.updateAnswer(
-            {
-                'skillId': skillId,
-                'questionId' : question.get('Id'),
-                'answerProperty': 'Note',
-                'propertyValue': newNote,
-            }
-        );
+        this._updateAnswer('Note', newNote);
     }
 
     _handleOnChangeAnswerValue(newValue) {
+        this._updateAnswer('AnswerValue', newValue);
+    }
+
+    _updateAnswer(property, newValue) {
         const {
             question,
             skillId,
+            updateAnswer,
         } = this.props;
-        this.props.updateAnswer(
+
+        updateAnswer(
             {
                 'skillId': skillId,
                 'questionId' : question.get('Id'),
-                'answerProperty': 'AnswerValue',
+                'answerProperty': property,
                 'propertyValue': newValue,
             }
         );
@@ -111,7 +100,7 @@ export default class Question extends Component {
                     </div>
                     <div className="slider-container">
                         <Slider
-                            defaultValue={answer.get('AnswerValue')}
+                            value={answer.get('AnswerValue')}
                             onChange={this._handleOnChangeAnswerValue}
                             disableRange={this.state.disableRange}/>
                     </div>

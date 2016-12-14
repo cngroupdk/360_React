@@ -26,7 +26,7 @@ export const StyledLink = styled(Link)`
         'left: 50%; ' +
         'transform: translate(-50%, -50%)' : '' };
         
-    ${ props => props[`data-margin-rigth-30`] ? 'margin-right: 30px' : '' };
+    ${ props => props[`data-margin-right-30`] ? 'margin-right: 30px' : '' };
     
     background-color: ${props => props.disabled ? '#a1a1a1' : '#ed1848'};
     

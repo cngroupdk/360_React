@@ -7,9 +7,9 @@ import {
     ASSESSMENT_UPDATE_ANSWER,
     ASSESSMENT_UPDATE_SUBMITTED,
     RECEIVE_PERSON,
-} from './actions';
+} from './AssessmentPageActions';
 
-const assessmentReducer = handleActions({
+const assessmentPageReducer = handleActions({
     [ASSESSMENT_FETCH]: (state) => {
         return state.withMutations(newState =>
             newState
@@ -101,4 +101,4 @@ const assessmentReducer = handleActions({
 export const getAssessment = state =>
     state.get('assessment');
 
-export default assessmentReducer;
+export default assessmentPageReducer;

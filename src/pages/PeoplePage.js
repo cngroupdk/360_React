@@ -4,10 +4,14 @@ import { connect } from 'react-redux';
 
 import Tabs from '../components/common/Tabs'
 import PeopleList from '../components/PeopleList/PeopleList';
-import { fetchPeople, searchPeople, getFirstStep } from '../components/PeopleList/actions';
+
+import {
+    fetchPeople,
+    searchPeople,
+    getFirstStep,
+} from '../components/PeopleList/PeoplePageActions';
 
 class PeoplePage extends Component {
-
     static propTypes = {
         isLoaded: PropTypes.bool,
         isError: PropTypes.bool,
@@ -15,6 +19,7 @@ class PeoplePage extends Component {
         searchPeople: PropTypes.func.isRequired,
         getFirstStep: PropTypes.func.isRequired,
         people: PropTypes.array,
+        draftId: PropTypes.string,
     };
 
     componentDidMount() {
@@ -48,13 +53,13 @@ class PeoplePage extends Component {
 }
 
 function mapStateToProps(state) {
-    const people = state.get('peopleList');
+    const peoplePageReducerState = state.get('peoplePageReducer');
 
     return {
-        people: people.get('peopleList'),
-        draftId: people.get('draftId'),
-        isLoaded: people.get('isLoaded'),
-        isError: people.get('isError'),
+        people: peoplePageReducerState.get('peopleList'),
+        draftId: peoplePageReducerState.get('draftId'),
+        isLoaded: peoplePageReducerState.get('isLoaded'),
+        isError: peoplePageReducerState.get('isError'),
     };
 }
 

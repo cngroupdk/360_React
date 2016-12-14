@@ -4,9 +4,9 @@ import Immutable from 'immutable';
 import {
     REQUEST_HISTORY,
     RECEIVE_HISTORY,
-} from './actions';
+} from './HistoryPageActions';
 
-const historyList = handleActions({
+const historyPageReducer = handleActions({
   [REQUEST_HISTORY]: (state) => {
     return state.withMutations(newState =>
         newState
@@ -36,4 +36,4 @@ const historyList = handleActions({
   isError: false,
 }));
 
-export default historyList;
+export default historyPageReducer;

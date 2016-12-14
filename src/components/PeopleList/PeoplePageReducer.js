@@ -5,9 +5,9 @@ import {
     REQUEST_PEOPLE,
     RECEIVE_PEOPLE,
     SEARCH_PEOPLE,
-} from './actions';
+} from './PeoplePageActions';
 
-const peopleList = handleActions({
+const peoplePageReducer = handleActions({
     [REQUEST_PEOPLE]: (state) => {
         return state.withMutations(newState =>
             newState
@@ -54,4 +54,4 @@ const peopleList = handleActions({
     isError: false,
 }));
 
-export default peopleList;
+export default peoplePageReducer;

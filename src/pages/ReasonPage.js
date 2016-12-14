@@ -1,10 +1,17 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
 import ReasonEntry from '../components/ReasonEntry/ReasonEntry'
-import { sendReason, whoIs } from '../components/ReasonEntry/actions';
+import { sendReason, whoIs } from '../components/ReasonEntry/ReasonPageActions';
 
 class ReasonPage extends Component {
+    static propTypes = {
+        isError: PropTypes.bool,
+        sendReason: PropTypes.func.isRequired,
+        whoIs: PropTypes.func.isRequired,
+        nextStep: PropTypes.string,
+    };
+
     componentDidMount() {
         this._fetchAllData();
     }
@@ -21,18 +28,23 @@ class ReasonPage extends Component {
         } = this.props;
 
         return (
-            <ReasonEntry person={person} sendReason={sendReason} nextStep={nextStep} assessmentId={this.props.location.query.id}/>
+            <ReasonEntry
+                person={person}
+                sendReason={sendReason}
+                nextStep={nextStep}
+                assessmentId={this.props.location.query.id}
+            />
         )
     }
 }
 
 function mapStateToProps(state) {
-    const nextStep = state.get('reasonEntry');
+    const reasonPageReducerState = state.get('reasonPageReducer');
 
     return {
-        person: nextStep.get('person'),
-        nextStep: nextStep.get('nextStep'),
-        isError: nextStep.get('isError'),
+        person: reasonPageReducerState.get('person'),
+        nextStep: reasonPageReducerState.get('nextStep'),
+        isError: reasonPageReducerState.get('isError'),
     };
 }
 

@@ -5,25 +5,32 @@ import { connect } from 'react-redux';
 import Tabs from '../components/common/Tabs';
 import TaskList from '../components/TaskList/TaskList';
 import HistoryList from '../components/HistoryList/HistoryList';
-import { fetchHistory } from '../components/HistoryList/actions';
-import { fetchTasks, searchTasks, getFirstStep } from '../components/TaskList/actions';
+
+import { fetchHistory } from '../components/HistoryList/HistoryPageActions';
+import {
+    fetchTasks,
+    searchTasks,
+    getFirstStep,
+} from '../components/TaskList/TaskPageActions';
 
 class HomePage extends Component {
-
     static propTypes = {
-        isLoaded: PropTypes.bool,
+        isLoadedTasks: PropTypes.bool,
+        isLoadedHistory: PropTypes.bool,
         isError: PropTypes.bool,
         fetchHistory: PropTypes.func.isRequired,
         fetchTasks: PropTypes.func.isRequired,
+        searchTasks: PropTypes.func.isRequired,
+        getFirstStep: PropTypes.func.isRequired,
         taskPeople: PropTypes.array,
         historyPeople: PropTypes.array,
     };
 
     componentDidMount() {
-        this.fetchAllData();
+        this._fetchAllData();
     };
 
-    fetchAllData() {
+    _fetchAllData() {
         this.props.fetchHistory();
         this.props.fetchTasks();
     };
@@ -42,7 +49,11 @@ class HomePage extends Component {
             <div>
                 <Tabs/>
                 <Loader loaded={isLoadedTasks && isLoadedHistory}>
-                    <TaskList taskPeople={taskPeople} searchTasks={searchTasks} getFirstStep={getFirstStep}/>
+                    <TaskList
+                        taskPeople={taskPeople}
+                        searchTasks={searchTasks}
+                        getFirstStep={getFirstStep}/>
+
                     <HistoryList historyPeople={historyPeople}/>
                 </Loader>
             </div>
@@ -51,15 +62,15 @@ class HomePage extends Component {
 }
 
 function mapStateToProps(state) {
-    const taskPeople = state.get('taskList');
-    const historyPeople = state.get('historyList');
+    const taskPageReducerState = state.get('taskPageReducer');
+    const historyPageReducerState = state.get('historyPageReducer');
 
     return {
-        historyPeople: historyPeople.get('historyList'),
-        taskPeople: taskPeople.get('taskList'),
-        isLoadedTasks: taskPeople.get('isLoaded'),
-        isLoadedHistory: historyPeople.get('isLoaded'),
-        isError: taskPeople.get('isError'),
+        taskPeople: taskPageReducerState.get('taskList'),
+        isLoadedTasks: taskPageReducerState.get('isLoaded'),
+        isError: taskPageReducerState.get('isError'),
+        historyPeople: historyPageReducerState.get('historyList'),
+        isLoadedHistory: historyPageReducerState.get('isLoaded'),
     };
 }
 

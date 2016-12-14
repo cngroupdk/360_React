@@ -3,7 +3,7 @@ import LazyLoad from 'react-lazyload';
 
 import monthRender from '../common/monthRender';
 import getPhotoUrl from '../common/getPhotoUrl';
-import RedirectButtonHistory from './RedirectButtonHistory';
+import RedirectButtonHistory from './HistoryListPersonRedirect';
 
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';

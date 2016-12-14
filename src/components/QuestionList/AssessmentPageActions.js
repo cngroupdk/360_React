@@ -1,7 +1,7 @@
 import { createAction } from 'redux-actions';
 import { api, apiPost } from '../../api';
 
-import { getAssessment } from './reducer';
+import { getAssessment } from './AssessmentPageReducer';
 
 export const ASSESSMENT_FETCH = 'ASSESSMENT_FETCH';
 export const ASSESSMENT_FETCH_FINISHED = 'ASSESSMENT_FETCH_FINISHED';
@@ -44,7 +44,7 @@ export const fetchAssessment = (id) => {
 
 export const saveAssessment = () => {
     return (dispatch, getState) => {
-        const assessment = getAssessment(getState().get('assessmentReducer')).toJS();
+        const assessment = getAssessment(getState().get('assessmentPageReducer')).toJS();
         dispatch(assessmentSave());
         return apiPost.post('assessments/save',
             assessment).then(

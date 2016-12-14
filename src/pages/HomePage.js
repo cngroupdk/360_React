@@ -43,7 +43,7 @@ class HomePage extends Component {
                 <Tabs/>
                 <Loader loaded={isLoadedTasks && isLoadedHistory}>
                     <TaskList taskPeople={taskPeople} searchTasks={searchTasks} getFirstStep={getFirstStep}/>
-                    <HistoryList historyPeople={historyPeople} getFirstStep={getFirstStep}/>
+                    <HistoryList historyPeople={historyPeople}/>
                 </Loader>
             </div>
         )

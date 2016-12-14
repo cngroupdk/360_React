@@ -39,8 +39,9 @@ export default class PeopleList extends Component {
                     <HeaderColumn fluid sm={1.5}>Department</HeaderColumn>
                     <HeaderColumn fluid sm={2}>Job category</HeaderColumn>
                     <HeaderColumn fluid sm={1.5}>PR month</HeaderColumn>
-                    <HeaderColumn fluid sm={1.5}>Last submitted</HeaderColumn>
+                    <HeaderColumn fluid sm={1}>Last submitted</HeaderColumn>
                     <HeaderColumn fluid sm={2}>&nbsp;</HeaderColumn>
+                    <HeaderColumn fluid sm={0.5}></HeaderColumn>
                 </HeaderRow>
 
                 {people.map((person, index) => {

@@ -2,25 +2,25 @@ import { handleActions } from 'redux-actions';
 import Immutable from 'immutable';
 
 import {
-    REQUEST_SELF,
-    RECEIVE_SELF,
-} from './actions';
+    REQUEST_SELFLIST,
+    RECEIVE_SELFLIST,
+} from './SelfPageActions';
 
-const self = handleActions({
-  [REQUEST_SELF]: (state) => {
+const selfPageReducer = handleActions({
+  [REQUEST_SELFLIST]: (state) => {
     return state.withMutations(newState =>
         newState
             .setIn(['isLoaded'], false)
             .setIn(['isError'], false)
     );
   },
-  [RECEIVE_SELF]: {
+  [RECEIVE_SELFLIST]: {
     next(state, action) {
       return state.withMutations(newState => {
         newState
             .setIn(['isLoaded'], true)
             .setIn(['isError'], false)
-            .setIn(['self'], action.payload);
+            .setIn(['selfList'], action.payload);
       });
     },
     throw(state) {
@@ -36,7 +36,4 @@ const self = handleActions({
   isError: false,
 }));
 
-export const getSelf = state =>
-    state.get('self');
-
-export default self;
+export default selfPageReducer;

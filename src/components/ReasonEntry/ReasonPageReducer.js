@@ -4,9 +4,9 @@ import Immutable from 'immutable';
 import {
     RECEIVE_STEP,
     RECEIVE_PERSON,
-} from './actions';
+} from './ReasonPageActions';
 
-const reasonEntry = handleActions({
+const reasonPageReducer = handleActions({
     [RECEIVE_STEP]: {
         next(state, action) {
             return state.withMutations(newState => {
@@ -45,4 +45,4 @@ const reasonEntry = handleActions({
     isError: false,
 }));
 
-export default reasonEntry;
+export default reasonPageReducer;

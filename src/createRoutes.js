@@ -5,9 +5,9 @@ import App from './App'
 import HomePage from './pages/HomePage';
 import PeoplePage from './pages/PeoplePage'
 import SelfPage from './pages/SelfPage'
-import LevelEntryPage from './pages/LevelPage'
-import ReasonEntryPage from './pages/ReasonPage'
-import QuestionsEntryPage from './pages/QuestionsPage'
+import LevelPage from './pages/LevelPage'
+import ReasonPage from './pages/ReasonPage'
+import AssessmentPage from './pages/AssessmentPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 export default function createRoutes() {
@@ -16,9 +16,9 @@ export default function createRoutes() {
             <IndexRoute component={HomePage}/>
             <Route path="/people" component={PeoplePage}/>
             <Route path="/self" component={SelfPage}/>
-            <Route path="/level" component={LevelEntryPage}/>
-            <Route path="/reason" component={ReasonEntryPage}/>
-            <Route path="/questions" component={QuestionsEntryPage}/>
+            <Route path="/level" component={LevelPage}/>
+            <Route path="/reason" component={ReasonPage}/>
+            <Route path="/questions" component={AssessmentPage}/>
             <Route path="*" component={NotFoundPage}/>
         </Route>
     );

@@ -5,9 +5,9 @@ import {
     REQUEST_TASKS,
     RECEIVE_TASKS,
     SEARCH_TASKS,
-} from './actions';
+} from './TaskPageActions';
 
-const taskList = handleActions({
+const taskPageReducer = handleActions({
   [REQUEST_TASKS]: (state) => {
     return state.withMutations(newState =>
         newState
@@ -53,4 +53,4 @@ const taskList = handleActions({
   isError: false,
 }));
 
-export default taskList;
+export default taskPageReducer;

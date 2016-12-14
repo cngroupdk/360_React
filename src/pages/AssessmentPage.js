@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
@@ -12,14 +12,26 @@ import { StyledLink } from '../components/common/assets/styles/StyledLink';
 import { StyledProfilePhoto } from '../components/common/assets/styles/StyledProfilePhoto';
 import { StyledProfileInitial } from '../components/common/assets/styles/StyledProfileInitial';
 
-import {    fetchAssessment,
-            saveAssessment,
-            assessmentUpdateAnswer,
-            assessmentUpdateSubmitted,
-            whoIs
-        } from '../components/QuestionList/actions';
+import {
+    fetchAssessment,
+    saveAssessment,
+    assessmentUpdateAnswer,
+    assessmentUpdateSubmitted,
+    whoIs,
+} from '../components/QuestionList/AssessmentPageActions';
 
-class QuestionsPage extends Component {
+class AssessmentPage extends Component {
+    static propTypes = {
+        isLoaded: PropTypes.bool,
+        isError: PropTypes.bool,
+        fetchAssessment: PropTypes.func.isRequired,
+        saveAssessment: PropTypes.func.isRequired,
+        assessmentUpdateAnswer: PropTypes.func.isRequired,
+        assessmentUpdateSubmitted: PropTypes.func.isRequired,
+        whoIs: PropTypes.func.isRequired,
+        assessment: PropTypes.object,
+    };
+
     constructor(props) {
         super(props);
         this._handleSaveAsDraft = this._handleSaveAsDraft.bind(this);
@@ -27,7 +39,7 @@ class QuestionsPage extends Component {
     }
 
     componentDidMount() {
-        this.fetchAllData();
+        this._fetchAllData();
         window.addEventListener("beforeunload", this._addPromptMessageToWindow);
     }
 
@@ -45,7 +57,7 @@ class QuestionsPage extends Component {
         return message;
     }
 
-    fetchAllData() {
+    _fetchAllData() {
         this.props.fetchAssessment(this.props.location.query.id);
         this.props.whoIs(this.props.location.query.id);
     }
@@ -70,7 +82,6 @@ class QuestionsPage extends Component {
         return (
             <Loader loaded={isLoaded}>
                 <ContentContainer>
-
                     <ContentHeader>
                         Please, answer questions about {person.Name}
                         &nbsp;
@@ -81,9 +92,8 @@ class QuestionsPage extends Component {
 
                     <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
 
-                    <StyledLink data-margin-rigth-30 onClick={this._handleSaveAsDraft} to="/">Save draft</StyledLink>
+                    <StyledLink data-margin-right-30 onClick={this._handleSaveAsDraft} to="/">Save draft</StyledLink>
                     <StyledLink onClick={this._handleSubmitAssessment} to="/">Submit</StyledLink>
-
                 </ContentContainer>
             </Loader>
         )
@@ -91,17 +101,17 @@ class QuestionsPage extends Component {
 }
 
 function mapStateToProps(state) {
-    const assessmentReducer = state.get('assessmentReducer');
+    const assessmentPageReducerState = state.get('assessmentPageReducer');
 
     return {
-        assessment: assessmentReducer.get('assessment'),
-        person: assessmentReducer.get('person'),
-        isLoaded: assessmentReducer.get('isLoaded'),
-        isError: assessmentReducer.get('isError'),
+        assessment: assessmentPageReducerState.get('assessment'),
+        person: assessmentPageReducerState.get('person'),
+        isLoaded: assessmentPageReducerState.get('isLoaded'),
+        isError: assessmentPageReducerState.get('isError'),
     };
 }
 
 export default connect(
     mapStateToProps,
     { fetchAssessment, saveAssessment, assessmentUpdateAnswer, assessmentUpdateSubmitted, whoIs},
-)(QuestionsPage);
+)(AssessmentPage);

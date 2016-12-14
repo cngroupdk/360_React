@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 
+import getPhotoUrl from '../common/getPhotoUrl';
+
 import { ContentContainer} from '../common/assets/styles/ContentContainer';
 import { ContentHeader} from '../common/assets/styles/ContentHeader';
 import { StyledLink } from '../common/assets/styles/StyledLink';
 import { StyledTextArea } from '../common/assets/styles/StyledTextArea';
+import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
+import { StyledProfileInitial } from '../common/assets/styles/StyledProfileInitial';
+
 
 export default class ReasonEntry extends Component {
 
@@ -23,13 +28,22 @@ export default class ReasonEntry extends Component {
     render() {
 
         const {
+            person,
             nextStep,
             assessmentId,
         } = this.props;
 
         return (
             <ContentContainer>
-                <ContentHeader>Warning! Person is not your co-worker.</ContentHeader>
+                <ContentHeader>
+                    Warning! {person.Name}
+                    &nbsp;
+                    <StyledProfileInitial>
+                        <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
+                    </StyledProfileInitial>
+                    &nbsp;
+                    is not your co-worker.
+                </ContentHeader>
 
                 <StyledTextArea autoFocus
                                 rows="4"

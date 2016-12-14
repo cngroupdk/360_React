@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { apiPost } from '../../api';
+import { api, apiPost } from '../../api';
 
 import { getAssessment } from './reducer';
 
@@ -12,6 +12,8 @@ export const ASSESSMENT_SAVE_FINISHED = 'ASSESSMENT_SAVE_FINISHED';
 export const ASSESSMENT_UPDATE_ANSWER = 'ASSESSMENT_UPDATE_ANSWER';
 export const ASSESSMENT_UPDATE_SUBMITTED = 'ASSESSMENT_UPDATE_SUBMITTED';
 
+export const RECEIVE_PERSON = 'RECEIVE_PERSON';
+
 export const assessmentRequest = createAction(ASSESSMENT_FETCH);
 export const assessmentRequestFinished = createAction(ASSESSMENT_FETCH_FINISHED);
 
@@ -20,6 +22,8 @@ export const assessmentSaveFinished = createAction(ASSESSMENT_SAVE_FINISHED);
 
 export const assessmentUpdateAnswer = createAction(ASSESSMENT_UPDATE_ANSWER);
 export const assessmentUpdateSubmitted = createAction(ASSESSMENT_UPDATE_SUBMITTED);
+
+export const receivePerson = createAction(RECEIVE_PERSON);
 
 export const fetchAssessment = (id) => {
     return (dispatch) => {
@@ -51,5 +55,19 @@ export const saveAssessment = () => {
                 error,
             ))
         );
+    }
+};
+
+export const whoIs = (assessmentId) => {
+    return (dispatch) => {
+        api.get('people/forassessment/', { params: {
+            id: assessmentId,
+        }}).then(
+            (response) => dispatch(receivePerson(
+                response.data || response,
+            )),
+            (error) => dispatch(receivePerson(
+                error,
+            )))
     }
 };

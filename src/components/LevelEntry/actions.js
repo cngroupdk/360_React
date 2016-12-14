@@ -4,7 +4,6 @@ import { api, apiPost } from '../../api';
 export const REQUEST_LEVELS = 'REQUEST_LEVELS';
 export const RECEIVE_LEVELS = 'RECEIVE_LEVELS';
 export const RECEIVE_STEP = 'RECEIVE_STEP';
-export const LEVEL_SAVE = 'LEVEL_SAVE';
 
 export const requestLevels = createAction(REQUEST_LEVELS);
 export const receiveLevels = createAction(RECEIVE_LEVELS);

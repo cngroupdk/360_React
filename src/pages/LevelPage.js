@@ -3,7 +3,7 @@ import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
 import LevelEntry from '../components/LevelEntry/LevelEntry';
-import { fetchLevels, getSecondStep } from '../components/LevelEntry/actions';
+import { fetchLevels, sendLevel } from '../components/LevelEntry/actions';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
 import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
@@ -24,7 +24,8 @@ class LevelPage extends Component {
             levels,
             isLoaded,
             location,
-            getSecondStep,
+            sendLevel,
+            nextStep,
         } = this.props;
 
         return (
@@ -32,7 +33,7 @@ class LevelPage extends Component {
                 <ContentHeader> Please, choose the proficiency level
                     for {this.props.location.query.name}</ContentHeader>
                 <Loader loaded={isLoaded}>
-                    <LevelEntry levels={levels} location={location} getSecondStep={getSecondStep}/>
+                    <LevelEntry levels={levels} location={location} sendLevel={sendLevel} nextStep={nextStep}/>
                 </Loader>
 
             </ContentContainer>
@@ -45,6 +46,7 @@ function mapStateToProps(state) {
 
     return {
         levels: levels.get('levels'),
+        nextStep: levels.get('nextStep'),
         isLoaded: levels.get('isLoaded'),
         isError: levels.get('isError'),
     };
@@ -52,5 +54,5 @@ function mapStateToProps(state) {
 
 export default connect(
     mapStateToProps,
-    {fetchLevels, getSecondStep},
+    {fetchLevels, sendLevel},
 )(LevelPage);

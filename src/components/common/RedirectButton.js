@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import { StyledLink } from '../common/assets/styles/StyledLink';
-import buttonText from '../common/buttonText';
+import { StyledLink } from './assets/styles/StyledLink';
+import buttonText from './buttonText';
 
-export default class RedirectIfColleague extends Component {
+export default class Redirect extends Component {
 
     constructor(props, context) {
         super(props, context);
@@ -14,15 +14,14 @@ export default class RedirectIfColleague extends Component {
     };
 
     gotoNextLinkPath(event) {
-        event.preventDefault();
-        let nextPath = this.props.person.Colleague ? '/level-entry' : '/reason-entry';
-        let nextPathWithData = {
-            pathname: nextPath,
-            query: {name: this.props.person.Name,
-                    id:this.props.person.Id}
-        };
-        this.context.router.push(nextPathWithData);
+        const {
+            person,
+            getFirstStep,
+        } = this.props;
 
+        event.preventDefault();
+
+        getFirstStep(person, this.context.router);
     };
 
     render() {

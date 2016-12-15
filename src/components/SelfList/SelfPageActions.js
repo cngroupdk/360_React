@@ -1,5 +1,6 @@
 import { createAction } from 'redux-actions';
 import { api } from '../../api';
+import { getSelf } from '../Header/HeaderReducer';
 
 export const REQUEST_SELFLIST = 'REQUEST_SELFLIST';
 export const RECEIVE_SELFLIST = 'RECEIVE_SELFLIST';
@@ -19,4 +20,23 @@ export const fetchSelfList = () => {
             ))
         );
     };
+};
+
+export const createSelfAssessment = (router) => {
+    return (dispatch, getState) => {
+        const myPersonId = getSelf(getState().get('headerReducer')).Id;
+        return api.get('/assessments/create', {
+            params: {
+                id: myPersonId
+            }
+        }).then(
+            (response) => {
+                router.push({
+                    pathname: '/' + response.data.Step.toLowerCase(),
+                    query: {id: response.data.Id}
+                })
+            },
+            (error) => console.log(error)
+        )
+    }
 };

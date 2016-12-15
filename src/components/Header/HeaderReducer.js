@@ -4,9 +4,9 @@ import Immutable from 'immutable';
 import {
     REQUEST_SELF,
     RECEIVE_SELF,
-} from './actions';
+} from './HeaderActions';
 
-const self = handleActions({
+const headerReducer = handleActions({
   [REQUEST_SELF]: (state) => {
     return state.withMutations(newState =>
         newState
@@ -36,4 +36,7 @@ const self = handleActions({
   isError: false,
 }));
 
-export default self;
+export const getSelf = state =>
+    state.get('self');
+
+export default headerReducer;

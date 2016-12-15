@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 
 import QuestionsList from './QuestionsList';
 
-export default class QuestionGroups extends Component {
+export default class SkillsList extends Component {
 
     render() {
         const {
-            allQuestions,
+            assessment,
             updateAnswer,
         } = this.props;
 
         return (
             <div className="clear">
-                {allQuestions.get('Skills').map((questionGroup) => (
+                {assessment.get('Skills').map((skill) => (
                     <QuestionsList
-                        key={questionGroup.get('Id')}
-                        questionGroup={questionGroup}
+                        key={skill.get('Id')}
+                        skill={skill}
                         updateAnswer={updateAnswer}
                     />
                 ))}

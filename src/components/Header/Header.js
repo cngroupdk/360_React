@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader';
 import { Link } from 'react-router';
 
-import { fetchSelf } from './actions';
+import { fetchSelf } from './HeaderActions';
 import SelfCard from './SelfCard';
 
 import { StyledHeader } from '../common/assets/styles/Header/StyledHeader';
@@ -48,12 +48,12 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-    const self = state.get('self');
+    const headerReducerState = state.get('headerReducer');
 
     return {
-        self: self.get('self'),
-        isLoaded: self.get('isLoaded'),
-        isError: self.get('isError'),
+        self: headerReducerState.get('self'),
+        isLoaded: headerReducerState.get('isLoaded'),
+        isError: headerReducerState.get('isError'),
     };
 }
 

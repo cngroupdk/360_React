@@ -1,60 +1,54 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { reasonSave } from '../components/ReasonEntry/actions';
-
-import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
-import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
-import { StyledLink } from '../components/common/assets/styles/StyledLink';
-import { StyledTextArea } from '../components/common/assets/styles/StyledTextArea';
+import ReasonEntry from '../components/ReasonEntry/ReasonEntry'
+import { sendReason, whoIs } from '../components/ReasonEntry/ReasonPageActions';
 
 class ReasonPage extends Component {
+    static propTypes = {
+        isError: PropTypes.bool,
+        sendReason: PropTypes.func.isRequired,
+        whoIs: PropTypes.func.isRequired,
+        nextStep: PropTypes.string,
+    };
 
-    constructor(props) {
-        super(props);
-        this.state = {reason: ''};
-        this._handleReasonEnter = this._handleReasonEnter.bind(this);
+    componentDidMount() {
+        this._fetchAllData();
     }
 
-    _handleReasonEnter(e) {
-        this.setState({
-            reason: e.target.value
-        });
-
-        this.props.reasonSave(e.target.value)
+    _fetchAllData() {
+        this.props.whoIs(this.props.location.query.id);
     }
 
     render() {
+        const {
+            sendReason,
+            nextStep,
+            person,
+        } = this.props;
+
         return (
-            <ContentContainer>
-                <ContentHeader>Warning! {this.props.location.query.name} is not your co-worker.</ContentHeader>
-
-                <StyledTextArea autoFocus
-                                rows="4"
-                                cols="50"
-                                placeholder="Enter your reason here (min. 10 characters)..."
-                                onChange={this._handleReasonEnter}></StyledTextArea>
-
-                    <StyledLink disabled={this.state.reason.length < 10}
-                                to={{
-                                    pathname: "/level-entry",
-                                    query: {name: this.props.location.query.name,
-                                            id: this.props.location.query.id}
-                                }}>
-                        Proceed further</StyledLink>
-            </ContentContainer>
+            <ReasonEntry
+                person={person}
+                sendReason={sendReason}
+                nextStep={nextStep}
+                assessmentId={this.props.location.query.id}
+            />
         )
     }
 }
 
-
 function mapStateToProps(state) {
+    const reasonPageReducerState = state.get('reasonPageReducer');
+
     return {
-        state: state
+        person: reasonPageReducerState.get('person'),
+        nextStep: reasonPageReducerState.get('nextStep'),
+        isError: reasonPageReducerState.get('isError'),
     };
 }
 
 export default connect(
     mapStateToProps,
-    {reasonSave},
+    {sendReason, whoIs},
 )(ReasonPage);

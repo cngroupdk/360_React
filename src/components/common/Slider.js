@@ -7,15 +7,17 @@ export default class Slider extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: 50
+            value: this.props.value
         };
         this.updateSlider = this.updateSlider.bind(this);
     }
 
-    updateSlider(e) {
+    updateSlider(event) {
+        const newValue = event.target.value;
         this.setState({
-            value: e.target.value
-        })
+            value: newValue
+        });
+        this.props.onChange(newValue);
     }
 
     render() {
@@ -23,10 +25,14 @@ export default class Slider extends Component {
 
         return (
             <StyledSlider>
-                <input type='range' name='value' min='0' max='100'
-                       onChange={this.updateSlider}
-                       disabled={disableRange}/>
-                <div>{disableRange ? '' : this.state.value}</div>
+                <input
+                    type='range' min='0' max='100'
+                    onChange={this.updateSlider}
+                    disabled={disableRange}
+                    value={this.state.value}/>
+                <div className={disableRange ? 'light-gray' : ''}>
+                    {this.state.value}
+                </div>
             </StyledSlider>
         );
     }

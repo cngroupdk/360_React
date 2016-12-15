@@ -9,46 +9,76 @@ import { StyledAddCommentBtn } from '../common/assets/styles/QuestionsPage/Style
 export default class Question extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            showComment: false,
-            disableRange: false
-        };
-        this._handleAddComment = this._handleAddComment.bind(this);
-        this._handleOnChangeDontSay = this._handleOnChangeDontSay.bind(this);
-        this._handleOnChangeComment = this._handleOnChangeComment.bind(this);
-    }
 
-    _handleAddComment() {
-        this.setState(() => ({
-            showComment: !this.state.showComment
-        }));
-    }
-
-    _handleOnChangeDontSay(event) {
-        this.setState(() => ({
-            disableRange: !this.state.disableRange
-        }));
-
-        this.props.updateAnswer(
-            {
-                'questionId' : this.props.question.get('Id'),
-                'questionGroupId': this.props.questionGroupId,
-                'dontSay' : event.target.checked
-            }
-        );
-    }
-
-    _handleOnChangeComment(event) {
         const {
             question,
         } = this.props;
-        const answer = question.get('Answer');
-        const id = answer.get('Id');
 
-        this.props.updateAnswer({
-            id,
-            comment: event.target.value
-        });
+        const answer = question.get('Answer');
+        const note = answer.get('Note') ? answer.get('Note') : '';
+        const dontSay = answer.get('DontSay');
+        this.state = {
+            showComment: note !== '',
+            disableRange: dontSay,
+            answerNote: note,
+        };
+
+        this._handleAddRemoveComment = this._handleAddRemoveComment.bind(this);
+        this._handleOnChangeDontSay = this._handleOnChangeDontSay.bind(this);
+        this._handleOnChangeNote = this._handleOnChangeNote.bind(this);
+        this._handleOnChangeAnswerValue = this._handleOnChangeAnswerValue.bind(this);
+    }
+
+    _handleAddRemoveComment() {
+        this.setState(() => ({
+            showComment: !this.state.showComment,
+            answerNote: '',
+        }));
+        this._updateAnswerNote('');
+    }
+
+    _handleOnChangeDontSay(event) {
+        const newDontSay = event.target.checked;
+
+        this.setState(() => ({
+            disableRange: newDontSay,
+        }));
+
+        this._updateAnswer('DontSay', newDontSay);
+    }
+
+    _handleOnChangeNote(event) {
+        const newNote = event.target.value;
+        this._updateAnswerNote(newNote);
+    }
+
+    _updateAnswerNote(newNote) {
+        this.setState(() => ({
+            answerNote: newNote
+        }));
+
+        this._updateAnswer('Note', newNote);
+    }
+
+    _handleOnChangeAnswerValue(newValue) {
+        this._updateAnswer('AnswerValue', newValue);
+    }
+
+    _updateAnswer(property, newValue) {
+        const {
+            question,
+            skillId,
+            updateAnswer,
+        } = this.props;
+
+        updateAnswer(
+            {
+                'skillId': skillId,
+                'questionId' : question.get('Id'),
+                'answerProperty': property,
+                'propertyValue': newValue,
+            }
+        );
     }
 
     render() {
@@ -57,24 +87,32 @@ export default class Question extends Component {
 
         return (
             <QuestionContainer>
-                <h4>{question.Caption}</h4>
+                <h4>{question.get('Caption')}</h4>
                 <div className="components-container">
                     <div className="checkbox-container">
-                        <input type="checkbox" name={answer.get('Id')} value="false"
-                               onChange={this._handleOnChangeDontSay}
-                               defaultChecked={answer.get('DontSay')}/><br/>
+                        <input
+                            type="checkbox"
+                            name={answer.get('Id')}
+                            value="false"
+                            onChange={this._handleOnChangeDontSay}
+                            defaultChecked={answer.get('DontSay')}/><br/>
                         Cannot or dont want to answer
                     </div>
-                    <div className="slider-container"><Slider disableRange={this.state.disableRange}/></div>
+                    <div className="slider-container">
+                        <Slider
+                            value={answer.get('AnswerValue')}
+                            onChange={this._handleOnChangeAnswerValue}
+                            disableRange={this.state.disableRange}/>
+                    </div>
                     <div className="add-button-container">
-                        <StyledAddCommentBtn onClick={this._handleAddComment} type="button">
+                        <StyledAddCommentBtn onClick={this._handleAddRemoveComment} type="button">
                             {this.state.showComment ? '- Remove a comment' : '+ Add a comment'}
                         </StyledAddCommentBtn>
                     </div>
                 </div>
                 <div className="clear">&nbsp;</div>
                 <div className={this.state.showComment ? '' : 'hidden'}>
-                    <CommentBox onChange={this._handleOnChangeComment} />
+                    <CommentBox text={this.state.answerNote} onChange={this._handleOnChangeNote} />
                 </div>
             </QuestionContainer>
         );

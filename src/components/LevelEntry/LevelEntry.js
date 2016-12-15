@@ -15,14 +15,14 @@ export default class LevelEntry extends Component {
     }
 
     _handleProfLevelChange(e) {
-        this.props.levelSave(e);
-
+        this.props.sendLevel(e, this.props.location.query.id);
         this.setState({ level: 'Entered' });
     }
 
     render() {
         const {
-            levels
+            levels,
+            nextStep,
         } = this.props;
 
         return (
@@ -43,9 +43,8 @@ export default class LevelEntry extends Component {
 
                 <StyledLink disabled={this.state.level === ''}
                     to={{
-                        pathname: "/questions-entry",
-                        query: {name: this.props.location.query.name,
-                            id: this.props.location.query.id}
+                        pathname: '/' + nextStep.toLowerCase(),
+                        query: { id: this.props.location.query.id }
                     }}>
                     Proceed to questions </StyledLink>
             </div>

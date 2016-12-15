@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 
-import { HistoryListPerson } from './HistoryListPerson';
+import HistoryListPerson from './HistoryListPerson';
 
 import { ContentContainer} from '../common/assets/styles/ContentContainer';
 import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';
@@ -22,8 +22,7 @@ export default class HistoryList extends Component {
                     <HeaderColumn fluid sm={1.5}>Department</HeaderColumn>
                     <HeaderColumn fluid sm={2}>Job category</HeaderColumn>
                     <HeaderColumn fluid sm={2}>PR month</HeaderColumn>
-                    <HeaderColumn fluid sm={2}>Last submitted</HeaderColumn>
-                    <HeaderColumn fluid sm={1}>&nbsp;</HeaderColumn>
+                    <HeaderColumn fluid sm={3}>Last submitted</HeaderColumn>
                 </HeaderRow>
 
                 {historyPeople.map((person, index) => {

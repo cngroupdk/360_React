@@ -11,6 +11,7 @@
     "hedron": "^0.2.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
+    "react-fontawesome": "^1.5.0",
     "react-lazyload": "^2.2.0",
     "react-loader": "^2.4.0",
     "react-radio-group": "^3.0.1",
@@ -21,7 +22,8 @@
     "redux-immutable": "^3.0.8",
     "redux-thunk": "^2.1.0",
     "styled-components": "^1.0.10",
-    "dateformat": "^1.0.12"
+    "dateformat": "^1.0.12",
+    "react-fa": "^4.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

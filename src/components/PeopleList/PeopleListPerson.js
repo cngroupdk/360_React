@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
 import LazyLoad from 'react-lazyload';
+import FontAwesome from 'react-fa';
 
 import monthRender from '../common/monthRender';
 import getPhotoUrl from '../common/getPhotoUrl';
@@ -9,6 +10,8 @@ import { CenteredContent } from '../common/assets/styles/CenteredContent';
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
 import { StyledProfileInitial } from '../common/assets/styles/StyledProfileInitial';
+import { IconWrapper } from '../common/assets/styles/IconWrapper';
+import { isAssessmentInMonth } from '../common/isAssessmentInMonth';
 
 export default class PeopleListPerson extends Component {
 
@@ -39,17 +42,29 @@ export default class PeopleListPerson extends Component {
 
         return (
             <TableRow onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
-                <TableCell fluid sm={1}>
+                <TableCell fluid sm={0.8}>
                     <CenteredContent>
                         <StyledProfileInitial>
                             <LazyLoad height={50} ><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></LazyLoad>
                         </StyledProfileInitial>
                     </CenteredContent>
                 </TableCell>
-                <TableCell fluid sm={2.5}>
-                    <CenteredContent>{person.Name}</CenteredContent>
+                <TableCell fluid sm={0.4}>
+                    <CenteredContent>
+                        <IconWrapper size={1.4}>
+                            <FontAwesome
+                                title='Your colleague'
+                                name={person.Colleague ? 'user-o' : ''}
+                            />
+                        </IconWrapper>
+                    </CenteredContent>
                 </TableCell>
-                <TableCell fluid sm={1.5}>
+                <TableCell fluid sm={2.5}>
+                    <CenteredContent>
+                        {person.Name}
+                    </CenteredContent>
+                </TableCell>
+                <TableCell fluid sm={1.4}>
                     <CenteredContent>{person.Department}</CenteredContent>
                 </TableCell>
                 <TableCell fluid sm={2}>
@@ -58,7 +73,7 @@ export default class PeopleListPerson extends Component {
                 <TableCell fluid sm={1.5}>
                     <CenteredContent>{monthRender(person.AssessmentMonth)}</CenteredContent>
                 </TableCell>
-                <TableCell fluid sm={1.5}>
+                <TableCell fluid sm={1.1}>
                     <CenteredContent>None listed</CenteredContent>
                 </TableCell>
                 <TableCell fluid sm={2}>
@@ -66,6 +81,16 @@ export default class PeopleListPerson extends Component {
                         isHidden={this.state.isButtonHidden}
                         person={person}
                         getFirstStep={getFirstStep}/>
+                </TableCell>
+                <TableCell fluid sm={0.3}>
+                    <CenteredContent>
+                        <IconWrapper size={1.4}>
+                            <FontAwesome
+                                title="Assessment in one month"
+                                name={isAssessmentInMonth(person.AssessmentMonth) ? 'clock-o' : ''}
+                            />
+                        </IconWrapper>
+                    </CenteredContent>
                 </TableCell>
             </TableRow>
         );

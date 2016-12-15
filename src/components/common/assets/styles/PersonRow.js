@@ -8,18 +8,6 @@ export const TableRow = styled(Row)`
     min-height: 60px;
     border-top: none;
     &:hover { background-color: #edfbfd; }
-    
-    .fa {
-        margin: 0 3px;       
-    }
-    
-    .colleague-icon {
-        color: blue;
-    }
-    
-    .assessment-in-month-icon {
-        color: red;
-    }
 `;
 
 export const TableCell = styled(Column)`

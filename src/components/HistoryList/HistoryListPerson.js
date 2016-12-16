@@ -2,7 +2,6 @@ import React, { Component }  from 'react';
 import LazyLoad from 'react-lazyload';
 import dateFormat from 'dateformat';
 
-import monthRender from '../common/monthRender';
 import getPhotoUrl from '../common/getPhotoUrl';
 import RedirectButtonHistory from './HistoryListPersonRedirect';
 
@@ -18,7 +17,7 @@ export default class HistoryListPerson extends Component {
             return <RedirectButtonHistory person={person}/>
         } else{
             return  <CenteredContent>
-                {dateFormat(person.LastSubmitted, "dd mmmm yyyy")}
+                {person.LastSubmitted ? dateFormat(person.LastSubmitted, "dd mmmm yyyy") : ''}
                     </CenteredContent>
         }
     }
@@ -27,6 +26,7 @@ export default class HistoryListPerson extends Component {
         const {
             person
         } = this.props;
+        const assessmentMonth = person.AssessmentMonth;
 
         return (
             <TableRow>
@@ -42,7 +42,11 @@ export default class HistoryListPerson extends Component {
                 <TableCell fluid sm={2.5}><CenteredContent>{person.Name}</CenteredContent></TableCell>
                 <TableCell fluid sm={1.5}><CenteredContent>{person.Department}</CenteredContent></TableCell>
                 <TableCell fluid sm={2}><CenteredContent>{person.Position}</CenteredContent></TableCell>
-                <TableCell fluid sm={2}><CenteredContent>{monthRender(person.AssessmentMonth)}</CenteredContent></TableCell>
+                <TableCell fluid sm={2}>
+                    <CenteredContent>
+                        {assessmentMonth ? dateFormat(assessmentMonth + ' 1 2012', 'mmmm') : 'None listed'}
+                    </CenteredContent>
+                </TableCell>
                 <TableCell fluid sm={3}>
                     {this._CheckIfDraft(person)}</TableCell>
             </TableRow>

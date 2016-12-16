@@ -48,9 +48,9 @@ export default class PeopleList extends Component {
                 <HeaderRow>
                     <HeaderColumn fluid sm={3.7}>Person</HeaderColumn>
                     <HeaderColumn fluid sm={1.4}>Department</HeaderColumn>
-                    <HeaderColumn fluid sm={2}>Job category</HeaderColumn>
+                    <HeaderColumn fluid sm={1.5}>Job category</HeaderColumn>
                     <HeaderColumn fluid sm={1.5}>PR month</HeaderColumn>
-                    <HeaderColumn fluid sm={1.1}>Last submitted</HeaderColumn>
+                    <HeaderColumn fluid sm={1.6}>Last submitted</HeaderColumn>
                     <HeaderColumn fluid sm={2}>&nbsp;</HeaderColumn>
                     <HeaderColumn fluid sm={0.3}>&nbsp;</HeaderColumn>
                 </HeaderRow>

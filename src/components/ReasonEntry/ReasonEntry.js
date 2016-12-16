@@ -22,7 +22,7 @@ export default class ReasonEntry extends Component {
         this.setState({
             reason: e.target.value
         });
-        this.props.sendReason(e.target.value, this.props.assessmentId)
+        this.props.sendReason(e.target.value, this.props.personId)
     }
 
     render() {
@@ -30,7 +30,7 @@ export default class ReasonEntry extends Component {
         const {
             person,
             nextStep,
-            assessmentId,
+            personId,
         } = this.props;
 
         return (
@@ -54,7 +54,7 @@ export default class ReasonEntry extends Component {
                 <StyledLink disabled={this.state.reason.length < 10}
                             to={{
                                 pathname: '/' + nextStep.toLowerCase(),
-                                query: {id: assessmentId}
+                                query: {id: personId}
                             }}>
                     Proceed further</StyledLink>
             </ContentContainer>

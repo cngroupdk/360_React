@@ -7,11 +7,11 @@ export const RECEIVE_PERSON = 'RECEIVE_PERSON';
 export const receiveStep = createAction(RECEIVE_STEP);
 export const receivePerson = createAction(RECEIVE_PERSON);
 
-export const sendReason = (reason, assessmentId) => {
+export const sendReason = (reason, personId) => {
     return (dispatch) => {
         apiPost.post('/assessments/reason', {
             reason,
-            id: assessmentId,
+            id: personId,
         }).then(
             (response) => dispatch(receiveStep(
                 response.data || response,
@@ -22,10 +22,10 @@ export const sendReason = (reason, assessmentId) => {
     }
 };
 
-export const whoIs = (assessmentId) => {
+export const whoIs = (persontId) => {
     return (dispatch) => {
         api.get('people/forassessment/', { params: {
-            id: assessmentId,
+            id: persontId,
         }}).then(
             (response) => dispatch(receivePerson(
                 response.data || response,

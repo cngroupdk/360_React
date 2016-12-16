@@ -32,7 +32,7 @@ class ReasonPage extends Component {
                 person={person}
                 sendReason={sendReason}
                 nextStep={nextStep}
-                assessmentId={this.props.location.query.id}
+                persontId={this.props.location.query.id}
             />
         )
     }

@@ -17,7 +17,7 @@ class ReasonPage extends Component {
     }
 
     _fetchAllData() {
-        this.props.whoIs(this.props.location.query.id);
+        this.props.whoIs(this.props.location.query.personId);
     }
 
     render() {
@@ -32,7 +32,7 @@ class ReasonPage extends Component {
                 person={person}
                 sendReason={sendReason}
                 nextStep={nextStep}
-                persontId={this.props.location.query.id}
+                personId={this.props.location.query.personId}
             />
         )
     }

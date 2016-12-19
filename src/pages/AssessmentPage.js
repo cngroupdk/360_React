@@ -58,8 +58,8 @@ class AssessmentPage extends Component {
     }
 
     _fetchAllData() {
-        this.props.fetchAssessment(this.props.location.query.id);
-        this.props.whoIs(this.props.location.query.id);
+        this.props.fetchAssessment(this.props.location.query.personId);
+        this.props.whoIs(this.props.location.query.personId);
     }
 
     _handleSaveAsDraft() {

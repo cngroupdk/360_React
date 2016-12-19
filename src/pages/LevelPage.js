@@ -34,7 +34,7 @@ class LevelPage extends Component {
 
     _fetchAllData() {
         this.props.fetchLevels();
-        this.props.whoIs(this.props.location.query.id);
+        this.props.whoIs(this.props.location.query.personId);
     }
 
     render() {

@@ -30,7 +30,7 @@ export const fetchAssessment = (personId) => {
         dispatch(assessmentRequest());
         return apiPost.get('assessments/detail', {
             params: {
-                id: personId,
+                personId,
             }}).then(
             (response) => dispatch(assessmentRequestFinished(
                 response.data || response,
@@ -60,8 +60,8 @@ export const saveAssessment = () => {
 
 export const whoIs = (personId) => {
     return (dispatch) => {
-        api.get('people/forassessment/', { params: {
-            id: personId,
+        api.get('people/person', { params: {
+            personId,
         }}).then(
             (response) => dispatch(receivePerson(
                 response.data || response,

@@ -29,7 +29,7 @@ export const sendLevel = (levelId, personId) => {
     return (dispatch) => {
         apiPost.post('/assessments/level', {
             levelId,
-            id: personId,
+            personId,
         }).then(
             (response) => dispatch(receiveStep(
                 response.data || response,
@@ -42,8 +42,8 @@ export const sendLevel = (levelId, personId) => {
 
 export const whoIs = (personId) => {
     return (dispatch) => {
-        api.get('people/forassessment/', { params: {
-            id: personId,
+        api.get('people/person', { params: {
+            personId,
         }}).then(
             (response) => dispatch(receivePerson(
                 response.data || response,

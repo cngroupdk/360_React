@@ -12,7 +12,7 @@ export default class Redirect extends Component {
         return (
             <StyledLink data-vertical-align onClick={this.gotoNextLinkPath} to={{
                 pathname: '/questions',
-                query: {id: person.Id}
+                query: {personId: person.SubjectId}
             }}>
                 {buttonText(person.ExistingDraft)}
             </StyledLink>

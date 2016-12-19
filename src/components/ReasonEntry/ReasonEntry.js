@@ -54,7 +54,7 @@ export default class ReasonEntry extends Component {
                 <StyledLink disabled={this.state.reason.length < 10}
                             to={{
                                 pathname: '/' + nextStep.toLowerCase(),
-                                query: {id: personId}
+                                query: {personId}
                             }}>
                     Proceed further</StyledLink>
             </ContentContainer>

@@ -90,6 +90,13 @@ class AssessmentPage extends Component {
                         </StyledProfileInitial>
                     </ContentHeader>
 
+                    <StyledLink float-right to={{
+                                    pathname: '/level',
+                                    query: {personId: person.Id}
+                                }}>
+                        Change selected level
+                    </StyledLink>
+
                     <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
 
                     <StyledLink data-margin-right-30 onClick={this._handleSaveAsDraft} to="/">Save draft</StyledLink>

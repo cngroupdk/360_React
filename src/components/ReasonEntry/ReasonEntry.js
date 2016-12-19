@@ -56,7 +56,8 @@ export default class ReasonEntry extends Component {
                                 pathname: '/' + nextStep.toLowerCase(),
                                 query: {personId}
                             }}>
-                    Proceed further</StyledLink>
+                    Proceed further
+                </StyledLink>
             </ContentContainer>
 
 

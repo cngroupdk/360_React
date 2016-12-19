@@ -28,6 +28,8 @@ export const StyledLink = styled(Link)`
         
     ${ props => props[`data-margin-right-30`] ? 'margin-right: 30px' : '' };
     
+    ${ props => props[`float-right`] ? 'float: right' : '' };
+    
     background-color: ${props => props.disabled ? '#a1a1a1' : '#ed1848'};
     
     pointer-events: ${props => props.disabled ? 'none' : 'auto'};

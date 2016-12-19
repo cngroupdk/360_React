@@ -11,7 +11,9 @@ export const SelfListRow = ({assessment}) => (
         <TableCell fluid sm={3}><CenteredContent>{assessment.Department}</CenteredContent></TableCell>
         <TableCell fluid sm={3}><CenteredContent>{assessment.Position}</CenteredContent></TableCell>
         <TableCell fluid sm={3}>
-            <CenteredContent>{dateFormat(assessment.LastSubmitted, "dd mmmm yyyy")}</CenteredContent>
+            <CenteredContent>
+                {assessment.LastSubmitted ? dateFormat(assessment.LastSubmitted, "dd mmmm yyyy") : ''}
+            </CenteredContent>
             <StyledLink
                 hidden={!assessment.ExistingDraft}
                 data-vertical-align

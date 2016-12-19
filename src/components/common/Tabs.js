@@ -7,7 +7,7 @@ export default class Tabs extends Component {
       <div>
         <IndexLink to="/" className='tab' activeClassName='active'>Tasks and History</IndexLink>
         <Link to="/people" className='tab' activeClassName='active'>People</Link>
-        <Link to="/self" className='tab' activeClassName='active'>Self assessment</Link>
+        <Link to="/viewer" className='tab' activeClassName='active'>Self assessment</Link>
       </div>
     );
   }

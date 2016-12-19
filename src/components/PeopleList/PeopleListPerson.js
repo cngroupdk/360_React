@@ -10,7 +10,7 @@ import { CenteredContent } from '../common/assets/styles/CenteredContent';
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
 import { StyledProfileInitial } from '../common/assets/styles/StyledProfileInitial';
-import { IconWrapper } from '../common/assets/styles/IconWrapper';
+import { IconWrapper } from '../common/assets/styles/PeoplePage/IconWrapper';
 import { isAssessmentInMonth } from '../../lib/isAssessmentInMonth';
 
 export default class PeopleListPerson extends Component {

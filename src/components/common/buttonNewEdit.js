@@ -1,4 +1,4 @@
-const buttonText = (ExistingDraft) => {
+const buttonNewEdit = (ExistingDraft) => {
   if (ExistingDraft) {
     return 'Edit draft'
   }
@@ -7,4 +7,4 @@ const buttonText = (ExistingDraft) => {
   }
 };
 
-export default buttonText;
+export default buttonNewEdit;

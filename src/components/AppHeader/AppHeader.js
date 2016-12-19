@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader';
 import { Link } from 'react-router';
 
-import { fetchSelf } from './HeaderActions';
+import { fetchSelf } from './AppHeaderActions';
 import SelfCard from './SelfCard';
 
 import { StyledHeader } from '../common/assets/styles/Header/StyledHeader';
 
-class Header extends Component {
+class AppHeader extends Component {
   static propTypes = {
     isLoaded: PropTypes.bool,
     isError: PropTypes.bool,
@@ -60,4 +60,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {fetchSelf},
-)(Header);
+)(AppHeader);

@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
 
-import Slider from '../common/Slider.js';
-import CommentBox  from '../common/CommentBox.js'
+import Slider from './Slider.js';
+import CommentBox  from './CommentBox.js'
 
 import { QuestionContainer } from '../common/assets/styles/QuestionsPage/QuestionContainer';
 import { StyledAddCommentBtn } from '../common/assets/styles/QuestionsPage/StyledAddCommentBtn';

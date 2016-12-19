@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
+import AppHeader from './components/AppHeader/AppHeader';
+import AppFooter from './components/AppFooter/AppFooter';
 import './App.css';
 
 export default class App extends Component {
   render() {
     return (
       <div id='globalContainer'>
-        <Header />
+        <AppHeader />
 
         <div className="mainContainer">
           {this.props.children}
         </div>
 
-        <Footer />
+        <AppFooter />
       </div>
     );
   }

@@ -1,15 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 
-import { SelfListRow } from './SelfListRow';
-import { SelfListEmpty } from './SelfListEmpty';
+import { ViewerListRow } from './ViewerListRow';
+import { ViewerListEmpty } from './ViewerListEmpty';
 
 import { ContentContainer } from '../common/assets/styles/ContentContainer';
 import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';
 import { StyledLink } from '../common/assets/styles/StyledLink';
 import { ContentHeader } from '../common/assets/styles/ContentHeader';
-import { NewSelfAssessmentBtnContainer } from '../common/assets/styles/SelfPage/NewSelfAssessmentBtnContainer';
+import { NewViewerAssessmentBtnContainer } from '../common/assets/styles/ViewerPage/NewSelfAssessmentBtnContainer';
 
-export default class SelfList extends Component {
+export default class ViewerList extends Component {
   constructor(props) {
     super(props);
     this.handleOnClickCreate = this.handleOnClickCreate.bind(this);
@@ -21,21 +21,21 @@ export default class SelfList extends Component {
   };
 
   checkAssessmentsList() {
-    const {selfList} = this.props;
+    const {viewerList} = this.props;
 
-    if (selfList.length > 0) {
-      return selfList.map((assessment) => {
-        return <SelfListRow assessment={assessment} key={assessment.Id}/>
+    if (viewerList.length > 0) {
+      return viewerList.map((assessment) => {
+        return <ViewerListRow assessment={assessment} key={assessment.Id}/>
       })
     } else {
-      return <SelfListEmpty/>
+      return <ViewerListEmpty/>
     }
   }
 
   doesDraftExist() {
-    const {selfList} = this.props;
+    const {viewerList} = this.props;
 
-    for (const assessment of selfList) {
+    for (const assessment of viewerList) {
       if (assessment.ExistingDraft) {
         return true;
       }
@@ -45,7 +45,7 @@ export default class SelfList extends Component {
 
   handleOnClickCreate(event) {
     event.preventDefault();
-    this.props.createSelfAssessment(this.context.router);
+    this.props.createViewerAssessment(this.context.router);
   }
 
   render() {
@@ -63,14 +63,14 @@ export default class SelfList extends Component {
 
         {this.checkAssessmentsList()}
 
-        <NewSelfAssessmentBtnContainer>
+        <NewViewerAssessmentBtnContainer>
           <StyledLink
             disabled={this.doesDraftExist()}
             onClick={this.handleOnClickCreate}
-            to="/self">
+            to="/viewer">
             New self assessment
           </StyledLink>
-        </NewSelfAssessmentBtnContainer>
+        </NewViewerAssessmentBtnContainer>
       </ContentContainer>
     );
   }

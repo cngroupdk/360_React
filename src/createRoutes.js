@@ -4,7 +4,7 @@ import { Route, IndexRoute } from 'react-router';
 import App from './App'
 import TaskAndHistory from './pages/TaskAndHistory';
 import PeoplePage from './pages/PeoplePage'
-import SelfPage from './pages/SelfPage'
+import ViewerPage from './pages/ViewerPage'
 import LevelPage from './pages/LevelPage'
 import ReasonPage from './pages/ReasonPage'
 import AssessmentPage from './pages/AssessmentPage'
@@ -15,7 +15,7 @@ export default function createRoutes() {
     <Route path="/" component={App}>
       <IndexRoute component={TaskAndHistory}/>
       <Route path="people" component={PeoplePage}/>
-      <Route path="self" component={SelfPage}/>
+      <Route path="viewer" component={ViewerPage}/>
       <Route path="level" component={LevelPage}/>
       <Route path="reason" component={ReasonPage}/>
       <Route path="questions" component={AssessmentPage}/>

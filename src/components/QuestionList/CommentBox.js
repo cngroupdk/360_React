@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { StyledCommentBox } from './assets/styles/StyledCommentBox.js'
+import { StyledCommentBox } from '../common/assets/styles/QuestionsPage/StyledCommentBox.js'
 
 export default class CommentBox extends Component {
   render() {

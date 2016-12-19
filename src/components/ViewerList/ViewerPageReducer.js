@@ -2,31 +2,29 @@ import { handleActions } from 'redux-actions';
 import Immutable from 'immutable';
 
 import {
-  REQUEST_SELF,
-  RECEIVE_SELF,
-} from './HeaderActions';
+  REQUEST_VIEWERLIST,
+  RECEIVE_VIEWERLIST,
+} from './ViewerPageActions';
 
-const headerReducer = handleActions({
-  [REQUEST_SELF]: (state) => {
+const viewerPageReducer = handleActions({
+  [REQUEST_VIEWERLIST]: (state) => {
     return state.withMutations(newState =>
       newState
-        .setIn(['isLoaded'], false)
         .setIn(['isError'], false)
     );
   },
-  [RECEIVE_SELF]: {
+  [RECEIVE_VIEWERLIST]: {
     next(state, action) {
       return state.withMutations(newState => {
         newState
           .setIn(['isLoaded'], true)
           .setIn(['isError'], false)
-          .setIn(['self'], action.payload);
+          .setIn(['viewerList'], action.payload);
       });
     },
     throw(state) {
       return state.withMutations(newState =>
         newState
-          .setIn(['isLoaded'], false)
           .setIn(['isError'], true)
       );
     },
@@ -36,7 +34,4 @@ const headerReducer = handleActions({
   isError: false,
 }));
 
-export const getSelf = state =>
-  state.get('self');
-
-export default headerReducer;
+export default viewerPageReducer;

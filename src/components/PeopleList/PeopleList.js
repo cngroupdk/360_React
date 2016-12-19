@@ -7,8 +7,8 @@ import { ContentContainer} from '../common/assets/styles/ContentContainer';
 import { HeaderRow, HeaderColumn } from '../common/assets/styles/HeaderRow';
 import { ContentHeader } from '../common/assets/styles/ContentHeader';
 import { StyledInput } from '../common/assets/styles/StyledSearch';
-import { IconWrapper } from '../common/assets/styles/IconWrapper';
-import { Legend } from '../common/assets/styles/Legend';
+import { IconWrapper } from '../common/assets/styles/PeoplePage/IconWrapper';
+import { Legend } from '../common/assets/styles/PeoplePage/Legend';
 
 export default class PeopleList extends Component {
   constructor(props) {

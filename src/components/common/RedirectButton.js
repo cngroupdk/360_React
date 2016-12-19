@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { StyledLink } from './assets/styles/StyledLink';
-import buttonText from './buttonText';
+import buttonText from './buttonNewEdit';
 
 export default class Redirect extends Component {
   constructor(props, context) {

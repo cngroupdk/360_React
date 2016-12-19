@@ -1,28 +1,28 @@
 import { createAction } from 'redux-actions';
 import { api } from '../../api';
-import { getSelf } from '../Header/HeaderReducer';
+import { getSelf } from '../AppHeader/AppHeaderReducer';
 
-export const REQUEST_SELFLIST = 'REQUEST_SELFLIST';
-export const RECEIVE_SELFLIST = 'RECEIVE_SELFLIST';
+export const REQUEST_VIEWERLIST = 'REQUEST_VIEWERLIST';
+export const RECEIVE_VIEWERLIST = 'RECEIVE_VIEWERLIST';
 
-export const requestSelfList = createAction(REQUEST_SELFLIST);
-export const receiveSelfList = createAction(RECEIVE_SELFLIST);
+export const requestViewerList = createAction(REQUEST_VIEWERLIST);
+export const receiveViewerList = createAction(RECEIVE_VIEWERLIST);
 
-export const fetchSelfList = () => {
+export const fetchViewerList = () => {
   return (dispatch) => {
-    dispatch(requestSelfList());
-    return api.get('/assessments/self').then(
-      response => dispatch(receiveSelfList(
+    dispatch(requestViewerList());
+    return api.get('/assessments/viewer').then(
+      response => dispatch(receiveViewerList(
         response.data || response,
       )),
-      error => dispatch(receiveSelfList(
+      error => dispatch(receiveViewerList(
         error,
       ))
     );
   };
 };
 
-export const createSelfAssessment = (router) => {
+export const createViewerAssessment = (router) => {
   return (dispatch, getState) => {
     const myPersonId = getSelf(getState().get('headerReducer')).Id;
     return api.get('/assessments/create', {

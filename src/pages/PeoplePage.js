@@ -19,7 +19,6 @@ class PeoplePage extends Component {
     searchPeople: PropTypes.func.isRequired,
     getFirstStep: PropTypes.func.isRequired,
     people: PropTypes.array,
-    draftId: PropTypes.string,
   };
 
   componentDidMount() {
@@ -57,7 +56,6 @@ function mapStateToProps(state) {
 
   return {
     people: peoplePageReducerState.get('peopleList'),
-    draftId: peoplePageReducerState.get('draftId'),
     isLoaded: peoplePageReducerState.get('isLoaded'),
     isError: peoplePageReducerState.get('isError'),
   };

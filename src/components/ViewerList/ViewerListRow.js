@@ -5,7 +5,7 @@ import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledLink } from '../common/assets/styles/StyledLink';
 import { CenteredContent } from '../common/assets/styles/CenteredContent';
 
-export const SelfListRow = ({assessment}) => (
+export const ViewerListRow = ({assessment}) => (
   <TableRow>
     <TableCell fluid sm={3}><CenteredContent>{assessment.Name}</CenteredContent></TableCell>
     <TableCell fluid sm={3}><CenteredContent>{assessment.Department}</CenteredContent></TableCell>

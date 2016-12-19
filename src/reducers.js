@@ -9,7 +9,6 @@ import levelPageReducer from './components/LevelEntry/LevelPageReducer';
 import selfPageReducer from './components/SelfList/SelfPageReducer';
 import assessmentPageReducer from './components/QuestionList/AssessmentPageReducer';
 
-
 const rootReducer = combineReducers({
   peoplePageReducer,
   historyPageReducer,

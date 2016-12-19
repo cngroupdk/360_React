@@ -11,15 +11,15 @@ import AssessmentPage from './pages/AssessmentPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 export default function createRoutes() {
-    return (
-        <Route path="/" component={App}>
-            <IndexRoute component={HomePage}/>
-            <Route path="/people" component={PeoplePage}/>
-            <Route path="/self" component={SelfPage}/>
-            <Route path="/level" component={LevelPage}/>
-            <Route path="/reason" component={ReasonPage}/>
-            <Route path="/questions" component={AssessmentPage}/>
-            <Route path="*" component={NotFoundPage}/>
-        </Route>
-    );
+  return (
+    <Route path="/" component={App}>
+      <IndexRoute component={HomePage}/>
+      <Route path="/people" component={PeoplePage}/>
+      <Route path="/self" component={SelfPage}/>
+      <Route path="/level" component={LevelPage}/>
+      <Route path="/reason" component={ReasonPage}/>
+      <Route path="/questions" component={AssessmentPage}/>
+      <Route path="*" component={NotFoundPage}/>
+    </Route>
+  );
 }

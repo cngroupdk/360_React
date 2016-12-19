@@ -10,95 +10,95 @@ import {
 } from './AssessmentPageActions';
 
 const assessmentPageReducer = handleActions({
-    [ASSESSMENT_FETCH]: (state) => {
-        return state.withMutations(newState =>
-            newState
-                .setIn(['isError'], false)
-                .setIn(['isLoaded'], false)
-        );
-    },
+  [ASSESSMENT_FETCH]: (state) => {
+    return state.withMutations(newState =>
+      newState
+        .setIn(['isError'], false)
+        .setIn(['isLoaded'], false)
+    );
+  },
 
-    [ASSESSMENT_FETCH_FINISHED]: {
-        next(state, action) {
-            return state.withMutations(newState =>
-                newState
-                    .setIn(['isError'], false)
-                    .setIn(['isLoaded'], true)
-                    .setIn(['assessment'], Immutable.fromJS(action.payload))
+  [ASSESSMENT_FETCH_FINISHED]: {
+    next(state, action) {
+      return state.withMutations(newState =>
+        newState
+          .setIn(['isError'], false)
+          .setIn(['isLoaded'], true)
+          .setIn(['assessment'], Immutable.fromJS(action.payload))
+      );
+    },
+    throw(state) {
+      return state.withMutations(newState =>
+        newState
+          .setIn(['isError'], true)
+      );
+    },
+  },
+
+  [ASSESSMENT_UPDATE_ANSWER]: (state, action) => {
+    const skillId = action.payload.skillId;
+    const questionId = action.payload.questionId;
+    const answerProperty = action.payload.answerProperty;
+    const propertyValue = action.payload.propertyValue;
+
+    const assessment = state.get('assessment');
+
+    const modifiedAssessment =
+      assessment.updateIn(['Skills'], skills =>
+        skills.map(skill => {
+          if (skill.get('Id') === skillId) {
+            return skill.updateIn(['Questions'], questions =>
+              questions.map(question => {
+                if (question.get('Id') === questionId) {
+                  return question.setIn(['Answer', answerProperty], propertyValue);
+                }
+                return question;
+              })
             );
-        },
-        throw(state) {
-            return state.withMutations(newState =>
-                newState
-                    .setIn(['isError'], true)
-            );
-        },
+          }
+          return skill;
+        }));
+
+    return state.withMutations(newState => {
+      newState
+        .setIn(['assessment'], modifiedAssessment);
+    });
+  },
+
+  [ASSESSMENT_UPDATE_SUBMITTED]: (state, action) => {
+    const assessment = state.get('assessment');
+    const submitted = action.payload;
+    const modifiedAssessment = assessment.setIn(['Submitted'], submitted);
+
+    return state.withMutations(newState => {
+      newState
+        .setIn(['assessment'], modifiedAssessment);
+    });
+  },
+
+  [RECEIVE_PERSON]: {
+    next(state, action) {
+      return state.withMutations(newState => {
+        newState
+          .setIn(['isError'], false)
+          .setIn(['person'], action.payload)
+      });
     },
-
-    [ASSESSMENT_UPDATE_ANSWER]: (state, action) => {
-        const skillId = action.payload.skillId;
-        const questionId = action.payload.questionId;
-        const answerProperty = action.payload.answerProperty;
-        const propertyValue = action.payload.propertyValue;
-
-        const assessment = state.get('assessment');
-
-        const modifiedAssessment =
-            assessment.updateIn(['Skills'], skills =>
-                skills.map(skill => {
-                    if (skill.get('Id') === skillId) {
-                        return skill.updateIn(['Questions'], questions =>
-                            questions.map(question =>  {
-                                if (question.get('Id') === questionId) {
-                                    return question.setIn(['Answer', answerProperty], propertyValue);
-                                }
-                                return question;
-                            })
-                        );
-                    }
-                    return skill;
-                }));
-
-        return state.withMutations(newState => {
-            newState
-                .setIn(['assessment'], modifiedAssessment);
-        });
+    throw(state) {
+      return state.withMutations(newState =>
+        newState
+          .setIn(['isError'], true)
+      );
     },
-
-    [ASSESSMENT_UPDATE_SUBMITTED]: (state, action) => {
-        const assessment = state.get('assessment');
-        const submitted = action.payload;
-        const modifiedAssessment = assessment.setIn(['Submitted'], submitted);
-
-        return state.withMutations(newState => {
-            newState
-                .setIn(['assessment'], modifiedAssessment);
-        });
-    },
-
-    [RECEIVE_PERSON]: {
-        next(state, action) {
-            return state.withMutations(newState => {
-                newState
-                    .setIn(['isError'], false)
-                    .setIn(['person'], action.payload)
-            });
-        },
-        throw(state) {
-            return state.withMutations(newState =>
-                newState
-                    .setIn(['isError'], true)
-            );
-        },
-    },
+  },
 
 }, Immutable.fromJS({
-    person: 'Person',
-    isLoaded: false,
-    isError: false,
+  person: 'Person',
+  isLoaded: false,
+  isError: false,
 }));
 
 export const getAssessment = state =>
-    state.get('assessment');
+  state.get('assessment');
 
 export default assessmentPageReducer;

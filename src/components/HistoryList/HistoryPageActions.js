@@ -8,15 +8,15 @@ export const requestHistory = createAction(REQUEST_HISTORY);
 export const receiveHistory = createAction(RECEIVE_HISTORY);
 
 export const fetchHistory = () => {
-    return (dispatch) => {
-        dispatch(requestHistory());
-        return api.get('/assessments/history').then(
-            (response) => dispatch(receiveHistory(
-                response.data || response,
-            )),
-            (error) => dispatch(receiveHistory(
-                error,
-            ))
-        );
-    };
+  return (dispatch) => {
+    dispatch(requestHistory());
+    return api.get('/assessments/history').then(
+      (response) => dispatch(receiveHistory(
+        response.data || response,
+      )),
+      (error) => dispatch(receiveHistory(
+        error,
+      ))
+    );
+  };
 };

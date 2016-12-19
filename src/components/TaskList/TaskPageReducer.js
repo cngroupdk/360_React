@@ -10,9 +10,9 @@ import {
 const taskPageReducer = handleActions({
   [REQUEST_TASKS]: (state) => {
     return state.withMutations(newState =>
-        newState
-            .setIn(['isLoaded'], false)
-            .setIn(['isError'], false)
+      newState
+        .setIn(['isLoaded'], false)
+        .setIn(['isError'], false)
     );
   },
 
@@ -20,17 +20,17 @@ const taskPageReducer = handleActions({
     next(state, action) {
       return state.withMutations(newState => {
         newState
-            .setIn(['isLoaded'], true)
-            .setIn(['isError'], false)
-            .setIn(['taskList'], action.payload)
-            .setIn(['taskListDefault'], action.payload);
+          .setIn(['isLoaded'], true)
+          .setIn(['isError'], false)
+          .setIn(['taskList'], action.payload)
+          .setIn(['taskListDefault'], action.payload);
       });
     },
     throw(state) {
       return state.withMutations(newState =>
-          newState
-              .setIn(['isLoaded'], false)
-              .setIn(['isError'], true)
+        newState
+          .setIn(['isLoaded'], false)
+          .setIn(['isError'], true)
       );
     },
   },
@@ -45,7 +45,7 @@ const taskPageReducer = handleActions({
 
     return state.withMutations(newState => {
       newState
-          .setIn(['taskList'], filteredTask);
+        .setIn(['taskList'], filteredTask);
     });
   },
 }, Immutable.fromJS({

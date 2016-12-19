@@ -6,11 +6,11 @@ import rootReducer from './reducers';
 const initialState = new Immutable.Map();
 
 const rootStore = createStore(
-    rootReducer,
-    initialState,
-    applyMiddleware(
-        thunk
-    )
+  rootReducer,
+  initialState,
+  applyMiddleware(
+    thunk
+  )
 );
 
 export default rootStore;

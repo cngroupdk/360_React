@@ -4,24 +4,23 @@ import { QuestionsSectionName } from '../common/assets/styles/QuestionsPage/Ques
 import Question from './Question';
 
 export default class QuestionsList extends Component {
+  render() {
+    const {
+      skill,
+      updateAnswer,
+    } = this.props;
 
-    render() {
-        const {
-            skill,
-            updateAnswer,
-        } = this.props;
+    return (
+      <div>
+        <QuestionsSectionName>{skill.get('Caption')}</QuestionsSectionName>
 
-        return (
-            <div>
-                <QuestionsSectionName>{skill.get('Caption')}</QuestionsSectionName>
-
-                {skill.get('Questions').map((question, index) => {
-                    return (<Question key={index}
-                                      question={question}
-                                      skillId={skill.get('Id')}
-                                      updateAnswer={updateAnswer}/>)
-                 })}
-            </div>
-        );
-    }
+        {skill.get('Questions').map((question, index) => {
+          return (<Question key={index}
+                            question={question}
+                            skillId={skill.get('Id')}
+                            updateAnswer={updateAnswer}/>)
+        })}
+      </div>
+    );
+  }
 }

@@ -11,59 +11,59 @@ import { IconWrapper } from '../common/assets/styles/IconWrapper';
 import { Legend } from '../common/assets/styles/Legend';
 
 export default class PeopleList extends Component {
-    constructor(props) {
-        super(props);
-        this._searchOnePerson = this._searchOnePerson.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this._searchOnePerson = this._searchOnePerson.bind(this);
+  }
 
-    _searchOnePerson(e) {
-        this.props.searchPeople(e.target.value);
-    }
+  _searchOnePerson(e) {
+    this.props.searchPeople(e.target.value);
+  }
 
-    render() {
-        const {
-            people,
-            getFirstStep,
-        } = this.props;
+  render() {
+    const {
+      people,
+      getFirstStep,
+    } = this.props;
 
-        return (
-            <ContentContainer>
+    return (
+      <ContentContainer>
 
-                <ContentHeader>People</ContentHeader>
-                <Legend>
-                    <IconWrapper size={0.9}>
-                        <FontAwesome
-                            title='Your colleague'
-                            name='user-o'
-                        />
-                        Your colleague
-                        <FontAwesome
-                            title='Assessment in one month'
-                            name='clock-o'
-                        />Assessment in one month
-                    </IconWrapper>
-                </Legend>
-                <StyledInput type="text" id="searchInput" onChange={this._searchOnePerson}/>
+        <ContentHeader>People</ContentHeader>
+        <Legend>
+          <IconWrapper size={0.9}>
+            <FontAwesome
+              title='Your colleague'
+              name='user-o'
+            />
+            Your colleague
+            <FontAwesome
+              title='Assessment in one month'
+              name='clock-o'
+            />Assessment in one month
+          </IconWrapper>
+        </Legend>
+        <StyledInput type="text" id="searchInput" onChange={this._searchOnePerson}/>
 
-                <HeaderRow>
-                    <HeaderColumn fluid sm={3.7}>Person</HeaderColumn>
-                    <HeaderColumn fluid sm={1.4}>Department</HeaderColumn>
-                    <HeaderColumn fluid sm={1.5}>Job category</HeaderColumn>
-                    <HeaderColumn fluid sm={1.5}>PR month</HeaderColumn>
-                    <HeaderColumn fluid sm={1.6}>Last submitted</HeaderColumn>
-                    <HeaderColumn fluid sm={2}>&nbsp;</HeaderColumn>
-                    <HeaderColumn fluid sm={0.3}>&nbsp;</HeaderColumn>
-                </HeaderRow>
+        <HeaderRow>
+          <HeaderColumn fluid sm={3.7}>Person</HeaderColumn>
+          <HeaderColumn fluid sm={1.4}>Department</HeaderColumn>
+          <HeaderColumn fluid sm={1.5}>Job category</HeaderColumn>
+          <HeaderColumn fluid sm={1.5}>PR month</HeaderColumn>
+          <HeaderColumn fluid sm={1.6}>Last submitted</HeaderColumn>
+          <HeaderColumn fluid sm={2}>&nbsp;</HeaderColumn>
+          <HeaderColumn fluid sm={0.3}>&nbsp;</HeaderColumn>
+        </HeaderRow>
 
-                {people.map((person, index) => {
-                    return (
-                        <PeopleListPerson person={person}
-                                          key={index}
-                                          getFirstStep={getFirstStep}
-                        />
-                    )
-                })}
-            </ContentContainer>
-        );
-    }
+        {people.map((person, index) => {
+          return (
+            <PeopleListPerson person={person}
+                              key={index}
+                              getFirstStep={getFirstStep}
+            />
+          )
+        })}
+      </ContentContainer>
+    );
+  }
 }

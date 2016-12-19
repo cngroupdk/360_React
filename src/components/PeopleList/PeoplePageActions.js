@@ -10,41 +10,40 @@ export const receivePeople = createAction(RECEIVE_PEOPLE);
 export const searchPeople = createAction(SEARCH_PEOPLE);
 
 export const fetchPeople = () => {
-    return (dispatch) => {
-        dispatch(requestPeople());
-        return api.get('/people/all').then(
-            (response) => dispatch(receivePeople(
-                response.data || response,
-            )),
-            (error) => dispatch(receivePeople(
-                error,
-            ))
-        );
-    };
+  return (dispatch) => {
+    dispatch(requestPeople());
+    return api.get('/people/all').then(
+      (response) => dispatch(receivePeople(
+        response.data || response,
+      )),
+      (error) => dispatch(receivePeople(
+        error,
+      ))
+    );
+  };
 };
 
 export const getFirstStep = (person, router) => {
-    return () => {
-        if (person.ExistingDraft !== '') {
-            router.push({
-                pathname: '/questions',
-                query: {personId: person.Id}
-            });
-        } else {
-            return api.get('/assessments/create', {
-                params: {
-                    personId: person.Id
-                }
-            }).then(
-                (response) => {
-                    router.push({
-                        pathname: '/' + response.data.Step.toLowerCase(),
-                        query: {personId: person.Id}
-                    })
-                },
-                (error) => console.log(error),
-            );
+  return () => {
+    if (person.ExistingDraft !== '') {
+      router.push({
+        pathname: '/questions',
+        query: {personId: person.Id}
+      });
+    } else {
+      return api.get('/assessments/create', {
+        params: {
+          personId: person.Id
         }
-    };
+      }).then(
+        (response) => {
+          router.push({
+            pathname: '/' + response.data.Step.toLowerCase(),
+            query: {personId: person.Id}
+          })
+        },
+        (error) => console.log(error),
+      );
+    }
+  };
 };
-

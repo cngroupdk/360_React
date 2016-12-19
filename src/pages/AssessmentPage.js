@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import getPhotoUrl from '../components/common/getPhotoUrl';
+import getPhotoUrl from '../lib/getPhotoUrl';
 
 import SkillsList from '../components/QuestionList/SkillsList';
 
@@ -21,104 +21,104 @@ import {
 } from '../components/QuestionList/AssessmentPageActions';
 
 class AssessmentPage extends Component {
-    static propTypes = {
-        isLoaded: PropTypes.bool,
-        isError: PropTypes.bool,
-        fetchAssessment: PropTypes.func.isRequired,
-        saveAssessment: PropTypes.func.isRequired,
-        assessmentUpdateAnswer: PropTypes.func.isRequired,
-        assessmentUpdateSubmitted: PropTypes.func.isRequired,
-        whoIs: PropTypes.func.isRequired,
-        assessment: PropTypes.object,
-    };
+  static propTypes = {
+    isLoaded: PropTypes.bool,
+    isError: PropTypes.bool,
+    fetchAssessment: PropTypes.func.isRequired,
+    saveAssessment: PropTypes.func.isRequired,
+    assessmentUpdateAnswer: PropTypes.func.isRequired,
+    assessmentUpdateSubmitted: PropTypes.func.isRequired,
+    whoIs: PropTypes.func.isRequired,
+    assessment: PropTypes.object,
+  };
 
-    constructor(props) {
-        super(props);
-        this._handleSaveAsDraft = this._handleSaveAsDraft.bind(this);
-        this._handleSubmitAssessment = this._handleSubmitAssessment.bind(this);
+  constructor(props) {
+    super(props);
+    this._handleSaveAsDraft = this._handleSaveAsDraft.bind(this);
+    this._handleSubmitAssessment = this._handleSubmitAssessment.bind(this);
+  }
+
+  componentDidMount() {
+    this._fetchAllData();
+    window.addEventListener("beforeunload", this._addPromptMessageToWindow);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('beforeunload', this._addPromptMessageToWindow);
+  }
+
+  _addPromptMessageToWindow(event) {
+    if (!event) event = window.event;
+    event.preventDefault();
+    const message = "Are you sure you want to leave this page? Changes that you made will be lost.";
+    if (event) {
+      event.returnValue = message;
     }
+    return message;
+  }
 
-    componentDidMount() {
-        this._fetchAllData();
-        window.addEventListener("beforeunload", this._addPromptMessageToWindow);
-    }
+  _fetchAllData() {
+    this.props.fetchAssessment(this.props.location.query.personId);
+    this.props.whoIs(this.props.location.query.personId);
+  }
 
-    componentWillUnmount() {
-        window.removeEventListener('beforeunload', this._addPromptMessageToWindow);
-    }
+  _handleSaveAsDraft() {
+    this.props.saveAssessment();
+  }
 
-    _addPromptMessageToWindow(event) {
-        if(!event) event = window.event;
-        event.preventDefault();
-        const message = "Are you sure you want to leave this page? Changes that you made will be lost.";
-        if (event) {
-            event.returnValue = message;
-        }
-        return message;
-    }
+  _handleSubmitAssessment() {
+    this.props.assessmentUpdateSubmitted(true);
+    this.props.saveAssessment();
+  }
 
-    _fetchAllData() {
-        this.props.fetchAssessment(this.props.location.query.personId);
-        this.props.whoIs(this.props.location.query.personId);
-    }
+  render() {
+    const {
+      assessment,
+      assessmentUpdateAnswer,
+      isLoaded,
+      person,
+    } = this.props;
 
-    _handleSaveAsDraft() {
-        this.props.saveAssessment();
-    }
+    return (
+      <Loader loaded={isLoaded}>
+        <ContentContainer>
+          <ContentHeader>
+            Please, answer questions about {person.Name}
+            &nbsp;
+            <StyledProfileInitial>
+              <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
+            </StyledProfileInitial>
+          </ContentHeader>
 
-    _handleSubmitAssessment() {
-        this.props.assessmentUpdateSubmitted(true);
-        this.props.saveAssessment();
-    }
+          <StyledLink float-right to={{
+            pathname: '/level',
+            query: {personId: person.Id}
+          }}>
+            Change selected level
+          </StyledLink>
 
-    render() {
-        const {
-            assessment,
-            assessmentUpdateAnswer,
-            isLoaded,
-            person,
-        } = this.props;
+          <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
 
-        return (
-            <Loader loaded={isLoaded}>
-                <ContentContainer>
-                    <ContentHeader>
-                        Please, answer questions about {person.Name}
-                        &nbsp;
-                        <StyledProfileInitial>
-                            <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
-                        </StyledProfileInitial>
-                    </ContentHeader>
-
-                    <StyledLink float-right to={{
-                                    pathname: '/level',
-                                    query: {personId: person.Id}
-                                }}>
-                        Change selected level
-                    </StyledLink>
-
-                    <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
-
-                    <StyledLink data-margin-right-30 onClick={this._handleSaveAsDraft} to="/">Save draft</StyledLink>
-                    <StyledLink onClick={this._handleSubmitAssessment} to="/">Submit</StyledLink>
-                </ContentContainer>
-            </Loader>
-        )
-    }
+          <StyledLink data-margin-right-30 onClick={this._handleSaveAsDraft} to="/">Save draft</StyledLink>
+          <StyledLink onClick={this._handleSubmitAssessment} to="/">Submit</StyledLink>
+        </ContentContainer>
+      </Loader>
+    )
+  }
 }
 
 function mapStateToProps(state) {
-    const assessmentPageReducerState = state.get('assessmentPageReducer');
+  const assessmentPageReducerState = state.get('assessmentPageReducer');
 
-    return {
-        assessment: assessmentPageReducerState.get('assessment'),
-        person: assessmentPageReducerState.get('person'),
-        isLoaded: assessmentPageReducerState.get('isLoaded'),
-        isError: assessmentPageReducerState.get('isError'),
-    };
+  return {
+    assessment: assessmentPageReducerState.get('assessment'),
+    person: assessmentPageReducerState.get('person'),
+    isLoaded: assessmentPageReducerState.get('isLoaded'),
+    isError: assessmentPageReducerState.get('isError'),
+  };
 }
 
 export default connect(
-    mapStateToProps,
-    { fetchAssessment, saveAssessment, assessmentUpdateAnswer, assessmentUpdateSubmitted, whoIs},
+  mapStateToProps,
+  {fetchAssessment, saveAssessment, assessmentUpdateAnswer, assessmentUpdateSubmitted, whoIs},
 )(AssessmentPage);

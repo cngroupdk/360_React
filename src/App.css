@@ -1,47 +1,47 @@
 body {
-    background-color: #edfbfd;
+  background-color: #edfbfd;
 }
 
 #globalContainer {
-    max-width: 1180px;
-    width: 85%;
-    min-width: 800px;
-    margin: auto;
+  max-width: 1180px;
+  width: 85%;
+  min-width: 800px;
+  margin: auto;
 }
 
 .mainContainer {
-    border: 1px solid #bae2e8;
+  border: 1px solid #bae2e8;
 }
 
 .tab {
-    width: 33.2%;
-    display: inline-block;
-    text-align: center;
-    padding-top: 20px;
-    height: 50px;
-    font-weight: 700;
-    font-size: 24px;
-    color: white;
-    background-color: #073453;
-    border-left: 1px #edfbfd solid;
-    text-decoration: none;
+  width: 33.2%;
+  display: inline-block;
+  text-align: center;
+  padding-top: 20px;
+  height: 50px;
+  font-weight: 700;
+  font-size: 24px;
+  color: white;
+  background-color: #073453;
+  border-left: 1px #edfbfd solid;
+  text-decoration: none;
 }
 
 .tab.active {
-    background-color: white;
-    color: #073453;
+  background-color: white;
+  color: #073453;
 }
 
 .footer-container {
-    font-size: 13px;
-    padding: 15px 20px;
-    color: #4f4f4f;
+  font-size: 13px;
+  padding: 15px 20px;
+  color: #4f4f4f;
 }
 
 .footer-copyright-brand {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .clear {
-    clear: both;
+  clear: both;
 }

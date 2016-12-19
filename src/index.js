@@ -8,9 +8,9 @@ import rootStore from './configureStore';
 import createRoutes from './createRoutes';
 
 render((
-    <Provider store={rootStore}>
-        <Router history={browserHistory}>
-            {createRoutes()}
-        </Router>
-    </Provider>
+  <Provider store={rootStore}>
+    <Router history={browserHistory}>
+      {createRoutes()}
+    </Router>
+  </Provider>
 ), document.getElementById('container'));

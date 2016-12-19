@@ -8,15 +8,15 @@ export const requestSelf = createAction(REQUEST_SELF);
 export const receiveSelf = createAction(RECEIVE_SELF);
 
 export const fetchSelf = () => {
-    return (dispatch) => {
-        dispatch(requestSelf());
-        return api.get('/people/me').then(
-            (response) => dispatch(receiveSelf(
-                response.data || response,
-            )),
-            (error) => dispatch(receiveSelf(
-                error,
-            ))
-        );
-    };
+  return (dispatch) => {
+    dispatch(requestSelf());
+    return api.get('/people/me').then(
+      (response) => dispatch(receiveSelf(
+        response.data || response,
+      )),
+      (error) => dispatch(receiveSelf(
+        error,
+      ))
+    );
+  };
 };

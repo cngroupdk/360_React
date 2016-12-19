@@ -2,32 +2,32 @@ import { handleActions } from 'redux-actions';
 import Immutable from 'immutable';
 
 import {
-    REQUEST_SELFLIST,
-    RECEIVE_SELFLIST,
+  REQUEST_SELFLIST,
+  RECEIVE_SELFLIST,
 } from './SelfPageActions';
 
 const selfPageReducer = handleActions({
   [REQUEST_SELFLIST]: (state) => {
     return state.withMutations(newState =>
-        newState
-            .setIn(['isLoaded'], false)
-            .setIn(['isError'], false)
+      newState
+        .setIn(['isLoaded'], false)
+        .setIn(['isError'], false)
     );
   },
   [RECEIVE_SELFLIST]: {
     next(state, action) {
       return state.withMutations(newState => {
         newState
-            .setIn(['isLoaded'], true)
-            .setIn(['isError'], false)
-            .setIn(['selfList'], action.payload);
+          .setIn(['isLoaded'], true)
+          .setIn(['isError'], false)
+          .setIn(['selfList'], action.payload);
       });
     },
     throw(state) {
       return state.withMutations(newState =>
-          newState
-              .setIn(['isLoaded'], false)
-              .setIn(['isError'], true)
+        newState
+          .setIn(['isLoaded'], false)
+          .setIn(['isError'], true)
       );
     },
   },

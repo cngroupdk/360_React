@@ -10,69 +10,68 @@ import { ContentHeader } from '../common/assets/styles/ContentHeader';
 import { NewSelfAssessmentBtnContainer } from '../common/assets/styles/SelfPage/NewSelfAssessmentBtnContainer';
 
 export default class SelfList extends Component {
+  constructor(props) {
+    super(props);
+    this._handleOnClickCreate = this._handleOnClickCreate.bind(this);
+    this._isDraftExists = this._isDraftExists.bind(this);
+  }
 
-    constructor(props) {
-        super(props);
-        this._handleOnClickCreate = this._handleOnClickCreate.bind(this);
-        this._isDraftExists = this._isDraftExists.bind(this);
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  checkAssessmentsList() {
+    const {selfList} = this.props;
+
+    if (selfList.length > 0) {
+      return selfList.map((assessment) => {
+        return <SelfListRow assessment={assessment} key={assessment.Id}/>
+      })
+    } else {
+      return <SelfListEmpty/>
     }
+  }
 
-    static contextTypes = {
-        router: PropTypes.object
-    };
+  _isDraftExists() {
+    const {selfList} = this.props;
 
-    checkAssessmentsList() {
-        const {selfList} = this.props;
-
-        if (selfList.length > 0) {
-            return selfList.map((assessment) => {
-                return <SelfListRow assessment={assessment} key={assessment.Id}/>
-            })
-        } else {
-            return <SelfListEmpty/>
-        }
+    for (const assessment of selfList) {
+      if (assessment.ExistingDraft) {
+        return true;
+      }
     }
+    return false;
+  }
 
-    _isDraftExists() {
-        const {selfList} = this.props;
+  _handleOnClickCreate(event) {
+    event.preventDefault();
+    this.props.createSelfAssessment(this.context.router);
+  }
 
-        for (const assessment of selfList) {
-            if (assessment.ExistingDraft) {
-                return true;
-            }
-        }
-        return false;
-    }
+  render() {
+    return (
+      <ContentContainer>
 
-    _handleOnClickCreate(event) {
-        event.preventDefault();
-        this.props.createSelfAssessment(this.context.router);
-    }
+        <ContentHeader>Self Assessment</ContentHeader>
 
-    render() {
-        return (
-            <ContentContainer>
+        <HeaderRow>
+          <HeaderColumn fluid sm={3}>Person</HeaderColumn>
+          <HeaderColumn fluid sm={3}>Department</HeaderColumn>
+          <HeaderColumn fluid sm={3}>Job category</HeaderColumn>
+          <HeaderColumn fluid sm={3}>Last submitted</HeaderColumn>
+        </HeaderRow>
 
-                <ContentHeader>Self Assessment</ContentHeader>
+        {this.checkAssessmentsList()}
 
-                <HeaderRow>
-                    <HeaderColumn fluid sm={3}>Person</HeaderColumn>
-                    <HeaderColumn fluid sm={3}>Department</HeaderColumn>
-                    <HeaderColumn fluid sm={3}>Job category</HeaderColumn>
-                    <HeaderColumn fluid sm={3}>Last submitted</HeaderColumn>
-                </HeaderRow>
-
-                {this.checkAssessmentsList()}
-
-                <NewSelfAssessmentBtnContainer>
-                    <StyledLink
-                        disabled={this._isDraftExists()}
-                        onClick={this._handleOnClickCreate}
-                        to="/self">
-                            New self assessment
-                    </StyledLink>
-                </NewSelfAssessmentBtnContainer>
-            </ContentContainer>
-        );
-    }
+        <NewSelfAssessmentBtnContainer>
+          <StyledLink
+            disabled={this._isDraftExists()}
+            onClick={this._handleOnClickCreate}
+            to="/self">
+            New self assessment
+          </StyledLink>
+        </NewSelfAssessmentBtnContainer>
+      </ContentContainer>
+    );
+  }
 }

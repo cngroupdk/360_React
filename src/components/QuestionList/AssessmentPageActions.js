@@ -26,48 +26,51 @@ export const assessmentUpdateSubmitted = createAction(ASSESSMENT_UPDATE_SUBMITTE
 export const receivePerson = createAction(RECEIVE_PERSON);
 
 export const fetchAssessment = (personId) => {
-    return (dispatch) => {
-        dispatch(assessmentRequest());
-        return apiPost.get('assessments/detail', {
-            params: {
-                personId,
-            }}).then(
-            (response) => dispatch(assessmentRequestFinished(
-                response.data || response,
-            )),
-            (error) => dispatch(assessmentRequestFinished(
-                error,
-            ))
-        );
-    };
+  return (dispatch) => {
+    dispatch(assessmentRequest());
+    return apiPost.get('assessments/detail', {
+      params: {
+        personId,
+      }
+    }).then(
+      (response) => dispatch(assessmentRequestFinished(
+        response.data || response,
+      )),
+      (error) => dispatch(assessmentRequestFinished(
+        error,
+      ))
+    );
+  };
 };
 
 export const saveAssessment = () => {
-    return (dispatch, getState) => {
-        const assessment = getAssessment(getState().get('assessmentPageReducer')).toJS();
-        dispatch(assessmentSave());
-        return apiPost.post('assessments/save',
-            assessment).then(
-            (response) => dispatch(assessmentSaveFinished(
-                response.data || response,
-            )),
-            (error) => dispatch(assessmentSaveFinished(
-                error,
-            ))
-        );
-    }
+  return (dispatch, getState) => {
+    const assessment = getAssessment(getState().get('assessmentPageReducer')).toJS();
+    dispatch(assessmentSave());
+    return apiPost.post('assessments/save',
+      assessment).then(
+      (response) => dispatch(assessmentSaveFinished(
+        response.data || response,
+      )),
+      (error) => dispatch(assessmentSaveFinished(
+        error,
+      ))
+    );
+  }
 };
 
 export const whoIs = (personId) => {
-    return (dispatch) => {
-        api.get('people/person', { params: {
-            personId,
-        }}).then(
-            (response) => dispatch(receivePerson(
-                response.data || response,
-            )),
-            (error) => dispatch(receivePerson(
-                error,
-            )))
-    }
+  return (dispatch) => {
+    api.get('people/person', {
+      params: {
+        personId,
+      }
+    }).then(
+      (response) => dispatch(receivePerson(
+        response.data || response,
+      )),
+      (error) => dispatch(receivePerson(
+        error,
+      )))
+  }
 };

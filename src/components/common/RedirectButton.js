@@ -25,12 +25,12 @@ export default class Redirect extends Component {
 
   render() {
     const {
-      isHidden,
+      className,
       person,
     } = this.props;
 
     return (
-      <StyledLink data-xyAlign hidden={isHidden} onClick={this.gotoNextLinkPath} to="#">
+      <StyledLink data-xyAlign className={className} onClick={this.gotoNextLinkPath} to="#">
         {buttonText(person.ExistingDraft)}
       </StyledLink>
     );

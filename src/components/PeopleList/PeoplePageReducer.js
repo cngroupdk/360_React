@@ -11,7 +11,6 @@ const peoplePageReducer = handleActions({
   [REQUEST_PEOPLE]: (state) => {
     return state.withMutations(newState =>
       newState
-        .setIn(['isLoaded'], false)
         .setIn(['isError'], false)
     );
   },
@@ -29,7 +28,6 @@ const peoplePageReducer = handleActions({
     throw(state) {
       return state.withMutations(newState =>
         newState
-          .setIn(['isLoaded'], false)
           .setIn(['isError'], true)
       );
     },

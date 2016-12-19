@@ -13,7 +13,7 @@ import {
   getFirstStep,
 } from '../components/TaskList/TaskPageActions';
 
-class HomePage extends Component {
+class TaskAndHistory extends Component {
   static propTypes = {
     isLoadedTasks: PropTypes.bool,
     isLoadedHistory: PropTypes.bool,
@@ -77,4 +77,4 @@ function mapStateToProps(state) {
 export default connect(
   mapStateToProps,
   {fetchHistory, fetchTasks, searchTasks, getFirstStep},
-)(HomePage);
+)(TaskAndHistory);

@@ -14,12 +14,6 @@ import { IconWrapper } from '../common/assets/styles/IconWrapper';
 import { isAssessmentInMonth } from '../../lib/isAssessmentInMonth';
 
 export default class PeopleListPerson extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {isButtonHidden: true};
-  }
-
   render() {
     const {
       person,
@@ -70,7 +64,7 @@ export default class PeopleListPerson extends Component {
         </TableCell>
         <TableCell fluid sm={2}>
           <RedirectButton
-            isHidden={this.state.isButtonHidden}
+            className="tableRowShowOnHover"
             person={person}
             getFirstStep={getFirstStep}/>
         </TableCell>

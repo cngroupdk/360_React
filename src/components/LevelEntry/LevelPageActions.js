@@ -25,11 +25,11 @@ export const fetchLevels = () => {
     };
 };
 
-export const sendLevel = (levelId, assessmentId) => {
+export const sendLevel = (levelId, personId) => {
     return (dispatch) => {
         apiPost.post('/assessments/level', {
             levelId,
-            id: assessmentId,
+            personId,
         }).then(
             (response) => dispatch(receiveStep(
                 response.data || response,
@@ -40,10 +40,10 @@ export const sendLevel = (levelId, assessmentId) => {
     }
 };
 
-export const whoIs = (assessmentId) => {
+export const whoIs = (personId) => {
     return (dispatch) => {
-        api.get('people/forassessment/', { params: {
-            id: assessmentId,
+        api.get('people/person', { params: {
+            personId,
         }}).then(
             (response) => dispatch(receivePerson(
                 response.data || response,

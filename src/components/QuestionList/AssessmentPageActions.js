@@ -25,12 +25,12 @@ export const assessmentUpdateSubmitted = createAction(ASSESSMENT_UPDATE_SUBMITTE
 
 export const receivePerson = createAction(RECEIVE_PERSON);
 
-export const fetchAssessment = (id) => {
+export const fetchAssessment = (personId) => {
     return (dispatch) => {
         dispatch(assessmentRequest());
         return apiPost.get('assessments/detail', {
             params: {
-                id
+                personId,
             }}).then(
             (response) => dispatch(assessmentRequestFinished(
                 response.data || response,
@@ -58,10 +58,10 @@ export const saveAssessment = () => {
     }
 };
 
-export const whoIs = (assessmentId) => {
+export const whoIs = (personId) => {
     return (dispatch) => {
-        api.get('people/forassessment/', { params: {
-            id: assessmentId,
+        api.get('people/person', { params: {
+            personId,
         }}).then(
             (response) => dispatch(receivePerson(
                 response.data || response,

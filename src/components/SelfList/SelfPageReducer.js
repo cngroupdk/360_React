@@ -10,7 +10,6 @@ const selfPageReducer = handleActions({
   [REQUEST_SELFLIST]: (state) => {
     return state.withMutations(newState =>
       newState
-        .setIn(['isLoaded'], false)
         .setIn(['isError'], false)
     );
   },
@@ -26,7 +25,6 @@ const selfPageReducer = handleActions({
     throw(state) {
       return state.withMutations(newState =>
         newState
-          .setIn(['isLoaded'], false)
           .setIn(['isError'], true)
       );
     },

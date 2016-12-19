@@ -15,10 +15,10 @@ export const fetchLevels = () => {
   return (dispatch) => {
     dispatch(requestLevels());
     return api.get('/assessments/levels').then(
-      (response) => dispatch(receiveLevels(
+      response => dispatch(receiveLevels(
         response.data || response,
       )),
-      (error) => dispatch(receiveLevels(
+      error => dispatch(receiveLevels(
         error,
       ))
     );
@@ -31,10 +31,10 @@ export const sendLevel = (levelId, personId) => {
       levelId,
       personId,
     }).then(
-      (response) => dispatch(receiveStep(
+      response => dispatch(receiveStep(
         response.data || response,
       )),
-      (error) => dispatch(receiveStep(
+      error => dispatch(receiveStep(
         error,
       )))
   }
@@ -47,10 +47,10 @@ export const whoIs = (personId) => {
         personId,
       }
     }).then(
-      (response) => dispatch(receivePerson(
+      response => dispatch(receivePerson(
         response.data || response,
       )),
-      (error) => dispatch(receivePerson(
+      error => dispatch(receivePerson(
         error,
       )))
   }

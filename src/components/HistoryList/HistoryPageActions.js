@@ -11,10 +11,10 @@ export const fetchHistory = () => {
   return (dispatch) => {
     dispatch(requestHistory());
     return api.get('/assessments/history').then(
-      (response) => dispatch(receiveHistory(
+      response => dispatch(receiveHistory(
         response.data || response,
       )),
-      (error) => dispatch(receiveHistory(
+      error => dispatch(receiveHistory(
         error,
       ))
     );

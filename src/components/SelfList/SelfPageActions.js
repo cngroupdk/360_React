@@ -12,10 +12,10 @@ export const fetchSelfList = () => {
   return (dispatch) => {
     dispatch(requestSelfList());
     return api.get('/assessments/self').then(
-      (response) => dispatch(receiveSelfList(
+      response => dispatch(receiveSelfList(
         response.data || response,
       )),
-      (error) => dispatch(receiveSelfList(
+      error => dispatch(receiveSelfList(
         error,
       ))
     );
@@ -30,13 +30,13 @@ export const createSelfAssessment = (router) => {
         personId: myPersonId
       }
     }).then(
-      (response) => {
+      response => {
         router.push({
           pathname: '/' + response.data.Step.toLowerCase(),
           query: {personId: myPersonId}
         })
       },
-      (error) => console.log(error)
+      error => console.log(error)
     )
   }
 };

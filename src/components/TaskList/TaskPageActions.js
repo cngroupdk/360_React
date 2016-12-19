@@ -13,10 +13,10 @@ export const fetchTasks = () => {
   return (dispatch) => {
     dispatch(requestTasks());
     return api.get('/people/colleagues').then(
-      (response) => dispatch(receiveTasks(
+      response => dispatch(receiveTasks(
         response.data || response,
       )),
-      (error) => dispatch(receiveTasks(
+      error => dispatch(receiveTasks(
         error,
       ))
     );
@@ -28,21 +28,21 @@ export const getFirstStep = (person, router) => {
     if (person.ExistingDraft !== '') {
       router.push({
         pathname: '/questions',
-        query: {id: person.Id}
+        query: {personId: person.Id}
       });
     } else {
       return api.get('/assessments/create', {
         params: {
-          id: person.Id
+          personId: person.Id
         }
       }).then(
-        (response) => {
+        response => {
           router.push({
             pathname: '/' + response.data.Step.toLowerCase(),
-            query: {id: response.data.PersonId}
+            query: {personId: person.Id}
           })
         },
-        (error) => console.log(error),
+        error => console.log(error),
       );
     }
   };

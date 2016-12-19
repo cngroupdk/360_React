@@ -13,10 +13,10 @@ export const fetchPeople = () => {
   return (dispatch) => {
     dispatch(requestPeople());
     return api.get('/people/all').then(
-      (response) => dispatch(receivePeople(
+      response => dispatch(receivePeople(
         response.data || response,
       )),
-      (error) => dispatch(receivePeople(
+      error => dispatch(receivePeople(
         error,
       ))
     );
@@ -36,13 +36,13 @@ export const getFirstStep = (person, router) => {
           personId: person.Id
         }
       }).then(
-        (response) => {
+        response => {
           router.push({
             pathname: '/' + response.data.Step.toLowerCase(),
             query: {personId: person.Id}
           })
         },
-        (error) => console.log(error),
+        error => console.log(error),
       );
     }
   };

@@ -33,10 +33,10 @@ export const fetchAssessment = (personId) => {
         personId,
       }
     }).then(
-      (response) => dispatch(assessmentRequestFinished(
+      response => dispatch(assessmentRequestFinished(
         response.data || response,
       )),
-      (error) => dispatch(assessmentRequestFinished(
+      error => dispatch(assessmentRequestFinished(
         error,
       ))
     );
@@ -49,10 +49,10 @@ export const saveAssessment = () => {
     dispatch(assessmentSave());
     return apiPost.post('assessments/save',
       assessment).then(
-      (response) => dispatch(assessmentSaveFinished(
+      response => dispatch(assessmentSaveFinished(
         response.data || response,
       )),
-      (error) => dispatch(assessmentSaveFinished(
+      error => dispatch(assessmentSaveFinished(
         error,
       ))
     );
@@ -66,10 +66,10 @@ export const whoIs = (personId) => {
         personId,
       }
     }).then(
-      (response) => dispatch(receivePerson(
+      response => dispatch(receivePerson(
         response.data || response,
       )),
-      (error) => dispatch(receivePerson(
+      error => dispatch(receivePerson(
         error,
       )))
   }

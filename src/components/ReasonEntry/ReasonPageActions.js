@@ -13,10 +13,10 @@ export const sendReason = (reason, personId) => {
       reason,
       personId,
     }).then(
-      (response) => dispatch(receiveStep(
+      response => dispatch(receiveStep(
         response.data || response,
       )),
-      (error) => dispatch(receiveStep(
+      error => dispatch(receiveStep(
         error,
       )))
   }
@@ -29,10 +29,10 @@ export const whoIs = (personId) => {
         personId,
       }
     }).then(
-      (response) => dispatch(receivePerson(
+      response => dispatch(receivePerson(
         response.data || response,
       )),
-      (error) => dispatch(receivePerson(
+      error => dispatch(receivePerson(
         error,
       )))
   }

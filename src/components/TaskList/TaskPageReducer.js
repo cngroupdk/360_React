@@ -11,7 +11,6 @@ const taskPageReducer = handleActions({
   [REQUEST_TASKS]: (state) => {
     return state.withMutations(newState =>
       newState
-        .setIn(['isLoaded'], false)
         .setIn(['isError'], false)
     );
   },
@@ -29,7 +28,6 @@ const taskPageReducer = handleActions({
     throw(state) {
       return state.withMutations(newState =>
         newState
-          .setIn(['isLoaded'], false)
           .setIn(['isError'], true)
       );
     },

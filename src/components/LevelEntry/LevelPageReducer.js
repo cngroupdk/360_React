@@ -12,7 +12,6 @@ const levelPageReducer = handleActions({
   [REQUEST_LEVELS]: (state) => {
     return state.withMutations(newState =>
       newState
-        .setIn(['isLoaded'], false)
         .setIn(['isError'], false)
     );
   },
@@ -29,7 +28,6 @@ const levelPageReducer = handleActions({
     throw(state) {
       return state.withMutations(newState =>
         newState
-          .setIn(['isLoaded'], false)
           .setIn(['isError'], true)
       );
     },

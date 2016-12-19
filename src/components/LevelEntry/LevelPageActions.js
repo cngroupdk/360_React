@@ -15,10 +15,10 @@ export const fetchLevels = () => {
     return (dispatch) => {
         dispatch(requestLevels());
         return api.get('/assessments/levels').then(
-            (response) => dispatch(receiveLevels(
+            response => dispatch(receiveLevels(
                 response.data || response,
             )),
-            (error) => dispatch(receiveLevels(
+            error => dispatch(receiveLevels(
                 error,
             ))
         );
@@ -53,6 +53,3 @@ export const whoIs = (personId) => {
             )))
     }
 };
-
-
-

@@ -28,10 +28,11 @@ export default class Redirect extends Component {
         const {
             isHidden,
             person,
+            className,
         } = this.props;
 
         return (
-            <StyledLink data-xyAlign hidden={isHidden} onClick={this.gotoNextLinkPath} to="#">
+            <StyledLink className={className} data-xyAlign hidden={isHidden} onClick={this.gotoNextLinkPath} to="#">
                 {buttonText(person.ExistingDraft)}
             </StyledLink>
         );

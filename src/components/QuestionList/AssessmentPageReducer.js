@@ -101,4 +101,7 @@ const assessmentPageReducer = handleActions({
 export const getAssessment = state =>
     state.get('assessment');
 
+export const isLoaded = state =>
+  !!state.get('assessment');
+
 export default assessmentPageReducer;

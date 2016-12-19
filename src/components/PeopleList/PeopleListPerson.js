@@ -18,8 +18,8 @@ export default class PeopleListPerson extends Component {
     constructor(props) {
         super(props);
         this.state = {isButtonHidden: true};
-        this.onMouseEnterHandler = this.onMouseEnterHandler.bind(this);
-        this.onMouseLeaveHandler = this.onMouseLeaveHandler.bind(this);
+        // this.onMouseEnterHandler = this.onMouseEnterHandler.bind(this);
+        // this.onMouseLeaveHandler = this.onMouseLeaveHandler.bind(this);
     }
 
     onMouseEnterHandler() {
@@ -43,7 +43,7 @@ export default class PeopleListPerson extends Component {
         const lastSubmitted = person.LastSubmitted;
 
         return (
-            <TableRow onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+            <TableRow>
                 <TableCell fluid sm={0.8}>
                     <CenteredContent>
                         <StyledProfileInitial>
@@ -84,9 +84,9 @@ export default class PeopleListPerson extends Component {
                 </TableCell>
                 <TableCell fluid sm={2}>
                     <RedirectButton
-                        isHidden={this.state.isButtonHidden}
-                        person={person}
-                        getFirstStep={getFirstStep}/>
+                          className="tableRowShowOnHover"
+                          person={person}
+                          getFirstStep={getFirstStep}/>
                 </TableCell>
                 <TableCell fluid sm={0.3}>
                     <CenteredContent>

@@ -23,10 +23,10 @@ class PeoplePage extends Component {
   };
 
   componentDidMount() {
-    this._fetchAllData();
+    this.fetchAllData();
   }
 
-  _fetchAllData() {
+  fetchAllData() {
     this.props.fetchPeople();
   }
 

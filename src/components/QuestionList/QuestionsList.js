@@ -14,8 +14,8 @@ export default class QuestionsList extends Component {
       <div>
         <QuestionsSectionName>{skill.get('Caption')}</QuestionsSectionName>
 
-        {skill.get('Questions').map((question, index) => {
-          return (<Question key={index}
+        {skill.get('Questions').map((question) => {
+          return (<Question key={question.Id}
                             question={question}
                             skillId={skill.get('Id')}
                             updateAnswer={updateAnswer}/>)

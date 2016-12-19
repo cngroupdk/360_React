@@ -12,8 +12,8 @@ import { NewSelfAssessmentBtnContainer } from '../common/assets/styles/SelfPage/
 export default class SelfList extends Component {
   constructor(props) {
     super(props);
-    this._handleOnClickCreate = this._handleOnClickCreate.bind(this);
-    this._isDraftExists = this._isDraftExists.bind(this);
+    this.handleOnClickCreate = this.handleOnClickCreate.bind(this);
+    this.doesDraftExist = this.doesDraftExist.bind(this);
   }
 
   static contextTypes = {
@@ -32,7 +32,7 @@ export default class SelfList extends Component {
     }
   }
 
-  _isDraftExists() {
+  doesDraftExist() {
     const {selfList} = this.props;
 
     for (const assessment of selfList) {
@@ -43,7 +43,7 @@ export default class SelfList extends Component {
     return false;
   }
 
-  _handleOnClickCreate(event) {
+  handleOnClickCreate(event) {
     event.preventDefault();
     this.props.createSelfAssessment(this.context.router);
   }
@@ -65,8 +65,8 @@ export default class SelfList extends Component {
 
         <NewSelfAssessmentBtnContainer>
           <StyledLink
-            disabled={this._isDraftExists()}
-            onClick={this._handleOnClickCreate}
+            disabled={this.doesDraftExist()}
+            onClick={this.handleOnClickCreate}
             to="/self">
             New self assessment
           </StyledLink>

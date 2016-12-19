@@ -23,48 +23,48 @@ export default class Question extends Component {
       answerNote: note,
     };
 
-    this._handleAddRemoveComment = this._handleAddRemoveComment.bind(this);
-    this._handleOnChangeDontSay = this._handleOnChangeDontSay.bind(this);
-    this._handleOnChangeNote = this._handleOnChangeNote.bind(this);
-    this._handleOnChangeAnswerValue = this._handleOnChangeAnswerValue.bind(this);
+    this.handleAddRemoveComment = this.handleAddRemoveComment.bind(this);
+    this.handleOnChangeDontSay = this.handleOnChangeDontSay.bind(this);
+    this.handleOnChangeNote = this.handleOnChangeNote.bind(this);
+    this.handleOnChangeAnswerValue = this.handleOnChangeAnswerValue.bind(this);
   }
 
-  _handleAddRemoveComment() {
+  handleAddRemoveComment() {
     this.setState(() => ({
       showComment: !this.state.showComment,
       answerNote: '',
     }));
-    this._updateAnswerNote('');
+    this.updateAnswerNote('');
   }
 
-  _handleOnChangeDontSay(event) {
+  handleOnChangeDontSay(event) {
     const newDontSay = event.target.checked;
 
     this.setState(() => ({
       disableRange: newDontSay,
     }));
 
-    this._updateAnswer('DontSay', newDontSay);
+    this.updateAnswer('DontSay', newDontSay);
   }
 
-  _handleOnChangeNote(event) {
+  handleOnChangeNote(event) {
     const newNote = event.target.value;
-    this._updateAnswerNote(newNote);
+    this.updateAnswerNote(newNote);
   }
 
-  _updateAnswerNote(newNote) {
+  updateAnswerNote(newNote) {
     this.setState(() => ({
       answerNote: newNote
     }));
 
-    this._updateAnswer('Note', newNote);
+    this.updateAnswer('Note', newNote);
   }
 
-  _handleOnChangeAnswerValue(newValue) {
-    this._updateAnswer('AnswerValue', newValue);
+  handleOnChangeAnswerValue(newValue) {
+    this.updateAnswer('AnswerValue', newValue);
   }
 
-  _updateAnswer(property, newValue) {
+  updateAnswer(property, newValue) {
     const {
       question,
       skillId,
@@ -94,25 +94,25 @@ export default class Question extends Component {
               type="checkbox"
               name={answer.get('Id')}
               value="false"
-              onChange={this._handleOnChangeDontSay}
+              onChange={this.handleOnChangeDontSay}
               defaultChecked={answer.get('DontSay')}/><br/>
             Cannot or dont want to answer
           </div>
           <div className="slider-container">
             <Slider
               value={answer.get('AnswerValue')}
-              onChange={this._handleOnChangeAnswerValue}
+              onChange={this.handleOnChangeAnswerValue}
               disableRange={this.state.disableRange}/>
           </div>
           <div className="add-button-container">
-            <StyledAddCommentBtn onClick={this._handleAddRemoveComment} type="button">
+            <StyledAddCommentBtn onClick={this.handleAddRemoveComment} type="button">
               {this.state.showComment ? '- Remove a comment' : '+ Add a comment'}
             </StyledAddCommentBtn>
           </div>
         </div>
         <div className="clear">&nbsp;</div>
         <div className={this.state.showComment ? '' : 'hidden'}>
-          <CommentBox text={this.state.answerNote} onChange={this._handleOnChangeNote}/>
+          <CommentBox text={this.state.answerNote} onChange={this.handleOnChangeNote}/>
         </div>
       </QuestionContainer>
     );

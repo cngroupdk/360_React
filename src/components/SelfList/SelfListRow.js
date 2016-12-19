@@ -17,7 +17,7 @@ export const SelfListRow = ({assessment}) => (
       <StyledLink
         hidden={!assessment.ExistingDraft}
         data-vertical-align
-        to={'/questions?id=' + assessment.ExistingDraft}>
+        to={'/questions?personId=' + assessment.SubjectId}>
         Edit draft
       </StyledLink>
     </TableCell>

@@ -18,20 +18,6 @@ export default class PeopleListPerson extends Component {
   constructor(props) {
     super(props);
     this.state = {isButtonHidden: true};
-    this.onMouseEnterHandler = this.onMouseEnterHandler.bind(this);
-    this.onMouseLeaveHandler = this.onMouseLeaveHandler.bind(this);
-  }
-
-  onMouseEnterHandler() {
-    this.setState(() => ({
-      isButtonHidden: false
-    }));
-  }
-
-  onMouseLeaveHandler() {
-    this.setState(() => ({
-      isButtonHidden: true
-    }));
   }
 
   render() {
@@ -43,7 +29,7 @@ export default class PeopleListPerson extends Component {
     const lastSubmitted = person.LastSubmitted;
 
     return (
-      <TableRow onMouseEnter={this.onMouseEnterHandler} onMouseLeave={this.onMouseLeaveHandler}>
+      <TableRow>
         <TableCell fluid sm={0.8}>
           <CenteredContent>
             <StyledProfileInitial>

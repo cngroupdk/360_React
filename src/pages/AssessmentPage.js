@@ -34,20 +34,20 @@ class AssessmentPage extends Component {
 
   constructor(props) {
     super(props);
-    this._handleSaveAsDraft = this._handleSaveAsDraft.bind(this);
-    this._handleSubmitAssessment = this._handleSubmitAssessment.bind(this);
+    this.handleSaveAsDraft = this.handleSaveAsDraft.bind(this);
+    this.handleSubmitAssessment = this.handleSubmitAssessment.bind(this);
   }
 
   componentDidMount() {
-    this._fetchAllData();
-    window.addEventListener("beforeunload", this._addPromptMessageToWindow);
+    this.fetchAllData();
+    window.addEventListener("beforeunload", this.addPromptMessageToWindow);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('beforeunload', this._addPromptMessageToWindow);
+    window.removeEventListener('beforeunload', this.addPromptMessageToWindow);
   }
 
-  _addPromptMessageToWindow(event) {
+  addPromptMessageToWindow(event) {
     if (!event) event = window.event;
     event.preventDefault();
     const message = "Are you sure you want to leave this page? Changes that you made will be lost.";
@@ -57,16 +57,16 @@ class AssessmentPage extends Component {
     return message;
   }
 
-  _fetchAllData() {
+  fetchAllData() {
     this.props.fetchAssessment(this.props.location.query.personId);
     this.props.whoIs(this.props.location.query.personId);
   }
 
-  _handleSaveAsDraft() {
+  handleSaveAsDraft() {
     this.props.saveAssessment();
   }
 
-  _handleSubmitAssessment() {
+  handleSubmitAssessment() {
     this.props.assessmentUpdateSubmitted(true);
     this.props.saveAssessment();
   }
@@ -90,7 +90,7 @@ class AssessmentPage extends Component {
             </StyledProfileInitial>
           </ContentHeader>
 
-          <StyledLink float-right to={{
+          <StyledLink data-right-align to={{
             pathname: '/level',
             query: {personId: person.Id}
           }}>
@@ -99,8 +99,8 @@ class AssessmentPage extends Component {
 
           <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
 
-          <StyledLink data-margin-right-30 onClick={this._handleSaveAsDraft} to="/">Save draft</StyledLink>
-          <StyledLink onClick={this._handleSubmitAssessment} to="/">Submit</StyledLink>
+          <StyledLink data-margin-right-30 onClick={this.handleSaveAsDraft} to="/">Save draft</StyledLink>
+          <StyledLink onClick={this.handleSubmitAssessment} to="/">Submit</StyledLink>
         </ContentContainer>
       </Loader>
     )

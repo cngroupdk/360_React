@@ -13,10 +13,10 @@ export default class ReasonEntry extends Component {
   constructor(props) {
     super(props);
     this.state = {reason: ''};
-    this._handleReasonEnter = this._handleReasonEnter.bind(this);
+    this.handleReasonEnter = this.handleReasonEnter.bind(this);
   }
 
-  _handleReasonEnter(e) {
+  handleReasonEnter(e) {
     this.setState({
       reason: e.target.value
     });
@@ -47,7 +47,7 @@ export default class ReasonEntry extends Component {
                         rows="4"
                         cols="50"
                         placeholder="Enter your reason here (min. 10 characters)..."
-                        onChange={this._handleReasonEnter}></StyledTextArea>
+                        onChange={this.handleReasonEnter}></StyledTextArea>
 
         <StyledLink disabled={this.state.reason.length < 10}
                     to={{

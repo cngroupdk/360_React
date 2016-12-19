@@ -27,10 +27,10 @@ class HomePage extends Component {
   };
 
   componentDidMount() {
-    this._fetchAllData();
+    this.fetchAllData();
   };
 
-  _fetchAllData() {
+  fetchAllData() {
     this.props.fetchHistory();
     this.props.fetchTasks();
   };

@@ -11,10 +11,10 @@ export default class TaskList extends Component {
 
   constructor(props) {
     super(props);
-    this._searchOnePerson = this._searchOnePerson.bind(this);
+    this.searchOnePerson = this.searchOnePerson.bind(this);
   }
 
-  _searchOnePerson(e) {
+  searchOnePerson(e) {
     const {
       searchTasks,
     } = this.props;
@@ -34,7 +34,7 @@ export default class TaskList extends Component {
 
         <ContentHeader>Tasks</ContentHeader>
 
-        <StyledInput type="text" id="searchInputTask" onChange={this._searchOnePerson}/>
+        <StyledInput type="text" id="searchInputTask" onChange={this.searchOnePerson}/>
 
         <HeaderRow>
           <HeaderColumn fluid sm={4}>Person</HeaderColumn>
@@ -44,9 +44,9 @@ export default class TaskList extends Component {
           <HeaderColumn fluid sm={3}>&nbsp;</HeaderColumn>
         </HeaderRow>
 
-        {taskPeople.map((person, index) => {
+        {taskPeople.map((person) => {
           return (
-            <TaskListPerson person={person} key={index} getFirstStep={getFirstStep}/>
+            <TaskListPerson person={person} key={person.Id} getFirstStep={getFirstStep}/>
           )
         })}
       </ContentContainer>

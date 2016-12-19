@@ -27,13 +27,13 @@ export const createSelfAssessment = (router) => {
     const myPersonId = getSelf(getState().get('headerReducer')).Id;
     return api.get('/assessments/create', {
       params: {
-        id: myPersonId
+        personId: myPersonId
       }
     }).then(
       (response) => {
         router.push({
           pathname: '/' + response.data.Step.toLowerCase(),
-          query: {id: response.data.Id}
+          query: {personId: myPersonId}
         })
       },
       (error) => console.log(error)

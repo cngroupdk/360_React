@@ -9,11 +9,11 @@ import { StyledLink } from '../common/assets/styles/StyledLink';
 export default class LevelEntry extends Component {
   constructor(props) {
     super(props);
-    this._handleProfLevelChange = this._handleProfLevelChange.bind(this);
+    this.handleProfLevelChange = this.handleProfLevelChange.bind(this);
     this.state = {level: ''};
   }
 
-  _handleProfLevelChange(e) {
+  handleProfLevelChange(e) {
     this.props.sendLevel(e, this.props.location.query.personId);
     this.setState({level: 'Entered'});
   }
@@ -27,12 +27,12 @@ export default class LevelEntry extends Component {
     return (
       <div>
         <RadioWrapper>
-          <RadioGroup name="prof-level" onChange={this._handleProfLevelChange}>
+          <RadioGroup name="prof-level" onChange={this.handleProfLevelChange}>
 
-            {levels.map((level, index) => {
+            {levels.map((level) => {
               return (
                 <Level level={level}
-                       key={index}
+                       key={level.Id}
                 />
               )
             })}

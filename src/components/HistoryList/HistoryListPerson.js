@@ -12,7 +12,7 @@ import { CenteredContent } from '../common/assets/styles/CenteredContent';
 
 export default class HistoryListPerson extends Component {
 
-  _CheckIfDraft(person) {
+  CheckIfDraft(person) {
     if (person.ExistingDraft !== '') {
       return <RedirectButtonHistory person={person}/>
     } else {
@@ -48,7 +48,7 @@ export default class HistoryListPerson extends Component {
           </CenteredContent>
         </TableCell>
         <TableCell fluid sm={3}>
-          {this._CheckIfDraft(person)}</TableCell>
+          {this.CheckIfDraft(person)}</TableCell>
       </TableRow>
     );
   }

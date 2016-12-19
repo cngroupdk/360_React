@@ -13,10 +13,10 @@ import { Legend } from '../common/assets/styles/Legend';
 export default class PeopleList extends Component {
   constructor(props) {
     super(props);
-    this._searchOnePerson = this._searchOnePerson.bind(this);
+    this.searchOnePerson = this.searchOnePerson.bind(this);
   }
 
-  _searchOnePerson(e) {
+  searchOnePerson(e) {
     this.props.searchPeople(e.target.value);
   }
 
@@ -43,7 +43,7 @@ export default class PeopleList extends Component {
             />Assessment in one month
           </IconWrapper>
         </Legend>
-        <StyledInput type="text" id="searchInput" onChange={this._searchOnePerson}/>
+        <StyledInput type="text" id="searchInput" onChange={this.searchOnePerson}/>
 
         <HeaderRow>
           <HeaderColumn fluid sm={3.7}>Person</HeaderColumn>
@@ -55,10 +55,10 @@ export default class PeopleList extends Component {
           <HeaderColumn fluid sm={0.3}>&nbsp;</HeaderColumn>
         </HeaderRow>
 
-        {people.map((person, index) => {
+        {people.map((person) => {
           return (
             <PeopleListPerson person={person}
-                              key={index}
+                              key={person.Id}
                               getFirstStep={getFirstStep}
             />
           )

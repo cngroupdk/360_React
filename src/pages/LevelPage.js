@@ -28,10 +28,10 @@ class LevelPage extends Component {
   };
 
   componentDidMount() {
-    this._fetchAllData();
+    this.fetchAllData();
   }
 
-  _fetchAllData() {
+  fetchAllData() {
     this.props.fetchLevels();
     this.props.whoIs(this.props.location.query.personId);
   }

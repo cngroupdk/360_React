@@ -25,9 +25,9 @@ export default class HistoryList extends Component {
           <HeaderColumn fluid sm={3}>Last submitted</HeaderColumn>
         </HeaderRow>
 
-        {historyPeople.map((person, index) => {
+        {historyPeople.map((person) => {
           return (
-            <HistoryListPerson person={person} key={index}/>
+            <HistoryListPerson person={person} key={person.Id}/>
           )
         })}
       </ContentContainer>

@@ -1,0 +1,41 @@
+360 Review
+==========
+
+- howto
+  - component type
+- README.md
+- .editorconfig
+    - 4 spaces
+    - trim whitespaces
+- StyledProfilePhoto (1000xCSS class)
+- reducers
+    - optimistic view (already loaded)
+    - selectors!
+- routes
+    - absolute routes "/people"
+    - HomePage > TasksAndHistory
+- HistoryList
+    - map -> key
+- styled-components
+    - StyledCommentBox (no child rules)
+    - StyledLink (data-xyAlign, ...) -> wrapper?
+        - too many concerns
+    - StyledSlider
+        - is it reused?
+        - style individual components
+            - wrapper
+            - slider
+            - bar
+            - ...
+- code structure
+    - components/common
+        - getPhotoUrl ... -> move to libs
+        - assets
+- names
+    - Header/Footer
+        - of what?
+    - "self"
+    - HistoryList
+        - HistoryListPerson
+            - _Chack...
+        - actions/reducer

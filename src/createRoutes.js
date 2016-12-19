@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from './App'
-import HomePage from './pages/HomePage';
+import TaskAndHistory from './pages/HomePage';
 import PeoplePage from './pages/PeoplePage'
 import SelfPage from './pages/SelfPage'
 import LevelPage from './pages/LevelPage'
@@ -13,12 +13,12 @@ import NotFoundPage from './pages/NotFoundPage'
 export default function createRoutes() {
     return (
         <Route path="/" component={App}>
-            <IndexRoute component={HomePage}/>
-            <Route path="/people" component={PeoplePage}/>
-            <Route path="/self" component={SelfPage}/>
-            <Route path="/level" component={LevelPage}/>
-            <Route path="/reason" component={ReasonPage}/>
-            <Route path="/questions" component={AssessmentPage}/>
+            <IndexRoute component={TaskAndHistory}/>
+            <Route path="people" component={PeoplePage}/>
+            <Route path="self" component={SelfPage}/>
+            <Route path="level" component={LevelPage}/>
+            <Route path="reason" component={ReasonPage}/>
+            <Route path="questions" component={AssessmentPage}/>
             <Route path="*" component={NotFoundPage}/>
         </Route>
     );

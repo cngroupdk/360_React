@@ -111,6 +111,8 @@ function mapStateToProps(state) {
     const assessmentPageReducerState = state.get('assessmentPageReducer');
 
     return {
+        // assessment: getAssesments(assessmentPageReducerState),
+        // person: getPerson(assessmentPageReducerState),
         assessment: assessmentPageReducerState.get('assessment'),
         person: assessmentPageReducerState.get('person'),
         isLoaded: assessmentPageReducerState.get('isLoaded'),

@@ -8,6 +8,14 @@ export const TableRow = styled(Row)`
     min-height: 60px;
     border-top: none;
     &:hover { background-color: #edfbfd; }
+
+    .tableRowShowOnHover {
+      visibility: hidden;
+    }
+
+    &:hover .tableRowShowOnHover {
+      visibility: visible;
+    }
 `;
 
 export const TableCell = styled(Column)`

@@ -27,7 +27,7 @@ export default class HistoryList extends Component {
 
                 {historyPeople.map((person, index) => {
                     return (
-                        <HistoryListPerson person={person} key={index}/>
+                        <HistoryListPerson person={person} key={person.id}/>
                     )
                 })}
             </ContentContainer>

@@ -2,6 +2,8 @@ import React, { Component }  from 'react';
 import LazyLoad from 'react-lazyload';
 import dateFormat from 'dateformat';
 
+// import formatDate form '../lib/formatDate';
+
 import getPhotoUrl from '../common/getPhotoUrl';
 import RedirectButtonHistory from './HistoryListPersonRedirect';
 

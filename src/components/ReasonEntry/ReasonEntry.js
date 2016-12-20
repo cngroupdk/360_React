@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
 
-import getPhotoUrl from '../../lib/getPhotoUrl';
-
 import { ContentContainer} from '../common/assets/styles/ContentContainer';
 import { StyledLink } from '../common/assets/styles/StyledLink';
 import { StyledReasonEnterArea } from '../common/assets/styles/ReasonPage/StyledReasonEnterArea';
-import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
-import { PeopleProfileHeader, ProfileDescriptionWrapper, ProfilePhotoWrapper }
-  from '../common/assets/styles/QuestionsPage/PeopleProfileHeader';
+import { AssessmentPeopleProfileHeader } from '../common/AssessmentPeopleProfileHeader';
 import { StyledReasonEnterAreaWrapper } from '../common/assets/styles/ReasonPage/StyledReasonEnterAreaWrapper';
 
 export default class ReasonEntry extends Component {
@@ -40,16 +36,8 @@ export default class ReasonEntry extends Component {
     return (
       <ContentContainer>
         <h1>Warning! {person.Name} is not your co-worker.</h1>
-        <PeopleProfileHeader>
-          <ProfilePhotoWrapper>
-            <StyledProfilePhoto radius='120px' imgUrl={getPhotoUrl(person.Login)}/>
-          </ProfilePhotoWrapper>
-          <ProfileDescriptionWrapper>
-            <h2>{person.Name}</h2>
-            Position: {person.Position}<br/>
-            Department: {person.Department}
-          </ProfileDescriptionWrapper>
-        </PeopleProfileHeader>
+
+        <AssessmentPeopleProfileHeader person={person}/>
 
         <StyledReasonEnterAreaWrapper>
           <StyledReasonEnterArea

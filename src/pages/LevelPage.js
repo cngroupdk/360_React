@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import LevelEntry from '../components/LevelEntry/LevelEntry';
 
-import getPhotoUrl from '../lib/getPhotoUrl';
 import {
   fetchLevels,
   sendLevel,
@@ -12,9 +11,7 @@ import {
 } from '../components/LevelEntry/LevelPageActions';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
-import { StyledProfilePhoto } from '../components/common/assets/styles/StyledProfilePhoto';
-import { PeopleProfileHeader, ProfileDescriptionWrapper, ProfilePhotoWrapper }
-  from '../components/common/assets/styles/QuestionsPage/PeopleProfileHeader';
+import { AssessmentPeopleProfileHeader } from '../components/common/AssessmentPeopleProfileHeader';
 
 class LevelPage extends Component {
   static propTypes = {
@@ -50,16 +47,8 @@ class LevelPage extends Component {
       <ContentContainer>
         <Loader loaded={isLoaded}>
           <h1>Proficiency Levels</h1>
-          <PeopleProfileHeader>
-            <ProfilePhotoWrapper>
-              <StyledProfilePhoto radius='120px' imgUrl={getPhotoUrl(person.Login)}/>
-            </ProfilePhotoWrapper>
-            <ProfileDescriptionWrapper>
-              <h2>{person.Name}</h2>
-              Position: {person.Position}<br/>
-              Department: {person.Department}
-            </ProfileDescriptionWrapper>
-          </PeopleProfileHeader>
+
+          <AssessmentPeopleProfileHeader person={person}/>
 
           <LevelEntry
             levels={levels}

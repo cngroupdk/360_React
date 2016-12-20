@@ -2,15 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import getPhotoUrl from '../lib/getPhotoUrl';
-
 import SkillsList from '../components/QuestionList/SkillsList';
 
 import { ContentContainer } from '../components/common/assets/styles/ContentContainer';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
-import { StyledProfilePhoto } from '../components/common/assets/styles/StyledProfilePhoto';
-import { PeopleProfileHeader, ProfileDescriptionWrapper, ProfilePhotoWrapper }
-  from '../components/common/assets/styles/QuestionsPage/PeopleProfileHeader';
+import { AssessmentPeopleProfileHeader } from '../components/common/AssessmentPeopleProfileHeader';
 
 import {
     fetchAssessment,
@@ -88,17 +84,10 @@ class AssessmentPage extends Component {
       <Loader loaded={isLoaded}>
         <ContentContainer>
           <h1>Assessment</h1>
-          <PeopleProfileHeader>
-            <ProfilePhotoWrapper>
-              <StyledProfilePhoto radius='120px' imgUrl={getPhotoUrl(person.Login)}/>
-            </ProfilePhotoWrapper>
-            <ProfileDescriptionWrapper>
-              <h2>{person.Name}</h2>
-              Position: {person.Position}<br/>
-              Department: {person.Department}
-            </ProfileDescriptionWrapper>
+
+          <AssessmentPeopleProfileHeader person={person}>
             <StyledLink data-right-align to={pathNameChangeLevels}>Change selected level</StyledLink>
-          </PeopleProfileHeader>
+          </AssessmentPeopleProfileHeader>
 
           <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
 

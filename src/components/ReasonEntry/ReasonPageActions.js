@@ -7,15 +7,24 @@ export const RECEIVE_PERSON = 'RECEIVE_PERSON';
 export const receiveStep = createAction(RECEIVE_STEP);
 export const receivePerson = createAction(RECEIVE_PERSON);
 
-export const sendReason = (reason, personId) => {
+export const sendReason = (reason, personId, router) => {
   return (dispatch) => {
     apiPost.post('/assessments/reason', {
       reason,
       personId,
     }).then(
-      response => dispatch(receiveStep(
-        response.data || response,
-      )),
+      response => {
+
+        dispatch(receiveStep(
+          response.data || response,
+        ));
+
+        router.push({
+          pathname: '/' + response.data.Step.toLowerCase(),
+          query: {personId: personId}
+        })
+
+      },
       error => dispatch(receiveStep(
         error,
       )))

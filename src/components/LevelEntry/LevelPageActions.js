@@ -25,15 +25,24 @@ export const fetchLevels = () => {
   };
 };
 
-export const sendLevel = (levelId, personId) => {
+export const sendLevel = (levelId, personId, router) => {
   return (dispatch) => {
     apiPost.post('/assessments/level', {
       levelId,
       personId,
     }).then(
-      response => dispatch(receiveStep(
-        response.data || response,
-      )),
+      response => {
+
+        dispatch(receiveStep(
+          response.data || response,
+        ));
+
+        router.push({
+          pathname: '/' + response.data.Step.toLowerCase(),
+          query: {personId: personId}
+        })
+
+      },
       error => dispatch(receiveStep(
         error,
       )))

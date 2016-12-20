@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { RadioGroup } from 'react-radio-group';
 
 import Level from './Level'
@@ -7,15 +7,25 @@ import { RadioWrapper } from '../common/assets/styles/ReasonPage/RadioWrapper';
 import { StyledLink } from '../common/assets/styles/StyledLink';
 
 export default class LevelEntry extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.handleProfLevelChange = this.handleProfLevelChange.bind(this);
+    this.handleProccedToQuestions = this.handleProccedToQuestions.bind(this);
     this.state = {level: ''};
   }
 
-  handleProfLevelChange(e) {
-    this.props.sendLevel(e, this.props.location.query.personId);
-    this.setState({level: 'Entered'});
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
+  handleProfLevelChange(value) {
+    this.setState({level: value});
+  }
+
+  handleProccedToQuestions(e) {
+    const personId = this.props.location.query.personId;
+    this.props.sendLevel(this.state.level, personId, this.context.router);
+    e.preventDefault();
   }
 
   render() {
@@ -27,7 +37,7 @@ export default class LevelEntry extends Component {
     const pathNameNextStep = {
       pathname: '/' + nextStep.toLowerCase(),
       query: {personId: this.props.location.query.personId}
-    }
+    };
 
     return (
       <div>
@@ -42,7 +52,7 @@ export default class LevelEntry extends Component {
           </RadioGroup>
         </RadioWrapper>
 
-        <StyledLink disabled={this.state.level === ''} to={pathNameNextStep}>
+        <StyledLink disabled={this.state.level === ''} onClick={this.handleProccedToQuestions} to={pathNameNextStep}>
           Proceed to questions </StyledLink>
       </div>
     )

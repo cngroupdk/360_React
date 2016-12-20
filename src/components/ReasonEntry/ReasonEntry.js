@@ -3,11 +3,12 @@ import React, { Component } from 'react';
 import getPhotoUrl from '../../lib/getPhotoUrl';
 
 import { ContentContainer} from '../common/assets/styles/ContentContainer';
-import { ContentHeader} from '../common/assets/styles/ContentHeader';
 import { StyledLink } from '../common/assets/styles/StyledLink';
 import { StyledReasonEnterArea } from '../common/assets/styles/ReasonPage/StyledReasonEnterArea';
 import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
-import { StyledProfileInitial } from '../common/assets/styles/StyledProfileInitial';
+import { PeopleProfileHeader, ProfileDescriptionWrapper, ProfilePhotoWrapper }
+  from '../common/assets/styles/QuestionsPage/PeopleProfileHeader';
+import { StyledReasonEnterAreaWrapper } from '../common/assets/styles/ReasonPage/StyledReasonEnterAreaWrapper';
 
 export default class ReasonEntry extends Component {
   constructor(props) {
@@ -31,29 +32,35 @@ export default class ReasonEntry extends Component {
       personId,
     } = this.props;
 
+    const pathNameNextStep = {
+      pathname: '/' + nextStep.toLowerCase(),
+      query: {personId}
+    };
+
     return (
       <ContentContainer>
-        <ContentHeader>
-          Warning! {person.Name}
-          &nbsp;
-          <StyledProfileInitial>
-            <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
-          </StyledProfileInitial>
-          &nbsp;
-          is not your co-worker.
-        </ContentHeader>
+        <h1>Warning! {person.Name} is not your co-worker.</h1>
+        <PeopleProfileHeader>
+          <ProfilePhotoWrapper>
+            <StyledProfilePhoto radius='120px' imgUrl={getPhotoUrl(person.Login)}/>
+          </ProfilePhotoWrapper>
+          <ProfileDescriptionWrapper>
+            <h2>{person.Name}</h2>
+            Position: {person.Position}<br/>
+            Department: {person.Department}
+          </ProfileDescriptionWrapper>
+        </PeopleProfileHeader>
 
-        <StyledReasonEnterArea autoFocus
-                        rows="4"
-                        cols="50"
-                        placeholder="Enter your reason here (min. 10 characters)..."
-                        onChange={this.handleReasonEnter}></StyledReasonEnterArea>
+        <StyledReasonEnterAreaWrapper>
+          <StyledReasonEnterArea
+            autoFocus
+            placeholder="Please enter your reason here..."
+            onChange={this.handleReasonEnter}
+          />
+          <label>*reason is required (min. 10 characters)</label>
+        </StyledReasonEnterAreaWrapper>
 
-        <StyledLink disabled={this.state.reason.length < 10}
-                    to={{
-                      pathname: '/' + nextStep.toLowerCase(),
-                      query: {personId}
-                    }}>
+        <StyledLink disabled={this.state.reason.length < 10} to={pathNameNextStep}>
           Proceed further
         </StyledLink>
       </ContentContainer>

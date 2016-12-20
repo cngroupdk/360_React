@@ -12,9 +12,9 @@ import {
 } from '../components/LevelEntry/LevelPageActions';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
-import { ContentHeader} from '../components/common/assets/styles/ContentHeader';
 import { StyledProfilePhoto } from '../components/common/assets/styles/StyledProfilePhoto';
-import { StyledProfileInitial } from '../components/common/assets/styles/StyledProfileInitial';
+import { PeopleProfileHeader, ProfileDescriptionWrapper, ProfilePhotoWrapper }
+  from '../components/common/assets/styles/QuestionsPage/PeopleProfileHeader';
 
 class LevelPage extends Component {
   static propTypes = {
@@ -49,13 +49,18 @@ class LevelPage extends Component {
     return (
       <ContentContainer>
         <Loader loaded={isLoaded}>
-          <ContentHeader>
-            Please, choose the proficiency level for {person.Name}
-            &nbsp;
-            <StyledProfileInitial>
-              <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
-            </StyledProfileInitial>
-          </ContentHeader>
+          <h1>Proficiency Levels</h1>
+          <PeopleProfileHeader>
+            <ProfilePhotoWrapper>
+              <StyledProfilePhoto radius='120px' imgUrl={getPhotoUrl(person.Login)}/>
+            </ProfilePhotoWrapper>
+            <ProfileDescriptionWrapper>
+              <h2>{person.Name}</h2>
+              Position: {person.Position}<br/>
+              Department: {person.Department}
+            </ProfileDescriptionWrapper>
+          </PeopleProfileHeader>
+
           <LevelEntry
             levels={levels}
             location={location}

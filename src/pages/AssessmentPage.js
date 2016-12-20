@@ -7,10 +7,10 @@ import getPhotoUrl from '../lib/getPhotoUrl';
 import SkillsList from '../components/QuestionList/SkillsList';
 
 import { ContentContainer } from '../components/common/assets/styles/ContentContainer';
-import { ContentHeader } from '../components/common/assets/styles/ContentHeader';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
 import { StyledProfilePhoto } from '../components/common/assets/styles/StyledProfilePhoto';
-import { StyledProfileInitial } from '../components/common/assets/styles/StyledProfileInitial';
+import { PeopleProfileHeader, ProfileDescriptionWrapper, ProfilePhotoWrapper }
+  from '../components/common/assets/styles/QuestionsPage/PeopleProfileHeader';
 
 import {
     fetchAssessment,
@@ -79,23 +79,26 @@ class AssessmentPage extends Component {
       person,
     } = this.props;
 
+    const pathNameChangeLevels = {
+      pathname: '/level',
+      query: {personId: person.Id}
+    };
+
     return (
       <Loader loaded={isLoaded}>
         <ContentContainer>
-          <ContentHeader>
-            Please, answer questions about {person.Name}
-            &nbsp;
-            <StyledProfileInitial>
-              <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
-            </StyledProfileInitial>
-          </ContentHeader>
-
-          <StyledLink data-right-align to={{
-            pathname: '/level',
-            query: {personId: person.Id}
-          }}>
-            Change selected level
-          </StyledLink>
+          <h1>Assessment</h1>
+          <PeopleProfileHeader>
+            <ProfilePhotoWrapper>
+              <StyledProfilePhoto radius='120px' imgUrl={getPhotoUrl(person.Login)}/>
+            </ProfilePhotoWrapper>
+            <ProfileDescriptionWrapper>
+              <h2>{person.Name}</h2>
+              Position: {person.Position}<br/>
+              Department: {person.Department}
+            </ProfileDescriptionWrapper>
+            <StyledLink data-right-align to={pathNameChangeLevels}>Change selected level</StyledLink>
+          </PeopleProfileHeader>
 
           <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
 

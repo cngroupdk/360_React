@@ -45,3 +45,8 @@ body {
 .clear {
   clear: both;
 }
+
+h1 {
+  margin: 10px;
+  font-weight: bold;
+}

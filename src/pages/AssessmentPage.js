@@ -2,15 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import getPhotoUrl from '../lib/getPhotoUrl';
-
 import SkillsList from '../components/QuestionList/SkillsList';
 
 import { ContentContainer } from '../components/common/assets/styles/ContentContainer';
-import { ContentHeader } from '../components/common/assets/styles/ContentHeader';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
-import { StyledProfilePhoto } from '../components/common/assets/styles/StyledProfilePhoto';
-import { StyledProfileInitial } from '../components/common/assets/styles/StyledProfileInitial';
+import { AssessmentPeopleProfileHeader } from '../components/common/AssessmentPeopleProfileHeader';
 
 import {
     fetchAssessment,
@@ -79,23 +75,19 @@ class AssessmentPage extends Component {
       person,
     } = this.props;
 
+    const pathNameChangeLevels = {
+      pathname: '/level',
+      query: {personId: person.Id}
+    };
+
     return (
       <Loader loaded={isLoaded}>
         <ContentContainer>
-          <ContentHeader>
-            Please, answer questions about {person.Name}
-            &nbsp;
-            <StyledProfileInitial>
-              <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
-            </StyledProfileInitial>
-          </ContentHeader>
+          <h1>Assessment</h1>
 
-          <StyledLink data-right-align to={{
-            pathname: '/level',
-            query: {personId: person.Id}
-          }}>
-            Change selected level
-          </StyledLink>
+          <AssessmentPeopleProfileHeader person={person}>
+            <StyledLink data-right-align to={pathNameChangeLevels}>Change selected level</StyledLink>
+          </AssessmentPeopleProfileHeader>
 
           <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
 

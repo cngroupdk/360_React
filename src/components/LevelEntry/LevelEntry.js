@@ -24,27 +24,25 @@ export default class LevelEntry extends Component {
       nextStep,
     } = this.props;
 
+    const pathNameNextStep = {
+      pathname: '/' + nextStep.toLowerCase(),
+      query: {personId: this.props.location.query.personId}
+    }
+
     return (
       <div>
         <RadioWrapper>
           <RadioGroup name="prof-level" onChange={this.handleProfLevelChange}>
 
-            {levels.map((level) => {
-              return (
-                <Level level={level}
-                       key={level.Id}
-                />
+            {levels.map((level) => (
+                <Level level={level} key={level.Id} />
               )
-            })}
+            )}
 
           </RadioGroup>
         </RadioWrapper>
 
-        <StyledLink disabled={this.state.level === ''}
-                    to={{
-                      pathname: '/' + nextStep.toLowerCase(),
-                      query: {personId: this.props.location.query.personId}
-                    }}>
+        <StyledLink disabled={this.state.level === ''} to={pathNameNextStep}>
           Proceed to questions </StyledLink>
       </div>
     )

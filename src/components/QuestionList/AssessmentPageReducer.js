@@ -9,7 +9,7 @@ import {
     RECEIVE_PERSON,
 } from './AssessmentPageActions';
 
-const assessmentPageReducer = handleActions({
+const assessmentPage = handleActions({
   [ASSESSMENT_FETCH]: (state) => {
     return state.withMutations(newState =>
       newState
@@ -98,7 +98,9 @@ const assessmentPageReducer = handleActions({
   isError: false,
 }));
 
-export const getAssessment = state =>
-  state.get('assessment');
+export default assessmentPage;
 
-export default assessmentPageReducer;
+export const getAssessment = state => state.get('assessment');
+export const getPerson = state => state.get('person');
+export const assessmentIsLoaded = state => state.get('isLoaded');
+export const assessmentIsError = state => state.get('isError');

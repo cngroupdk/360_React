@@ -6,7 +6,7 @@ import {
   RECEIVE_SELF,
 } from './AppHeaderActions';
 
-const headerReducer = handleActions({
+const appHeader = handleActions({
   [REQUEST_SELF]: (state) => {
     return state.withMutations(newState =>
       newState
@@ -20,7 +20,7 @@ const headerReducer = handleActions({
         newState
           .setIn(['isLoaded'], true)
           .setIn(['isError'], false)
-          .setIn(['self'], action.payload);
+          .setIn(['viewer'], action.payload);
       });
     },
     throw(state) {
@@ -36,7 +36,10 @@ const headerReducer = handleActions({
   isError: false,
 }));
 
-export const getSelf = state =>
-  state.get('self');
+export default appHeader;
 
-export default headerReducer;
+export const getViewer = state => state.get('viewer');
+export const viewerIsLoaded = state => state.get('isLoaded');
+export const viewerIsError = state => state.get('isError');
+
+

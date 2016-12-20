@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
+import { selectors } from '../selectors';
+
 import Tabs from '../components/common/Tabs'
 import PeopleList from '../components/PeopleList/PeopleList';
 
@@ -31,7 +33,7 @@ class PeoplePage extends Component {
 
   render() {
     const {
-      isLoaded,
+      peopleIsLoaded,
       people,
       searchPeople,
       getFirstStep,
@@ -40,7 +42,7 @@ class PeoplePage extends Component {
     return (
       <div>
         <Tabs/>
-        <Loader loaded={isLoaded}>
+        <Loader loaded={peopleIsLoaded}>
           <PeopleList people={people}
                       searchPeople={searchPeople}
                       getFirstStep={getFirstStep}
@@ -52,12 +54,12 @@ class PeoplePage extends Component {
 }
 
 function mapStateToProps(state) {
-  const peoplePageReducerState = state.get('peoplePageReducer');
+  const { getPeople, peopleIsLoaded, peopleIsError } = selectors.peoplePage;
 
   return {
-    people: peoplePageReducerState.get('peopleList'),
-    isLoaded: peoplePageReducerState.get('isLoaded'),
-    isError: peoplePageReducerState.get('isError'),
+    people: getPeople(state),
+    peopleIsLoaded: peopleIsLoaded(state),
+    peopleIsError: peopleIsError(state),
   };
 }
 

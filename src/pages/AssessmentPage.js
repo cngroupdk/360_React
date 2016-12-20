@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
+import { selectors } from '../selectors';
+
 import SkillsList from '../components/QuestionList/SkillsList';
 
 import { ContentContainer } from '../components/common/assets/styles/ContentContainer';
@@ -71,7 +73,7 @@ class AssessmentPage extends Component {
     const {
       assessment,
       assessmentUpdateAnswer,
-      isLoaded,
+      levelsIsLoaded,
       person,
     } = this.props;
 
@@ -81,7 +83,7 @@ class AssessmentPage extends Component {
     };
 
     return (
-      <Loader loaded={isLoaded}>
+      <Loader loaded={levelsIsLoaded}>
         <ContentContainer>
           <h1>Assessment</h1>
 
@@ -100,15 +102,16 @@ class AssessmentPage extends Component {
 }
 
 function mapStateToProps(state) {
-  const assessmentPageReducerState = state.get('assessmentPageReducer');
+  const {
+    getAssessment, getPerson, assessmentIsLoaded, assessmentIsError} = selectors.assessmentPage;
 
   return {
-    assessment: assessmentPageReducerState.get('assessment'),
-    person: assessmentPageReducerState.get('person'),
-    isLoaded: assessmentPageReducerState.get('isLoaded'),
-    isError: assessmentPageReducerState.get('isError'),
+    assessment: getAssessment(state),
+    person: getPerson(state),
+    levelsIsLoaded: assessmentIsLoaded(state),
+    levelsIsError: assessmentIsError(state),
   };
-}
+};
 
 export default connect(
   mapStateToProps,

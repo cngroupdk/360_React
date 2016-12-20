@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
+import { selectors } from '../selectors';
+
 import ReasonEntry from '../components/ReasonEntry/ReasonEntry'
 import { sendReason, whoIs } from '../components/ReasonEntry/ReasonPageActions';
 
@@ -39,12 +41,12 @@ class ReasonPage extends Component {
 }
 
 function mapStateToProps(state) {
-  const reasonPageReducerState = state.get('reasonPageReducer');
+  const { getPerson, getNextStep, reasonIsError } = selectors.reasonPage;
 
   return {
-    person: reasonPageReducerState.get('person'),
-    nextStep: reasonPageReducerState.get('nextStep'),
-    isError: reasonPageReducerState.get('isError'),
+    person: getPerson(state),
+    nextStep: getNextStep(state),
+    isError: reasonIsError(state),
   };
 }
 

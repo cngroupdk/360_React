@@ -7,7 +7,7 @@ import {
   SEARCH_PEOPLE,
 } from './PeoplePageActions';
 
-const peoplePageReducer = handleActions({
+const peoplePage = handleActions({
   [REQUEST_PEOPLE]: (state) => {
     return state.withMutations(newState =>
       newState
@@ -47,9 +47,12 @@ const peoplePageReducer = handleActions({
     });
   },
 }, Immutable.fromJS({
-  isLoadedStep: true,
   isLoaded: false,
   isError: false,
 }));
 
-export default peoplePageReducer;
+export default peoplePage;
+
+export const getPeople = state => state.get('peopleList');
+export const peopleIsLoaded = state => state.get('isLoaded');
+export const peopleIsError = state => state.get('isError');

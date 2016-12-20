@@ -1,6 +1,6 @@
 import { createAction } from 'redux-actions';
 import { api } from '../../api';
-import { getSelf } from '../AppHeader/AppHeaderReducer';
+import { getViewer } from '../AppHeader/AppHeaderReducer';
 
 export const REQUEST_VIEWERLIST = 'REQUEST_VIEWERLIST';
 export const RECEIVE_VIEWERLIST = 'RECEIVE_VIEWERLIST';
@@ -24,7 +24,7 @@ export const fetchViewerList = () => {
 
 export const createViewerAssessment = (router) => {
   return (dispatch, getState) => {
-    const myPersonId = getSelf(getState().get('headerReducer')).Id;
+    const myPersonId = getViewer(getState().get('appHeader')).Id;
     return api.get('/assessments/create', {
       params: {
         personId: myPersonId

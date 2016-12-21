@@ -58,7 +58,7 @@ export default class PeopleList extends Component {
         {people.map((person) => {
           return (
             <PeopleListPerson person={person}
-                              key={person.Id}
+                              key={person.get('Id')}
                               getFirstStep={getFirstStep}
             />
           )

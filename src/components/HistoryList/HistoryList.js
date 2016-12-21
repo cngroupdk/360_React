@@ -25,11 +25,10 @@ export default class HistoryList extends Component {
           <HeaderColumn fluid sm={3}>Last submitted</HeaderColumn>
         </HeaderRow>
 
-        {historyPeople.map((person) => {
-          return (
-            <HistoryListPerson person={person} key={person.Id}/>
+        {historyPeople.map((person) => (
+            <HistoryListPerson person={person} key={person.get('Id')}/>
           )
-        })}
+        )}
       </ContentContainer>
     );
   }

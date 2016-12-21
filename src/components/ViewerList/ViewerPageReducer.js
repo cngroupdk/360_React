@@ -19,7 +19,7 @@ const viewerPage = handleActions({
         newState
           .setIn(['isLoaded'], true)
           .setIn(['isError'], false)
-          .setIn(['viewerList'], action.payload);
+          .setIn(['viewerList'], Immutable.fromJS(action.payload));
       });
     },
     throw(state) {

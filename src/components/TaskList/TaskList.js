@@ -46,7 +46,7 @@ export default class TaskList extends Component {
 
         {taskPeople.map((person) => {
           return (
-            <TaskListPerson person={person} key={person.Id} getFirstStep={getFirstStep}/>
+            <TaskListPerson person={person} key={person.get('Id')} getFirstStep={getFirstStep}/>
           )
         })}
       </ContentContainer>

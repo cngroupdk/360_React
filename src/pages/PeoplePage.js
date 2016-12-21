@@ -20,7 +20,7 @@ class PeoplePage extends Component {
     fetchPeople: PropTypes.func.isRequired,
     searchPeople: PropTypes.func.isRequired,
     getFirstStep: PropTypes.func.isRequired,
-    people: PropTypes.array,
+    people: PropTypes.object,
   };
 
   componentDidMount() {

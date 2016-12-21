@@ -25,8 +25,8 @@ class TaskAndHistory extends Component {
     fetchTasks: PropTypes.func.isRequired,
     searchTasks: PropTypes.func.isRequired,
     getFirstStep: PropTypes.func.isRequired,
-    taskPeople: PropTypes.array,
-    historyPeople: PropTypes.array,
+    taskPeople: PropTypes.object,
+    historyPeople: PropTypes.object,
   };
 
   componentDidMount() {
@@ -55,7 +55,8 @@ class TaskAndHistory extends Component {
           <TaskList
             taskPeople={taskPeople}
             searchTasks={searchTasks}
-            getFirstStep={getFirstStep}/>
+            getFirstStep={getFirstStep}
+          />
 
           <HistoryList historyPeople={historyPeople}/>
         </Loader>

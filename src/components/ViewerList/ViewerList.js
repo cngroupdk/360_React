@@ -13,7 +13,7 @@ export default class ViewerList extends Component {
   constructor(props) {
     super(props);
     this.handleOnClickCreate = this.handleOnClickCreate.bind(this);
-    this.doesDraftExist = this.doesDraftExist.bind(this);
+    this.isDraftExist = this.isDraftExist.bind(this);
   }
 
   static contextTypes = {
@@ -22,22 +22,24 @@ export default class ViewerList extends Component {
 
   checkAssessmentsList() {
     const {viewerList} = this.props;
+    console.log(viewerList);
 
-    if (viewerList.length > 0) {
+    if (viewerList.size > 0) {
       return viewerList.map((assessment) => {
-        return <ViewerListRow assessment={assessment} key={assessment.Id}/>
+        return <ViewerListRow assessment={assessment} key={assessment.get('Id')}/>
       })
     } else {
       return <ViewerListEmpty/>
     }
   }
 
-  doesDraftExist() {
+  isDraftExist() {
     const {viewerList} = this.props;
 
     for (const assessment of viewerList) {
-      if (assessment.ExistingDraft) {
-        return true;
+
+      if (assessment.get('ExistingDraft')) {
+       return true;
       }
     }
     return false;
@@ -65,7 +67,7 @@ export default class ViewerList extends Component {
 
         <NewViewerAssessmentBtnContainer>
           <StyledLink
-            disabled={this.doesDraftExist()}
+            disabled={this.isDraftExist()}
             onClick={this.handleOnClickCreate}
             to="/viewer">
             New self assessment

@@ -25,21 +25,21 @@ export const fetchPeople = () => {
 
 export const getFirstStep = (person, router) => {
   return () => {
-    if (person.ExistingDraft !== '') {
+    if (person.get('ExistingDraft')) {
       router.push({
         pathname: '/questions',
-        query: {personId: person.Id}
+        query: {personId: person.get('Id')}
       });
     } else {
       return api.get('/assessments/create', {
         params: {
-          personId: person.Id
+          personId: person.get('Id')
         }
       }).then(
         response => {
           router.push({
             pathname: '/' + response.data.Step.toLowerCase(),
-            query: {personId: person.Id}
+            query: {personId: person.get('Id')}
           })
         },
         error => console.log(error),

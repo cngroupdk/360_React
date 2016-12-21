@@ -21,8 +21,8 @@ const taskPage = handleActions({
         newState
           .setIn(['isLoaded'], true)
           .setIn(['isError'], false)
-          .setIn(['taskList'], action.payload)
-          .setIn(['taskListDefault'], action.payload);
+          .setIn(['taskList'], Immutable.fromJS(action.payload))
+          .setIn(['taskListDefault'], Immutable.fromJS(action.payload));
       });
     },
     throw(state) {

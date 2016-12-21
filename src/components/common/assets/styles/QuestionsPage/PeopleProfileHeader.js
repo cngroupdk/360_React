@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PeopleProfileHeader = styled.div`
   text-align: left;
   height: 120px;
-  margin: 0 0 20px 0;
+  margin: 0 10px 20px 10px;
 `;
 
 export const ProfileDescriptionWrapper = styled.div`

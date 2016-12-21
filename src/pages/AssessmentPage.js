@@ -79,7 +79,10 @@ class AssessmentPage extends Component {
 
     const pathNameChangeLevels = {
       pathname: '/level',
-      query: {personId: person.Id}
+      query: {
+        personId: person.Id,
+        levelId: assessment.get('LevelId'),
+      }
     };
 
     return (

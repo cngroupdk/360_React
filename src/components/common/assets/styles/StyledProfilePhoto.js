@@ -11,6 +11,7 @@ export const ProfilePhoto = styled.div`
   display: inline-block;
   vertical-align: middle;
   background-image: url(${props => props.imgUrl});
+  background-repeat: no-repeat;
 `;
 
 export const StyledProfilePhoto = ({ imgUrl }) => (

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 
 import { ContentContainer} from '../common/assets/styles/ContentContainer';
 import { StyledLink } from '../common/assets/styles/StyledLink';
@@ -7,17 +7,26 @@ import { AssessmentPeopleProfileHeader } from '../common/AssessmentPeopleProfile
 import { StyledReasonEnterAreaWrapper } from '../common/assets/styles/ReasonPage/StyledReasonEnterAreaWrapper';
 
 export default class ReasonEntry extends Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.state = {reason: ''};
     this.handleReasonEnter = this.handleReasonEnter.bind(this);
+    this.handleSendReason = this.handleSendReason.bind(this);
   }
+
+  static contextTypes = {
+    router: PropTypes.object
+  };
 
   handleReasonEnter(e) {
     this.setState({
       reason: e.target.value
     });
-    this.props.sendReason(e.target.value, this.props.personId)
+  }
+
+  handleSendReason(e) {
+    this.props.sendReason(this.state.reason, this.props.personId, this.context.router);
+    e.preventDefault();
   }
 
   render() {
@@ -48,7 +57,7 @@ export default class ReasonEntry extends Component {
           <label>*reason is required (min. 10 characters)</label>
         </StyledReasonEnterAreaWrapper>
 
-        <StyledLink disabled={this.state.reason.length < 10} to={pathNameNextStep}>
+        <StyledLink disabled={this.state.reason.length < 10} onClick={this.handleSendReason} to={pathNameNextStep}>
           Proceed further
         </StyledLink>
       </ContentContainer>

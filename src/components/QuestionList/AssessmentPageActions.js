@@ -14,6 +14,9 @@ export const ASSESSMENT_UPDATE_SUBMITTED = 'ASSESSMENT_UPDATE_SUBMITTED';
 
 export const RECEIVE_PERSON = 'RECEIVE_PERSON';
 
+export const REQUEST_STEP = 'REQUEST_STEP';
+export const RECEIVE_STEP = 'RECEIVE_STEP';
+
 export const assessmentRequest = createAction(ASSESSMENT_FETCH);
 export const assessmentRequestFinished = createAction(ASSESSMENT_FETCH_FINISHED);
 
@@ -25,14 +28,13 @@ export const assessmentUpdateSubmitted = createAction(ASSESSMENT_UPDATE_SUBMITTE
 
 export const receivePerson = createAction(RECEIVE_PERSON);
 
+export const requestStep = createAction(REQUEST_STEP);
+export const receiveStep = createAction(RECEIVE_STEP);
+
 export const fetchAssessment = (personId) => {
   return (dispatch) => {
     dispatch(assessmentRequest());
-    return apiPost.get('assessments/detail', {
-      params: {
-        personId,
-      }
-    }).then(
+    return apiPost.get('assessments/detail/'+ personId).then(
       response => dispatch(assessmentRequestFinished(
         response.data || response,
       )),
@@ -61,15 +63,24 @@ export const saveAssessment = () => {
 
 export const whoIs = (personId) => {
   return (dispatch) => {
-    api.get('people/person', {
-      params: {
-        personId,
-      }
-    }).then(
+    api.get('people/person/'+ personId).then(
       response => dispatch(receivePerson(
         response.data || response,
       )),
       error => dispatch(receivePerson(
+        error,
+      )))
+  }
+};
+
+export const getNextStep = (personId) => {
+  return (dispatch) => {
+    dispatch(requestStep());
+    return api.get('assessments/step/'+ personId).then(
+      response => dispatch(receiveStep(
+        response.data || response,
+      )),
+      error => dispatch(receiveStep(
         error,
       )))
   }

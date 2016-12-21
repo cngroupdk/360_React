@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader';
 import { Link } from 'react-router';
 
+import { selectors } from '../../selectors';
+
 import { fetchSelf } from './AppHeaderActions';
 import SelfCard from './SelfCard';
 
@@ -27,12 +29,12 @@ class AppHeader extends Component {
   render() {
 
     const {
-      self,
-      isLoaded
+      viewer,
+      viewerIsLoaded
     } = this.props;
 
     return (
-      <Loader loaded={isLoaded}>
+      <Loader loaded={viewerIsLoaded}>
         <StyledHeader className="app">
           <div className="app-header">
             <Link to='/' className="logo-wrapper">
@@ -40,7 +42,7 @@ class AppHeader extends Component {
               <span className="logo-name">Feedback</span>
             </Link>
           </div>
-          <SelfCard self={self} isLoaded={isLoaded}/>
+          <SelfCard viewer={viewer} isLoaded={viewerIsLoaded}/>
         </StyledHeader>
       </Loader>
     );
@@ -48,12 +50,12 @@ class AppHeader extends Component {
 }
 
 function mapStateToProps(state) {
-  const headerReducerState = state.get('headerReducer');
+  const { getViewer, viewerIsLoaded, viewerIsError } = selectors.appHeader;
 
   return {
-    self: headerReducerState.get('self'),
-    isLoaded: headerReducerState.get('isLoaded'),
-    isError: headerReducerState.get('isError'),
+    viewer: getViewer(state),
+    viewerIsLoaded: viewerIsLoaded(state),
+    viewerIsError: viewerIsError(state),
   };
 }
 

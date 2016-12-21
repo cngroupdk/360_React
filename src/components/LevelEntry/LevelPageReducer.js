@@ -8,7 +8,7 @@ import {
   RECEIVE_PERSON,
 } from './LevelPageActions';
 
-const levelPageReducer = handleActions({
+const levelPage = handleActions({
   [REQUEST_LEVELS]: (state) => {
     return state.withMutations(newState =>
       newState
@@ -71,4 +71,10 @@ const levelPageReducer = handleActions({
   isError: false,
 }));
 
-export default levelPageReducer;
+export default levelPage;
+
+export const getLevels = state => state.get('levels');
+export const getPerson = state => state.get('person');
+export const getNextStep = state => state.get('nextStep');
+export const levelsIsLoaded = state => state.get('isLoaded');
+export const levelsIsError = state => state.get('isError');

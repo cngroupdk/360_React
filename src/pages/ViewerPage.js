@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
+import { selectors } from '../selectors';
+
 import { fetchViewerList, createViewerAssessment } from '../components/ViewerList/ViewerPageActions';
 
 import ViewerList from '../components/ViewerList/ViewerList';
@@ -42,13 +44,14 @@ class ViewerPage extends Component {
   }
 }
 
+
 function mapStateToProps(state) {
-  const viewerPageReducerState = state.get('viewerPageReducer');
+  const { getViewerList, viewerListIsLoaded, viewerListIsError } = selectors.viewerPage;
 
   return {
-    viewerList: viewerPageReducerState.get('viewerList'),
-    isLoaded: viewerPageReducerState.get('isLoaded'),
-    isError: viewerPageReducerState.get('isError'),
+    viewerList: getViewerList(state),
+    isLoaded: viewerListIsLoaded(state),
+    isError: viewerListIsError(state),
   };
 }
 

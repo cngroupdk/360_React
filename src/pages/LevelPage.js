@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
+import { selectors } from '../selectors';
+
 import LevelEntry from '../components/LevelEntry/LevelEntry';
 
 import {
@@ -35,7 +37,7 @@ class LevelPage extends Component {
 
   render() {
     const {
-      isLoaded,
+      levelsIsLoaded,
       levels,
       location,
       person,
@@ -45,7 +47,7 @@ class LevelPage extends Component {
 
     return (
       <ContentContainer>
-        <Loader loaded={isLoaded}>
+        <Loader loaded={levelsIsLoaded}>
           <h1>Proficiency Levels</h1>
 
           <AssessmentPeopleProfileHeader person={person}/>
@@ -62,14 +64,20 @@ class LevelPage extends Component {
 }
 
 function mapStateToProps(state) {
-  const levelPageReducerState = state.get('levelPageReducer');
+  const {
+    getLevels,
+    getPerson,
+    getNextStep,
+    levelsIsLoaded,
+    levelsIsError
+  } = selectors.levelPage;
 
   return {
-    levels: levelPageReducerState.get('levels'),
-    person: levelPageReducerState.get('person'),
-    nextStep: levelPageReducerState.get('nextStep'),
-    isLoaded: levelPageReducerState.get('isLoaded'),
-    isError: levelPageReducerState.get('isError'),
+    levels: getLevels(state),
+    person: getPerson(state),
+    nextStep: getNextStep(state),
+    levelsIsLoaded: levelsIsLoaded(state),
+    levelsIsError: levelsIsError(state),
   };
 }
 

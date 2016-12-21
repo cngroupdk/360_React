@@ -45,7 +45,7 @@ export const fetchAssessment = (personId) => {
 
 export const saveAssessment = () => {
   return (dispatch, getState) => {
-    const assessment = getAssessment(getState().get('assessmentPageReducer')).toJS();
+    const assessment = getAssessment(getState().get('assessmentPage')).toJS();
     dispatch(assessmentSave());
     return apiPost.post('assessments/save',
       assessment).then(

@@ -6,7 +6,7 @@ import {
   RECEIVE_PERSON,
 } from './ReasonPageActions';
 
-const reasonPageReducer = handleActions({
+const reasonPage = handleActions({
   [RECEIVE_STEP]: {
     next(state, action) {
       return state.withMutations(newState => {
@@ -45,4 +45,8 @@ const reasonPageReducer = handleActions({
   isError: false,
 }));
 
-export default reasonPageReducer;
+export default reasonPage;
+
+export const getPerson = state => state.get('person');
+export const getNextStep = state => state.get('nextStep');
+export const reasonIsError = state => state.get('isError');

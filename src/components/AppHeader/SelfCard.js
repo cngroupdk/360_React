@@ -8,13 +8,13 @@ import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
 export default class SelfCard extends Component {
   render() {
     const {
-      self,
+      viewer,
     } = this.props;
 
     return (
       <StyledSelfCard>
-        <StyledProfilePhoto imgUrl={getPhotoUrl(self.Login)}/>
-        <div className="self-name">{self.Name}</div>
+        <StyledProfilePhoto imgUrl={getPhotoUrl(viewer.Login)}/>
+        <div className="self-name">{viewer.Name}</div>
       </StyledSelfCard>
     );
   }

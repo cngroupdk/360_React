@@ -6,7 +6,7 @@ import {
   RECEIVE_VIEWERLIST,
 } from './ViewerPageActions';
 
-const viewerPageReducer = handleActions({
+const viewerPage = handleActions({
   [REQUEST_VIEWERLIST]: (state) => {
     return state.withMutations(newState =>
       newState
@@ -34,4 +34,8 @@ const viewerPageReducer = handleActions({
   isError: false,
 }));
 
-export default viewerPageReducer;
+export default viewerPage;
+
+export const getViewerList = state => state.get('viewerList');
+export const viewerListIsLoaded = state => state.get('isLoaded');
+export const viewerListIsError = state => state.get('isError');

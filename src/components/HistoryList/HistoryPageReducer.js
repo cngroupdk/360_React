@@ -6,7 +6,7 @@ import {
   RECEIVE_HISTORY,
 } from './HistoryPageActions';
 
-const historyPageReducer = handleActions({
+const historyPage = handleActions({
   [REQUEST_HISTORY]: (state) => {
     return state.withMutations(newState =>
       newState
@@ -34,4 +34,8 @@ const historyPageReducer = handleActions({
   isError: false,
 }));
 
-export default historyPageReducer;
+export default historyPage;
+
+export const getHistory = state => state.get('historyList');
+export const historyIsLoaded = state => state.get('isLoaded');
+export const historyIsError = state => state.get('isError');

@@ -7,7 +7,7 @@ import {
     SEARCH_TASKS,
 } from './TaskPageActions';
 
-const taskPageReducer = handleActions({
+const taskPage = handleActions({
   [REQUEST_TASKS]: (state) => {
     return state.withMutations(newState =>
       newState
@@ -51,4 +51,8 @@ const taskPageReducer = handleActions({
   isError: false,
 }));
 
-export default taskPageReducer;
+export default taskPage;
+
+export const getTask = state => state.get('taskList');
+export const tasksIsLoaded = state => state.get('isLoaded');
+export const tasksIsError = state => state.get('isError');

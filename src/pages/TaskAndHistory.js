@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
+import { selectors } from '../selectors';
+
 import Tabs from '../components/common/Tabs';
 import TaskList from '../components/TaskList/TaskList';
 import HistoryList from '../components/HistoryList/HistoryList';
@@ -15,9 +17,10 @@ import {
 
 class TaskAndHistory extends Component {
   static propTypes = {
-    isLoadedTasks: PropTypes.bool,
-    isLoadedHistory: PropTypes.bool,
-    isError: PropTypes.bool,
+    tasksIsLoaded: PropTypes.bool,
+    historyIsLoaded: PropTypes.bool,
+    historyIsError: PropTypes.bool,
+    tasksIsisError: PropTypes.bool,
     fetchHistory: PropTypes.func.isRequired,
     fetchTasks: PropTypes.func.isRequired,
     searchTasks: PropTypes.func.isRequired,
@@ -37,8 +40,8 @@ class TaskAndHistory extends Component {
 
   render() {
     const {
-      isLoadedTasks,
-      isLoadedHistory,
+      tasksIsLoaded,
+      historyIsLoaded,
       taskPeople,
       historyPeople,
       searchTasks,
@@ -48,7 +51,7 @@ class TaskAndHistory extends Component {
     return (
       <div>
         <Tabs/>
-        <Loader loaded={isLoadedTasks && isLoadedHistory}>
+        <Loader loaded={tasksIsLoaded && historyIsLoaded}>
           <TaskList
             taskPeople={taskPeople}
             searchTasks={searchTasks}
@@ -62,15 +65,16 @@ class TaskAndHistory extends Component {
 }
 
 function mapStateToProps(state) {
-  const taskPageReducerState = state.get('taskPageReducer');
-  const historyPageReducerState = state.get('historyPageReducer');
+  const { getHistory, historyIsLoaded, historyIsError } = selectors.historyPage;
+  const { getTask, tasksIsLoaded, tasksIsError } = selectors.taskPage;
 
   return {
-    taskPeople: taskPageReducerState.get('taskList'),
-    isLoadedTasks: taskPageReducerState.get('isLoaded'),
-    isError: taskPageReducerState.get('isError'),
-    historyPeople: historyPageReducerState.get('historyList'),
-    isLoadedHistory: historyPageReducerState.get('isLoaded'),
+    historyPeople: getHistory(state),
+    historyIsLoaded: historyIsLoaded(state),
+    historyIsError: historyIsError(state),
+    taskPeople: getTask(state),
+    tasksIsLoaded: tasksIsLoaded(state),
+    tasksIsisError: tasksIsError(state),
   };
 }
 

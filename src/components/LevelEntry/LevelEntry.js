@@ -11,7 +11,8 @@ export default class LevelEntry extends Component {
     super(props, context);
     this.handleProfLevelChange = this.handleProfLevelChange.bind(this);
     this.handleProccedToQuestions = this.handleProccedToQuestions.bind(this);
-    this.state = {level: ''};
+    const defLevel = this.props.location.query.levelId || '';
+    this.state = {level: defLevel};
   }
 
   static contextTypes = {
@@ -42,7 +43,7 @@ export default class LevelEntry extends Component {
     return (
       <div>
         <RadioWrapper>
-          <RadioGroup name="prof-level" onChange={this.handleProfLevelChange}>
+          <RadioGroup name="prof-level" selectedValue={this.state.level} onChange={this.handleProfLevelChange}>
 
             {levels.map((level) => (
                 <Level level={level} key={level.Id} />
@@ -52,7 +53,7 @@ export default class LevelEntry extends Component {
           </RadioGroup>
         </RadioWrapper>
 
-        <StyledLink disabled={this.state.level === ''} onClick={this.handleProccedToQuestions} to={pathNameNextStep}>
+        <StyledLink disabled={!this.state.level} onClick={this.handleProccedToQuestions} to={pathNameNextStep}>
           Proceed to questions </StyledLink>
       </div>
     )

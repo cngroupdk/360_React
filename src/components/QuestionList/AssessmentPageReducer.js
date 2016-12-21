@@ -94,6 +94,7 @@ const assessmentPage = handleActions({
 
 }, Immutable.fromJS({
   person: 'Person',
+  assessment: {},
   isLoaded: false,
   isError: false,
 }));

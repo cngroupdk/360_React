@@ -9,7 +9,6 @@ import LevelEntry from '../components/LevelEntry/LevelEntry';
 import {
   fetchLevels,
   sendLevel,
-  whoIs,
 } from '../components/LevelEntry/LevelPageActions';
 
 import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
@@ -22,7 +21,6 @@ class LevelPage extends Component {
     fetchLevels: PropTypes.func.isRequired,
     sendLevel: PropTypes.func.isRequired,
     whoIs: PropTypes.func.isRequired,
-    nextStep: PropTypes.string,
     levels: PropTypes.array,
   };
 
@@ -32,7 +30,7 @@ class LevelPage extends Component {
 
   fetchAllData() {
     this.props.fetchLevels();
-    this.props.whoIs(this.props.location.query.personId);
+    this.props.whoIs(this.props.personId);
   }
 
   render() {
@@ -42,7 +40,9 @@ class LevelPage extends Component {
       location,
       person,
       sendLevel,
-      nextStep,
+      personId,
+      levelId,
+      getNextStep,
     } = this.props;
 
     return (
@@ -56,7 +56,10 @@ class LevelPage extends Component {
             levels={levels}
             location={location}
             sendLevel={sendLevel}
-            nextStep={nextStep}/>
+            personId={personId}
+            levelId={levelId}
+            getNextStep={getNextStep}
+          />
         </Loader>
       </ContentContainer>
     )
@@ -66,16 +69,12 @@ class LevelPage extends Component {
 function mapStateToProps(state) {
   const {
     getLevels,
-    getPerson,
-    getNextStep,
     levelsIsLoaded,
     levelsIsError
   } = selectors.levelPage;
 
   return {
     levels: getLevels(state),
-    person: getPerson(state),
-    nextStep: getNextStep(state),
     levelsIsLoaded: levelsIsLoaded(state),
     levelsIsError: levelsIsError(state),
   };
@@ -83,5 +82,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  {fetchLevels, sendLevel, whoIs},
+  {fetchLevels, sendLevel},
 )(LevelPage);

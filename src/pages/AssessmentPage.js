@@ -2,21 +2,20 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
+import SkillsList from '../components/QuestionList/SkillsList';
+
 import { selectors } from '../selectors';
 
-import SkillsList from '../components/QuestionList/SkillsList';
+import {
+  fetchAssessment,
+  saveAssessment,
+  assessmentUpdateAnswer,
+  assessmentUpdateSubmitted,
+} from '../components/QuestionList/AssessmentPageActions';
 
 import { ContentContainer } from '../components/common/assets/styles/ContentContainer';
 import { StyledLink } from '../components/common/assets/styles/StyledLink';
 import { AssessmentPeopleProfileHeader } from '../components/common/AssessmentPeopleProfileHeader';
-
-import {
-    fetchAssessment,
-    saveAssessment,
-    assessmentUpdateAnswer,
-    assessmentUpdateSubmitted,
-    whoIs,
-} from '../components/QuestionList/AssessmentPageActions';
 
 class AssessmentPage extends Component {
   static propTypes = {
@@ -56,8 +55,8 @@ class AssessmentPage extends Component {
   }
 
   fetchAllData() {
-    this.props.fetchAssessment(this.props.location.query.personId);
-    this.props.whoIs(this.props.location.query.personId);
+    this.props.fetchAssessment(this.props.personId);
+    this.props.whoIs(this.props.personId);
   }
 
   handleSaveAsDraft() {
@@ -77,21 +76,13 @@ class AssessmentPage extends Component {
       person,
     } = this.props;
 
-    const pathNameChangeLevels = {
-      pathname: '/level',
-      query: {
-        personId: person.Id,
-        levelId: assessment.get('LevelId'),
-      }
-    };
-
     return (
       <Loader loaded={levelsIsLoaded}>
         <ContentContainer>
           <h1>Assessment</h1>
 
           <AssessmentPeopleProfileHeader person={person}>
-            <StyledLink data-right-align to={pathNameChangeLevels}>Change selected level</StyledLink>
+            <StyledLink data-right-align to={'/assessment/' + person.Id}>Change selected level</StyledLink>
           </AssessmentPeopleProfileHeader>
 
           <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
@@ -106,11 +97,13 @@ class AssessmentPage extends Component {
 
 function mapStateToProps(state) {
   const {
-    getAssessment, getPerson, assessmentIsLoaded, assessmentIsError} = selectors.assessmentPage;
+    getAssessment,
+    assessmentIsLoaded,
+    assessmentIsError
+  } = selectors.assessmentPage;
 
   return {
     assessment: getAssessment(state),
-    person: getPerson(state),
     levelsIsLoaded: assessmentIsLoaded(state),
     levelsIsError: assessmentIsError(state),
   };
@@ -118,5 +111,6 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  {fetchAssessment, saveAssessment, assessmentUpdateAnswer, assessmentUpdateSubmitted, whoIs},
+  {fetchAssessment, saveAssessment, assessmentUpdateAnswer, assessmentUpdateSubmitted},
 )(AssessmentPage);
+

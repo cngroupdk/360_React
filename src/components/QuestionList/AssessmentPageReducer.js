@@ -2,11 +2,13 @@ import {handleActions} from 'redux-actions';
 import Immutable from 'immutable';
 
 import {
-    ASSESSMENT_FETCH,
-    ASSESSMENT_FETCH_FINISHED,
-    ASSESSMENT_UPDATE_ANSWER,
-    ASSESSMENT_UPDATE_SUBMITTED,
-    RECEIVE_PERSON,
+  ASSESSMENT_FETCH,
+  ASSESSMENT_FETCH_FINISHED,
+  ASSESSMENT_UPDATE_ANSWER,
+  ASSESSMENT_UPDATE_SUBMITTED,
+  RECEIVE_PERSON,
+  REQUEST_STEP,
+  RECEIVE_STEP,
 } from './AssessmentPageActions';
 
 const assessmentPage = handleActions({
@@ -92,16 +94,42 @@ const assessmentPage = handleActions({
     },
   },
 
+  [REQUEST_STEP]: (state) => {
+    return state.withMutations(newState =>
+      newState
+        .setIn(['isError'], false)
+    );
+  },
+
+  [RECEIVE_STEP]: {
+    next(state, action) {
+      return state.withMutations(newState => {
+        newState
+          .setIn(['stepIsLoaded'], true)
+          .setIn(['isError'], false)
+          .setIn(['step'], action.payload)
+      });
+    },
+    throw(state) {
+      return state.withMutations(newState =>
+        newState
+          .setIn(['isError'], true)
+      );
+    },
+  },
 }, Immutable.fromJS({
   person: 'Person',
   assessment: {},
   isLoaded: false,
   isError: false,
+  stepIsLoaded: false,
 }));
 
 export default assessmentPage;
 
 export const getAssessment = state => state.get('assessment');
 export const getPerson = state => state.get('person');
+export const getStep = state => state.get('step');
 export const assessmentIsLoaded = state => state.get('isLoaded');
 export const assessmentIsError = state => state.get('isError');
+export const stepIsLoaded = state => state.get('stepIsLoaded');

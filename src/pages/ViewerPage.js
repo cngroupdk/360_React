@@ -15,7 +15,7 @@ class ViewerPage extends Component {
     isError: PropTypes.bool,
     fetchViewerList: PropTypes.func.isRequired,
     createViewerAssessment: PropTypes.func.isRequired,
-    viewerList: PropTypes.array,
+    viewerList: PropTypes.object,
   };
 
   componentDidMount() {

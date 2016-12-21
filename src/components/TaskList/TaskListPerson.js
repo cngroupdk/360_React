@@ -16,7 +16,7 @@ export default class TaskListPerson extends Component {
       person,
       getFirstStep,
     } = this.props;
-    const assessmentMonth = person.AssessmentMonth;
+    const assessmentMonth = person.get('AssessmentMonth');
 
     return (
       <TableRow>
@@ -24,16 +24,16 @@ export default class TaskListPerson extends Component {
           <CenteredContent>
             <StyledProfileInitial>
               <LazyLoad height={50}>
-                <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
+                <StyledProfilePhoto imgUrl={getPhotoUrl(person.get('Login'))}/>
               </LazyLoad>
             </StyledProfileInitial>
           </CenteredContent>
         </TableCell>
-        <TableCell fluid sm={3}><CenteredContent>{person.Name}</CenteredContent>
+        <TableCell fluid sm={3}><CenteredContent>{person.get('Name')}</CenteredContent>
         </TableCell>
-        <TableCell fluid sm={1.5}><CenteredContent>{person.Department}</CenteredContent>
+        <TableCell fluid sm={1.5}><CenteredContent>{person.get('Department')}</CenteredContent>
         </TableCell>
-        <TableCell fluid sm={2}><CenteredContent>{person.Position}</CenteredContent>
+        <TableCell fluid sm={2}><CenteredContent>{person.get('Position')}</CenteredContent>
         </TableCell>
         <TableCell fluid sm={1.5}>
           <CenteredContent>

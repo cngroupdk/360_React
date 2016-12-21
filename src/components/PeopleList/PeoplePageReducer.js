@@ -21,8 +21,8 @@ const peoplePage = handleActions({
         newState
           .setIn(['isLoaded'], true)
           .setIn(['isError'], false)
-          .setIn(['peopleList'], action.payload)
-          .setIn(['peopleListDefault'], action.payload)
+          .setIn(['peopleList'], Immutable.fromJS(action.payload))
+          .setIn(['peopleListDefault'], Immutable.fromJS(action.payload))
       });
     },
     throw(state) {
@@ -37,8 +37,8 @@ const peoplePage = handleActions({
     const users = state.get('peopleListDefault');
     const searchPhrase = action.payload.toLowerCase().trim();
     const filteredPeople = users.filter((person) => {
-      return (person.Name.toLowerCase().includes(searchPhrase) ||
-      person.SearchableName.toLowerCase().includes(searchPhrase))
+      return (person.get('Name').toLowerCase().includes(searchPhrase) ||
+      person.get('SearchableName').toLowerCase().includes(searchPhrase))
     });
 
     return state.withMutations(newState => {

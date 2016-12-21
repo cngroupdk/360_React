@@ -19,7 +19,7 @@ const historyPage = handleActions({
         newState
           .setIn(['isLoaded'], true)
           .setIn(['isError'], false)
-          .setIn(['historyList'], action.payload);
+          .setIn(['historyList'], Immutable.fromJS(action.payload));
       });
     },
     throw(state) {

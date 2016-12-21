@@ -13,12 +13,14 @@ import { CenteredContent } from '../common/assets/styles/CenteredContent';
 export default class HistoryListPerson extends Component {
 
   CheckIfDraft(person) {
-    if (person.ExistingDraft !== '') {
+    if (person.get('ExistingDraft')) {
       return <RedirectButtonHistory person={person}/>
     } else {
-      return <CenteredContent>
-        {person.LastSubmitted ? dateFormat(person.LastSubmitted, "dd mmmm yyyy") : ''}
-      </CenteredContent>
+      return (
+        <CenteredContent>
+          {person.get('LastSubmitted') ? dateFormat(person.LastSubmitted, "dd mmmm yyyy") : ''}
+        </CenteredContent>
+      )
     }
   }
 
@@ -26,7 +28,7 @@ export default class HistoryListPerson extends Component {
     const {
       person
     } = this.props;
-    const assessmentMonth = person.AssessmentMonth;
+    const assessmentMonth = person.get('AssessmentMonth');
 
     return (
       <TableRow>
@@ -34,21 +36,22 @@ export default class HistoryListPerson extends Component {
           <CenteredContent>
             <StyledProfileInitial>
               <LazyLoad height={50}>
-                <StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/>
+                <StyledProfilePhoto imgUrl={getPhotoUrl(person.get('Login'))}/>
               </LazyLoad>
             </StyledProfileInitial>
           </CenteredContent>
         </TableCell>
-        <TableCell fluid sm={2.5}><CenteredContent>{person.Name}</CenteredContent></TableCell>
-        <TableCell fluid sm={1.5}><CenteredContent>{person.Department}</CenteredContent></TableCell>
-        <TableCell fluid sm={2}><CenteredContent>{person.Position}</CenteredContent></TableCell>
+        <TableCell fluid sm={2.5}><CenteredContent>{person.get('Name')}</CenteredContent></TableCell>
+        <TableCell fluid sm={1.5}><CenteredContent>{person.get('Department')}</CenteredContent></TableCell>
+        <TableCell fluid sm={2}><CenteredContent>{person.get('Position')}</CenteredContent></TableCell>
         <TableCell fluid sm={2}>
           <CenteredContent>
             {assessmentMonth ? dateFormat(assessmentMonth + ' 1 2012', 'mmmm') : 'None listed'}
           </CenteredContent>
         </TableCell>
         <TableCell fluid sm={3}>
-          {this.CheckIfDraft(person)}</TableCell>
+          {this.CheckIfDraft(person)}
+        </TableCell>
       </TableRow>
     );
   }

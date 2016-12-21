@@ -1,10 +1,5 @@
 const buttonNewEdit = (ExistingDraft) => {
-  if (ExistingDraft) {
-    return 'Edit draft'
-  }
-  else {
-    return 'New assessment'
-  }
+  return ExistingDraft ? 'Edit draft' : 'New assessment';
 };
 
 export default buttonNewEdit;

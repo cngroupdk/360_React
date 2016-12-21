@@ -31,7 +31,7 @@ export default class Redirect extends Component {
 
     return (
       <StyledLink data-xyAlign className={className} onClick={this.gotoNextLinkPath} to="#">
-        {buttonText(person.ExistingDraft)}
+        {buttonText(person.get('ExistingDraft'))}
       </StyledLink>
     );
   }

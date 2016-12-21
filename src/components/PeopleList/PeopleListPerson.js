@@ -19,15 +19,15 @@ export default class PeopleListPerson extends Component {
       person,
       getFirstStep,
     } = this.props;
-    const assessmentMonth = person.AssessmentMonth;
-    const lastSubmitted = person.LastSubmitted;
+    const assessmentMonth = person.get('AssessmentMonth');
+    const lastSubmitted = person.get('LastSubmitted');
 
     return (
       <TableRow>
         <TableCell fluid sm={0.8}>
           <CenteredContent>
             <StyledProfileInitial>
-              <LazyLoad height={50}><StyledProfilePhoto imgUrl={getPhotoUrl(person.Login)}/></LazyLoad>
+              <LazyLoad height={50}><StyledProfilePhoto imgUrl={getPhotoUrl(person.get('Login'))}/></LazyLoad>
             </StyledProfileInitial>
           </CenteredContent>
         </TableCell>
@@ -36,21 +36,21 @@ export default class PeopleListPerson extends Component {
             <IconWrapper size={1.4}>
               <FontAwesome
                 title='Your colleague'
-                name={person.Colleague ? 'user-o' : ''}
+                name={person.get('Colleague') ? 'user-o' : ''}
               />
             </IconWrapper>
           </CenteredContent>
         </TableCell>
         <TableCell fluid sm={2.5}>
           <CenteredContent>
-            {person.Name}
+            {person.get('Name')}
           </CenteredContent>
         </TableCell>
         <TableCell fluid sm={1.4}>
-          <CenteredContent>{person.Department}</CenteredContent>
+          <CenteredContent>{person.get('Department')}</CenteredContent>
         </TableCell>
         <TableCell fluid sm={1.5}>
-          <CenteredContent>{person.Position}</CenteredContent>
+          <CenteredContent>{person.get('Position')}</CenteredContent>
         </TableCell>
         <TableCell fluid sm={1.5}>
           <CenteredContent>
@@ -73,7 +73,7 @@ export default class PeopleListPerson extends Component {
             <IconWrapper size={1.4}>
               <FontAwesome
                 title="Assessment in one month"
-                name={isAssessmentInMonth(person.AssessmentMonth) ? 'clock-o' : ''}
+                name={isAssessmentInMonth(assessmentMonth) ? 'clock-o' : ''}
               />
             </IconWrapper>
           </CenteredContent>

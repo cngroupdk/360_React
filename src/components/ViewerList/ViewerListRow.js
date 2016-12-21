@@ -7,17 +7,17 @@ import { CenteredContent } from '../common/assets/styles/CenteredContent';
 
 export const ViewerListRow = ({assessment}) => (
   <TableRow>
-    <TableCell fluid sm={3}><CenteredContent>{assessment.Name}</CenteredContent></TableCell>
-    <TableCell fluid sm={3}><CenteredContent>{assessment.Department}</CenteredContent></TableCell>
-    <TableCell fluid sm={3}><CenteredContent>{assessment.Position}</CenteredContent></TableCell>
+    <TableCell fluid sm={3}><CenteredContent>{assessment.get('Name')}</CenteredContent></TableCell>
+    <TableCell fluid sm={3}><CenteredContent>{assessment.get('Department')}</CenteredContent></TableCell>
+    <TableCell fluid sm={3}><CenteredContent>{assessment.get('Position')}</CenteredContent></TableCell>
     <TableCell fluid sm={3}>
       <CenteredContent>
-        {assessment.LastSubmitted ? dateFormat(assessment.LastSubmitted, "dd mmmm yyyy") : ''}
+        {assessment.get('LastSubmitted') ? dateFormat(assessment.get('LastSubmitted'), "dd mmmm yyyy") : ''}
       </CenteredContent>
       <StyledLink
-        hidden={!assessment.ExistingDraft}
+        hidden={!assessment.get('ExistingDraft')}
         data-vertical-align
-        to={'/questions?personId=' + assessment.SubjectId}>
+        to={'/questions?personId=' + assessment.get('SubjectId')}>
         Edit draft
       </StyledLink>
     </TableCell>

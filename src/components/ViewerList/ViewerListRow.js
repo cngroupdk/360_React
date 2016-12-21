@@ -15,9 +15,8 @@ export const ViewerListRow = ({assessment}) => (
         {assessment.get('LastSubmitted') ? dateFormat(assessment.get('LastSubmitted'), "dd mmmm yyyy") : ''}
       </CenteredContent>
       <StyledLink
-        hidden={!assessment.get('ExistingDraft')}
         data-vertical-align
-        to={'/questions?personId=' + assessment.get('SubjectId')}>
+        to={'/assessment/' + assessment.get('SubjectId')}>
         Edit draft
       </StyledLink>
     </TableCell>

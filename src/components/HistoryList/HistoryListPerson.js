@@ -12,16 +12,16 @@ import { CenteredContent } from '../common/assets/styles/CenteredContent';
 
 export default class HistoryListPerson extends Component {
 
-  CheckIfDraft(person) {
+  checkIfDraft(person) {
     if (person.get('ExistingDraft')) {
       return <RedirectButtonHistory person={person}/>
-    } else {
-      return (
-        <CenteredContent>
-          {person.get('LastSubmitted') ? dateFormat(person.LastSubmitted, "dd mmmm yyyy") : ''}
-        </CenteredContent>
-      )
     }
+
+    return (
+      <CenteredContent>
+        {person.get('LastSubmitted') ? dateFormat(person.LastSubmitted, "dd mmmm yyyy") : ''}
+      </CenteredContent>
+    )
   }
 
   render() {
@@ -50,7 +50,7 @@ export default class HistoryListPerson extends Component {
           </CenteredContent>
         </TableCell>
         <TableCell fluid sm={3}>
-          {this.CheckIfDraft(person)}
+          {this.checkIfDraft(person)}
         </TableCell>
       </TableRow>
     );

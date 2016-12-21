@@ -25,16 +25,9 @@ export const fetchViewerList = () => {
 export const createViewerAssessment = (router) => {
   return (dispatch, getState) => {
     const myPersonId = getViewer(getState().get('appHeader')).Id;
-    return api.get('/assessments/create', {
-      params: {
-        personId: myPersonId
-      }
-    }).then(
-      response => {
-        router.push({
-          pathname: '/' + response.data.Step.toLowerCase(),
-          query: {personId: myPersonId}
-        })
+    return api.get('/assessments/create' + myPersonId).then(
+      () => {
+        router.push({pathname: '/assessment/' + myPersonId})
       },
       error => console.log(error)
     )

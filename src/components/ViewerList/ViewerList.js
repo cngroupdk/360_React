@@ -22,7 +22,6 @@ export default class ViewerList extends Component {
 
   checkAssessmentsList() {
     const {viewerList} = this.props;
-    console.log(viewerList);
 
     if (viewerList.size > 0) {
       return viewerList.map((assessment) => {

@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader';
 
-import { selectors } from '../selectors';
+import { selectors } from '../../selectors';
 
 import {
   whoIs,
   getNextStep,
-} from '../components/QuestionList/AssessmentPageActions';
+} from '../../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageActions';
 
-import ReasonLevelAssessmentWrapper from '../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentWrapper'
+import ReasonLevelAssessmentWrapper from '../../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentWrapper'
 
 class ReasonLevelAssessmentPage extends Component {
   componentWillMount() {
@@ -49,11 +49,14 @@ class ReasonLevelAssessmentPage extends Component {
 
 function mapStateToProps(state) {
   const {
-    getPerson,
     getAssessment,
+  } = selectors.assessmentPage;
+
+  const {
+    getPerson,
     getStep,
     stepIsLoaded,
-  } = selectors.assessmentPage;
+  } = selectors.reasonLevelAssessmentPage;
 
   return {
     assessment: getAssessment(state),

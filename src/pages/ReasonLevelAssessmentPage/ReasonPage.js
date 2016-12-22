@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { selectors } from '../selectors';
+import { selectors } from '../../selectors';
 
-import ReasonEntry from '../components/ReasonEntry/ReasonEntry'
-import { sendReason } from '../components/ReasonEntry/ReasonPageActions';
+import ReasonEntry from '../../components/ReasonLevelAssessmentWrapper/ReasonEntry/ReasonEntry'
+import { sendReason } from '../../components/ReasonLevelAssessmentWrapper/ReasonEntry/ReasonPageActions';
 
 class ReasonPage extends Component {
   static propTypes = {

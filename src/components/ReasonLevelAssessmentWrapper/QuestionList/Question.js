@@ -3,8 +3,8 @@ import React, { Component }  from 'react';
 import Slider from './Slider.js';
 import CommentBox  from './CommentBox.js'
 
-import { QuestionContainer } from '../common/assets/styles/QuestionsPage/QuestionContainer';
-import { StyledAddCommentBtn } from '../common/assets/styles/QuestionsPage/StyledAddCommentBtn';
+import { QuestionContainer } from '../../common/assets/styles/QuestionsPage/QuestionContainer';
+import { StyledAddCommentBtn } from '../../common/assets/styles/QuestionsPage/StyledAddCommentBtn';
 
 export default class Question extends Component {
   constructor(props) {

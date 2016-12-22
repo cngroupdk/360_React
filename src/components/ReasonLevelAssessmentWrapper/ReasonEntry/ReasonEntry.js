@@ -1,10 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 
-import { ContentContainer} from '../common/assets/styles/ContentContainer';
-import { StyledLink } from '../common/assets/styles/StyledLink';
-import { StyledReasonEnterArea } from '../common/assets/styles/ReasonPage/StyledReasonEnterArea';
-import { AssessmentPeopleProfileHeader } from '../common/AssessmentPeopleProfileHeader';
-import { StyledReasonEnterAreaWrapper } from '../common/assets/styles/ReasonPage/StyledReasonEnterAreaWrapper';
+import { ContentContainer} from '../../common/assets/styles/ContentContainer';
+import { StyledLink } from '../../common/assets/styles/StyledLink';
+import { StyledReasonEnterArea } from '../../common/assets/styles/ReasonPage/StyledReasonEnterArea';
+import { AssessmentPeopleProfileHeader } from '../../common/AssessmentPeopleProfileHeader';
+import { StyledReasonEnterAreaWrapper } from '../../common/assets/styles/ReasonPage/StyledReasonEnterAreaWrapper';
 
 export default class ReasonEntry extends Component {
   constructor(props, context) {

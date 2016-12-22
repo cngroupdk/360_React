@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { apiPost } from '../../api';
+import { apiPost } from '../../../api';
 
 export const RECEIVE_ANSWER = 'RECEIVE_ANSWER';
 

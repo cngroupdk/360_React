@@ -5,7 +5,7 @@ import App from './App'
 import TaskAndHistory from './pages/TaskAndHistory';
 import PeoplePage from './pages/PeoplePage'
 import ViewerPage from './pages/ViewerPage'
-import ReasonLevelAssessmentPage from './pages/ReasonLevelAssessmentPage'
+import ReasonLevelAssessmentPage from './pages/ReasonLevelAssessmentPage/ReasonLevelAssessmentPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 export default function createRoutes() {

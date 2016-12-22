@@ -2,20 +2,20 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import SkillsList from '../components/QuestionList/SkillsList';
+import SkillsList from '../../components/ReasonLevelAssessmentWrapper/QuestionList/SkillsList';
 
-import { selectors } from '../selectors';
+import { selectors } from '../../selectors';
 
 import {
   fetchAssessment,
   saveAssessment,
   assessmentUpdateAnswer,
   assessmentUpdateSubmitted,
-} from '../components/QuestionList/AssessmentPageActions';
+} from '../../components/ReasonLevelAssessmentWrapper/QuestionList/AssessmentPageActions';
 
-import { ContentContainer } from '../components/common/assets/styles/ContentContainer';
-import { StyledLink } from '../components/common/assets/styles/StyledLink';
-import { AssessmentPeopleProfileHeader } from '../components/common/AssessmentPeopleProfileHeader';
+import { ContentContainer } from '../../components/common/assets/styles/ContentContainer';
+import { StyledLink } from '../../components/common/assets/styles/StyledLink';
+import { AssessmentPeopleProfileHeader } from '../../components/common/AssessmentPeopleProfileHeader';
 
 class AssessmentPage extends Component {
   static propTypes = {

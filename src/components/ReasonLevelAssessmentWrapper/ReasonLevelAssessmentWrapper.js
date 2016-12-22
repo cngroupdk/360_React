@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import ReasonPage from '../../pages/ReasonPage'
-import LevelPage from '../../pages/LevelPage'
-import AssessmentPage from '../../pages/AssessmentPage'
+import ReasonPage from '../../pages/ReasonLevelAssessmentPage/ReasonPage'
+import LevelPage from '../../pages/ReasonLevelAssessmentPage/LevelPage'
+import AssessmentPage from '../../pages/ReasonLevelAssessmentPage/AssessmentPage'
 
 const QUESTION_COMPONENT_BASED_ON_STEP = {
   'Level': LevelPage,

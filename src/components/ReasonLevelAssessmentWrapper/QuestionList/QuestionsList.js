@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { QuestionsSectionName } from '../common/assets/styles/QuestionsPage/QuestionsSectionName';
+import { QuestionsSectionName } from '../../common/assets/styles/QuestionsPage/QuestionsSectionName';
 import Question from './Question';
 
 export default class QuestionsList extends Component {

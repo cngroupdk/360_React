@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import { StyledLink } from './assets/styles/StyledLink';
 import buttonText from './buttonNewEdit';
 
-export default class Redirect extends Component {
+export default class RedirectButton extends Component {
   constructor(props, context) {
     super(props, context);
     this.gotoNextLinkPath = this.gotoNextLinkPath.bind(this);

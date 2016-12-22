@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { StyledLink } from '../common/assets/styles/StyledLink';
-import buttonText from '../common/buttonNewEdit';
+import { StyledLink } from './assets/styles/StyledLink';
+import buttonText from './buttonNewEdit';
 
-export default class Redirect extends Component {
+export default class EditDraftRedirectButton extends Component {
   render() {
     const {
       person,

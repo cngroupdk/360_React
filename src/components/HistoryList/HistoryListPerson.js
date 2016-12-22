@@ -3,7 +3,7 @@ import LazyLoad from 'react-lazyload';
 import dateFormat from 'dateformat';
 
 import getPhotoUrl from '../../lib/getPhotoUrl';
-import RedirectButtonHistory from './HistoryListPersonRedirect';
+import EditDraftRedirectButton from '../common/EditDraftRedirectButton';
 
 import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
@@ -14,7 +14,7 @@ export default class HistoryListPerson extends Component {
 
   checkIfDraft(person) {
     if (person.get('ExistingDraft')) {
-      return <RedirectButtonHistory person={person}/>
+      return <EditDraftRedirectButton person={person}/>
     }
 
     return (

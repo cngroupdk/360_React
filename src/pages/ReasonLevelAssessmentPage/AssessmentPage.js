@@ -70,7 +70,6 @@ class AssessmentPage extends Component {
     this.props.whoIs(this.props.personId);
   }
 
-
   handleSaveAsDraft() {
     this.props.saveAssessment();
   }
@@ -94,7 +93,9 @@ class AssessmentPage extends Component {
           <h1>Assessment</h1>
 
           <AssessmentPeopleProfileHeader person={person}>
-            <StyledLink data-right-align  onClick={this.handleResetLevel} to={'/assessment/' + person.Id}>Change selected level</StyledLink>
+            <StyledLink data-right-align  onClick={this.handleResetLevel} to={'/assessment/' + person.Id}>
+              Change selected level
+            </StyledLink>
           </AssessmentPeopleProfileHeader>
 
           <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>

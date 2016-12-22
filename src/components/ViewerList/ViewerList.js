@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import { ViewerListRow } from './ViewerListRow';
+import  ViewerListRow  from './ViewerListRow';
 import { ViewerListEmpty } from './ViewerListEmpty';
 
 import { ContentContainer } from '../common/assets/styles/ContentContainer';
@@ -13,35 +13,26 @@ export default class ViewerList extends Component {
   constructor(props) {
     super(props);
     this.handleOnClickCreate = this.handleOnClickCreate.bind(this);
-    this.isDraftExist = this.isDraftExist.bind(this);
   }
 
   static contextTypes = {
     router: PropTypes.object
   };
 
+  isDraftExists() {
+    const firstAssessment = this.props.viewerList.get(0);
+    return firstAssessment && firstAssessment.get('ExistingDraft')
+  }
+
   checkAssessmentsList() {
-  const {viewerList} = this.props;
+    const {viewerList} = this.props;
 
     if (viewerList.size > 0) {
       return viewerList.map((assessment) => {
         return <ViewerListRow assessment={assessment} key={assessment.get('Id')}/>
       })
     }
-
-  return <ViewerListEmpty/>
-}
-
-  isDraftExist() {
-    const {viewerList} = this.props;
-
-    for (const assessment of viewerList) {
-
-      if (assessment.get('ExistingDraft')) {
-       return true;
-      }
-    }
-    return false;
+    return <ViewerListEmpty/>
   }
 
   handleOnClickCreate(event) {
@@ -66,7 +57,7 @@ export default class ViewerList extends Component {
 
         <NewViewerAssessmentBtnContainer>
           <StyledLink
-            disabled={this.isDraftExist()}
+            disabled={this.isDraftExists()}
             onClick={this.handleOnClickCreate}
             to="/viewer">
             New self assessment

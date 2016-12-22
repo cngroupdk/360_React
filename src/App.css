@@ -14,22 +14,31 @@ body {
 }
 
 .tab {
-  width: 33.2%;
-  display: inline-block;
+  width: 33.33%;
+  display: block;
+  float:left;
   text-align: center;
-  padding-top: 20px;
-  height: 50px;
+  padding: 20px;
   font-weight: 700;
   font-size: 24px;
   color: white;
   background-color: #073453;
-  border-left: 1px #edfbfd solid;
+  border-right: 1px #edfbfd solid;
   text-decoration: none;
+  box-sizing: border-box;
+}
+
+.tab:last-of-type {
+  border-right: 0;
 }
 
 .tab.active {
   background-color: white;
   color: #073453;
+}
+
+.tab:not(.active):hover {
+  opacity: 0.8;
 }
 
 .footer-container {

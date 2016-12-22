@@ -1,6 +1,9 @@
 import React, { Component, PropTypes } from 'react';
-import { StyledLink } from './assets/styles/StyledLink';
+
 import buttonText from './buttonNewEdit';
+
+import { StyledLinkWrapper } from './assets/styles/StyledLinkWrapper';
+import { StyledLink } from './assets/styles/StyledLink';
 
 export default class RedirectButton extends Component {
   constructor(props, context) {
@@ -30,9 +33,11 @@ export default class RedirectButton extends Component {
     } = this.props;
 
     return (
-      <StyledLink data-xyAlign className={className} onClick={this.gotoNextLinkPath} to="#">
-        {buttonText(person.get('ExistingDraft'))}
-      </StyledLink>
+      <StyledLinkWrapper data-xyAlign>
+        <StyledLink  className={className} onClick={this.gotoNextLinkPath} to="#">
+          {buttonText(person.get('ExistingDraft'))}
+        </StyledLink>
+      </StyledLinkWrapper>
     );
   }
 }

@@ -11,6 +11,7 @@ const peoplePage = handleActions({
   [REQUEST_PEOPLE]: (state) => {
     return state.withMutations(newState =>
       newState
+        .setIn(['isLoaded'], false)
         .setIn(['isError'], false)
     );
   },

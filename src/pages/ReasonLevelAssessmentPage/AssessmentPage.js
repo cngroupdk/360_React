@@ -19,6 +19,7 @@ import {
 } from '../../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageActions';
 
 import { ContentContainer } from '../../components/common/assets/styles/ContentContainer';
+import { StyledLinkWrapper } from '../../components/common/assets/styles/StyledLinkWrapper';
 import { StyledLink } from '../../components/common/assets/styles/StyledLink';
 import { AssessmentPeopleProfileHeader } from '../../components/common/AssessmentPeopleProfileHeader';
 
@@ -93,14 +94,17 @@ class AssessmentPage extends Component {
           <h1>Assessment</h1>
 
           <AssessmentPeopleProfileHeader person={person}>
-            <StyledLink data-right-align  onClick={this.handleResetLevel} to={'/assessment/' + person.get('Id')}>
-              Change selected level
-            </StyledLink>
+            <StyledLinkWrapper data-right-align>
+              <StyledLink data-right-align onClick={this.handleResetLevel} to={'/assessment/' + person.get('Id')}>
+                Change selected level
+              </StyledLink>
+            </StyledLinkWrapper>
           </AssessmentPeopleProfileHeader>
 
           <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
-
-          <StyledLink data-margin-right-30 onClick={this.handleSaveAsDraft} to="/">Save draft</StyledLink>
+          <StyledLinkWrapper data-margin-right-30>
+            <StyledLink onClick={this.handleSaveAsDraft} to="/">Save draft</StyledLink>
+          </StyledLinkWrapper>
           <StyledLink onClick={this.handleSubmitAssessment} to="/">Submit</StyledLink>
         </ContentContainer>
       </Loader>

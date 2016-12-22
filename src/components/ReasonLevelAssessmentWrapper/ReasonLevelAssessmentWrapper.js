@@ -12,7 +12,7 @@ const QUESTION_COMPONENT_BASED_ON_STEP = {
 
 export default class ReasonLevelAssessmentWrapper extends Component {
   render() {
-    const step = this.props.step.Step;
+    const step = this.props.step.get('Step');
     const TheComponent = QUESTION_COMPONENT_BASED_ON_STEP[step];
 
     const {

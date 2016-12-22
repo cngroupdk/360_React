@@ -20,12 +20,12 @@ export class AssessmentPeopleProfileHeader extends Component {
     return (
       <PeopleProfileHeader>
         <ProfilePhotoWrapper>
-          <ProfilePhoto radius='120px' imgUrl={getPhotoUrl(person.Login)}/>
+          <ProfilePhoto radius='120px' imgUrl={getPhotoUrl(person.get('Login'))}/>
         </ProfilePhotoWrapper>
         <ProfileDescriptionWrapper>
-          <h2>{person.Name}</h2>
-          Position: {person.Position}<br/>
-          Department: {person.Department}
+          <h2>{person.get('Name')}</h2>
+          Position: {person.get('Position')}<br/>
+          Department: {person.get('Department')}
         </ProfileDescriptionWrapper>
         {children}
       </PeopleProfileHeader>

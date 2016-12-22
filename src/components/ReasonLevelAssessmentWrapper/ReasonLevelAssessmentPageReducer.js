@@ -12,7 +12,7 @@ const reasonLevelAssessmentPage = handleActions({
       return state.withMutations(newState => {
         newState
           .setIn(['isError'], false)
-          .setIn(['person'], action.payload)
+          .setIn(['person'], Immutable.fromJS(action.payload))
       });
     },
     throw(state) {
@@ -29,7 +29,7 @@ const reasonLevelAssessmentPage = handleActions({
         newState
           .setIn(['stepIsLoaded'], true)
           .setIn(['isError'], false)
-          .setIn(['step'], action.payload)
+          .setIn(['step'], Immutable.fromJS(action.payload))
       });
     },
     throw(state) {
@@ -40,7 +40,7 @@ const reasonLevelAssessmentPage = handleActions({
     },
   },
 }, Immutable.fromJS({
-  person: 'Person',
+  person: {Name: 'Person'},
   assessment: {},
   isLoaded: false,
   isError: false,

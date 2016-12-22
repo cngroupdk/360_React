@@ -25,11 +25,11 @@ export const fetchTasks = () => {
 
 export const getFirstStep = (person, router) => {
   return () => {
-    if (person.ExistingDraft !== '') {
+    if (person.get('ExistingDraft') !== '') {
       router.push({
         pathname: '/assessment/' + person.get('Id')});
     } else {
-      return api.get('/assessments/create' + person.Id).then(
+      return api.get('/assessments/create/' + person.get('Id')).then(
         () => {
           router.push({
             pathname: '/assessment/' + person.get('Id')})

@@ -41,7 +41,7 @@ export default class LevelEntry extends Component {
           <RadioGroup name="prof-level" selectedValue={this.state.level} onChange={this.handleProfLevelChange}>
 
             {levels.map((level) => (
-                <Level level={level} key={level.Id} />
+                <Level level={level} key={level.get('Id')} />
               )
             )}
 

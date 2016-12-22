@@ -21,7 +21,7 @@ const levelPage = handleActions({
         newState
           .setIn(['isLoaded'], true)
           .setIn(['isError'], false)
-          .setIn(['levels'], action.payload)
+          .setIn(['levels'], Immutable.fromJS(action.payload))
       });
     },
     throw(state) {

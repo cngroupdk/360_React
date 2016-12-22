@@ -8,7 +8,7 @@ export default class Level extends Component {
     } = this.props;
 
     return (
-      <label><Radio value={level.Id}/> {level.Caption}</label>
+      <label><Radio value={level.get('Id')}/> {level.get('Caption')}</label>
     );
   }
 }

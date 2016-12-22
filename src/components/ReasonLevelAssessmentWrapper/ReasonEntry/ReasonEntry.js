@@ -26,7 +26,7 @@ export default class ReasonEntry extends Component {
 
   handleSendReason(e) {
     this.props.sendReason(this.state.reason, this.props.personId, this.context.router);
-    this.props.getNextStep(this.props.person.Id)
+    this.props.getNextStep(this.props.person.get('Id'));
     e.preventDefault();
   }
 
@@ -38,7 +38,7 @@ export default class ReasonEntry extends Component {
 
     return (
       <ContentContainer>
-        <h1>Warning! {person.Name} is not your co-worker.</h1>
+        <h1>Warning! {person.get('Name')} is not your co-worker.</h1>
 
         <AssessmentPeopleProfileHeader person={person}/>
 

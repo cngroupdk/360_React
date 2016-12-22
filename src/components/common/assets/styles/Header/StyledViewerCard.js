@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledSelfCard = styled.div`
+export const StyledViewerCard = styled.div`
   font-size: 23px;
   float: right;
   color: #ed1848;

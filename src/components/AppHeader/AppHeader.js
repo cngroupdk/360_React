@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 import { selectors } from '../../selectors';
 
 import { fetchSelf } from './AppHeaderActions';
-import SelfCard from './SelfCard';
+import SelfCard from './ViewerCard';
 
 import { StyledHeader } from '../common/assets/styles/Header/StyledHeader';
 

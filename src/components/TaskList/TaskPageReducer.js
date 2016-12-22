@@ -37,8 +37,8 @@ const taskPage = handleActions({
     const users = state.get('taskListDefault');
     const searchPhrase = action.payload.toLowerCase().trim();
     const filteredTask = users.filter((person) => {
-      return (person.Name.toLowerCase().includes(searchPhrase) ||
-      person.SearchableName.toLowerCase().includes(searchPhrase))
+      return (person.get('Name').toLowerCase().includes(searchPhrase) ||
+      person.get('SearchableName').toLowerCase().includes(searchPhrase))
     });
 
     return state.withMutations(newState => {

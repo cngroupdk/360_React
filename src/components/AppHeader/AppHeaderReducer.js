@@ -20,7 +20,7 @@ const appHeader = handleActions({
         newState
           .setIn(['isLoaded'], true)
           .setIn(['isError'], false)
-          .setIn(['viewer'], action.payload);
+          .setIn(['viewer'], Immutable.fromJS(action.payload));
       });
     },
     throw(state) {

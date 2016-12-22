@@ -21,7 +21,7 @@ class LevelPage extends Component {
     fetchLevels: PropTypes.func.isRequired,
     sendLevel: PropTypes.func.isRequired,
     whoIs: PropTypes.func.isRequired,
-    levels: PropTypes.array,
+    levels: PropTypes.object,
   };
 
   componentDidMount() {

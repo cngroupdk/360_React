@@ -93,7 +93,7 @@ class AssessmentPage extends Component {
           <h1>Assessment</h1>
 
           <AssessmentPeopleProfileHeader person={person}>
-            <StyledLink data-right-align  onClick={this.handleResetLevel} to={'/assessment/' + person.Id}>
+            <StyledLink data-right-align  onClick={this.handleResetLevel} to={'/assessment/' + person.get('Id')}>
               Change selected level
             </StyledLink>
           </AssessmentPeopleProfileHeader>

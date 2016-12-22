@@ -21,16 +21,16 @@ export default class ViewerList extends Component {
   };
 
   checkAssessmentsList() {
-    const {viewerList} = this.props;
+  const {viewerList} = this.props;
 
     if (viewerList.size > 0) {
       return viewerList.map((assessment) => {
         return <ViewerListRow assessment={assessment} key={assessment.get('Id')}/>
       })
-    } else {
-      return <ViewerListEmpty/>
     }
-  }
+
+  return <ViewerListEmpty/>
+}
 
   isDraftExist() {
     const {viewerList} = this.props;

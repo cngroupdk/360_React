@@ -12,10 +12,8 @@ export const ASSESSMENT_SAVE_FINISHED = 'ASSESSMENT_SAVE_FINISHED';
 export const ASSESSMENT_UPDATE_ANSWER = 'ASSESSMENT_UPDATE_ANSWER';
 export const ASSESSMENT_UPDATE_SUBMITTED = 'ASSESSMENT_UPDATE_SUBMITTED';
 
-export const RECEIVE_PERSON = 'RECEIVE_PERSON';
-
-export const REQUEST_STEP = 'REQUEST_STEP';
-export const RECEIVE_STEP = 'RECEIVE_STEP';
+export const RESET_LEVEL_SUBMITTED = 'RESET_LEVEL_SUBMITTED';
+export const RESET_LEVEL_FINISHED = 'RESET_LEVEL_FINISHED';
 
 export const assessmentRequest = createAction(ASSESSMENT_FETCH);
 export const assessmentRequestFinished = createAction(ASSESSMENT_FETCH_FINISHED);
@@ -26,10 +24,8 @@ export const assessmentSaveFinished = createAction(ASSESSMENT_SAVE_FINISHED);
 export const assessmentUpdateAnswer = createAction(ASSESSMENT_UPDATE_ANSWER);
 export const assessmentUpdateSubmitted = createAction(ASSESSMENT_UPDATE_SUBMITTED);
 
-export const receivePerson = createAction(RECEIVE_PERSON);
-
-export const requestStep = createAction(REQUEST_STEP);
-export const receiveStep = createAction(RECEIVE_STEP);
+export const resetLevelSubmitted = createAction(RESET_LEVEL_SUBMITTED);
+export const resetLevelFinished = createAction(RESET_LEVEL_FINISHED);
 
 export const fetchAssessment = (personId) => {
   return (dispatch) => {
@@ -61,27 +57,16 @@ export const saveAssessment = () => {
   }
 };
 
-export const whoIs = (personId) => {
+export const resetLevel = (personId) => {
   return (dispatch) => {
-    api.get('people/person/'+ personId).then(
-      response => dispatch(receivePerson(
+    dispatch(resetLevelSubmitted());
+    api.get('assessments/resetlevel/'+ personId).then(
+      response => dispatch(resetLevelFinished(
         response.data || response,
       )),
-      error => dispatch(receivePerson(
+      error => dispatch(resetLevelFinished(
         error,
       )))
   }
 };
 
-export const getNextStep = (personId) => {
-  return (dispatch) => {
-    dispatch(requestStep());
-    return api.get('assessments/step/'+ personId).then(
-      response => dispatch(receiveStep(
-        response.data || response,
-      )),
-      error => dispatch(receiveStep(
-        error,
-      )))
-  }
-};

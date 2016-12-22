@@ -11,7 +11,12 @@ import {
   saveAssessment,
   assessmentUpdateAnswer,
   assessmentUpdateSubmitted,
+  resetLevel,
 } from '../../components/ReasonLevelAssessmentWrapper/QuestionList/AssessmentPageActions';
+
+import {
+  getNextStep,
+} from '../../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageActions';
 
 import { ContentContainer } from '../../components/common/assets/styles/ContentContainer';
 import { StyledLink } from '../../components/common/assets/styles/StyledLink';
@@ -31,6 +36,7 @@ class AssessmentPage extends Component {
 
   constructor(props) {
     super(props);
+    this.handleResetLevel = this.handleResetLevel.bind(this);
     this.handleSaveAsDraft = this.handleSaveAsDraft.bind(this);
     this.handleSubmitAssessment = this.handleSubmitAssessment.bind(this);
   }
@@ -54,10 +60,16 @@ class AssessmentPage extends Component {
     return message;
   }
 
+  handleResetLevel() {
+    this.props.resetLevel(this.props.personId);
+    this.props.getNextStep(this.props.personId);
+  }
+
   fetchAllData() {
     this.props.fetchAssessment(this.props.personId);
     this.props.whoIs(this.props.personId);
   }
+
 
   handleSaveAsDraft() {
     this.props.saveAssessment();
@@ -82,7 +94,7 @@ class AssessmentPage extends Component {
           <h1>Assessment</h1>
 
           <AssessmentPeopleProfileHeader person={person}>
-            <StyledLink data-right-align to={'/assessment/' + person.Id}>Change selected level</StyledLink>
+            <StyledLink data-right-align  onClick={this.handleResetLevel} to={'/assessment/' + person.Id}>Change selected level</StyledLink>
           </AssessmentPeopleProfileHeader>
 
           <SkillsList assessment={assessment} updateAnswer={assessmentUpdateAnswer}/>
@@ -107,10 +119,10 @@ function mapStateToProps(state) {
     levelsIsLoaded: assessmentIsLoaded(state),
     levelsIsError: assessmentIsError(state),
   };
-};
+}
 
 export default connect(
   mapStateToProps,
-  {fetchAssessment, saveAssessment, assessmentUpdateAnswer, assessmentUpdateSubmitted},
+  {fetchAssessment, saveAssessment, assessmentUpdateAnswer, assessmentUpdateSubmitted, resetLevel, getNextStep},
 )(AssessmentPage);
 

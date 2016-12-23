@@ -8,6 +8,7 @@ import {
   ASSESSMENT_UPDATE_SUBMITTED,
   RESET_LEVEL_SUBMITTED,
   RESET_LEVEL_FINISHED,
+  SAVE_VALIDATION_BOOL,
 } from './AssessmentPageActions';
 
 const assessmentPage = handleActions({
@@ -100,7 +101,23 @@ const assessmentPage = handleActions({
       );
     },
   },
+
+  [SAVE_VALIDATION_BOOL]: {
+    next(state, action) {
+      return state.withMutations(newState => {
+        newState
+          .setIn(['disabledSubmit'], !action.payload)
+      });
+    },
+    throw(state) {
+      return state.withMutations(newState =>
+        newState
+          .setIn(['isError'], true)
+      );
+    },
+  },
 }, Immutable.fromJS({
+  validationBool: false,
   assessment: {},
   isLoaded: false,
   isError: false,
@@ -111,3 +128,4 @@ export default assessmentPage;
 export const getAssessment = state => state.get('assessment');
 export const assessmentIsLoaded = state => state.get('isLoaded');
 export const assessmentIsError = state => state.get('isError');
+export const getValidationBool = state => state.get('disabledSubmit');

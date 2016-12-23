@@ -1,16 +1,14 @@
 import React, { Component }  from 'react';
 
-import CommentBox  from './CommentBox.js'
+import AnswerBox from './AnswerBox'
 
-import { QuestionContainer } from '../../common/assets/styles/QuestionsPage/QuestionContainer';
+import { QuestionContainer } from '../../../common/assets/styles/QuestionsPage/QuestionContainer';
 
 export default class Question extends Component {
   constructor(props) {
     super(props);
 
-    const {
-      question,
-    } = this.props;
+    const {question} = this.props;
 
     const answer = question.get('Answer');
     const note = answer.get('Note') ? answer.get('Note') : '';
@@ -57,7 +55,7 @@ export default class Question extends Component {
     return (
       <QuestionContainer>
         <h4>{question.get('Caption')}</h4>
-          <CommentBox text={this.state.answerNote} onChange={this.handleOnChangeNote}/>
+          <AnswerBox text={this.state.answerNote} onChange={this.handleOnChangeNote}/>
       </QuestionContainer>
     );
   }

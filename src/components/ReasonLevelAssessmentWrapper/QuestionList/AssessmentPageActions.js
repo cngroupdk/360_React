@@ -15,6 +15,8 @@ export const ASSESSMENT_UPDATE_SUBMITTED = 'ASSESSMENT_UPDATE_SUBMITTED';
 export const RESET_LEVEL_SUBMITTED = 'RESET_LEVEL_SUBMITTED';
 export const RESET_LEVEL_FINISHED = 'RESET_LEVEL_FINISHED';
 
+export const SAVE_VALIDATION_BOOL = 'SAVE_VALIDATION_BOOL';
+
 export const assessmentRequest = createAction(ASSESSMENT_FETCH);
 export const assessmentRequestFinished = createAction(ASSESSMENT_FETCH_FINISHED);
 
@@ -26,6 +28,8 @@ export const assessmentUpdateSubmitted = createAction(ASSESSMENT_UPDATE_SUBMITTE
 
 export const resetLevelSubmitted = createAction(RESET_LEVEL_SUBMITTED);
 export const resetLevelFinished = createAction(RESET_LEVEL_FINISHED);
+
+export const saveValidationBool = createAction(SAVE_VALIDATION_BOOL);
 
 export const fetchAssessment = (personId) => {
   return (dispatch) => {
@@ -67,6 +71,12 @@ export const resetLevel = (personId) => {
       error => dispatch(resetLevelFinished(
         error,
       )))
+  }
+};
+
+export const submitValidation = (isNoteExists) => {
+  return (dispatch) => {
+      dispatch(saveValidationBool(isNoteExists))
   }
 };
 

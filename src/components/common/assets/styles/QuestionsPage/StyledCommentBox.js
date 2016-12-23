@@ -20,4 +20,6 @@ export const StyledCommentBox = styled.div`
     border: solid 1px #077494;
     box-shadow: 0 0 5px 1px #1EADE0;
   }
+  
+  ${ props => props[`margin-top`] ? 'margin-top: 25px; ' : '' }
 `;

@@ -12,7 +12,6 @@ import {
   assessmentUpdateAnswer,
   assessmentUpdateSubmitted,
   resetLevel,
-  submitValidation,
 } from '../../components/ReasonLevelAssessmentWrapper/QuestionList/AssessmentPageActions';
 
 import {
@@ -87,8 +86,6 @@ class AssessmentPage extends Component {
       assessmentUpdateAnswer,
       levelsIsLoaded,
       person,
-      submitValidation,
-      disabledSubmit,
     } = this.props;
 
     return (
@@ -107,12 +104,11 @@ class AssessmentPage extends Component {
           <SkillsList
             assessment={assessment}
             updateAnswer={assessmentUpdateAnswer}
-            submitValidation={submitValidation}
           />
           <StyledLinkWrapper data-margin-right-30>
             <StyledLink onClick={this.handleSaveAsDraft} to="/">Save draft</StyledLink>
           </StyledLinkWrapper>
-          <StyledLink disabled={disabledSubmit} onClick={this.handleSubmitAssessment} to="/">Submit</StyledLink>
+          <StyledLink disabled={true} onClick={this.handleSubmitAssessment} to="/">Submit</StyledLink>
         </ContentContainer>
       </Loader>
     )
@@ -124,14 +120,12 @@ function mapStateToProps(state) {
     getAssessment,
     assessmentIsLoaded,
     assessmentIsError,
-    getValidationBool,
   } = selectors.assessmentPage;
 
   return {
     assessment: getAssessment(state),
     levelsIsLoaded: assessmentIsLoaded(state),
     levelsIsError: assessmentIsError(state),
-    disabledSubmit: getValidationBool(state)
   };
 }
 
@@ -144,7 +138,6 @@ export default connect(
     assessmentUpdateSubmitted,
     resetLevel,
     getNextStep,
-    submitValidation,
   },
 )(AssessmentPage);
 

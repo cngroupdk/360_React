@@ -53,7 +53,6 @@ export const selectors = {
     getAssessment: state =>fromAssessmentPageReducer.getAssessment(state.get('assessmentPage')),
     assessmentIsLoaded: state =>fromAssessmentPageReducer.assessmentIsLoaded(state.get('assessmentPage')),
     assessmentIsError: state =>fromAssessmentPageReducer.assessmentIsError(state.get('assessmentPage')),
-    getValidationBool: state =>fromAssessmentPageReducer.getValidationBool(state.get('assessmentPage')),
   },
 
   reasonLevelAssessmentPage: {

@@ -7,7 +7,6 @@ export default class SkillsList extends Component {
     const {
       assessment,
       updateAnswer,
-      submitValidation,
     } = this.props;
 
     return (
@@ -17,7 +16,6 @@ export default class SkillsList extends Component {
             key={skill.get('Id')}
             skill={skill}
             updateAnswer={updateAnswer}
-            submitValidation={submitValidation}
           />
         ))}
       </div>

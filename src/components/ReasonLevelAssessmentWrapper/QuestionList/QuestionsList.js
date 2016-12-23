@@ -5,21 +5,6 @@ import QuestionSlider from './QuestionSlider/QuestionSlider';
 import QuestionGeneral from './QuestionGeneral/QuestionGeneral';
 
 export default class QuestionsList extends Component {
-
-  componentDidUpdate() {
-    const {
-      skill,
-      submitValidation,
-    } = this.props;
-
-    skill.get('Questions').map((question) => {
-      if (question.get('Type') === 'Open'){
-        submitValidation(!!question.get('Answer').get('Note'));
-      }
-      return null
-    })
-  }
-
   render() {
     const {
       skill,
@@ -37,7 +22,6 @@ export default class QuestionsList extends Component {
                                       skillId={skill.get('Id')}
                                       updateAnswer={updateAnswer}/>)
           }
-
           return (<QuestionSlider key={question.get('Id')}
                                   question={question}
                                   skillId={skill.get('Id')}

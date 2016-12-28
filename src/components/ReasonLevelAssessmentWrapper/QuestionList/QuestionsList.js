@@ -9,6 +9,7 @@ export default class QuestionsList extends Component {
     const {
       skill,
       updateAnswer,
+      checkIfSubmittable,
     } = this.props;
 
     return (
@@ -20,7 +21,8 @@ export default class QuestionsList extends Component {
             return  (<QuestionGeneral key={question.get('Id')}
                                       question={question}
                                       skillId={skill.get('Id')}
-                                      updateAnswer={updateAnswer}/>)
+                                      updateAnswer={updateAnswer}
+                                      checkIfSubmittable={checkIfSubmittable}/>)
           }
           return (<QuestionSlider key={question.get('Id')}
                                   question={question}

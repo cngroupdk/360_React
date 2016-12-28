@@ -22,6 +22,7 @@ export default class Question extends Component {
   handleOnChangeNote(event) {
     const newNote = event.target.value;
     this.updateAnswerNote(newNote);
+    this.props.checkIfSubmittable()
   }
 
   updateAnswerNote(newNote) {

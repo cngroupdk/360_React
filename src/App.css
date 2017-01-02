@@ -41,6 +41,11 @@ body {
   opacity: 0.8;
 }
 
+h1 {
+  margin: 10px;
+  font-weight: bold;
+}
+
 .footer-container {
   font-size: 13px;
   padding: 15px 20px;
@@ -51,11 +56,3 @@ body {
   font-weight: 700;
 }
 
-.clear {
-  clear: both;
-}
-
-h1 {
-  margin: 10px;
-  font-weight: bold;
-}

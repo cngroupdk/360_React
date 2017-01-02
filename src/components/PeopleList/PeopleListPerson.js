@@ -11,7 +11,6 @@ import { TableRow, TableCell } from '../common/assets/styles/PersonRow';
 import { StyledProfilePhoto } from '../common/assets/styles/StyledProfilePhoto';
 import { StyledProfileInitial } from '../common/assets/styles/StyledProfileInitial';
 import { IconWrapper } from '../common/assets/styles/PeoplePage/IconWrapper';
-import { isAssessmentInMonth } from '../../lib/isAssessmentInMonth';
 
 export default class PeopleListPerson extends Component {
   render() {
@@ -21,6 +20,7 @@ export default class PeopleListPerson extends Component {
     } = this.props;
     const assessmentMonth = person.get('AssessmentMonth');
     const lastSubmitted = person.get('LastSubmitted');
+    const EvaluationComingSoon = person.get('EvaluationComingSoon')
 
     return (
       <TableRow>
@@ -73,7 +73,7 @@ export default class PeopleListPerson extends Component {
             <IconWrapper size={1.4}>
               <FontAwesome
                 title="Assessment in one month"
-                name={isAssessmentInMonth(assessmentMonth) ? 'clock-o' : ''}
+                name={EvaluationComingSoon ? 'clock-o' : ''}
               />
             </IconWrapper>
           </CenteredContent>

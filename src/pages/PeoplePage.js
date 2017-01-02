@@ -3,6 +3,7 @@ import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
 import { selectors } from '../selectors';
+import { loaderOptions } from '../appConfig'
 
 import Tabs from '../components/common/Tabs'
 import PeopleList from '../components/PeopleList/PeopleList';
@@ -42,7 +43,7 @@ class PeoplePage extends Component {
     return (
       <div>
         <Tabs/>
-        <Loader loaded={peopleIsLoaded}>
+        <Loader loaded={peopleIsLoaded} options={loaderOptions}>
           <PeopleList people={people}
                       searchPeople={searchPeople}
                       getFirstStep={getFirstStep}

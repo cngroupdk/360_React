@@ -3,6 +3,7 @@ import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
 import { selectors } from '../selectors';
+import { loaderOptions } from '../appConfig'
 
 import { fetchViewerList, createViewerAssessment } from '../components/ViewerList/ViewerPageActions';
 
@@ -36,7 +37,7 @@ class ViewerPage extends Component {
     return (
       <div>
         <Tabs/>
-        <Loader loaded={isLoaded}>
+        <Loader loaded={isLoaded} options={loaderOptions}>
           <ViewerList viewerList={viewerList} createViewerAssessment={createViewerAssessment}/>
         </Loader>
       </div>

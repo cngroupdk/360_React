@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Loader from 'react-loader';
 
 import { selectors } from '../../selectors';
+import { loaderOptions } from '../../appConfig'
 
 import {
   whoIs,
@@ -33,7 +34,7 @@ class ReasonLevelAssessmentPage extends Component {
     } = this.props;
 
     return (
-      <Loader loaded={stepIsLoaded}>
+      <Loader loaded={stepIsLoaded} options={loaderOptions}>
         <ReasonLevelAssessmentWrapper
           personId={personId}
           assessment={assessment}

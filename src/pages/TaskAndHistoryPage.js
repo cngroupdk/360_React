@@ -3,6 +3,7 @@ import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
 import { selectors } from '../selectors';
+import { loaderOptions } from '../appConfig'
 
 import Tabs from '../components/common/Tabs';
 import TaskList from '../components/TaskList/TaskList';
@@ -51,7 +52,7 @@ class TaskAndHistory extends Component {
     return (
       <div>
         <Tabs/>
-        <Loader loaded={tasksIsLoaded && historyIsLoaded}>
+        <Loader loaded={tasksIsLoaded && historyIsLoaded} options={loaderOptions}>
           <TaskList
             taskPeople={taskPeople}
             searchTasks={searchTasks}

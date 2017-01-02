@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import SkillsList from '../../components/ReasonLevelAssessmentWrapper/QuestionList/SkillsList';
 
 import { selectors } from '../../selectors';
+import { loaderOptions } from '../../appConfig'
 
 import {
   fetchAssessment,
@@ -92,7 +93,7 @@ class AssessmentPage extends Component {
     } = this.props;
 
     return (
-      <Loader loaded={levelsIsLoaded}>
+      <Loader loaded={levelsIsLoaded} options={loaderOptions}>
         <ContentContainer>
           <h1>Assessment</h1>
 

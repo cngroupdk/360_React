@@ -21,6 +21,9 @@ export const QuestionContainer = styled.div`
   .checkbox-container {
     width: 25%;
     float: left;
+    input[type=checkbox] {
+      transform: scale(2);
+    }
   }
 
   .slider-container {

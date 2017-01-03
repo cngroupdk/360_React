@@ -8,7 +8,7 @@ export const RadioWrapper = styled.div`
   
   label {
     margin: 0 15px;
-    padding: 15px;
+    padding: 10px;
     border-radius: 15px;
     display: inline-block;
     margin: 20px;

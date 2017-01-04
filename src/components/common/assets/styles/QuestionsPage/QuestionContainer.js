@@ -22,7 +22,7 @@ export const QuestionContainer = styled.div`
     width: 25%;
     float: left;
     input[type=checkbox] {
-      transform: scale(2);
+      transform: scale(1.5);
     }
   }
 

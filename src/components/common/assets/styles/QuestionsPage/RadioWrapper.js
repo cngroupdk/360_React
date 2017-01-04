@@ -8,13 +8,14 @@ export const RadioWrapper = styled.div`
   
   label {
     margin: 0 15px;
-    padding: 10px;
-    border-radius: 15px;
+    padding: 7px 15px 7px 15px;
+    border-radius: 20px;
     display: inline-block;
     margin: 20px;
     cursor: pointer;
-    background-color: #ed1848;
-    color:white;
+    background-color: #e6f8fc;
+    border: 1px solid #bae2e8;
+    color: black;
     &:hover{
       opacity: 0.7;
     }

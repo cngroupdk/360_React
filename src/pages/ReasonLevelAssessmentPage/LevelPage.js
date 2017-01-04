@@ -3,7 +3,6 @@ import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
 import { selectors } from '../../selectors';
-import { loaderOptions } from '../../appConfig'
 
 import LevelEntry from '../../components/ReasonLevelAssessmentWrapper/LevelEntry/LevelEntry';
 
@@ -48,7 +47,7 @@ class LevelPage extends Component {
 
     return (
       <ContentContainer>
-        <Loader loaded={levelsIsLoaded} options={loaderOptions}>
+        <Loader loaded={levelsIsLoaded}>
           <h1>Proficiency Levels</h1>
 
           <AssessmentPeopleProfileHeader person={person}/>

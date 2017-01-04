@@ -26,7 +26,7 @@ export default class ReasonLevelAssessmentWrapper extends Component {
     return (
     <TheComponent
       personId={personId}
-      levelId={assessment.LevelId}
+      levelId={assessment.get('LevelId')}
       whoIs={whoIs}
       person={person}
       getNextStep={getNextStep}

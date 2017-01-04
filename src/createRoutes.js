@@ -7,6 +7,7 @@ import PeoplePage from './pages/PeoplePage'
 import ViewerPage from './pages/ViewerPage'
 import ReasonLevelAssessmentPage from './pages/ReasonLevelAssessmentPage/ReasonLevelAssessmentPage'
 import NotFoundPage from './pages/NotFoundPage'
+import AdminPage from './pages/AdminPage'
 
 export default function createRoutes() {
   return (
@@ -15,6 +16,7 @@ export default function createRoutes() {
       <Route path="people" component={PeoplePage}/>
       <Route path="viewer" component={ViewerPage}/>
       <Route path="assessment/:userId" component={ReasonLevelAssessmentPage}/>
+      <Route path="admin" component={AdminPage}/>
       <Route path="*" component={NotFoundPage}/>
     </Route>
   );

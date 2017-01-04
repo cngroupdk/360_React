@@ -9,6 +9,7 @@ import levelPage from './components/ReasonLevelAssessmentWrapper/LevelEntry/Leve
 import viewerPage from './components/ViewerList/ViewerPageReducer';
 import assessmentPage from './components/ReasonLevelAssessmentWrapper/QuestionList/AssessmentPageReducer';
 import reasonLevelAssessmentPage from './components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageReducer';
+import adminPage from './components/AdminList/AdminPageReducer'
 
 const rootReducer = combineReducers({
   peoplePage,
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   levelPage,
   assessmentPage,
   reasonLevelAssessmentPage,
+  adminPage,
 });
 
 export default rootReducer;

@@ -7,6 +7,7 @@ import * as fromLevelPageReducer from './components/ReasonLevelAssessmentWrapper
 import * as fromViewerPageReducer from './components/ViewerList/ViewerPageReducer';
 import * as fromAssessmentPageReducer from './components/ReasonLevelAssessmentWrapper/QuestionList/AssessmentPageReducer';
 import * as fromReasonLevelAssessmentPageReducer from './components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageReducer';
+import * as fromAdminPageReducer from './components/AdminList/AdminPageReducer'
 
 export const selectors = {
   peoplePage: {
@@ -60,5 +61,11 @@ export const selectors = {
     getPerson: state =>fromReasonLevelAssessmentPageReducer.getPerson(state.get('reasonLevelAssessmentPage')),
     getStep: state =>fromReasonLevelAssessmentPageReducer.getStep(state.get('reasonLevelAssessmentPage')),
     stepIsLoaded: state =>fromReasonLevelAssessmentPageReducer.stepIsLoaded(state.get('reasonLevelAssessmentPage')),
+  },
+
+  adminPage: {
+    getAdminList: state =>fromAdminPageReducer.getAdminList(state.get('adminPage')),
+    adminListIsLoaded: state =>fromAdminPageReducer.adminListIsLoaded(state.get('adminPage')),
+    adminListIsError: state =>fromAdminPageReducer.adminListIsError(state.get('adminPage')),
   },
 };

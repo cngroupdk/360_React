@@ -26,7 +26,7 @@ const assessmentPage = handleActions({
         newState
           .setIn(['isError'], false)
           .setIn(['isLoaded'], true)
-          .setIn(['assessment'], Immutable.fromJS(action.payload))
+          .setIn(['assessment'], Immutable.fromJS(action.payload.Level))
       );
     },
     throw(state) {

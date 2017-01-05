@@ -29,7 +29,7 @@ export const getFirstStep = (person, router) => {
       router.push({
         pathname: '/assessment/' + person.get('Id')});
     } else {
-      return api.get('/assessments/create/' + person.get('Id')).then(
+      return api.get('/assessments/step/' + person.get('Id')).then(
         () => {
           router.push({
             pathname: '/assessment/' + person.get('Id')})

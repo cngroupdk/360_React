@@ -26,7 +26,7 @@ export const fetchLevels = () => {
 export const sendLevel = (levelId, personId, router) => {
   return (dispatch) => {
     apiPost.post('/assessments/level', {
-      levelId,
+      'Level':{Id: levelId},
       personId,
     }).then(
       response => {

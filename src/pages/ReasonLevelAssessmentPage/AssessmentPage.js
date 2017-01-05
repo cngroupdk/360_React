@@ -96,11 +96,10 @@ class AssessmentPage extends Component {
       <Loader loaded={levelsIsLoaded} options={loaderOptions}>
         <ContentContainer>
           <h1>Assessment</h1>
-
           <AssessmentPeopleProfileHeader person={person}>
             <StyledLinkWrapper data-right-align>
               <StyledLink data-right-align onClick={this.handleResetLevel} to={'/assessment/' + person.get('Id')}>
-                Change selected level
+                Change selected level<br />({assessment.get('Caption')})
               </StyledLink>
             </StyledLinkWrapper>
           </AssessmentPeopleProfileHeader>

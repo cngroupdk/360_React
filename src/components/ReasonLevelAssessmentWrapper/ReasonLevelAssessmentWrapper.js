@@ -16,7 +16,6 @@ export default class ReasonLevelAssessmentWrapper extends Component {
     const TheComponent = QUESTION_COMPONENT_BASED_ON_STEP[step];
 
     const {
-      assessment,
       whoIs,
       person,
       personId,
@@ -26,7 +25,6 @@ export default class ReasonLevelAssessmentWrapper extends Component {
     return (
     <TheComponent
       personId={personId}
-      levelId={assessment.get('LevelId')}
       whoIs={whoIs}
       person={person}
       getNextStep={getNextStep}

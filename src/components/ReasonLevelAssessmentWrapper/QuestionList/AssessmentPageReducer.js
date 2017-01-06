@@ -5,8 +5,6 @@ import {
   ASSESSMENT_FETCH,
   ASSESSMENT_FETCH_FINISHED,
   ASSESSMENT_UPDATE_ANSWER,
-  ASSESSMENT_UPDATE_SUBMITTED,
-  RESET_LEVEL_SUBMITTED,
   RESET_LEVEL_FINISHED,
   IS_SUBMITTABLE,
 } from './AssessmentPageActions';
@@ -65,25 +63,6 @@ const assessmentPage = handleActions({
       newState
         .setIn(['assessment'], modifiedAssessment);
     });
-  },
-
-  [ASSESSMENT_UPDATE_SUBMITTED]: (state, action) => {
-    const assessment = state.get('assessment');
-    const submitted = action.payload;
-    const modifiedAssessment = assessment.setIn(['Submitted'], submitted);
-
-    return state.withMutations(newState => {
-      newState
-        .setIn(['assessment'], modifiedAssessment);
-    });
-  },
-
-  [RESET_LEVEL_SUBMITTED]: (state) => {
-    return state.withMutations(newState =>
-      newState
-        .setIn(['isError'], false)
-        .setIn(['isLoaded'], true)
-    );
   },
 
   [RESET_LEVEL_FINISHED]: {

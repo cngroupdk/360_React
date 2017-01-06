@@ -11,7 +11,6 @@ import {
   fetchAssessment,
   saveAssessment,
   assessmentUpdateAnswer,
-  assessmentUpdateSubmitted,
   resetLevel,
   checkIfSubmittable,
 } from '../../components/ReasonLevelAssessmentWrapper/QuestionList/AssessmentPageActions';
@@ -32,7 +31,6 @@ class AssessmentPage extends Component {
     fetchAssessment: PropTypes.func.isRequired,
     saveAssessment: PropTypes.func.isRequired,
     assessmentUpdateAnswer: PropTypes.func.isRequired,
-    assessmentUpdateSubmitted: PropTypes.func.isRequired,
     whoIs: PropTypes.func.isRequired,
     assessment: PropTypes.object,
   };
@@ -74,32 +72,33 @@ class AssessmentPage extends Component {
   }
 
   handleSaveAsDraft() {
-    this.props.saveAssessment();
+    this.props.saveAssessment(this.props.person.get('Id'), false);
   }
 
   handleSubmitAssessment() {
-    this.props.assessmentUpdateSubmitted(true);
-    this.props.saveAssessment();
+    this.props.saveAssessment(this.props.person.get('Id'), true);
   }
 
   render() {
     const {
       assessment,
       assessmentUpdateAnswer,
-      levelsIsLoaded,
+      assessmentIsLoaded,
       person,
       checkIfSubmittable,
       isSubmittable,
     } = this.props;
 
+    const chosenLevel = (assessment) ? assessment.get('Caption') : 'Default';
+
     return (
-      <Loader loaded={levelsIsLoaded} options={loaderOptions}>
+      <Loader loaded={assessmentIsLoaded} options={loaderOptions}>
         <ContentContainer>
           <h1>Assessment</h1>
           <AssessmentPeopleProfileHeader person={person}>
             <StyledLinkWrapper data-right-align>
               <StyledLink data-right-align onClick={this.handleResetLevel} to={'/assessment/' + person.get('Id')}>
-                Change selected level<br />({assessment.get('Caption')})
+                Change selected level<br />({chosenLevel})
               </StyledLink>
             </StyledLinkWrapper>
           </AssessmentPeopleProfileHeader>
@@ -130,8 +129,8 @@ function mapStateToProps(state) {
   return {
     isSubmittable: isSubmittable(state),
     assessment: getAssessment(state),
-    levelsIsLoaded: assessmentIsLoaded(state),
-    levelsIsError: assessmentIsError(state),
+    assessmentIsLoaded: assessmentIsLoaded(state),
+    assessmentIsError: assessmentIsError(state),
   };
 }
 
@@ -141,7 +140,6 @@ export default connect(
     fetchAssessment,
     saveAssessment,
     assessmentUpdateAnswer,
-    assessmentUpdateSubmitted,
     resetLevel,
     getNextStep,
     checkIfSubmittable,

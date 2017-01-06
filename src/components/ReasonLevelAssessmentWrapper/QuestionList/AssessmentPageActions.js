@@ -10,7 +10,6 @@ export const ASSESSMENT_SAVE = 'ASSESSMENT_SAVE';
 export const ASSESSMENT_SAVE_FINISHED = 'ASSESSMENT_SAVE_FINISHED';
 
 export const ASSESSMENT_UPDATE_ANSWER = 'ASSESSMENT_UPDATE_ANSWER';
-export const ASSESSMENT_UPDATE_SUBMITTED = 'ASSESSMENT_UPDATE_SUBMITTED';
 
 export const RESET_LEVEL_SUBMITTED = 'RESET_LEVEL_SUBMITTED';
 export const RESET_LEVEL_FINISHED = 'RESET_LEVEL_FINISHED';
@@ -24,7 +23,6 @@ export const assessmentSave = createAction(ASSESSMENT_SAVE);
 export const assessmentSaveFinished = createAction(ASSESSMENT_SAVE_FINISHED);
 
 export const assessmentUpdateAnswer = createAction(ASSESSMENT_UPDATE_ANSWER);
-export const assessmentUpdateSubmitted = createAction(ASSESSMENT_UPDATE_SUBMITTED);
 
 export const resetLevelSubmitted = createAction(RESET_LEVEL_SUBMITTED);
 export const resetLevelFinished = createAction(RESET_LEVEL_FINISHED);
@@ -45,12 +43,17 @@ export const fetchAssessment = (personId) => {
   };
 };
 
-export const saveAssessment = () => {
+export const saveAssessment = (personId, submitted) => {
   return (dispatch, getState) => {
     const assessment = getAssessment(getState().get('assessmentPage')).toJS();
     dispatch(assessmentSave());
     return apiPost.post('assessments/save',
-      assessment).then(
+      {
+        personId,
+        Level:assessment,
+        Submitted: submitted,
+      }
+      ).then(
       response => dispatch(assessmentSaveFinished(
         response.data || response,
       )),

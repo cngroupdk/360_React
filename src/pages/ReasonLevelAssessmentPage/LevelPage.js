@@ -3,6 +3,7 @@ import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
 import { selectors } from '../../selectors';
+import { loaderOptions } from '../../appConfig'
 
 import LevelEntry from '../../components/ReasonLevelAssessmentWrapper/LevelEntry/LevelEntry';
 
@@ -41,13 +42,15 @@ class LevelPage extends Component {
       person,
       sendLevel,
       personId,
-      levelId,
+      assessment,
       getNextStep,
     } = this.props;
 
+    const levelId = (assessment) ? assessment.get('Id') : '1';
+
     return (
       <ContentContainer>
-        <Loader loaded={levelsIsLoaded}>
+        <Loader loaded={levelsIsLoaded} options={loaderOptions}>
           <h1>Proficiency Levels</h1>
 
           <AssessmentPeopleProfileHeader person={person}/>
@@ -68,12 +71,17 @@ class LevelPage extends Component {
 
 function mapStateToProps(state) {
   const {
+    getAssessment,
+  } = selectors.assessmentPage;
+
+  const {
     getLevels,
     levelsIsLoaded,
-    levelsIsError
+    levelsIsError,
   } = selectors.levelPage;
 
   return {
+    assessment: getAssessment(state),
     levels: getLevels(state),
     levelsIsLoaded: levelsIsLoaded(state),
     levelsIsError: levelsIsError(state),

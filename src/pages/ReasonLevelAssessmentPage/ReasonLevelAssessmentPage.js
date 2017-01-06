@@ -25,7 +25,6 @@ class ReasonLevelAssessmentPage extends Component {
     const personId = this.props.location.pathname.split('/')[2];
 
     const {
-      assessment,
       whoIs,
       person,
       step,
@@ -37,7 +36,6 @@ class ReasonLevelAssessmentPage extends Component {
       <Loader loaded={stepIsLoaded} options={loaderOptions}>
         <ReasonLevelAssessmentWrapper
           personId={personId}
-          assessment={assessment}
           whoIs={whoIs}
           person={person}
           step={step}
@@ -50,17 +48,12 @@ class ReasonLevelAssessmentPage extends Component {
 
 function mapStateToProps(state) {
   const {
-    getAssessment,
-  } = selectors.assessmentPage;
-
-  const {
     getPerson,
     getStep,
     stepIsLoaded,
   } = selectors.reasonLevelAssessmentPage;
 
   return {
-    assessment: getAssessment(state),
     person: getPerson(state),
     step: getStep(state),
     stepIsLoaded: stepIsLoaded(state),

@@ -4,6 +4,7 @@ import Loader from 'react-loader';
 import { Link } from 'react-router';
 
 import { selectors } from '../../selectors';
+import { loaderOptions } from '../../appConfig'
 
 import { fetchSelf } from './AppHeaderActions';
 import SelfCard from './ViewerCard';
@@ -34,7 +35,7 @@ class AppHeader extends Component {
     } = this.props;
 
     return (
-      <Loader loaded={viewerIsLoaded}>
+      <Loader loaded={viewerIsLoaded} options={loaderOptions}>
         <StyledHeader className="app">
           <div className="app-header">
             <Link to='/' className="logo-wrapper">

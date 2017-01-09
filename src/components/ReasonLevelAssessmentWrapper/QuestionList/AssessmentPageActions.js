@@ -79,7 +79,7 @@ export const checkIfSubmittable = () => {
     let ifSubmittable = [];
     const assessment = getAssessment(getState().get('assessmentPage'));
     if (assessment.size > 0) {
-      assessment.get('Skills').last().get('Questions').toJS().map((question) => {
+      assessment.get('Skills').first().get('Questions').toJS().map((question) => {
         ifSubmittable.push(!!question.Answer.Note);
         return null
       })}

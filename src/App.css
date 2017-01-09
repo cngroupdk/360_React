@@ -14,7 +14,7 @@ body {
 }
 
 .alert {
-  background-color: #39f654;
+  background-color: #1ef631;
   color: white;
   top: 10px;
   width: 100%;
@@ -24,13 +24,12 @@ body {
   transform: translate(-50%, -50%);
   padding: 5px;
   box-sizing: border-box;
-  animation: fadeOut 5s forwards linear;
+  animation: fadeOut 5s linear forwards;
 }
 
 @keyframes fadeOut {
-  0% 	{ opacity: 1; }
-  10% { opacity: 1; }
-  100% { opacity: 0; }
+  0%,100% { opacity: 0 }
+  50% { opacity: 1 }
 }
 
 .tab {

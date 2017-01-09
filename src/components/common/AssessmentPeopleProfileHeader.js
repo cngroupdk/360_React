@@ -10,7 +10,6 @@ import {
 } from './assets/styles/QuestionsPage/PeopleProfileHeader';
 
 export class AssessmentPeopleProfileHeader extends Component {
-
   render () {
     const {
       children,

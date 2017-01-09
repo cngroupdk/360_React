@@ -7,6 +7,7 @@ import {
   ASSESSMENT_UPDATE_ANSWER,
   RESET_LEVEL_FINISHED,
   IS_SUBMITTABLE,
+  ASSESSMENT_SAVE_FINISHED,
 } from './AssessmentPageActions';
 
 const assessmentPage = handleActions({
@@ -95,6 +96,20 @@ const assessmentPage = handleActions({
       );
     },
   },
+  [ASSESSMENT_SAVE_FINISHED]: {
+    next(state, action) {
+      return state.withMutations(newState => {
+        newState
+          .setIn(['whatSubmitted'], action.payload)
+      });
+    },
+    throw(state) {
+      return state.withMutations(newState =>
+        newState
+          .setIn(['isError'], true)
+      );
+    },
+  },
 }, Immutable.fromJS({
   isSubmittable: false,
   assessment: {},
@@ -105,6 +120,7 @@ const assessmentPage = handleActions({
 export default assessmentPage;
 
 export const getAssessment = state => state.get('assessment');
+export const getWhatSubmitted = state => state.get('whatSubmitted');
 export const assessmentIsLoaded = state => state.get('isLoaded');
 export const assessmentIsError = state => state.get('isError');
 export const isSubmittable = state => state.get('isSubmittable');

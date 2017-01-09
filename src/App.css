@@ -13,6 +13,26 @@ body {
   border: 1px solid #bae2e8;
 }
 
+.alert {
+  background-color: #39f654;
+  color: #073453;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 5px;
+  box-sizing: border-box;
+  animation: fadeOut 3s forwards linear;
+}
+
+@keyframes fadeOut {
+  0% 	{ opacity: 1; }
+  10% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 .tab {
   width: 33.33%;
   display: block;
@@ -39,11 +59,6 @@ body {
 
 .tab:not(.active):hover {
   opacity: 0.8;
-}
-
-h1 {
-  margin: 10px;
-  font-weight: bold;
 }
 
 .footer-container {

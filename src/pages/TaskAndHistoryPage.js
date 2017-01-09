@@ -8,6 +8,7 @@ import { loaderOptions } from '../appConfig'
 import Tabs from '../components/common/Tabs';
 import TaskList from '../components/TaskList/TaskList';
 import HistoryList from '../components/HistoryList/HistoryList';
+import Alert from '../components/common/Alert';
 
 import { fetchHistory } from '../components/HistoryList/HistoryPageActions';
 import {
@@ -47,11 +48,13 @@ class TaskAndHistory extends Component {
       historyPeople,
       searchTasks,
       getFirstStep,
+      WhatSubmitted,
     } = this.props;
 
     return (
       <div>
         <Tabs/>
+        {(typeof WhatSubmitted !== 'undefined') ? <Alert WhatSubmitted={WhatSubmitted} />: <div></div>}
         <Loader loaded={tasksIsLoaded && historyIsLoaded} options={loaderOptions}>
           <TaskList
             taskPeople={taskPeople}
@@ -69,6 +72,7 @@ class TaskAndHistory extends Component {
 function mapStateToProps(state) {
   const { getHistory, historyIsLoaded, historyIsError } = selectors.historyPage;
   const { getTask, tasksIsLoaded, tasksIsError } = selectors.taskPage;
+  const { getWhatSubmitted } = selectors.assessmentPage;
 
   return {
     historyPeople: getHistory(state),
@@ -77,6 +81,7 @@ function mapStateToProps(state) {
     taskPeople: getTask(state),
     tasksIsLoaded: tasksIsLoaded(state),
     tasksIsisError: tasksIsError(state),
+    WhatSubmitted: getWhatSubmitted(state),
   };
 }
 

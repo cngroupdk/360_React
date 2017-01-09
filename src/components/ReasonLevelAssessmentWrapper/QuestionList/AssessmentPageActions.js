@@ -6,7 +6,6 @@ import { getAssessment } from './AssessmentPageReducer';
 export const ASSESSMENT_FETCH = 'ASSESSMENT_FETCH';
 export const ASSESSMENT_FETCH_FINISHED = 'ASSESSMENT_FETCH_FINISHED';
 
-export const ASSESSMENT_SAVE = 'ASSESSMENT_SAVE';
 export const ASSESSMENT_SAVE_FINISHED = 'ASSESSMENT_SAVE_FINISHED';
 
 export const ASSESSMENT_UPDATE_ANSWER = 'ASSESSMENT_UPDATE_ANSWER';
@@ -19,7 +18,6 @@ export const IS_SUBMITTABLE = 'IS_SUBMITTABLE';
 export const assessmentRequest = createAction(ASSESSMENT_FETCH);
 export const assessmentRequestFinished = createAction(ASSESSMENT_FETCH_FINISHED);
 
-export const assessmentSave = createAction(ASSESSMENT_SAVE);
 export const assessmentSaveFinished = createAction(ASSESSMENT_SAVE_FINISHED);
 
 export const assessmentUpdateAnswer = createAction(ASSESSMENT_UPDATE_ANSWER);
@@ -46,7 +44,6 @@ export const fetchAssessment = (personId) => {
 export const saveAssessment = (personId, submitted) => {
   return (dispatch, getState) => {
     const assessment = getAssessment(getState().get('assessmentPage')).toJS();
-    dispatch(assessmentSave());
     return apiPost.post('assessments/save',
       {
         personId,
@@ -55,7 +52,7 @@ export const saveAssessment = (personId, submitted) => {
       }
       ).then(
       response => dispatch(assessmentSaveFinished(
-        response.data || response,
+        submitted,
       )),
       error => dispatch(assessmentSaveFinished(
         error,

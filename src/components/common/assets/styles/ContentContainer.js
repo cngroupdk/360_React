@@ -8,5 +8,13 @@ export const ContentContainer = styled.div`
    
   h1 {
     color: #073453;
+    margin: 10px;
+    font-weight: bold;
+  }
+  
+  h3 {
+    color: #073453;
+    margin: 10px;
+    font-weight: bold;
   }
 `;

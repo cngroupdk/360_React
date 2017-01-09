@@ -55,6 +55,7 @@ export const selectors = {
     assessmentIsLoaded: state =>fromAssessmentPageReducer.assessmentIsLoaded(state.get('assessmentPage')),
     assessmentIsError: state =>fromAssessmentPageReducer.assessmentIsError(state.get('assessmentPage')),
     isSubmittable: state =>fromAssessmentPageReducer.isSubmittable(state.get('assessmentPage')),
+    getWhatSubmitted: state =>fromAssessmentPageReducer.getWhatSubmitted(state.get('assessmentPage')),
   },
 
   reasonLevelAssessmentPage: {

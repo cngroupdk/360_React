@@ -9,6 +9,8 @@ import {
   fetchAdminList
 } from '../components/AdminList/AdminPageActions';
 
+import AdminList from '../components/AdminList/AdminList';
+
 class ReasonLevelAssessmentPage extends Component {
   componentWillMount() {
     this.fetchAllData();
@@ -20,12 +22,13 @@ class ReasonLevelAssessmentPage extends Component {
 
   render() {
     const {
+      adminList,
       adminListIsLoaded,
     } = this.props;
 
     return (
       <Loader loaded={adminListIsLoaded} options={loaderOptions}>
-        <div>1</div>
+        <AdminList adminList={adminList} />
       </Loader>
     )
   }

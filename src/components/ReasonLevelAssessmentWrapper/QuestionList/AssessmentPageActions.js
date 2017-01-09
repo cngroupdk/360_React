@@ -6,7 +6,7 @@ import { getAssessment } from './AssessmentPageReducer';
 export const ASSESSMENT_FETCH = 'ASSESSMENT_FETCH';
 export const ASSESSMENT_FETCH_FINISHED = 'ASSESSMENT_FETCH_FINISHED';
 
-export const ASSESSMENT_SAVE_FINISHED = 'ASSESSMENT_SAVE_FINISHED';
+export const SUBMITTING_STATUS = 'SUBMITTING_STATUS';
 
 export const ASSESSMENT_UPDATE_ANSWER = 'ASSESSMENT_UPDATE_ANSWER';
 
@@ -18,7 +18,7 @@ export const IS_SUBMITTABLE = 'IS_SUBMITTABLE';
 export const assessmentRequest = createAction(ASSESSMENT_FETCH);
 export const assessmentRequestFinished = createAction(ASSESSMENT_FETCH_FINISHED);
 
-export const assessmentSaveFinished = createAction(ASSESSMENT_SAVE_FINISHED);
+export const submittingStatus = createAction(SUBMITTING_STATUS);
 
 export const assessmentUpdateAnswer = createAction(ASSESSMENT_UPDATE_ANSWER);
 
@@ -51,10 +51,10 @@ export const saveAssessment = (personId, submitted) => {
         Submitted: submitted,
       }
       ).then(
-      response => dispatch(assessmentSaveFinished(
+      response => dispatch(submittingStatus(
         submitted,
       )),
-      error => dispatch(assessmentSaveFinished(
+      error => dispatch(submittingStatus(
         error,
       ))
     );
@@ -85,4 +85,10 @@ export const checkIfSubmittable = () => {
       })}
     dispatch(isSubmittable(ifSubmittable.every(entry => entry)));
   };
+};
+
+export const resetSubmittingStatus = () => {
+  return (dispatch) => {
+    dispatch(submittingStatus(undefined));
+  }
 };

@@ -7,7 +7,7 @@ import {
   ASSESSMENT_UPDATE_ANSWER,
   RESET_LEVEL_FINISHED,
   IS_SUBMITTABLE,
-  ASSESSMENT_SAVE_FINISHED,
+  SUBMITTING_STATUS,
 } from './AssessmentPageActions';
 
 const assessmentPage = handleActions({
@@ -96,7 +96,7 @@ const assessmentPage = handleActions({
       );
     },
   },
-  [ASSESSMENT_SAVE_FINISHED]: {
+  [SUBMITTING_STATUS]: {
     next(state, action) {
       return state.withMutations(newState => {
         newState

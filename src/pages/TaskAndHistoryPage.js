@@ -16,6 +16,7 @@ import {
   searchTasks,
   getFirstStep,
 } from '../components/TaskList/TaskPageActions';
+import { resetSubmittingStatus } from '../components/ReasonLevelAssessmentWrapper/QuestionList/AssessmentPageActions';
 
 class TaskAndHistory extends Component {
   static propTypes = {
@@ -35,6 +36,10 @@ class TaskAndHistory extends Component {
     this.fetchAllData();
     document.body.scrollTop = document.documentElement.scrollTop = 0;
   };
+
+  componentWillUnmount() {
+    this.props.resetSubmittingStatus()
+  }
 
   fetchAllData() {
     this.props.fetchHistory();
@@ -88,5 +93,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  {fetchHistory, fetchTasks, searchTasks, getFirstStep},
+  {fetchHistory, fetchTasks, searchTasks, getFirstStep, resetSubmittingStatus},
 )(TaskAndHistory);

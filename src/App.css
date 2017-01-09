@@ -15,7 +15,7 @@ body {
 
 .alert {
   background-color: #39f654;
-  color: #073453;
+  color: white;
   top: 10px;
   width: 100%;
   text-align: center;
@@ -24,7 +24,7 @@ body {
   transform: translate(-50%, -50%);
   padding: 5px;
   box-sizing: border-box;
-  animation: fadeOut 3s forwards linear;
+  animation: fadeOut 5s forwards linear;
 }
 
 @keyframes fadeOut {

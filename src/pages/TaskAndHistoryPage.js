@@ -33,6 +33,7 @@ class TaskAndHistory extends Component {
 
   componentDidMount() {
     this.fetchAllData();
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
   };
 
   fetchAllData() {

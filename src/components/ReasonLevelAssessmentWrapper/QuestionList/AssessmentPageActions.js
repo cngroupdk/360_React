@@ -79,8 +79,14 @@ export const checkIfSubmittable = () => {
     let ifSubmittable = [];
     const assessment = getAssessment(getState().get('assessmentPage'));
     if (assessment.size > 0) {
-      assessment.get('Skills').first().get('Questions').toJS().map((question) => {
-        ifSubmittable.push(!!question.Answer.Note);
+      const skills = assessment.get('Skills');
+      skills.map(skill => {
+        skill.get('Questions').toJS().map((question) => {
+          if (question.IsRequired) {
+            ifSubmittable.push(!!question.Answer.Note);
+          }
+          return null
+        });
         return null
       })}
     dispatch(isSubmittable(ifSubmittable.every(entry => entry)));

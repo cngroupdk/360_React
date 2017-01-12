@@ -2,10 +2,10 @@ import * as fromPeoplePageReducer  from './components/PeopleList/PeoplePageReduc
 import * as fromHistoryPageReducer from './components/HistoryList/HistoryPageReducer';
 import * as fromTaskPageReducer from './components/TaskList/TaskPageReducer';
 import * as fromAppHeaderReducer from './components/AppHeader/AppHeaderReducer';
-import * as fromReasonPageReducer from './components/ReasonLevelAssessmentWrapper/ReasonEntry/ReasonPageReducer';
-import * as fromLevelPageReducer from './components/ReasonLevelAssessmentWrapper/LevelEntry/LevelPageReducer';
+import * as fromReasonPageReducer from './components/ReasonEntry/ReasonPageReducer';
+import * as fromLevelPageReducer from './components/LevelEntry/LevelPageReducer';
 import * as fromViewerPageReducer from './components/ViewerList/ViewerPageReducer';
-import * as fromAssessmentPageReducer from './components/ReasonLevelAssessmentWrapper/QuestionList/AssessmentPageReducer';
+import * as fromAssessmentPageReducer from './components/QuestionList/AssessmentPageReducer';
 import * as fromReasonLevelAssessmentPageReducer from './components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageReducer';
 import * as fromAdminPageReducer from './components/AdminList/AdminPageReducer'
 

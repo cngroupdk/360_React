@@ -3,8 +3,8 @@ import React, { Component }  from 'react';
 import Slider from './Slider.js';
 import CommentBox  from './CommentBox.js'
 
-import { QuestionContainer } from '../../../common/assets/styles/QuestionsPage/QuestionContainer';
-import { StyledAddCommentBtn } from '../../../common/assets/styles/QuestionsPage/StyledAddCommentBtn';
+import { QuestionContainer } from '../../common/assets/styles/QuestionsPage/QuestionContainer';
+import { StyledAddCommentBtn } from '../../common/assets/styles/QuestionsPage/StyledAddCommentBtn';
 
 export default class Question extends Component {
   constructor(props) {
@@ -96,7 +96,7 @@ export default class Question extends Component {
               value="false"
               onChange={this.handleOnChangeDontSay}
               defaultChecked={answer.get('DontSay')}/><br/>
-            Cannot or dont want to answer
+            Cannot or don't want to answer
           </div>
           <div className="slider-container">
             <Slider

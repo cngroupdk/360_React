@@ -3,8 +3,8 @@ import { RadioGroup } from 'react-radio-group';
 
 import Level from './Level'
 
-import { RadioWrapper } from '../../common/assets/styles/QuestionsPage/RadioWrapper';
-import { StyledLink } from '../../common/assets/styles/StyledLink';
+import { RadioWrapper } from '../common/assets/styles/QuestionsPage/RadioWrapper';
+import { StyledLink } from '../common/assets/styles/StyledLink';
 
 export default class LevelEntry extends Component {
   constructor(props, context) {

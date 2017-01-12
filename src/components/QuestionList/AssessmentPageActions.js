@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { api, apiPost } from '../../../api';
+import { api, apiPost } from '../../api';
 
 import { getAssessment } from './AssessmentPageReducer';
 

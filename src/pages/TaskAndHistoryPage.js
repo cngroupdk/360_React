@@ -8,7 +8,7 @@ import { loaderOptions } from '../appConfig'
 import Tabs from '../components/common/Tabs';
 import TaskList from '../components/TaskList/TaskList';
 import HistoryList from '../components/HistoryList/HistoryList';
-import Alert from '../components/common/Alert';
+import Alert from '../components/common/Notification';
 
 import { fetchHistory } from '../components/HistoryList/HistoryPageActions';
 import {
@@ -16,7 +16,7 @@ import {
   searchTasks,
   getFirstStep,
 } from '../components/TaskList/TaskPageActions';
-import { resetSubmittingStatus } from '../components/ReasonLevelAssessmentWrapper/QuestionList/AssessmentPageActions';
+import { resetSubmittingStatus } from '../components/QuestionList/AssessmentPageActions';
 
 class TaskAndHistory extends Component {
   static propTypes = {

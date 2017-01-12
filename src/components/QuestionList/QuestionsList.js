@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { QuestionsSectionName } from '../../common/assets/styles/QuestionsPage/QuestionsSectionName';
+import { QuestionsSectionName } from '../common/assets/styles/QuestionsPage/QuestionsSectionName';
 import QuestionSlider from './QuestionSlider/QuestionSlider';
 import QuestionGeneral from './QuestionGeneral/QuestionGeneral';
 

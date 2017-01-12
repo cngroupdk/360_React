@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 
 import AnswerBox from './AnswerBox'
 
-import { QuestionContainer } from '../../../common/assets/styles/QuestionsPage/QuestionContainer';
+import { QuestionContainer } from '../../common/assets/styles/QuestionsPage/QuestionContainer';
 
 export default class Question extends Component {
   constructor(props) {

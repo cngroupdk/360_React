@@ -2,18 +2,18 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import { selectors } from '../../selectors';
-import { loaderOptions } from '../../appConfig'
+import { selectors } from '../selectors';
+import { loaderOptions } from '../appConfig'
 
-import LevelEntry from '../../components/ReasonLevelAssessmentWrapper/LevelEntry/LevelEntry';
+import LevelEntry from '../components/LevelEntry/LevelEntry';
 
 import {
   fetchLevels,
   sendLevel,
-} from '../../components/ReasonLevelAssessmentWrapper/LevelEntry/LevelPageActions';
+} from '../components/LevelEntry/LevelPageActions';
 
-import { ContentContainer} from '../../components/common/assets/styles/ContentContainer';
-import { AssessmentPeopleProfileHeader } from '../../components/common/AssessmentPeopleProfileHeader';
+import { ContentContainer} from '../components/common/assets/styles/ContentContainer';
+import { AssessmentPeopleProfileHeader } from '../components/common/AssessmentPeopleProfileHeader';
 
 class LevelPage extends Component {
   static propTypes = {

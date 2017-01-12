@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react';
 import Loader from 'react-loader';
 import { connect } from 'react-redux';
 
-import SkillsList from '../../components/ReasonLevelAssessmentWrapper/QuestionList/SkillsList';
+import SkillsList from '../components/QuestionList/SkillsList';
 
-import { selectors } from '../../selectors';
-import { loaderOptions } from '../../appConfig'
+import { selectors } from '../selectors';
+import { loaderOptions } from '../appConfig'
 
 import {
   fetchAssessment,
@@ -13,16 +13,16 @@ import {
   assessmentUpdateAnswer,
   resetLevel,
   checkIfSubmittable,
-} from '../../components/ReasonLevelAssessmentWrapper/QuestionList/AssessmentPageActions';
+} from '../components/QuestionList/AssessmentPageActions';
 
 import {
   getNextStep,
-} from '../../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageActions';
+} from '../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageActions';
 
-import { ContentContainer } from '../../components/common/assets/styles/ContentContainer';
-import { StyledLinkWrapper } from '../../components/common/assets/styles/StyledLinkWrapper';
-import { StyledLink } from '../../components/common/assets/styles/StyledLink';
-import { AssessmentPeopleProfileHeader } from '../../components/common/AssessmentPeopleProfileHeader';
+import { ContentContainer } from '../components/common/assets/styles/ContentContainer';
+import { StyledLinkWrapper } from '../components/common/assets/styles/StyledLinkWrapper';
+import { StyledLink } from '../components/common/assets/styles/StyledLink';
+import { AssessmentPeopleProfileHeader } from '../components/common/AssessmentPeopleProfileHeader';
 
 class AssessmentPage extends Component {
   static propTypes = {

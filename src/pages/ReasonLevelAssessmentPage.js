@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Loader from 'react-loader';
 
-import { selectors } from '../../selectors';
-import { loaderOptions } from '../../appConfig'
+import { selectors } from '../selectors';
+import { loaderOptions } from '../appConfig'
 
 import {
   whoIs,
   getNextStep,
-} from '../../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageActions';
+} from '../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageActions';
 
-import ReasonLevelAssessmentWrapper from '../../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentWrapper'
+import ReasonLevelAssessmentWrapper from '../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentWrapper'
 
 class ReasonLevelAssessmentPage extends Component {
   componentWillMount() {

@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { api, apiPost } from '../../../api';
+import { api, apiPost } from '../../api';
 
 export const REQUEST_LEVELS = 'REQUEST_LEVELS';
 export const RECEIVE_LEVELS = 'RECEIVE_LEVELS';

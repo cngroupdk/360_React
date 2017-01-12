@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import { StyledCommentBox } from '../../../common/assets/styles/QuestionsPage/StyledCommentBox.js'
+import { StyledCommentBox } from '../../common/assets/styles/QuestionsPage/StyledCommentBox.js'
 
-export default class AnswerBox extends Component {
+export default class CommentBox extends Component {
   render() {
     const {
       onChange,
@@ -10,9 +10,9 @@ export default class AnswerBox extends Component {
     } = this.props;
 
     return (
-      <StyledCommentBox margin-top>
+      <StyledCommentBox>
                 <textarea
-                  placeholder='Enter your answer here...'
+                  placeholder='Enter your comment here...'
                   onChange={onChange}
                   value={text}/>
       </StyledCommentBox>

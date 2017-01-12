@@ -5,7 +5,7 @@ import App from './App'
 import TaskAndHistoryPage from './pages/TaskAndHistoryPage';
 import PeoplePage from './pages/PeoplePage'
 import ViewerPage from './pages/ViewerPage'
-import ReasonLevelAssessmentPage from './pages/ReasonLevelAssessmentPage/ReasonLevelAssessmentPage'
+import ReasonLevelAssessmentPage from './pages/ReasonLevelAssessmentPage'
 import NotFoundPage from './pages/NotFoundPage'
 import AdminPage from './pages/AdminPage'
 

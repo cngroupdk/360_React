@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { api, apiPost } from '../../api';
+import { api } from '../../api';
 
 import { getAssessment } from './AssessmentPageReducer';
 
@@ -30,7 +30,7 @@ export const isSubmittable = createAction(IS_SUBMITTABLE);
 export const fetchAssessment = (personId) => {
   return (dispatch) => {
     dispatch(assessmentRequest());
-    return apiPost.get('assessments/detail/'+ personId).then(
+    return api.get('assessments/detail/'+ personId).then(
       response => dispatch(assessmentRequestFinished(
         response.data || response,
       )),
@@ -44,7 +44,7 @@ export const fetchAssessment = (personId) => {
 export const saveAssessment = (personId, submitted) => {
   return (dispatch, getState) => {
     const assessment = getAssessment(getState().get('assessmentPage')).toJS();
-    return apiPost.post('assessments/save',
+    return api.post('assessments/save',
       {
         personId,
         Level:assessment,

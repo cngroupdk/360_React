@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { api, apiPost } from '../../api';
+import { api } from '../../api';
 
 export const REQUEST_LEVELS = 'REQUEST_LEVELS';
 export const RECEIVE_LEVELS = 'RECEIVE_LEVELS';
@@ -25,7 +25,7 @@ export const fetchLevels = () => {
 
 export const sendLevel = (levelId, personId, router) => {
   return (dispatch) => {
-    apiPost.post('/assessments/level', {
+    api.post('/assessments/level', {
       'Level':{Id: levelId},
       personId,
     }).then(

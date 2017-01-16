@@ -19,14 +19,24 @@ export const whoIs = (personId) => {
   }
 };
 
-export const getNextStep = (personId) => {
+export const getNextStep = (personId, router) => {
   return (dispatch) => {
     return api.get('assessments/step/'+ personId).then(
-      response => dispatch(receiveStep(
-        response.data || response,
-      )),
+      response => {
+
+        dispatch(receiveStep(
+          response.data || response,
+        ));
+
+        if (router){
+          router.push({
+            pathname: '/assessment/' + personId}
+          )
+        }
+
+      },
       error => dispatch(receiveStep(
-        error,
-      )))
+            error,
+          )))
   }
 };

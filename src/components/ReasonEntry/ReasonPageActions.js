@@ -5,7 +5,7 @@ export const RECEIVE_ANSWER = 'RECEIVE_ANSWER';
 
 export const receiveAnswer = createAction(RECEIVE_ANSWER);
 
-export const sendReason = (reason, personId, router) => {
+export const sendReason = (reason, personId, router, nextStep) => {
   return (dispatch) => {
     api.post('/assessments/reason', {
       reason,
@@ -17,9 +17,7 @@ export const sendReason = (reason, personId, router) => {
           response.data || response,
         ));
 
-        router.push({
-          pathname: '/assessment/' + personId}
-        )
+        nextStep(personId, router)
 
       },
       error => dispatch(receiveAnswer(

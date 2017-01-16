@@ -25,15 +25,13 @@ export default class ReasonEntry extends Component {
   }
 
   handleSendReason(e) {
-    this.props.sendReason(this.state.reason, this.props.personId, this.context.router);
-    this.props.getNextStep(this.props.person.get('Id'));
+    this.props.sendReason(this.state.reason, this.props.personId, this.context.router, this.props.getNextStep);
     e.preventDefault();
   }
 
   render() {
     const {
       person,
-      personId,
     } = this.props;
 
     return (
@@ -51,8 +49,7 @@ export default class ReasonEntry extends Component {
           <label>*reason is required (min. 10 characters)</label>
         </StyledReasonEnterAreaWrapper>
 
-        <StyledLink disabled={this.state.reason.length < 10} onClick={this.handleSendReason}
-                    to={{ pathname: '/assessment/' + personId}}>
+        <StyledLink disabled={this.state.reason.length < 10} onClick={this.handleSendReason}>
           Proceed further
         </StyledLink>
       </ContentContainer>

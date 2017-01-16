@@ -10,7 +10,7 @@ export default class LevelEntry extends Component {
   constructor(props, context) {
     super(props, context);
     this.handleProfLevelChange = this.handleProfLevelChange.bind(this);
-    this.handleProceedToQuestions = this.handleProceedToQuestions.bind(this);
+    this.handleSaveLevel = this.handleSaveLevel.bind(this);
     const defLevel = this.props.levelId || '';
     this.state = {level: defLevel};
   }
@@ -23,16 +23,14 @@ export default class LevelEntry extends Component {
     this.setState({level: value});
   }
 
-  handleProceedToQuestions(e) {
-    this.props.sendLevel(this.state.level, this.props.personId, this.context.router);
-    this.props.getNextStep(this.props.personId);
+  handleSaveLevel(e) {
+    this.props.sendLevel(this.state.level, this.props.personId, this.context.router, this.props.getNextStep);
     e.preventDefault();
   }
 
   render() {
     const {
       levels,
-      personId,
     } = this.props;
 
     return (
@@ -48,8 +46,7 @@ export default class LevelEntry extends Component {
           </RadioGroup>
         </RadioWrapper>
 
-        <StyledLink disabled={!this.state.level} onClick={this.handleProceedToQuestions}
-                    to={{ pathname: '/assessment/' + personId}}>
+        <StyledLink disabled={!this.state.level} onClick={this.handleSaveLevel}>
           Proceed to questions </StyledLink>
       </div>
     )

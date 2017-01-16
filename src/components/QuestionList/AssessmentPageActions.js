@@ -41,7 +41,7 @@ export const fetchAssessment = (personId) => {
   };
 };
 
-export const saveAssessment = (personId, submitted) => {
+export const saveAssessment = (personId, submitted, router) => {
   return (dispatch, getState) => {
     const assessment = getAssessment(getState().get('assessmentPage')).toJS();
     return api.post('assessments/save',
@@ -51,23 +51,35 @@ export const saveAssessment = (personId, submitted) => {
         Submitted: submitted,
       }
       ).then(
-      response => dispatch(submittingStatus(
-        submitted,
-      )),
+        response => {
+        dispatch(submittingStatus(
+          submitted,
+        ));
+
+        router.push({
+          pathname: '/'}
+        )
+      },
       error => dispatch(submittingStatus(
         error,
-      ))
-    );
+      )))
   }
 };
 
-export const resetLevel = (personId) => {
+export const resetLevel = (personId, router,  nextStep) => {
   return (dispatch) => {
     dispatch(resetLevelSubmitted());
-    api.get('assessments/resetlevel/'+ personId).then(
-      response => dispatch(resetLevelFinished(
-        response.data || response,
-      )),
+
+    api.get('assessments/resetlevel/' + personId).then(
+      response => {
+
+        dispatch(resetLevelFinished(
+          response.data || response,
+        ));
+
+        nextStep(personId, router)
+
+      },
       error => dispatch(resetLevelFinished(
         error,
       )))

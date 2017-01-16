@@ -23,7 +23,7 @@ export const fetchLevels = () => {
   };
 };
 
-export const sendLevel = (levelId, personId, router) => {
+export const sendLevel = (levelId, personId, router, nextStep) => {
   return (dispatch) => {
     api.post('/assessments/level', {
       'Level':{Id: levelId},
@@ -35,9 +35,7 @@ export const sendLevel = (levelId, personId, router) => {
           response.data || response,
         ));
 
-        router.push({
-          pathname: '/assessment/' + personId}
-        )
+        nextStep(personId, router)
 
       },
       error => dispatch(receiveAnswer(

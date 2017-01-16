@@ -12,6 +12,7 @@ export const StyledLink = styled(Link)`
   font-size: 16px;
   min-width: 130px;
   display: inline-block;
+  cursor: pointer;
   
   background-color: ${props => props.disabled ? '#a1a1a1' : '#ed1848'};
   

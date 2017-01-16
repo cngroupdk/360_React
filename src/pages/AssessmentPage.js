@@ -35,6 +35,10 @@ class AssessmentPage extends Component {
     assessment: PropTypes.object,
   };
 
+  static contextTypes = {
+    router: PropTypes.object
+  };
+
   constructor(props) {
     super(props);
     this.handleResetLevel = this.handleResetLevel.bind(this);
@@ -62,8 +66,7 @@ class AssessmentPage extends Component {
   }
 
   handleResetLevel() {
-    this.props.resetLevel(this.props.personId);
-    this.props.getNextStep(this.props.personId);
+    this.props.resetLevel(this.props.personId, this.context.router, this.props.getNextStep);
   }
 
   fetchAllData() {
@@ -72,11 +75,11 @@ class AssessmentPage extends Component {
   }
 
   handleSaveAsDraft() {
-    this.props.saveAssessment(this.props.person.get('Id'), false);
+    this.props.saveAssessment(this.props.person.get('Id'), false, this.context.router);
   }
 
   handleSubmitAssessment() {
-    this.props.saveAssessment(this.props.person.get('Id'), true);
+    this.props.saveAssessment(this.props.person.get('Id'), true, this.context.router);
   }
 
   render() {
@@ -97,7 +100,7 @@ class AssessmentPage extends Component {
           <h1>Assessment</h1>
           <AssessmentPeopleProfileHeader person={person}>
             <StyledLinkWrapper data-right-align>
-              <StyledLink data-right-align onClick={this.handleResetLevel} to={'/assessment/' + person.get('Id')}>
+              <StyledLink data-right-align onClick={this.handleResetLevel}>
                 Change selected level<br />({chosenLevel})
               </StyledLink>
             </StyledLinkWrapper>
@@ -109,9 +112,9 @@ class AssessmentPage extends Component {
             checkIfSubmittable={checkIfSubmittable}
           />
           <StyledLinkWrapper data-margin-right-30>
-            <StyledLink onClick={this.handleSaveAsDraft} to="/">Save draft</StyledLink>
+            <StyledLink onClick={this.handleSaveAsDraft}>Save draft</StyledLink>
           </StyledLinkWrapper>
-          <StyledLink disabled={!isSubmittable} onClick={this.handleSubmitAssessment} to="/">Submit</StyledLink>
+          <StyledLink disabled={!isSubmittable} onClick={this.handleSubmitAssessment}>Submit</StyledLink>
         </ContentContainer>
       </Loader>
     )

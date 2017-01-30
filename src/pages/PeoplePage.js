@@ -44,9 +44,10 @@ class PeoplePage extends Component {
       <div>
         <Tabs/>
         <Loader loaded={peopleIsLoaded} options={loaderOptions}>
-          <PeopleList people={people}
-                      searchPeople={searchPeople}
-                      getFirstStep={getFirstStep}
+          <PeopleList
+            people={people}
+            searchPeople={searchPeople}
+            getFirstStep={getFirstStep}
           />
         </Loader>
       </div>

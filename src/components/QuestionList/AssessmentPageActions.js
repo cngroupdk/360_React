@@ -67,23 +67,36 @@ export const saveAssessment = (personId, submitted, router) => {
 };
 
 export const resetLevel = (personId, router,  nextStep) => {
-  return (dispatch) => {
-    dispatch(resetLevelSubmitted());
-
-    api.get('assessments/resetlevel/' + personId).then(
+  return (dispatch, getState) => {
+    const assessment = getAssessment(getState().get('assessmentPage')).toJS();
+    api.post('assessments/save',
+    {
+      personId,
+      Level:assessment,
+      Submitted: false,
+    }
+    ).then(
       response => {
+        dispatch(resetLevelSubmitted());
 
-        dispatch(resetLevelFinished(
-          response.data || response,
-        ));
+        api.post('assessments/resetlevel', { personId }).then(
+          response => {
+            dispatch(resetLevelFinished(
+              response.data || response,
+            ));
 
-        nextStep(personId, router)
-
+            nextStep(personId, router)
+          },
+          error => dispatch(resetLevelFinished(
+            error,
+          ))
+        )
       },
-      error => dispatch(resetLevelFinished(
+      error => dispatch(resetLevelSubmitted(
         error,
-      )))
-  }
+      ))
+    )
+  };
 };
 
 export const checkIfSubmittable = () => {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AppHeader from './components/AppHeader/AppHeader';
 import AppFooter from './components/AppFooter/AppFooter';
-import Confirmation from './pages/Confirmation';
+import ConfirmationModal from './pages/ConfirmationModal';
 import './App.css';
 
 export default class App extends Component {
@@ -15,7 +15,7 @@ export default class App extends Component {
         </div>
 
         <AppFooter />
-        <Confirmation />
+        <ConfirmationModal />
       </div>
     );
   }

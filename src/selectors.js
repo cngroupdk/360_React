@@ -8,6 +8,7 @@ import * as fromViewerPageReducer from './components/ViewerList/ViewerPageReduce
 import * as fromAssessmentPageReducer from './components/QuestionList/AssessmentPageReducer';
 import * as fromReasonLevelAssessmentPageReducer from './components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageReducer';
 import * as fromAdminPageReducer from './components/AdminList/AdminPageReducer'
+import * as fromConfirmationModalReducer from './components/Confirmation/ConfirmationModalReducer';
 
 export const selectors = {
   peoplePage: {
@@ -68,5 +69,10 @@ export const selectors = {
     getAdminList: state =>fromAdminPageReducer.getAdminList(state.get('adminPage')),
     adminListIsLoaded: state =>fromAdminPageReducer.adminListIsLoaded(state.get('adminPage')),
     adminListIsError: state =>fromAdminPageReducer.adminListIsError(state.get('adminPage')),
+  },
+
+  confirmationModal: {
+    getModalState: state => fromConfirmationModalReducer.getModalState(state.get('confirmationModal')),
+    modalPayload: state => fromConfirmationModalReducer.modalPayload(state.get('confirmationModal')),
   },
 };

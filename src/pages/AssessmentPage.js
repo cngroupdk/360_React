@@ -15,9 +15,8 @@ import {
   checkIfSubmittable,
 } from '../components/QuestionList/AssessmentPageActions';
 
-import {
-  getNextStep,
-} from '../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageActions';
+import { getNextStep } from '../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageActions';
+import { openModal } from '../components/Confirmation/ConfrimationModalAction';
 
 import { ContentContainer } from '../components/common/assets/styles/ContentContainer';
 import { StyledLinkWrapper } from '../components/common/assets/styles/StyledLinkWrapper';
@@ -41,6 +40,7 @@ class AssessmentPage extends Component {
 
   constructor(props) {
     super(props);
+
     this.handleResetLevel = this.handleResetLevel.bind(this);
     this.handleSaveAsDraft = this.handleSaveAsDraft.bind(this);
     this.handleSubmitAssessment = this.handleSubmitAssessment.bind(this);
@@ -66,7 +66,10 @@ class AssessmentPage extends Component {
   }
 
   handleResetLevel() {
-    this.props.resetLevel(this.props.personId, this.context.router, this.props.getNextStep);
+    const { resetLevel, personId, router, getNextStep, openModal } = this.props;
+
+    openModal();
+    resetLevel(personId, router, getNextStep);
   }
 
   fetchAllData() {
@@ -145,6 +148,7 @@ export default connect(
     assessmentUpdateAnswer,
     resetLevel,
     getNextStep,
+    openModal,
     checkIfSubmittable,
   },
 )(AssessmentPage);

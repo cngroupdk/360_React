@@ -16,7 +16,7 @@ import {
 } from '../components/QuestionList/AssessmentPageActions';
 
 import { getNextStep } from '../components/ReasonLevelAssessmentWrapper/ReasonLevelAssessmentPageActions';
-import { openModal } from '../components/Confirmation/ConfrimationModalAction';
+import { declineModal, openModal } from '../components/Confirmation/ConfrimationModalAction';
 
 import { ContentContainer } from '../components/common/assets/styles/ContentContainer';
 import { StyledLinkWrapper } from '../components/common/assets/styles/StyledLinkWrapper';
@@ -41,6 +41,7 @@ class AssessmentPage extends Component {
   constructor(props) {
     super(props);
 
+    this.changeLevel = this.changeLevel.bind(this);
     this.handleResetLevel = this.handleResetLevel.bind(this);
     this.handleSaveAsDraft = this.handleSaveAsDraft.bind(this);
     this.handleSubmitAssessment = this.handleSubmitAssessment.bind(this);
@@ -53,6 +54,7 @@ class AssessmentPage extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('beforeunload', this.addPromptMessageToWindow);
+    this.props.declineModal();
   }
 
   addPromptMessageToWindow(event) {
@@ -65,10 +67,13 @@ class AssessmentPage extends Component {
     return message;
   }
 
-  handleResetLevel() {
-    const { resetLevel, personId, router, getNextStep, openModal } = this.props;
+  changeLevel() {
+    this.props.openModal();
+  }
 
-    openModal();
+  handleResetLevel() {
+    const { getNextStep, personId, resetLevel, router } = this.props;
+
     resetLevel(personId, router, getNextStep);
   }
 
@@ -88,14 +93,19 @@ class AssessmentPage extends Component {
   render() {
     const {
       assessment,
-      assessmentUpdateAnswer,
       assessmentIsLoaded,
-      person,
+      assessmentUpdateAnswer,
       checkIfSubmittable,
       isSubmittable,
+      modalIsProceeded,
+      person,
     } = this.props;
 
     const chosenLevel = (assessment) ? assessment.get('Caption') : 'Default';
+
+    if (modalIsProceeded) {
+      this.handleResetLevel();
+    }
 
     return (
       <Loader loaded={assessmentIsLoaded} options={loaderOptions}>
@@ -103,7 +113,7 @@ class AssessmentPage extends Component {
           <h1>Assessment</h1>
           <AssessmentPeopleProfileHeader person={person}>
             <StyledLinkWrapper data-right-align>
-              <StyledLink data-right-align onClick={this.handleResetLevel}>
+              <StyledLink data-right-align onClick={this.changeLevel}>
                 Change selected level<br />({chosenLevel})
               </StyledLink>
             </StyledLinkWrapper>
@@ -125,6 +135,8 @@ class AssessmentPage extends Component {
 }
 
 function mapStateToProps(state) {
+  const { modalIsProceeded } = selectors.confirmationModal;
+
   const {
     getAssessment,
     assessmentIsLoaded,
@@ -137,19 +149,21 @@ function mapStateToProps(state) {
     assessment: getAssessment(state),
     assessmentIsLoaded: assessmentIsLoaded(state),
     assessmentIsError: assessmentIsError(state),
+    modalIsProceeded: modalIsProceeded(state),
   };
 }
 
 export default connect(
   mapStateToProps,
   {
-    fetchAssessment,
-    saveAssessment,
     assessmentUpdateAnswer,
-    resetLevel,
+    checkIfSubmittable,
+    declineModal,
+    fetchAssessment,
     getNextStep,
     openModal,
-    checkIfSubmittable,
+    resetLevel,
+    saveAssessment,
   },
 )(AssessmentPage);
 

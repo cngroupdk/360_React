@@ -73,6 +73,6 @@ export const selectors = {
 
   confirmationModal: {
     getModalState: state => fromConfirmationModalReducer.getModalState(state.get('confirmationModal')),
-    modalPayload: state => fromConfirmationModalReducer.modalPayload(state.get('confirmationModal')),
+    modalIsProceeded: state => fromConfirmationModalReducer.modalIsProceeded(state.get('confirmationModal')),
   },
 };

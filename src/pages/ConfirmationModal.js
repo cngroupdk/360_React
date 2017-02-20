@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { ConfirmationContainer } from '../components/common/assets/styles/Confirmation/ConfirmationContainer';
-import { closeModal } from '../components/Confirmation/ConfrimationModalAction';
+import { closeModal, proceedModal } from '../components/Confirmation/ConfrimationModalAction';
 import { selectors } from '../selectors';
 
 class ConfirmationModal extends Component {
@@ -14,7 +14,8 @@ class ConfirmationModal extends Component {
   }
 
   proceedToPage() {
-    console.log(this.props)
+    this.props.proceedModal();
+    this.closeConfirmationModal();
   }
 
   closeConfirmationModal() {
@@ -51,5 +52,6 @@ export default connect(
   mapStateToProps,
   {
     closeModal,
+    proceedModal,
   },
 )(ConfirmationModal);

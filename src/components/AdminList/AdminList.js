@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Level from './Level'
+import Level from './Level';
 
-import { ContentContainer } from '../../components/common/assets/styles/ContentContainer';
+import { AdminContentContainer } from '../../components/common/assets/styles/Admin/AdminContainer';
 
 export default class AdminList extends Component {
   render() {
@@ -11,11 +11,11 @@ export default class AdminList extends Component {
     } = this.props;
 
     return (
-      <ContentContainer>
+      <AdminContentContainer>
         {adminList.map((level) => (
           <Level level={level} key={level.get('Id')}/>
         ))}
-      </ContentContainer>
+      </AdminContentContainer>
     );
   }
 }
